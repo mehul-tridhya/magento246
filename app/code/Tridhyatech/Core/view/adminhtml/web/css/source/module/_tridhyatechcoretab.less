@@ -1,0 +1,23 @@
+/**
+*@author Tridhya Tech Team
+*@copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+*@package Tridhyatech_Core
+*/
+@tridhyatech-logo-url: url('../Tridhyatech_Core/images/favicon-tridhya.svg');
+
+
+.config-nav .tridhyatech-tab .admin__page-nav-title::before {
+    content: '';
+    background-image: @tridhyatech-logo-url;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position: 0 0;
+    height: 20px;
+    position: absolute;
+    width: 30px;
+    top: 18px;
+}
+
+.config-nav .tridhyatech-tab .admin__page-nav-title strong {
+    margin-left: 25px;
+}

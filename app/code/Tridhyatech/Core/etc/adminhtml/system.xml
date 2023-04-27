@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Tridhya Tech Team
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package Tridhyatech_Core
+ */-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="tridhyatech" translate="label" sortOrder="500" class="tridhyatech-tab">
+            <label>TRIDHYATECH EXTENSIONS</label>
+        </tab>
+    </system>
+</config>

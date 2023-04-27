@@ -1,0 +1,20 @@
+{
+    "name": "tridhyatech/core",
+    "description": "Tridhyatech Core",
+    "require": {
+        "php": ">=7.2"
+    },
+    "type": "magento2-module",
+    "version": "1.0.2",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Tridhyatech\\Core\\": ""
+        }
+    }
+}

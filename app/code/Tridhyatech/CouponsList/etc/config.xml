@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+* @author Tridhya Tech Team
+* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+* @package Tridhyatech_CouponsList
+*/ 
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+   <default>
+       <coupon_code_config>
+           <coupon_list>
+               <is_active>0</is_active>
+               <type>1</type>
+               <button_title>View Coupons</button_title>
+               <availabe_coupon_title>Available Coupons</availabe_coupon_title>
+               <unavailable_coupon_title>Unavailable Coupons</unavailable_coupon_title>
+               <all_coupon_title>All Coupons</all_coupon_title>
+               <cart_wise_coupon_title>Available Coupons</cart_wise_coupon_title>
+           </coupon_list>
+       </coupon_code_config>
+   </default>
+</config>

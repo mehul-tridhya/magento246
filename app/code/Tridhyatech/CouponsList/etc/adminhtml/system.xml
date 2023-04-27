@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+* @author Tridhya Tech Team
+* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+* @package Tridhyatech_CouponsList
+*/ 
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="coupon_code_config" translate="label" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Coupons List</label>
+            <tab>tridhyatech</tab>
+            <resource>Tridhyatech_CouponsList::couponslist</resource>
+            <group id="coupon_list" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1">
+                <label>Configuration</label>
+                <field id="is_active" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="type" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Coupon Type</label>
+                    <source_model>Tridhyatech\CouponsList\Model\Config\Source\CouponTypes</source_model>
+                    <depends>
+                        <field id="*/*/is_active">1</field>
+                    </depends>
+                </field>
+                <field id="all_coupon_title" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>All Coupon Title</label>
+                    <depends>
+                        <field id="*/*/is_active">1</field>
+                        <field id="*/*/type">1</field>
+                    </depends>
+                </field>
+                <field id="cart_wise_coupon_title" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Cart Wise Coupon Title</label>
+                    <depends>
+                        <field id="*/*/is_active">1</field>
+                        <field id="*/*/type">2</field>
+                    </depends>
+                </field>
+                <field id="button_title" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Button Title</label>
+                    <depends>
+                        <field id="*/*/is_active">1</field>
+                    </depends>
+                </field>
+                <field id="availabe_coupon_title" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Available Coupon Title</label>
+                    <depends>
+                        <field id="*/*/is_active">1</field>
+                    </depends>
+                </field>
+                <field id="unavailable_coupon_title" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Unavailable Coupon Title</label>
+                    <depends>
+                        <field id="*/*/is_active">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

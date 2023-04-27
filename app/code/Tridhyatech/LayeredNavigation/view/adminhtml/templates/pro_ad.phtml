@@ -1,0 +1,100 @@
+<?php
+/**
+ * @package     Tridhyatech_LayeredNavigation
+ * @copyright   Copyright (c) 2022 Plumrocket Inc. (https://plumrocket.com)
+ * @license     https://plumrocket.com/license   End-user License Agreement
+ */
+
+/** @var \Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form\ProAd $block */
+?>
+
+<div class="pro-features">
+    <h2 class="pro-features_title"><?= $block->escapeHtml('Layered Navigation Pro Features') ?></h2>
+    <div id="pro-features_slider">
+        <nav>
+            <h3 class="pr-tab-button" data-slide-id="1"><?= $block->escapeHtml('Advanced SEO Settings') ?></h3>
+            <h3 class="pr-tab-button" data-slide-id="2"><?= $block->escapeHtml('Custom Option Support') ?></h3>
+            <h3 class="pr-tab-button" data-slide-id="3"><?= $block->escapeHtml('Bulk Filtering') ?></h3>
+            <h3 class="pr-tab-button" data-slide-id="4"><?= $block->escapeHtml('Horizontal Layered Navigation') ?></h3>
+            <h3 class="pr-tab-button" data-slide-id="5"><?= $block->escapeHtml('Additional Filters') ?></h3>
+            <h3 class="pr-tab-button" data-slide-id="6"><?= $block->escapeHtml('Category-Based Filters') ?></h3>
+        </nav>
+        <div class="pr-slides">
+            <div id="pr-slide-1" class="pr-slide--active">
+                <img
+                    src="<?= $block->escapeUrl($block->getViewFileUrl('Tridhyatech_LayeredNavigation::images/pro-features/f1.png')) ?>"
+                    srcset="<?= $block->escapeUrl($block->getViewFileUrl('Tridhyatech_LayeredNavigation::images/pro-features/f1@2x.png')) ?> 2x"
+                    alt="<?= $block->escapeHtmlAttr('Advanced SEO Settings') ?>"
+                    width="525"
+                    height="305"
+                >
+                <p><?= $block->escapeHtml('Optimize your SEO with short and keyword-rich URLs, unique headings and meta titles for filter results pages.') ?></p>
+            </div>
+            <div id="pr-slide-2">
+                <img
+                    src="<?= $block->escapeUrl($block->getViewFileUrl('Tridhyatech_LayeredNavigation::images/pro-features/f2.png')) ?>"
+                    srcset="<?= $block->escapeUrl($block->getViewFileUrl('Tridhyatech_LayeredNavigation::images/pro-features/f2@2x.png')) ?> 2x"
+                    alt="<?= $block->escapeHtmlAttr('Custom Option Support') ?>"
+                    width="525"
+                    height="283"
+                >
+                <p><?= $block->escapeHtml('Create filters based on custom options. Choose which ones to display, specify their order, and apply to a category.') ?></p>
+            </div>
+            <div id="pr-slide-3">
+                <img
+                    src="<?= $block->escapeUrl($block->getViewFileUrl('Tridhyatech_LayeredNavigation::images/pro-features/f3.png')) ?>"
+                    srcset="<?= $block->escapeUrl($block->getViewFileUrl('Tridhyatech_LayeredNavigation::images/pro-features/f3@2x.png')) ?> 2x"
+                    alt="<?= $block->escapeHtmlAttr('Bulk Filtering') ?>"
+                    width="526"
+                    height="332"
+                >
+                <p><?= $block->escapeHtml('Let users select multiple attributes at once and then click the Filter button to get the results.') ?></p>
+            </div>
+            <div id="pr-slide-4">
+                <img
+                    src="<?= $block->escapeUrl($block->getViewFileUrl('Tridhyatech_LayeredNavigation::images/pro-features/f4.png')) ?>"
+                    srcset="<?= $block->escapeUrl($block->getViewFileUrl('Tridhyatech_LayeredNavigation::images/pro-features/f4@2x.png')) ?> 2x"
+                    alt="<?= $block->escapeHtmlAttr('Horizontal Layered Navigation') ?>"
+                    width="527"
+                    height="286"
+                >
+                <p><?= $block->escapeHtml('Enhance the default Magento navigation functionality - display product filters in the top toolbar or left sidebar.') ?></p>
+            </div>
+            <div id="pr-slide-5">
+                <img
+                    src="<?= $block->escapeUrl($block->getViewFileUrl('Tridhyatech_LayeredNavigation::images/pro-features/f5.png')) ?>"
+                    srcset="<?= $block->escapeUrl($block->getViewFileUrl('Tridhyatech_LayeredNavigation::images/pro-features/f5@2x.png')) ?> 2x"
+                    alt="<?= $block->escapeHtmlAttr('Additional Filters') ?>"
+                    width="526"
+                    height="324"
+                >
+                <p><?= $block->escapeHtml('Show off your new products and increase engagement with new filters: "Rating", "New Arrivals", "Stock Status" and "Sales".') ?></p>
+            </div>
+            <div id="pr-slide-6">
+                <img
+                    src="<?= $block->escapeUrl($block->getViewFileUrl('Tridhyatech_LayeredNavigation::images/pro-features/f6.png')) ?>"
+                    srcset="<?= $block->escapeUrl($block->getViewFileUrl('Tridhyatech_LayeredNavigation::images/pro-features/f6@2x.png')) ?> 2x"
+                    alt="<?= $block->escapeHtmlAttr('Category-Based Filters') ?>"
+                    width="526"
+                    height="310"
+                >
+                <p><?= $block->escapeHtml('Set up unique filter lists for each category to display only relevant options and make filtering even faster and more efficient.') ?></p>
+            </div>
+        </div>
+    </div>
+    <a class="pro-features_btn" href="<?= $block->escapeUrl($block->getProExtensionUrl())?>" target="_blank">
+        <?= $block->escapeHtml('Get Layered Navigation Pro') ?>
+    </a>
+</div>
+<script>
+    const slider = document.getElementById('pro-features_slider');
+    const buttons = slider.querySelectorAll('.pr-tab-button');
+    [].forEach.call(buttons, (button) => button.addEventListener('mouseover', changeSlide));
+
+    function changeSlide(event) {
+        const currentSlide = slider.querySelector('.pr-slide--active');
+        const nextSlide = document.getElementById('pr-slide-' + event.target.dataset.slideId);
+        currentSlide.classList.remove('pr-slide--active');
+        nextSlide.classList.add('pr-slide--active');
+    }
+</script>

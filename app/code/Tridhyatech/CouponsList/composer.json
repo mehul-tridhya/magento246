@@ -1,0 +1,21 @@
+{
+    "name": "tridhyatech/couponslist",
+    "description": "Magento 2 Coupons List Extension",
+    "require": {
+        "php": ">=7.3.0",
+        "tridhyatech/core": ">=1.0.1"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "Commercial"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Tridhyatech\\CouponsList\\": ""
+        }
+    }
+}

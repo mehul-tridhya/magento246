@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+* @author Tridhya Tech Team
+* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+* @package Tridhyatech_CouponsList
+*/ 
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Tridhyatech_CouponsList" setup_version="1.0.0" />
+</config>

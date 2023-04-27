@@ -1,0 +1,157 @@
+<!-- /**
+* @author Tridhya Tech Team
+* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+* @package Tridhyatech_CouponsList
+*/ -->
+<!-- ko if: (isModuleEnable() == 0) -->
+<div class="payment-option _collapsible opc-payment-additional discount-code"
+    data-bind="mageInit: {'collapsible':{'openedState': '_active'}}">
+    <div class="payment-option-title field choice" data-role="title">
+        <span class="action action-toggle" id="block-discount-heading" role="heading" aria-level="2">
+            <!-- ko i18n: 'Apply Discount Code'--><!-- /ko -->
+        </span>
+    </div>
+    <div class="payment-option-content" data-role="content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <form class="form form-discount" id="discount-form">
+            <div class="payment-option-inner">
+                <div class="field">
+                    <label class="label" for="discount-code">
+                        <span data-bind="i18n: 'Enter discount code'"></span>
+                    </label>
+                    <div class="control">
+                        <input class="input-text" type="text" id="discount-code" name="discount_code"
+                            data-validate="{'required-entry':true}"
+                            data-bind="value: couponCode, attr:{disabled:isApplied() , placeholder: $t('Enter discount code')} "></input>
+                    </div>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <!-- ko ifnot: isApplied() -->
+                    <button class="action action-apply" type="submit"
+                        data-bind="'value': $t('Apply Discount'), click: apply">
+                        <span><!-- ko i18n: 'Apply Discount'--><!-- /ko --></span>
+                    </button>
+                    <!-- /ko -->
+                    <!-- ko if: isApplied() -->
+                    <button class="action action-cancel" type="submit" data-bind="'value': $t('Cancel'), click: cancel">
+                        <span><!-- ko i18n: 'Cancel coupon'--><!-- /ko --></span>
+                    </button>
+                    <!-- /ko -->
+                </div>
+                <!-- ko foreach: getRegion('captcha') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!-- /ko -->
+            </div>
+        </form>
+    </div>
+</div>
+<!--/ko-->
+<!-- ko if: (isModuleEnable() == 1) -->
+<div class="payment-option _collapsible opc-payment-additional discount-code"
+    data-bind="mageInit: {'collapsible':{'openedState': '_active'}}">
+    <div class="payment-option-title field choice" data-role="title">
+        <span class="action action-toggle" id="block-discount-heading" role="heading" aria-level="2">
+            <!-- ko i18n: 'Apply Discount Code'--><!-- /ko -->
+        </span>
+    </div>
+    <div class="payment-option-content" data-role="content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <form class="form form-discount" id="discount-form">
+            <div class="payment-option-inner">
+                <div class="field">
+                    <label class="label" for="discount-code">
+                        <span data-bind="i18n: 'Enter discount code'"></span>
+                    </label>
+                    <div class="control">
+                        <input class="input-text" type="text" id="discount-code" name="discount_code"
+                            data-validate="{'required-entry':true}"
+                            data-bind="value: couponCode, attr:{disabled:isApplied() , placeholder: $t('Enter discount code')} "></input>
+                    </div>
+                </div>
+            </div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <!-- ko ifnot: isApplied() -->
+                    <button class="action action-apply" type="submit"
+                        data-bind="'value': $t('Apply Discount'), click: apply">
+                        <span><!-- ko i18n: 'Apply Discount'--><!-- /ko --></span>
+                    </button>
+                    <!-- /ko -->
+                    <!-- ko if: isApplied() -->
+                    <button class="action action-cancel" type="submit" data-bind="'value': $t('Cancel'), click: cancel">
+                        <span><!-- ko i18n: 'Cancel coupon'--><!-- /ko --></span>
+                    </button>
+                    <!-- /ko -->
+                </div>
+                <!-- ko foreach: getRegion('captcha') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!-- /ko -->
+            </div>
+        </form>
+        <div id="coupon-list-content" data-bind="visible: false" class="coupon-list-modal-content">
+            <div class="coupon-code-content-main">
+                <!-- ko if: (couponListType() == 1)-->
+                <div class="coupon-code-types-div">
+                    <span class="coupon-code-types"><!-- ko i18n: availableCouponTitle--><!-- /ko --></span>
+                </div>
+                <!-- /ko -->
+                <div data-bind="foreach: { data: couponcodes, as: 'coupons', noChildContext: true }">
+                    <div data-bind="foreach: { data: coupons.valid_coupons, as: 'coupon', noChildContext: true }">
+                        <div class="coupon-code-main">
+                            <div class="coupon-code"><span><!-- ko i18n: coupon.coupon_code--><!-- /ko --></span>
+                            </div>
+                            <span class="coupon-name">
+                                <h4><!-- ko i18n: coupon.name--><!-- /ko --></h4>
+                            </span>
+                            <p class="coupon-description"><!-- ko i18n: coupon.description--><!-- /ko --></p>
+                            <button type="button" class="action secondory coupon-code-apply-btn" tabindex="0"
+                                data-bind="event:{ click: function(data, event) { applyCuponCode(coupon.coupon_code,'#coupon-list-content') }}">
+                                <span><!-- ko i18n: 'Apply Coupon'--><!-- /ko --></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ko if: (couponListType() == 1)-->
+                <div>
+                    <div class="coupon-code-types-div">
+                        <span class="coupon-code-types"><!-- ko i18n: unavailableCouponTitle--><!-- /ko --></span>
+                    </div>
+                    <div data-bind="foreach: { data: couponcodes, as: 'coupons' }">
+                        <div data-bind="foreach: { data: coupons.invalid_coupons, as: 'coupon' }">
+                            <div class="coupon-code-main">
+                                <div class="coupon-code">
+                                    <span><!-- ko i18n: coupon.coupon_code--><!-- /ko --></span>
+                                </div>
+                                <span class="coupon-name">
+                                    <h4><!-- ko i18n: coupon.name--><!-- /ko --></h4>
+                                </span>
+                                <p class="coupon-description"><!-- ko i18n: coupon.description--><!-- /ko --></p>
+                                <button type="button" class="action secondory disabled coupon-code-apply-btn"
+                                    tabindex="0"
+                                    data-bind="event:{ click: function(data, event) { applyCuponCode(coupon.coupon_code,'#coupon-list-content') }}">
+                                    <span><!-- ko i18n: 'Apply Coupon'--><!-- /ko --></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <!-- ko ifnot: isApplied() -->
+        <div>
+            <a href="#"
+                data-bind="click: function(data, event) { openCouponModal('#coupon-list-content', $data, event) }"
+                id="view_coupon_list"><!-- ko i18n: buttonTitle--><!-- /ko --></a>
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+<!-- /ko -->

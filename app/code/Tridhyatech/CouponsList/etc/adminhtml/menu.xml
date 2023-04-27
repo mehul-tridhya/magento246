@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+* @author Tridhya Tech Team
+* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+* @package Tridhyatech_CouponsList
+*/ 
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tridhyatech_CouponsList::tridhyatech_couponslist" title="Coupons List Configuration" module="Tridhyatech_CouponsList" sortOrder="99" parent="Tridhyatech_Core::tridhyatech_menu" action="adminhtml/system_config/edit/section/coupon_code_config" resource="Tridhyatech_CouponsList::couponslist"/>
+    </menu>
+</config>
