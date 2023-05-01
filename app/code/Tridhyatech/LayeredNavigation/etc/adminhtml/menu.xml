@@ -8,20 +8,13 @@
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Plumrocket_ProductFilter::prproductfilter"
-             title="Layered Navigation Lite"
+        <add id="Tridhyatech_LayeredNavigation::ttproductfilter_configuration"
+             title="Layered Navigation Configuration"
              translate="title"
              module="Tridhyatech_LayeredNavigation"
-             parent="Plumrocket_Base::elements"
-             sortOrder="6780161"
-             resource="Plumrocket_ProductFilter::prproductfilter"/>
-        <add id="Plumrocket_ProductFilter::prproductfilter_configuration"
-             title="Configuration"
-             translate="title"
-             module="Tridhyatech_LayeredNavigation"
-             parent="Plumrocket_ProductFilter::prproductfilter"
+             parent="Tridhyatech_Core::tridhyatech_menu"
              sortOrder="20"
              action="adminhtml/system_config/edit/section/prproductfilter"
-             resource="Plumrocket_ProductFilter::config_prproductfilter"/>
+             resource="Tridhyatech_LayeredNavigation::config_ttproductfilter"/>
     </menu>
 </config>

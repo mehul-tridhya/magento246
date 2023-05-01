@@ -11,12 +11,12 @@
         <resources>
             <resource id="Magento_Backend::admin">
                 <resource id="Plumrocket_Base::elements">
-                    <resource id="Plumrocket_ProductFilter::prproductfilter" title="Layered Navigation Lite" sortOrder="6780161" />
+                    <resource id="Tridhyatech_LayeredNavigation::ttproductfilter" title="Layered Navigation" sortOrder="6780161" />
                 </resource>
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Plumrocket_ProductFilter::config_prproductfilter" title="Layered Navigation Lite Section" />
+                            <resource id="Tridhyatech_LayeredNavigation::config_ttproductfilter" title="Layered Navigation" />
                         </resource>
                     </resource>
                 </resource>
