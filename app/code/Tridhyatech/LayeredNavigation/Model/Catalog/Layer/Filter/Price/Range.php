@@ -1,8 +1,8 @@
 <?php
 /**
- * @package     Plumrocket_ProductFilter
- * @copyright   Copyright (c) 2016 Tridhyatech Inc. (https://plumrocket.com)
- * @license     https://plumrocket.com/license   End-user License Agreement
+* @author Tridhya Tech
+* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+* @package Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Price;

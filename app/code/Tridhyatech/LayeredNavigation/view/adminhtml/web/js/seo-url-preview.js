@@ -1,7 +1,7 @@
 /**
- * @package     Plumrocket_Amp
- * @copyright   Copyright (c) 2020 Plumrocket Inc. (https://plumrocket.com)
- * @license     https://plumrocket.com/license   End-user License Agreement
+* @author Tridhya Tech
+* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+* @package Tridhyatech_LayeredNavigation
  */
 
 requirejs([
