@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <!--
- * @package     Tridhyatech_LayeredNavigation
- * @copyright   Copyright (c) 2021 Plumrocket Inc. (https://plumrocket.com)
- * @license     https://plumrocket.com/license   End-user License Agreement
+* @author Tridhya Tech
+* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+* @package Tridhyatech_LayeredNavigation
  -->
 <extensions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:noNamespaceSchemaLocation="urn:magento:module:Plumrocket_Base:etc/pr_extensions.xsd">
