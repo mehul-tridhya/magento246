@@ -1,18 +1,17 @@
 <?xml version="1.0"?>
 <!--
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @package     Tridhyatech_LayeredNavigation
+ * @copyright   Copyright (c) 2022 Plumrocket Inc. (https://plumrocket.com)
+ * @license     https://plumrocket.com/license   End-user License Agreement
  */
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <section id="prproductfilter" translate="label" type="text" sortOrder="6780161" showInDefault="1" showInWebsite="1" showInStore="1">
-            <label>Layered Navigation Lite</label>
+            <label>Layered Navigation</label>
             <tab>tridhyatech</tab>
-            <resource>Tridhyatech_LayeredNavigation::config_ttproductfilter</resource>
-
+            <resource>Tridhyatech_LayeredNavigation::configurations</resource>
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
                 <attribute type="expanded">1</attribute>
