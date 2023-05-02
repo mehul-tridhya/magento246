@@ -11,7 +11,7 @@ use Magento\Catalog\Model\Layer\Filter\Item as FilterItem;
 use Magento\Catalog\Model\ResourceModel\Layer\Filter\AttributeFactory;
 use Magento\Eav\Model\Entity\Attribute;
 use Magento\Eav\Model\Entity\Attribute\Option;
-use Tridhyatech\LayeredNavigation\Api\FilterItemUrlBuilderInterface;
+use Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface;
 use Tridhyatech\LayeredNavigation\Helper\Config;
 use Tridhyatech\LayeredNavigation\Model\Variable\Value\Slugify;
 
@@ -24,7 +24,7 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
     private $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterItemUrlBuilderInterface
+     * @var \Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface
      */
     private $filterItemUrlBuilder;
 
@@ -40,7 +40,7 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
      * @param \Magento\Swatches\Helper\Data                                       $swatchHelper
      * @param \Magento\Swatches\Helper\Media                                      $mediaHelper
      * @param \Tridhyatech\LayeredNavigation\Helper\Config                     $config
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterItemUrlBuilderInterface $filterItemUrlBuilder
+     * @param \Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface $filterItemUrlBuilder
      * @param \Tridhyatech\LayeredNavigation\Model\Variable\Value\Slugify      $slugify
      * @param array                                                               $data
      */
@@ -51,7 +51,7 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
         \Magento\Swatches\Helper\Data $swatchHelper,
         \Magento\Swatches\Helper\Media $mediaHelper,
         Config $config,
-        FilterItemUrlBuilderInterface $filterItemUrlBuilder,
+        ItemUrlBuilderInterface $filterItemUrlBuilder,
         Slugify $slugify,
         array $data = []
     ) {

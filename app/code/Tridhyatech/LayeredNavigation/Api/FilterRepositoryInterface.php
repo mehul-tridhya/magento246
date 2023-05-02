@@ -12,11 +12,11 @@ use Tridhyatech\LayeredNavigation\Api\Data\FilterInterface;
 /**
  * @since 1.0.0
  */
-interface FilterMetaRepositoryInterface
+interface FilterRepositoryInterface
 {
 
     /**
-     * Get filter meta by request variable or attribute code
+     * Get filter by request variable or attribute code
      *
      * @param string $requestVar
      * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterInterface
@@ -25,7 +25,7 @@ interface FilterMetaRepositoryInterface
     public function get(string $requestVar): FilterInterface;
 
     /**
-     * Get meta about all active filters.
+     * Get about all active filters.
      *
      * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterInterface[]
      */

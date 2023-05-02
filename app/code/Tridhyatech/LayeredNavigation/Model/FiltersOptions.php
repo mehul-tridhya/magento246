@@ -14,7 +14,7 @@ use Magento\Framework\App\Config;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Store\Model\StoreManagerInterface;
-use Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface;
+use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Api\FiltersOptionsInterface;
 
 /**
@@ -41,9 +41,9 @@ class FiltersOptions implements FiltersOptionsInterface
     private $serializer;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface
+     * @var \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface
      */
-    private $filterMetaRepository;
+    private $filterRepository;
 
     /**
      * @var \Tridhyatech\LayeredNavigation\Model\FilterOption\CollectorInterface[]
@@ -58,20 +58,20 @@ class FiltersOptions implements FiltersOptionsInterface
     /**
      * @param \Magento\Framework\App\CacheInterface                               $cache
      * @param \Magento\Framework\Serialize\SerializerInterface                    $serializer
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface $filterMetaRepository
+     * @param \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface $filterRepository
      * @param \Magento\Store\Model\StoreManagerInterface                          $storeManager
      * @param array                                                               $filterOptionCollectors
      */
     public function __construct(
         CacheInterface $cache,
         SerializerInterface $serializer,
-        FilterMetaRepositoryInterface $filterMetaRepository,
+        FilterRepositoryInterface $filterRepository,
         StoreManagerInterface $storeManager,
         array $filterOptionCollectors = []
     ) {
         $this->cache = $cache;
         $this->serializer = $serializer;
-        $this->filterMetaRepository = $filterMetaRepository;
+        $this->filterRepository = $filterRepository;
         $this->storeManager = $storeManager;
         $this->filterOptionCollectors = $filterOptionCollectors;
     }
@@ -121,7 +121,7 @@ class FiltersOptions implements FiltersOptionsInterface
     public function toOptionCode(string $requestVar, $optionValue): string
     {
         try {
-            $filterMeta = $this->filterMetaRepository->get($requestVar);
+            $filterMeta = $this->filterRepository->get($requestVar);
             if ($filterMeta->isToolbarVariable()) {
                 return $optionValue;
             }
@@ -148,7 +148,7 @@ class FiltersOptions implements FiltersOptionsInterface
     public function toOptionLabel(string $requestVar, $optionValue): string
     {
         try {
-            $filterMeta = $this->filterMetaRepository->get($requestVar);
+            $filterMeta = $this->filterRepository->get($requestVar);
             if ($filterMeta->isToolbarVariable()) {
                 return (string) $optionValue;
             }

@@ -12,13 +12,13 @@ namespace Tridhyatech\LayeredNavigation\Model\FilterMeta;
 use Magento\Catalog\Model\Product\ProductList\Toolbar;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Tridhyatech\LayeredNavigation\Api\Data\FilterInterface;
-use Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface;
+use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Helper\Config\Attribute;
 
 /**
  * @since 1.0.0
  */
-class Repository implements FilterMetaRepositoryInterface
+class Repository implements FilterRepositoryInterface
 {
 
     /**

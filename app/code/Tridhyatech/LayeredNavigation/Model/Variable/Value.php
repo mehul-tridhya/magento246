@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Tridhyatech\LayeredNavigation\Model\Variable;
 
 use Magento\Framework\Exception\NoSuchEntityException;
-use Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface;
+use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Model\Variable\Value\Slugify;
 use Tridhyatech\LayeredNavigation\Model\Variable\Value\UrlInterface;
 
@@ -21,7 +21,7 @@ class Value
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface
+     * @var \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface
      */
     private $filterMetaRepository;
 
@@ -36,12 +36,12 @@ class Value
     private $slugify;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface $filterMetaRepository
+     * @param \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface $filterMetaRepository
      * @param \Tridhyatech\LayeredNavigation\Model\Variable\Value\UrlInterface $urlValue
      * @param \Tridhyatech\LayeredNavigation\Model\Variable\Value\Slugify      $slugify
      */
     public function __construct(
-        FilterMetaRepositoryInterface $filterMetaRepository,
+        FilterRepositoryInterface $filterMetaRepository,
         UrlInterface $urlValue,
         Slugify $slugify
     ) {

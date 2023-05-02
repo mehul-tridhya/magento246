@@ -15,7 +15,7 @@ use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filter\StripTags;
 use Magento\Store\Model\StoreManagerInterface;
-use Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface;
+use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Model\CollectionFilterApplier;
 use Tridhyatech\LayeredNavigation\Model\FacetedData\AttributeResolver;
 
@@ -31,7 +31,7 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
     private $facetedDataResolver;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface
+     * @var \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface
      */
     private $filterMetaRepository;
 
@@ -47,7 +47,7 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
      * @param \Magento\Catalog\Model\Layer\Filter\Item\DataBuilder                  $itemDataBuilder
      * @param \Magento\Framework\Filter\StripTags                                   $tagFilter
      * @param \Tridhyatech\LayeredNavigation\Model\FacetedData\AttributeResolver $facetedDataResolver
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface   $filterMetaRepository
+     * @param \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface   $filterMetaRepository
      * @param \Tridhyatech\LayeredNavigation\Model\CollectionFilterApplier       $filterApplier
      * @param array                                                                 $data
      */
@@ -58,7 +58,7 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
         DataBuilder $itemDataBuilder,
         StripTags $tagFilter,
         AttributeResolver $facetedDataResolver,
-        FilterMetaRepositoryInterface $filterMetaRepository,
+        FilterRepositoryInterface $filterMetaRepository,
         CollectionFilterApplier $filterApplier,
         array $data = []
     ) {

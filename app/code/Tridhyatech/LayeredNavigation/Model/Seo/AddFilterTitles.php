@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Tridhyatech\LayeredNavigation\Model\Seo;
 
 use Magento\Framework\Exception\NoSuchEntityException;
-use Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface;
+use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Api\FiltersOptionsInterface;
 use Tridhyatech\LayeredNavigation\Model\OptionSource\AbstractTitlePosition;
 use Tridhyatech\LayeredNavigation\Model\Variable\Registry;
@@ -32,19 +32,19 @@ class AddFilterTitles
     private $filtersOptions;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface
+     * @var \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface
      */
     private $filterMetaRepository;
 
     /**
      * @param \Tridhyatech\LayeredNavigation\Model\Variable\Registry           $variableRegistry
      * @param \Tridhyatech\LayeredNavigation\Api\FiltersOptionsInterface       $filtersOptions
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface $filterMetaRepository
+     * @param \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface $filterMetaRepository
      */
     public function __construct(
         Registry $variableRegistry,
         FiltersOptionsInterface $filtersOptions,
-        FilterMetaRepositoryInterface $filterMetaRepository
+        FilterRepositoryInterface $filterMetaRepository
     ) {
         $this->variableRegistry = $variableRegistry;
         $this->filtersOptions = $filtersOptions;

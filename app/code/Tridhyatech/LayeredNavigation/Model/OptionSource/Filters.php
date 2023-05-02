@@ -11,7 +11,7 @@ namespace Tridhyatech\LayeredNavigation\Model\OptionSource;
 
 use Magento\Framework\Exception\NoSuchEntityException;
 use Tridhyatech\LayeredNavigation\Model\OptionSource\AbstractSource;
-use Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface;
+use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Model\FilterList;
 
 /**
@@ -26,17 +26,17 @@ class Filters extends AbstractSource
     private $filterList;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface
+     * @var \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface
      */
     private $filterMetaRepository;
 
     /**
      * @param \Tridhyatech\LayeredNavigation\Model\FilterList                  $filterList
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface $filterMetaRepository
+     * @param \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface $filterMetaRepository
      */
     public function __construct(
         FilterList $filterList,
-        FilterMetaRepositoryInterface $filterMetaRepository
+        FilterRepositoryInterface $filterMetaRepository
     ) {
         $this->filterList = $filterList;
         $this->filterMetaRepository = $filterMetaRepository;

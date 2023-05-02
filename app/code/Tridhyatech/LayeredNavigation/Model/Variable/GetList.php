@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Tridhyatech\LayeredNavigation\Model\Variable;
 
 use Magento\Framework\Exception\NoSuchEntityException;
-use Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface;
+use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Api\GetUrlVariablesInterface;
 use Tridhyatech\LayeredNavigation\Helper\Config;
 
@@ -26,17 +26,17 @@ class GetList implements GetUrlVariablesInterface
     private $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface
+     * @var \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface
      */
     private $filterMetaRepository;
 
     /**
      * @param \Tridhyatech\LayeredNavigation\Helper\Config                     $config
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface $filterMetaRepository
+     * @param \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface $filterMetaRepository
      */
     public function __construct(
         Config $config,
-        FilterMetaRepositoryInterface $filterMetaRepository
+        FilterRepositoryInterface $filterMetaRepository
     ) {
         $this->config = $config;
         $this->filterMetaRepository = $filterMetaRepository;
