@@ -11,6 +11,6 @@
         <observer name="pr_product_filter_init" instance="Tridhyatech\LayeredNavigation\Observer\AddProductFilterInitHandle" />
     </event>
     <event name="layout_generate_blocks_after">
-        <observer name="prproductfilter_change_meta" instance="Tridhyatech\LayeredNavigation\Observer\ChangeMeta" />
+        <observer name="ttlayerednavigation_change_meta" instance="Tridhyatech\LayeredNavigation\Observer\ChangeMeta" />
     </event>
 </config>

@@ -7,7 +7,7 @@
  */
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-    <event name="admin_system_config_changed_section_prproductfilter">
-        <observer name="prproductfilter_save_after" instance="Tridhyatech\LayeredNavigation\Observer\SaveAttributes" />
+    <event name="admin_system_config_changed_section_ttlayerednavigation">
+        <observer name="ttlayerednavigation_save_after" instance="Tridhyatech\LayeredNavigation\Observer\SaveAttributes" />
     </event>
 </config>

@@ -71,26 +71,26 @@
     </type>
 
     <type name="Magento\CatalogSearch\Model\Layer\Category\ItemCollectionProvider">
-        <plugin name="prproductfilter_collection_provider" type="Tridhyatech\LayeredNavigation\Plugin\Model\CatalogSearch\Layer\Category\ItemCollectionProvider" />
+        <plugin name="ttlayerednavigation_collection_provider" type="Tridhyatech\LayeredNavigation\Plugin\Model\CatalogSearch\Layer\Category\ItemCollectionProvider" />
     </type>
 
     <type name="Magento\Catalog\Model\Layer\FilterList">
-        <plugin name="prproductfilter_filter_list" type="Tridhyatech\LayeredNavigation\Plugin\Model\Catalog\Layer\FilterList" />
+        <plugin name="ttlayerednavigation_filter_list" type="Tridhyatech\LayeredNavigation\Plugin\Model\Catalog\Layer\FilterList" />
     </type>
     <type name="Magento\CatalogSearch\Model\Layer\FilterList">
-        <plugin name="prproductfilter_filter_list" type="Tridhyatech\LayeredNavigation\Plugin\Model\Catalog\Layer\FilterList" />
+        <plugin name="ttlayerednavigation_filter_list" type="Tridhyatech\LayeredNavigation\Plugin\Model\Catalog\Layer\FilterList" />
     </type>
 
     <!-- fix for ee Elasticsearch -->
     <type name="Magento\Elasticsearch\SearchAdapter\Filter\Builder\Term">
-        <plugin name="prproductfilter_fix" type="Tridhyatech\LayeredNavigation\Plugin\Elasticsearch\TermPlugin" />
+        <plugin name="ttlayerednavigation_fix" type="Tridhyatech\LayeredNavigation\Plugin\Elasticsearch\TermPlugin" />
     </type>
 
     <type name="Wyomind\Elasticsearch\Model\Client">
-        <plugin name="prproductfilter_elasticsearch" type="Tridhyatech\LayeredNavigation\Plugin\Elasticsearch\Client" />
+        <plugin name="ttlayerednavigation_elasticsearch" type="Tridhyatech\LayeredNavigation\Plugin\Elasticsearch\Client" />
     </type>
 
     <type name="Amasty\ElasticSearch\Model\Search\GetRequestQuery">
-        <plugin name="prproductfilter_amasty_elasticsearch" type="Tridhyatech\LayeredNavigation\Plugin\Elasticsearch\Amasty\Search\GetRequestQuery" />
+        <plugin name="ttlayerednavigation_amasty_elasticsearch" type="Tridhyatech\LayeredNavigation\Plugin\Elasticsearch\Amasty\Search\GetRequestQuery" />
     </type>
 </config>

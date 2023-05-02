@@ -84,9 +84,9 @@ requirejs([
     }
 
     new SeoUrlPreview({
-        previewId: 'prproductfilter_seo_url_url_preview',
-        insertFiltersInId: 'prproductfilter_seo_url_insert_in',
-        valueTypeId: 'prproductfilter_seo_url_seo_friendly_url',
+        previewId: 'ttlayerednavigation_seo_url_url_preview',
+        insertFiltersInId: 'ttlayerednavigation_seo_url_insert_in',
+        valueTypeId: 'ttlayerednavigation_seo_url_seo_friendly_url',
         variants: {
             'path|label': 'https://example.com/jackets/<strong>color-black</strong>.html',
             'path|id': 'https://example.com/jackets/<strong>color-35</strong>.html',

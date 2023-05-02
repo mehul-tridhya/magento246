@@ -28,7 +28,7 @@
                 type="Tridhyatech\LayeredNavigation\App\Action\Plugin\HandleFilterAjaxRequest"/>
     </type>
     <type name="Magento\Catalog\Model\Layer\Filter\DataProvider\Price">
-        <plugin name="prproductfilter_skip_to_price_edit" type="Tridhyatech\LayeredNavigation\Plugin\Model\Catalog\Layer\Filter\DataProvider\Price" />
+        <plugin name="ttlayerednavigation_skip_to_price_edit" type="Tridhyatech\LayeredNavigation\Plugin\Model\Catalog\Layer\Filter\DataProvider\Price" />
     </type>
     <type name="Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection">
         <plugin name="pr-filter-fix-price"
