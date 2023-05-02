@@ -9,9 +9,10 @@
  * If you are unable to obtain it through the world-wide-web, please
  * send an email to support@plumrocket.com so we can send you a copy immediately.
  *
- * @package     Plumrocket_Extension
- * @copyright   Copyright (c) 2023 Plumrocket Inc. (http://www.plumrocket.com)
- * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
+/**
+ * @author    Tridhya Tech Team
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 var __prinitparam = 'MzE4MjU1';
