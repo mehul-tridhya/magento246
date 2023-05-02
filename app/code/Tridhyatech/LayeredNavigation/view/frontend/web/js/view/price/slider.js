@@ -7,12 +7,12 @@
 define([
     'jquery',
     'Tridhyatech_LayeredNavigation/js/model/price',
-    'plumrocket/noUiSlider',
+    'tridhyatech/noUiSlider',
     'domReady!'
 ], function ($, price, noUiSlider) {
     "use strict";
 
-    $.widget('plumrocket.priceslider', {
+    $.widget('tridhyatech.priceslider', {
 
         initedElement: $('#product-filter-init'),
 
@@ -105,5 +105,5 @@ define([
         }
     });
 
-    return $.plumrocket.priceslider;
+    return $.tridhyatech.priceslider;
 });

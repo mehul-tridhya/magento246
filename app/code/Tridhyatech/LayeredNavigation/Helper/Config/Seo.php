@@ -11,7 +11,7 @@ namespace Tridhyatech\LayeredNavigation\Helper\Config;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
-use Plumrocket\Base\Model\Utils\Config;
+use Tridhyatech\LayeredNavigation\Model\Utils\Config;
 
 /**
  * @since 1.0.0
@@ -28,13 +28,13 @@ class Seo extends AbstractHelper
     public const XML_PATH_META_TITLE_SEPARATOR = 'prproductfilter/seo/meta_title/separator';
 
     /**
-     * @var \Plumrocket\Base\Model\Utils\Config
+     * @var \Tridhyatech\LayeredNavigation\Model\Utils\Config
      */
     protected $configUtils;
 
     /**
      * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Plumrocket\Base\Model\Utils\Config   $configUtils
+     * @param \Tridhyatech\LayeredNavigation\Model\Utils\Config   $configUtils
      */
     public function __construct(
         Context $context,

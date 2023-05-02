@@ -51,7 +51,7 @@
                     <label>SEO-Friendly URLs</label>
                     <field id="url_preview" translate="label" type="Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form\SeoUrlPreview" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                         <label>URL Preview</label>
-                        <frontend_model>Plumrocket\ExtendedAdminUi\Block\Adminhtml\System\Config\Form\CustomisableField</frontend_model>
+                        <frontend_model>Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form\CustomisableField</frontend_model>
                         <attribute type="pr_disable_inherit_checkbox">true</attribute>
                     </field>
                     <field id="insert_in" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">

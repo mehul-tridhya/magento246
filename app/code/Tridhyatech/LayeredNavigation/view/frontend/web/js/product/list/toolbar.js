@@ -7,7 +7,7 @@
 define([
     'jquery',
     'productListToolbarForm',
-    'plumrocket/product-filter/action',
+    'tridhyatech/product-filter/action',
     'Tridhyatech_LayeredNavigation/js/model/real-variables',
 ], function ($, toolbar, processor, realVariables) {
 

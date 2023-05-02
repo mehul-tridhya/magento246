@@ -7,18 +7,18 @@
 define([
     'underscore',
     "jquery",
-    'plumrocket/product-filter/action',
+    'tridhyatech/product-filter/action',
     'Tridhyatech_LayeredNavigation/js/product/list/toolbar',
     'Tridhyatech_LayeredNavigation/js/model/swatch',
     'Tridhyatech_LayeredNavigation/js/model/price',
     'Tridhyatech_LayeredNavigation/js/model/real-variables',
-    'plumrocket/utils',
+    'tridhyatech/utils',
     'Tridhyatech_LayeredNavigation/js/view/apply-button',
     'domReady!'
 ], function (_, $, filterAction, toolbar, swatch, price, realVariables, utils, applyButton) {
     "use strict";
 
-    $.widget('plumrocket.productfilter', {
+    $.widget('tridhyatech.productfilter', {
 
         options: {
             filterItemSelector: '#narrow-by-list .item a, #narrow-by-list .swatch-option-link-layered',
@@ -254,5 +254,5 @@ define([
         },
     });
 
-    return $.plumrocket.productfilter;
+    return $.tridhyatech.productfilter;
 });

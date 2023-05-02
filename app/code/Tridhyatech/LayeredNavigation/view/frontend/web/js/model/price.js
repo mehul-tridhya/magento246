@@ -7,7 +7,7 @@
 define([
     'jquery',
     'Tridhyatech_LayeredNavigation/js/model/real-variables',
-    'plumrocket/product-filter/action',
+    'tridhyatech/product-filter/action',
     'Tridhyatech_LayeredNavigation/js/model/swatch',
     'Tridhyatech_LayeredNavigation/js/view/apply-button',
     'domReady!'
@@ -61,13 +61,13 @@ define([
                 values[1] = $('#product-filter-init').data('max-price');
             }
 
-            if (typeof jQuery.plumrocket.priceslider != 'undefined') {
+            if (typeof jQuery.tridhyatech.priceslider != 'undefined') {
                 $('#slider-range').slider("option", "values", values);
                 $('#filter-price-amount-from').html(values[0]);
                 $('#filter-price-amount-to').html(values[1]);
             }
 
-            if (typeof jQuery.plumrocket.priceinput != 'undefined') {
+            if (typeof jQuery.tridhyatech.priceinput != 'undefined') {
                 $('#filter-input-price-from').val(values[0]);
                 $('#filter-input-price-to').val(values[1]);
             }

@@ -9,7 +9,7 @@ define([
     'jquery',
     'Tridhyatech_LayeredNavigation/js/model/full-screen-loader',
     'Tridhyatech_LayeredNavigation/js/model/swatch',
-    'plumrocket/utils',
+    'tridhyatech/utils',
     'Tridhyatech_LayeredNavigation/js/model/real-variables',
     'Tridhyatech_LayeredNavigation/js/model/data-layered',
     'Tridhyatech_LayeredNavigation/js/model/debug-logger',

@@ -6,7 +6,7 @@
 
 requirejs([
     'jquery',
-    'Plumrocket_ExtendedAdminUi/js/chosen',
+    'Tridhyatech_LayeredNavigation/js/chosen',
     'domReady!'
 ], function ($, chosen) {
     'use strict';

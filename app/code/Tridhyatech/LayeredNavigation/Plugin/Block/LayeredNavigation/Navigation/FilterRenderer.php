@@ -85,13 +85,7 @@ class FilterRenderer
         \Closure $proceed,
         \Magento\Catalog\Model\Layer\Filter\FilterInterface $filter
     ) {
-        $isAmpRequest = false;
-
-        if ($this->moduleManager->isEnabled('Plumrocket_Amp')) {
-            $isAmpRequest = $this->objectManager->get(\Plumrocket\AmpApi\Api\IsAmpModeInterface::class)->execute();
-        }
-
-        if ($isAmpRequest || ! $this->config->isModuleEnabled()) {
+        if (! $this->config->isModuleEnabled()) {
             return $proceed($filter);
         }
 

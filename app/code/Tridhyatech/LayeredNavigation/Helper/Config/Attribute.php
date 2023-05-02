@@ -14,7 +14,7 @@ use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Store\Model\ScopeInterface;
-use Plumrocket\Base\Model\Utils\Config;
+use Tridhyatech\LayeredNavigation\Model\Utils\Config;
 
 /**
  * @since 1.0.0
@@ -26,7 +26,7 @@ class Attribute extends AbstractHelper
     public const XML_PATH_SHOW_EMPTY = 'prproductfilter/settings/empty_option';
 
     /**
-     * @var \Plumrocket\Base\Model\Utils\Config
+     * @var \Tridhyatech\LayeredNavigation\Model\Utils\Config
      */
     private $configUtils;
 
@@ -42,7 +42,7 @@ class Attribute extends AbstractHelper
 
     /**
      * @param \Magento\Framework\App\Helper\Context            $context
-     * @param \Plumrocket\Base\Model\Utils\Config              $configUtils
+     * @param \Tridhyatech\LayeredNavigation\Model\Utils\Config              $configUtils
      * @param \Magento\Framework\Serialize\SerializerInterface $serializer
      * @param \Magento\Framework\Registry                      $registry
      */

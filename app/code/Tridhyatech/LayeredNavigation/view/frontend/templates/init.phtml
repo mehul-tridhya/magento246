@@ -7,7 +7,7 @@
 ?>
 <?php
 /** @var \Magento\Framework\View\Element\Template $block */
-/** @var Plumrocket\ProductFilter\ViewModel\JsConfig $filterJsConfig */
+/** @var Tridhyatech\ProductFilter\ViewModel\JsConfig $filterJsConfig */
 $filterJsConfig = $block->getData('viewModel');
 
 ?>
@@ -24,7 +24,7 @@ $filterJsConfig = $block->getData('viewModel');
 <?php /** Fix for browser history after ajax-queries */?>
 <script>
     require([
-        "plumrocket/product-filter/action",
+        "tridhyatech/product-filter/action",
         "domReady!"
     ], function (filterAction) {
         var oldOnpopstate = window.onpopstate;

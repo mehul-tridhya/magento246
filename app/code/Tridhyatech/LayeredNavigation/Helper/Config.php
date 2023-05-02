@@ -49,17 +49,17 @@ class Config extends AbstractHelper
     ];
 
     /**
-     * @var \Plumrocket\Base\Model\Utils\Config
+     * @var \Tridhyatech\LayeredNavigation\Model\Utils\Config
      */
     private $configUtils;
 
     /**
      * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Plumrocket\Base\Model\Utils\Config   $configUtils
+     * @param \Tridhyatech\LayeredNavigation\Model\Utils\Config   $configUtils
      */
     public function __construct(
         Context $context,
-        \Plumrocket\Base\Model\Utils\Config $configUtils
+        \Tridhyatech\LayeredNavigation\Model\Utils\Config $configUtils
     ) {
         parent::__construct($context);
         $this->configUtils = $configUtils;

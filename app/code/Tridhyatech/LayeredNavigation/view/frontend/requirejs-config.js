@@ -9,8 +9,8 @@ var config = {
             'prProductFilter': 'Tridhyatech_LayeredNavigation/js/init',
             'prProductFilterSlider': 'Tridhyatech_LayeredNavigation/js/view/price/slider',
             'jquery/ui-touch-punch': 'Tridhyatech_LayeredNavigation/js/jquery/jquery.ui.touch-punch.min',
-            'plumrocket/product-filter/action': 'Tridhyatech_LayeredNavigation/js/model/filter-action',
-            'plumrocket/noUiSlider': 'Tridhyatech_LayeredNavigation/js/lib/nouislider.min',
+            'tridhyatech/product-filter/action': 'Tridhyatech_LayeredNavigation/js/model/filter-action',
+            'tridhyatech/noUiSlider': 'Tridhyatech_LayeredNavigation/js/lib/nouislider.min',
         }
     }
 };

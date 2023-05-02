@@ -1,64 +1,64 @@
-.pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-options-item.active{
+.pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-options-item.active{
     z-index: 4;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter .filter-options-item .filter-options-title {
+.pl-thm-smartwave.tridhyatech-product-filter .filter-options-item .filter-options-title {
     padding: 10px 15px;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter .filter-options-title:after {
+.pl-thm-smartwave.tridhyatech-product-filter .filter-options-title:after {
     top: 50%;
     right: 15px;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter .filter-current .items {
+.pl-thm-smartwave.tridhyatech-product-filter .filter-current .items {
     padding: 10px 15px;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter .filter-current .action.remove {
+.pl-thm-smartwave.tridhyatech-product-filter .filter-current .action.remove {
     top: 50%;
     transform: translatey(-50%);
 }
 
-.pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar #layered-filter-block {
+.pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar #layered-filter-block {
     margin-top: 32px;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-options-item {
+.pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-options-item {
     margin-bottom: 0;
     margin-right: 15px;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-options-item .filter-options-title {
+.pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-options-item .filter-options-title {
     padding-right: 50px;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-options-title:after {
+.pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-options-title:after {
     right: 10px;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-options-title:after {
+.pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-options-title:after {
     z-index: 0;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-options-content {
+.pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-options-content {
     padding: 15px 5px;
     min-height: 20px;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar #layered-filter-block {
+.pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar #layered-filter-block {
     margin-top: 32px;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-current .action.remove {
+.pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-current .action.remove {
     right: 0;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-options-item.active:after {
+.pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-options-item.active:after {
     bottom: -2px;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-options-item.active:before {
+.pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-options-item.active:before {
     border-bottom-color: #ccc;
 }
 
@@ -66,7 +66,7 @@
     margin-top: 14px;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter .filter-options-title::after {
+.pl-thm-smartwave.tridhyatech-product-filter .filter-options-title::after {
     z-index: 1;
 }
 
@@ -74,7 +74,7 @@
     padding: 0;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter .filter-content .filter-options-content .item a:not([data-request="price"]):not([data-request="rating"]) > span:before {
+.pl-thm-smartwave.tridhyatech-product-filter .filter-content .filter-options-content .item a:not([data-request="price"]):not([data-request="rating"]) > span:before {
     top: 1px;
 }
 
@@ -82,84 +82,84 @@
     background: #1979c3;
 }
 
-.pl-thm-smartwave.plumrocket-product-filter input[placeholder].pf_search_text {
+.pl-thm-smartwave.tridhyatech-product-filter input[placeholder].pf_search_text {
     margin-bottom: 15px;
     background: transparent;
     border: 1px solid #ccc;
 }
   
-.pl-thm-smartwave.plumrocket-product-filter input[placeholder].pf_search_text::placeholder {
+.pl-thm-smartwave.tridhyatech-product-filter input[placeholder].pf_search_text::placeholder {
     color: #777;
 }
 
 @media (min-width: 768px) {
-    .pl-thm-smartwave.plumrocket-product-filter .filter-options-item {
+    .pl-thm-smartwave.tridhyatech-product-filter .filter-options-item {
         margin-bottom: 14px;
     }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-    .pl-thm-smartwave.plumrocket-product-filter .filter-current .action.remove {
+    .pl-thm-smartwave.tridhyatech-product-filter .filter-current .action.remove {
         right: 0;
     }
 }
 
 @media (max-width: 767px) {
-    .pl-thm-smartwave.plumrocket-product-filter .filter.active .filter-current {
+    .pl-thm-smartwave.tridhyatech-product-filter .filter.active .filter-current {
         padding: 0;
         background-color: #fbfbfb;
     }
 
-    .pl-thm-smartwave.plumrocket-product-filter .filter-current .items {
+    .pl-thm-smartwave.tridhyatech-product-filter .filter-current .items {
         border: none;
     }
 
-    .pl-thm-smartwave.plumrocket-product-filter .filter.active .filter-current .items {
+    .pl-thm-smartwave.tridhyatech-product-filter .filter.active .filter-current .items {
         padding: 10px 15px;
     }
 
-    .pl-thm-smartwave.plumrocket-product-filter .filter-options-item .filter-options-title {
+    .pl-thm-smartwave.tridhyatech-product-filter .filter-options-item .filter-options-title {
         padding: 8px 10px;
     }
 
-    .pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-current .items .item {
+    .pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-current .items .item {
         padding-left: 0;
         display: block;
     }
 
-    .pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-current .action.remove {
+    .pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-current .action.remove {
         right: 15px;
     }
 
-    .pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-options-item .filter-options-title {
+    .pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-options-item .filter-options-title {
         background-color: #f5f5f5;
     }
 
-    .plumrocket-product-filter.ppf-pos-toolbar .filter-options-item.active .filter-options-content {
+    .tridhyatech-product-filter.ppf-pos-toolbar .filter-options-item.active .filter-options-content {
         background-color: #fbfbfb;
         border: 1px solid #ddd;
         border-top: none;
     }
 
-    .pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-options-item {
+    .pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-options-item {
         margin-bottom: 14px;
         margin-right: 0;
     }
 
-    .pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-options-item {
+    .pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-options-item {
         border-bottom: none;
     }
 
-    .pl-thm-smartwave.plumrocket-product-filter .filter-actions {
+    .pl-thm-smartwave.tridhyatech-product-filter .filter-actions {
         border-radius: 0;
     }
 
-    .pl-thm-smartwave.plumrocket-product-filter .filter-options-content .pf_search {
+    .pl-thm-smartwave.tridhyatech-product-filter .filter-options-content .pf_search {
         margin-left: 6px;
         margin-right: 6px;
     }
 
-    .pl-thm-smartwave.plumrocket-product-filter.ppf-pos-toolbar .filter-options-title:after{
+    .pl-thm-smartwave.tridhyatech-product-filter.ppf-pos-toolbar .filter-options-title:after{
         top: 50%;
     }
 }

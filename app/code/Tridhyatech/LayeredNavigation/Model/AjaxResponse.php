@@ -91,7 +91,7 @@ class AjaxResponse
         PageTitleResolver $pageTitleResolver
     ) {
         $this->layout = $layout;
-        $this->vars = $configView->getVars('Plumrocket_ProductFilter');
+        $this->vars = $configView->getVars('Tridhyatech_ProductFilter');
         $this->request = $request;
         $this->moduleManager = $moduleManager;
         $this->variableRegistry = $variableRegistry;

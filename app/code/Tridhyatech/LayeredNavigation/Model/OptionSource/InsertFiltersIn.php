@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model\OptionSource;
 
-use Plumrocket\Base\Model\OptionSource\AbstractSource;
+use Tridhyatech\LayeredNavigation\Model\OptionSource\AbstractSource;
 
 /**
  * @since 1.3.0
