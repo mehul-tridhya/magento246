@@ -14,7 +14,7 @@
     <body>
         <attribute name="class" value="tridhyatech-product-filter"/>
         <referenceContainer name="after.body.start">
-            <block name="product.filter.init" ifconfig="prproductfilter/general/enabled" template="Tridhyatech_LayeredNavigation::init.phtml">
+            <block name="product.filter.init" ifconfig="ttlayerednavigation/general/enabled" template="Tridhyatech_LayeredNavigation::init.phtml">
                 <arguments>
                     <argument name="viewModel" xsi:type="object">Tridhyatech\LayeredNavigation\ViewModel\JsConfig</argument>
                 </arguments>

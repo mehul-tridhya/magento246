@@ -9,12 +9,12 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="catalogsearch.leftnav">
-            <action ifconfig="prproductfilter/general/enabled" method="setTemplate">
+            <action ifconfig="ttlayerednavigation/general/enabled" method="setTemplate">
                 <argument name="template" xsi:type="string">Tridhyatech_LayeredNavigation::layer/view.phtml</argument>
             </action>
 
             <referenceBlock name="catalogsearch.navigation.renderer">
-                <action ifconfig="prproductfilter/general/enabled" method="setTemplate">
+                <action ifconfig="ttlayerednavigation/general/enabled" method="setTemplate">
                     <argument name="template" xsi:type="string">Tridhyatech_LayeredNavigation::layer/filter.phtml</argument>
                 </action>
             </referenceBlock>
@@ -23,7 +23,7 @@
             <block class="Tridhyatech\LayeredNavigation\Block\Html\Pager" name="product_list_toolbar_pager"/>
         </referenceBlock>
         <referenceBlock name="catalogsearch.navigation.state">
-            <action ifconfig="prproductfilter/general/enabled" method="setTemplate">
+            <action ifconfig="ttlayerednavigation/general/enabled" method="setTemplate">
                 <argument name="template" xsi:type="string">Tridhyatech_LayeredNavigation::layer/state.phtml</argument>
             </action>
         </referenceBlock>

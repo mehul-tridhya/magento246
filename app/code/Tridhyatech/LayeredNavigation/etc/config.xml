@@ -8,7 +8,7 @@
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <prproductfilter>
+        <ttlayerednavigation>
             <main>
                 <scroll_up>1</scroll_up>
             </main>
@@ -27,6 +27,6 @@
                     <separator> | </separator>
                 </meta_title>
             </seo>
-        </prproductfilter>
+        </ttlayerednavigation>
     </default>
 </config>

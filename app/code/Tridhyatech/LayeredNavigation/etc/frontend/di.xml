@@ -14,7 +14,7 @@
     <type name="Magento\Framework\App\RouterList">
         <arguments>
             <argument name="routerList" xsi:type="array">
-                <item name="prproductfilter" xsi:type="array">
+                <item name="ttlayerednavigation" xsi:type="array">
                     <item name="class" xsi:type="string">Tridhyatech\LayeredNavigation\Controller\Router</item>
                     <item name="disable" xsi:type="boolean">false</item>
                     <item name="sortOrder" xsi:type="string">10</item>

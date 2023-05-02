@@ -22,8 +22,8 @@ use Tridhyatech\LayeredNavigation\Model\Utils\Config;
 class Attribute extends AbstractHelper
 {
 
-    public const XML_PATH_ATTRS = 'prproductfilter/settings/attributes';
-    public const XML_PATH_SHOW_EMPTY = 'prproductfilter/settings/empty_option';
+    public const XML_PATH_ATTRS = 'ttlayerednavigation/settings/attributes';
+    public const XML_PATH_SHOW_EMPTY = 'ttlayerednavigation/settings/empty_option';
 
     /**
      * @var \Tridhyatech\LayeredNavigation\Model\Utils\Config
@@ -98,7 +98,7 @@ class Attribute extends AbstractHelper
         $scopeCode = null;
         $scopeType = null;
 
-        if ('prproductfilter' === $this->_request->getParam('section')) {
+        if ('ttlayerednavigation' === $this->_request->getParam('section')) {
             if ($scopeCode = $this->_request->getParam('website')) {
                 $scopeType = ScopeInterface::SCOPE_WEBSITE;
             } elseif ($scopeCode = $this->_request->getParam('store')) {

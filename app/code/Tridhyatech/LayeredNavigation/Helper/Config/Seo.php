@@ -19,13 +19,13 @@ use Tridhyatech\LayeredNavigation\Model\Utils\Config;
 class Seo extends AbstractHelper
 {
 
-    public const XML_PATH_INSERT_FILTERS_IN = 'prproductfilter/seo/url/insert_in';
-    public const XML_PATH_PAGE_HEADING_POSITION = 'prproductfilter/seo/page_heading/position';
-    public const XML_PATH_PAGE_HEADING_FILTERS = 'prproductfilter/seo/page_heading/filters';
-    public const XML_PATH_PAGE_HEADING_SEPARATOR = 'prproductfilter/seo/page_heading/separator';
-    public const XML_PATH_META_TITLE_POSITION = 'prproductfilter/seo/meta_title/position';
-    public const XML_PATH_META_TITLE_FILTERS = 'prproductfilter/seo/meta_title/filters';
-    public const XML_PATH_META_TITLE_SEPARATOR = 'prproductfilter/seo/meta_title/separator';
+    public const XML_PATH_INSERT_FILTERS_IN = 'ttlayerednavigation/seo/url/insert_in';
+    public const XML_PATH_PAGE_HEADING_POSITION = 'ttlayerednavigation/seo/page_heading/position';
+    public const XML_PATH_PAGE_HEADING_FILTERS = 'ttlayerednavigation/seo/page_heading/filters';
+    public const XML_PATH_PAGE_HEADING_SEPARATOR = 'ttlayerednavigation/seo/page_heading/separator';
+    public const XML_PATH_META_TITLE_POSITION = 'ttlayerednavigation/seo/meta_title/position';
+    public const XML_PATH_META_TITLE_FILTERS = 'ttlayerednavigation/seo/meta_title/filters';
+    public const XML_PATH_META_TITLE_SEPARATOR = 'ttlayerednavigation/seo/meta_title/separator';
 
     /**
      * @var \Tridhyatech\LayeredNavigation\Model\Utils\Config

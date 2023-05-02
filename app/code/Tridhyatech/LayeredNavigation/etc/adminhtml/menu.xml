@@ -9,6 +9,6 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="Tridhyatech_LayeredNavigation::layerednavigation" title="Layered Navigation" module="Tridhyatech_LayeredNavigation" sortOrder="99" parent="Tridhyatech_Core::view" resource="Tridhyatech_LayeredNavigation::layerednavigation"/>
-        <add id="Tridhyatech_LayeredNavigation::config" title="Configurations" module="Tridhyatech_LayeredNavigation" sortOrder="99" parent="Tridhyatech_LayeredNavigation::layerednavigation" action="adminhtml/system_config/edit/section/prproductfilter" resource="Tridhyatech_LayeredNavigation::configurations"/>
+        <add id="Tridhyatech_LayeredNavigation::config" title="Configurations" module="Tridhyatech_LayeredNavigation" sortOrder="99" parent="Tridhyatech_LayeredNavigation::layerednavigation" action="adminhtml/system_config/edit/section/ttlayerednavigation" resource="Tridhyatech_LayeredNavigation::configurations"/>
     </menu>
 </config>
