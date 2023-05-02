@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Tridhyatech\LayeredNavigation\Model\FilterMeta;
 
 use Magento\Framework\ObjectManagerInterface;
-use Tridhyatech\LayeredNavigation\Api\Data\FilterMetaInterface;
+use Tridhyatech\LayeredNavigation\Api\Data\FilterInterface;
 use Tridhyatech\LayeredNavigation\Model\FilterMeta;
 
 /**
@@ -37,9 +37,9 @@ class Factory
      *
      * @param string $requestVar
      * @param string $type
-     * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterMetaInterface
+     * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterInterface
      */
-    public function create(string $requestVar, string $type): FilterMetaInterface
+    public function create(string $requestVar, string $type): FilterInterface
     {
         return $this->objectManager->create(FilterMeta::class, ['requestVar' => $requestVar, 'type' => $type]);
     }

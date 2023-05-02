@@ -11,7 +11,7 @@ namespace Tridhyatech\LayeredNavigation\Model\FilterMeta;
 
 use Magento\Catalog\Model\Product\ProductList\Toolbar;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Tridhyatech\LayeredNavigation\Api\Data\FilterMetaInterface;
+use Tridhyatech\LayeredNavigation\Api\Data\FilterInterface;
 use Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Helper\Config\Attribute;
 
@@ -66,10 +66,10 @@ class Repository implements FilterMetaRepositoryInterface
      * Get filter meta.
      *
      * @param string $requestVar
-     * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterMetaInterface
+     * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function get(string $requestVar): FilterMetaInterface
+    public function get(string $requestVar): FilterInterface
     {
         if (! isset($this->getList()[$requestVar])) {
             throw NoSuchEntityException::singleField('requestVar', $requestVar);
@@ -88,20 +88,20 @@ class Repository implements FilterMetaRepositoryInterface
             foreach ($this->toolbarVars as $toolbarVar) {
                 $this->variables[$toolbarVar] = $this->filterMetaFactory->create(
                     $toolbarVar,
-                    FilterMetaInterface::TYPE_TOOLBAR_VAR
+                    FilterInterface::TYPE_TOOLBAR_VAR
                 );
             }
 
             foreach ($this->attributeConfig->getSelectedAttributeCodes() as $attributeCode) {
                 $this->variables[$attributeCode] = $this->filterMetaFactory->create(
                     $attributeCode,
-                    FilterMetaInterface::TYPE_ATTRIBUTE
+                    FilterInterface::TYPE_ATTRIBUTE
                 );
             }
 
             $this->variables['cat'] = $this->filterMetaFactory->create(
                 'cat',
-                FilterMetaInterface::TYPE_CATEGORY
+                FilterInterface::TYPE_CATEGORY
             );
         }
 

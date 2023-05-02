@@ -7,10 +7,7 @@
 
 namespace Tridhyatech\LayeredNavigation\Api\Data;
 
-/**
- * @since 1.0.0
- */
-interface FilterMetaInterface
+interface FilterInterface
 {
     public const TYPE_ATTRIBUTE = 'attribute';
     public const TYPE_CUSTOM_OPTION = 'custom_option';

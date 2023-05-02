@@ -7,7 +7,7 @@
 
 namespace Tridhyatech\LayeredNavigation\Api;
 
-use Tridhyatech\LayeredNavigation\Api\Data\FilterMetaInterface;
+use Tridhyatech\LayeredNavigation\Api\Data\FilterInterface;
 
 /**
  * @since 1.0.0
@@ -19,15 +19,15 @@ interface FilterMetaRepositoryInterface
      * Get filter meta by request variable or attribute code
      *
      * @param string $requestVar
-     * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterMetaInterface
+     * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function get(string $requestVar): FilterMetaInterface;
+    public function get(string $requestVar): FilterInterface;
 
     /**
      * Get meta about all active filters.
      *
-     * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterMetaInterface[]
+     * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterInterface[]
      */
     public function getList(): array;
 }

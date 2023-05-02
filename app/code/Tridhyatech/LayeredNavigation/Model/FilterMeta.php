@@ -9,12 +9,12 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model;
 
-use Tridhyatech\LayeredNavigation\Api\Data\FilterMetaInterface;
+use Tridhyatech\LayeredNavigation\Api\Data\FilterInterface;
 
 /**
  * @since 1.0.0
  */
-class FilterMeta implements FilterMetaInterface
+class FilterMeta implements FilterInterface
 {
 
     /**
