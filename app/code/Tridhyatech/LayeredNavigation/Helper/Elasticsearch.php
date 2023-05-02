@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigationt
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigationt
  */
 
 declare(strict_types=1);
@@ -13,21 +13,16 @@ use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Search\Model\EngineResolver;
 
-/**
- * @since 1.0.0
- * @deprecated since 1.3.0
- * @see \Tridhyatech\LayeredNavigation\Helper\SearchEngine
- */
 class Elasticsearch extends AbstractHelper
 {
     /**
-     * @var \Magento\Search\Model\EngineResolver
+     * @var EngineResolver
      */
     private $engineResolver;
 
     /**
-     * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Magento\Search\Model\EngineResolver $engineResolver
+     * @param Context        $context
+     * @param EngineResolver $engineResolver
      */
     public function __construct(
         Context $context,

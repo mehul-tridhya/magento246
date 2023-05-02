@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -27,6 +27,7 @@ class Config extends AbstractHelper
 
     /**
      * Toolbar variables
+     *
      * @var array
      */
     protected $toolbarVars = [
@@ -54,8 +55,8 @@ class Config extends AbstractHelper
     private $configUtils;
 
     /**
-     * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Tridhyatech\LayeredNavigation\Model\Utils\Config   $configUtils
+     * @param \Magento\Framework\App\Helper\Context             $context
+     * @param \Tridhyatech\LayeredNavigation\Model\Utils\Config $configUtils
      */
     public function __construct(
         Context $context,
@@ -68,8 +69,8 @@ class Config extends AbstractHelper
     /**
      * Check if module is enabled in configs.
      *
-     * @param int|string|null $store
-     * @param string|null     $scope
+     * @param  int|string|null $store
+     * @param  string|null     $scope
      * @return bool
      */
     public function isModuleEnabled($store = null, $scope = null): bool
@@ -90,7 +91,7 @@ class Config extends AbstractHelper
     /**
      * Check if we should scroll to top after filtering or other actions.
      *
-     * @param int|string|null $store
+     * @param  int|string|null $store
      * @return bool
      */
     public function shouldScrollUpAfterUpdate($store = null): bool

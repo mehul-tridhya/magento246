@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Block\Swatches\LayeredNavigation;
@@ -14,42 +14,45 @@ use Magento\Eav\Model\Entity\Attribute\Option;
 use Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface;
 use Tridhyatech\LayeredNavigation\Helper\Config;
 use Tridhyatech\LayeredNavigation\Model\Variable\Value\Slugify;
+use Magento\Framework\View\Element\Template\Context;
+use Magento\Swatches\Helper\Data;
+use Magento\Swatches\Helper\Media;
 
 class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLayered
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface
+     * @var ItemUrlBuilderInterface
      */
     private $filterItemUrlBuilder;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Value\Slugify
+     * @var Slugify
      */
     private $slugify;
 
     /**
-     * @param \Magento\Framework\View\Element\Template\Context                    $context
-     * @param \Magento\Eav\Model\Entity\Attribute                                 $eavAttribute
-     * @param \Magento\Catalog\Model\ResourceModel\Layer\Filter\AttributeFactory  $layerAttribute
-     * @param \Magento\Swatches\Helper\Data                                       $swatchHelper
-     * @param \Magento\Swatches\Helper\Media                                      $mediaHelper
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config                     $config
-     * @param \Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface $filterItemUrlBuilder
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Value\Slugify      $slugify
-     * @param array                                                               $data
+     * @param Context                 $context
+     * @param Attribute               $eavAttribute
+     * @param AttributeFactory        $layerAttribute
+     * @param Data                    $swatchHelper
+     * @param Media                   $mediaHelper
+     * @param Config                  $config
+     * @param ItemUrlBuilderInterface $filterItemUrlBuilder
+     * @param Slugify                 $slugify
+     * @param array                   $data
      */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
+        Context $context,
         Attribute $eavAttribute,
         AttributeFactory $layerAttribute,
-        \Magento\Swatches\Helper\Data $swatchHelper,
-        \Magento\Swatches\Helper\Media $mediaHelper,
+        Data $swatchHelper,
+        Media $mediaHelper,
         Config $config,
         ItemUrlBuilderInterface $filterItemUrlBuilder,
         Slugify $slugify,
@@ -106,8 +109,8 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
     /**
      * Build filter option url.
      *
-     * @param string $attributeCode
-     * @param string $optionId
+     * @param  string $attributeCode
+     * @param  string $optionId
      * @return string
      */
     public function buildUrl($attributeCode, $optionId)

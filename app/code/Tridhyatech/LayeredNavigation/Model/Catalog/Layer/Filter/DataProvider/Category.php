@@ -8,12 +8,16 @@
 namespace Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\DataProvider;
 
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Registry;
+use Magento\Catalog\Model\CategoryFactory;
+use Magento\Catalog\Model\Layer;
+use Magento\Catalog\Model\ResourceModel\Category\Collection;
 
 class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
 {
 
     /**
-     * @var \Magento\Catalog\Model\ResourceModel\Category\Collection|null
+     * @var Collection|null
      */
     protected $categories;
 
@@ -23,17 +27,17 @@ class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
     protected $categoryIds;
 
     /**
-     * @var \Magento\Catalog\Model\CategoryFactory
+     * @var CategoryFactory
      */
     protected $categoryFactory;
 
     /**
-     * @var \Magento\Catalog\Model\Layer
+     * @var Layer
      */
     protected $layer;
 
     /**
-     * @var \Magento\Framework\Registry
+     * @var Registry
      */
     protected $coreRegistry;
 
@@ -50,14 +54,14 @@ class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
     protected $categoryId;
 
     /**
-     * @param \Magento\Framework\Registry            $coreRegistry
-     * @param \Magento\Catalog\Model\CategoryFactory $categoryFactory
-     * @param \Magento\Catalog\Model\Layer           $layer
+     * @param Registry            $coreRegistry
+     * @param CategoryFactory $categoryFactory
+     * @param Layer           $layer
      */
     public function __construct(
-        \Magento\Framework\Registry $coreRegistry,
-        \Magento\Catalog\Model\CategoryFactory $categoryFactory,
-        \Magento\Catalog\Model\Layer $layer
+        Registry $coreRegistry,
+        CategoryFactory $categoryFactory,
+        Layer $layer
     ) {
         parent::__construct($coreRegistry, $categoryFactory, $layer);
         $this->coreRegistry = $coreRegistry;
@@ -80,8 +84,8 @@ class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
     /**
      * Retrieve categories
      *
-     * @return \Magento\Catalog\Model\ResourceModel\Category\Collection
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @return Collection
+     * @throws LocalizedException
      */
     public function getCategories()
     {
@@ -98,7 +102,7 @@ class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
                 throw new LocalizedException(__('Category Ids must be array'));
             }
 
-            /** @var \Magento\Catalog\Model\ResourceModel\Category\Collection $categories */
+            /** @var Collection $categories */
             $categories = $this->categoryFactory->create()
                 ->setStoreId(
                     $this->getLayer()

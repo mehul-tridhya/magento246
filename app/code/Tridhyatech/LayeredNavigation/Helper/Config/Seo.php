@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -28,13 +28,13 @@ class Seo extends AbstractHelper
     public const XML_PATH_META_TITLE_SEPARATOR = 'ttlayerednavigation/seo/meta_title/separator';
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Utils\Config
+     * @var Config
      */
     protected $configUtils;
 
     /**
-     * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Tridhyatech\LayeredNavigation\Model\Utils\Config   $configUtils
+     * @param Context $context
+     * @param Config  $configUtils
      */
     public function __construct(
         Context $context,
@@ -47,9 +47,9 @@ class Seo extends AbstractHelper
     /**
      * Check if filters should be stored in get params.
      *
-     * @param int|null $storeId
+     * @param  int|null $storeId
      * @return int
-     * @since 1.3.0
+     * @since  1.3.0
      */
     public function getInsertFiltersIn(int $storeId = null): int
     {

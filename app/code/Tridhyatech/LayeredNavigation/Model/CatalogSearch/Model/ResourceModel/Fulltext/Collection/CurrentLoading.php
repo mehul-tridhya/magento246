@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -13,6 +13,7 @@ use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection;
 
 /**
  * Temporary fix for
+ *
  * @link https://github.com/magento/magento2/issues/28919
  * TODO: remove after left support magento version with bug
  *
@@ -21,7 +22,7 @@ use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection;
 class CurrentLoading
 {
     /**
-     * @var \Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection|null
+     * @var Collection|null
      */
     private $collection;
 
@@ -31,7 +32,7 @@ class CurrentLoading
     private $priceData = [];
 
     /**
-     * @return \Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection|null
+     * @return Collection|null
      */
     public function get()
     {
@@ -39,7 +40,7 @@ class CurrentLoading
     }
 
     /**
-     * @param \Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection $collection
+     * @param  Collection $collection
      * @return $this
      */
     public function set(Collection $collection): CurrentLoading
@@ -67,7 +68,7 @@ class CurrentLoading
     }
 
     /**
-     * @param array $priceData
+     * @param  array $priceData
      * @return $this
      */
     public function setPriceData(array $priceData): CurrentLoading

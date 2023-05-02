@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -14,6 +14,13 @@ use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\Layer\Filter\Item\DataBuilder;
 use Magento\Framework\Api\Filter;
 use Magento\Framework\Filter\StripTags;
+use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
+use Magento\Framework\Escaper;
+use Tridhyatech\LayeredNavigation\Model\FacetedData\GetLayerFilters;
+use Tridhyatech\LayeredNavigation\Model\FacetedData\Search;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\StateException;
+use Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item;
 
 /**
  * @since 1.0.0
@@ -22,50 +29,50 @@ class CategoryResolver
 {
 
     /**
-     * @var \Magento\Catalog\Model\Layer\Filter\Item\DataBuilder
+     * @var DataBuilder
      */
     private $itemDataBuilder;
 
     /**
-     * @var \Magento\Framework\Filter\StripTags
+     * @var StripTags
      */
     private $tagFilter;
 
     /**
-     * @var \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory
+     * @var CollectionFactory
      */
     private $categoryCollectionFactory;
 
     /**
-     * @var \Magento\Framework\Escaper
+     * @var Escaper
      */
     private $escaper;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\FacetedData\GetLayerFilters
+     * @var GetLayerFilters
      */
     private $getLayerFilters;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\FacetedData\Search
+     * @var Search
      */
     private $search;
 
     /**
-     * @param \Magento\Catalog\Model\Layer\Filter\Item\DataBuilder                $itemDataBuilder
-     * @param \Magento\Framework\Filter\StripTags                                 $tagFilter
-     * @param \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory     $categoryCollectionFactory
-     * @param \Magento\Framework\Escaper                                          $escaper
-     * @param \Tridhyatech\LayeredNavigation\Model\FacetedData\GetLayerFilters $getLayerFilters
-     * @param \Tridhyatech\LayeredNavigation\Model\FacetedData\Search          $search
+     * @param DataBuilder       $itemDataBuilder
+     * @param StripTags         $tagFilter
+     * @param CollectionFactory $categoryCollectionFactory
+     * @param Escaper           $escaper
+     * @param GetLayerFilters   $getLayerFilters
+     * @param Search            $search
      */
     public function __construct(
         DataBuilder $itemDataBuilder,
         StripTags $tagFilter,
-        \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $categoryCollectionFactory,
-        \Magento\Framework\Escaper $escaper,
-        \Tridhyatech\LayeredNavigation\Model\FacetedData\GetLayerFilters $getLayerFilters,
-        \Tridhyatech\LayeredNavigation\Model\FacetedData\Search $search
+        CollectionFactory $categoryCollectionFactory,
+        Escaper $escaper,
+        GetLayerFilters $getLayerFilters,
+        Search $search
     ) {
         $this->itemDataBuilder = $itemDataBuilder;
         $this->tagFilter = $tagFilter;
@@ -78,12 +85,12 @@ class CategoryResolver
     /**
      * Resolve faced data for attribute with ability to choose other attribute values.
      *
-     * @param string                          $requestVar
-     * @param \Magento\Catalog\Model\Category $category
-     * @param \Magento\Catalog\Model\Layer    $layer
+     * @param  string   $requestVar
+     * @param  Category $category
+     * @param  Layer    $layer
      * @return array
-     * @throws \Magento\Framework\Exception\LocalizedException
-     * @throws \Magento\Framework\Exception\StateException
+     * @throws LocalizedException
+     * @throws StateException
      */
     public function resolve(
         string $requestVar,
@@ -104,12 +111,12 @@ class CategoryResolver
     /**
      * Get data array for building attribute filter items
      *
-     * @param \Magento\Catalog\Model\Category                                     $category
-     * @param \Magento\Catalog\Model\Layer                                        $layer
-     * @param \Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item[] $attrFilterItems
+     * @param  Category $category
+     * @param  Layer    $layer
+     * @param  Item[]   $attrFilterItems
      * @return array
-     * @throws \Magento\Framework\Exception\LocalizedException
-     * @throws \Magento\Framework\Exception\StateException
+     * @throws LocalizedException
+     * @throws StateException
      */
     protected function getItemsData(
         Category $category,
@@ -129,27 +136,29 @@ class CategoryResolver
     /**
      * Return field faceted data from faceted search result
      *
-     * @param string                       $field
-     * @param \Magento\Catalog\Model\Layer $layer
+     * @param  string $field
+     * @param  Layer  $layer
      * @return array
-     * @throws \Magento\Framework\Exception\LocalizedException
-     * @throws \Magento\Framework\Exception\StateException
+     * @throws LocalizedException
+     * @throws StateException
      */
     public function getFacetedData(string $field, Layer $layer): array
     {
         $filters = $this->getLayerFilters->execute($layer);
-        $otherFilters = array_filter($filters, static function (Filter $filter) {
-            return ! ($filter->getField() === 'category_ids' && is_array($filter->getValue()));
-        });
+        $otherFilters = array_filter(
+            $filters, static function (Filter $filter) {
+                return ! ($filter->getField() === 'category_ids' && is_array($filter->getValue()));
+            }
+        );
         return $this->search->search($field, $otherFilters);
     }
 
     /**
      * Build option data
      *
-     * @param array                                                               $option
-     * @param array                                                               $optionsFacetedData
-     * @param \Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item[] $attrFilterItems
+     * @param  array  $option
+     * @param  array  $optionsFacetedData
+     * @param  Item[] $attrFilterItems
      * @return void
      */
     protected function buildOptionData(
@@ -178,7 +187,7 @@ class CategoryResolver
     /**
      * Retrieve option value if it exists
      *
-     * @param array $option
+     * @param  array $option
      * @return bool|string
      */
     private function getOptionValue(array $option)
@@ -192,8 +201,8 @@ class CategoryResolver
     /**
      * Retrieve count of the options
      *
-     * @param int|string $value
-     * @param array $optionsFacetedData
+     * @param  int|string $value
+     * @param  array      $optionsFacetedData
      * @return int
      */
     private function getOptionCount($value, array $optionsFacetedData): int
@@ -206,8 +215,8 @@ class CategoryResolver
     /**
      * Check if option is selected.
      *
-     * @param int|string                                                          $value
-     * @param \Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item[] $attrFilterItems
+     * @param  int|string $value
+     * @param  Item[]     $attrFilterItems
      * @return bool
      */
     private function isActiveFilter($value, array $attrFilterItems): bool
@@ -223,9 +232,9 @@ class CategoryResolver
     /**
      * Return child categories
      *
-     * @param \Magento\Catalog\Model\Category $category
+     * @param  Category $category
      * @return array[]
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     protected function getChildrenCategoriesOptions(Category $category): array
     {
@@ -233,18 +242,20 @@ class CategoryResolver
         $collection = $this->categoryCollectionFactory->create();
 
         $collection->addAttributeToSelect('url_key')
-                   ->addAttributeToSelect('name')
-                   ->addAttributeToSelect('all_children')
-                   ->addAttributeToSelect('is_anchor')
-                   ->addAttributeToFilter('is_active', 1)
-                   ->addIdFilter($category->getChildren())
-                   ->setOrder(
-                       'position',
-                       \Magento\Framework\DB\Select::SQL_ASC
-                   );
+            ->addAttributeToSelect('name')
+            ->addAttributeToSelect('all_children')
+            ->addAttributeToSelect('is_anchor')
+            ->addAttributeToFilter('is_active', 1)
+            ->addIdFilter($category->getChildren())
+            ->setOrder(
+                'position',
+                \Magento\Framework\DB\Select::SQL_ASC
+            );
 
         $options = [];
-        /** @var \Magento\Catalog\Model\Category $childCategory */
+        /**
+         * @var Category $childCategory 
+        */
         foreach ($collection->getItems() as $childCategory) {
             if (! $childCategory->getIsActive()) {
                 continue;

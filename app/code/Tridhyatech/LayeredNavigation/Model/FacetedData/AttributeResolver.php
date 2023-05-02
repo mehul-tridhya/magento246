@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -15,6 +15,9 @@ use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Framework\Api\Filter;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filter\StripTags;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Exception\StateException;
+use Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item;
 
 /**
  * @since 1.0.0
@@ -23,30 +26,30 @@ class AttributeResolver
 {
 
     /**
-     * @var \Magento\Catalog\Model\Layer\Filter\Item\DataBuilder
+     * @var DataBuilder
      */
     private $itemDataBuilder;
 
     /**
-     * @var \Magento\Framework\Filter\StripTags
+     * @var StripTags
      */
     private $tagFilter;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\FacetedData\GetLayerFilters
+     * @var GetLayerFilters
      */
     private $getLayerFilters;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\FacetedData\Search
+     * @var Search
      */
     private $search;
 
     /**
-     * @param \Magento\Catalog\Model\Layer\Filter\Item\DataBuilder            $itemDataBuilder
-     * @param \Magento\Framework\Filter\StripTags                             $tagFilter
-     * @param \Tridhyatech\LayeredNavigation\Model\FacetedData\GetLayerFilters $getLayerFilters
-     * @param \Tridhyatech\LayeredNavigation\Model\FacetedData\Search          $search
+     * @param DataBuilder     $itemDataBuilder
+     * @param StripTags       $tagFilter
+     * @param GetLayerFilters $getLayerFilters
+     * @param Search          $search
      */
     public function __construct(
         DataBuilder $itemDataBuilder,
@@ -63,14 +66,14 @@ class AttributeResolver
     /**
      * Resolve faced data for attribute with ability to choose other attribute values.
      *
-     * @param string                                             $requestVar
-     * @param \Magento\Catalog\Model\ResourceModel\Eav\Attribute $attribute
-     * @param \Magento\Catalog\Model\Layer                       $layer
-     * @param bool                                               $isAttributeFilterable
+     * @param  string    $requestVar
+     * @param  Attribute $attribute
+     * @param  Layer     $layer
+     * @param  bool      $isAttributeFilterable
      * @return array
-     * @throws \Magento\Framework\Exception\LocalizedException
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
-     * @throws \Magento\Framework\Exception\StateException
+     * @throws LocalizedException
+     * @throws NoSuchEntityException
+     * @throws StateException
      */
     public function resolve(
         string $requestVar,
@@ -101,13 +104,13 @@ class AttributeResolver
     /**
      * Get data array for building attribute filter items
      *
-     * @param \Magento\Catalog\Model\ResourceModel\Eav\Attribute              $attribute
-     * @param \Magento\Catalog\Model\Layer                                    $layer
-     * @param bool                                                            $isAttributeFilterable
-     * @param \Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item[] $attrFilterItems
+     * @param  Attribute $attribute
+     * @param  Layer     $layer
+     * @param  bool      $isAttributeFilterable
+     * @param  Item[]    $attrFilterItems
      * @return array
-     * @throws \Magento\Framework\Exception\LocalizedException
-     * @throws \Magento\Framework\Exception\StateException
+     * @throws LocalizedException
+     * @throws StateException
      */
     protected function getItemsData(
         Attribute $attribute,
@@ -129,18 +132,20 @@ class AttributeResolver
     /**
      * Return field faceted data from faceted search result
      *
-     * @param string                       $field
-     * @param \Magento\Catalog\Model\Layer $layer
+     * @param  string $field
+     * @param  Layer  $layer
      * @return array
-     * @throws \Magento\Framework\Exception\StateException
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws StateException
+     * @throws LocalizedException
      */
     public function getFacetedData(string $field, Layer $layer): array
     {
         $filters = $this->getLayerFilters->execute($layer);
-        $otherFilters = array_filter($filters, static function (Filter $filter) use ($field) {
-            return $field !== $filter->getField();
-        });
+        $otherFilters = array_filter(
+            $filters, static function (Filter $filter) use ($field) {
+                return $field !== $filter->getField();
+            }
+        );
 
         return $this->search->search($field, $otherFilters);
     }
@@ -148,12 +153,12 @@ class AttributeResolver
     /**
      * Build option data
      *
-     * @param array                                                           $option
-     * @param bool                                                            $isAttributeFilterable
-     * @param array                                                           $optionsFacetedData
-     * @param \Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item[] $attrFilterItems
+     * @param  array  $option
+     * @param  bool   $isAttributeFilterable
+     * @param  array  $optionsFacetedData
+     * @param  Item[] $attrFilterItems
      * @return void
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     private function buildOptionData(
         array $option,
@@ -181,7 +186,7 @@ class AttributeResolver
     /**
      * Retrieve option value if it exists
      *
-     * @param array $option
+     * @param  array $option
      * @return bool|string
      */
     private function getOptionValue(array $option)
@@ -195,8 +200,8 @@ class AttributeResolver
     /**
      * Retrieve count of the options
      *
-     * @param int|string $value
-     * @param array $optionsFacetedData
+     * @param  int|string $value
+     * @param  array      $optionsFacetedData
      * @return int
      */
     private function getOptionCount($value, array $optionsFacetedData): int
@@ -209,10 +214,10 @@ class AttributeResolver
     /**
      * Check if option is selected.
      *
-     * @param int|string                                                      $value
-     * @param \Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item[] $attrFilterItems
+     * @param  int|string $value
+     * @param  Item[]     $attrFilterItems
      * @return bool
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     private function isActiveFilter($value, array $attrFilterItems): bool
     {

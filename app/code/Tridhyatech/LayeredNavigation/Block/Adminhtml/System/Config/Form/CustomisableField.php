@@ -13,6 +13,7 @@ use Magento\Backend\Block\Template\Context;
 use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\View\Asset\Repository;
+use Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form\Element\ImageRadioButtons;
 
 /**
  * Frontend model for render customizations.
@@ -25,14 +26,14 @@ class CustomisableField extends Field
 {
 
     /**
-     * @var \Magento\Framework\View\Asset\Repository
+     * @var Repository
      */
     private $viewAssetRepository;
 
     /**
-     * @param \Magento\Backend\Block\Template\Context  $context
-     * @param \Magento\Framework\View\Asset\Repository $viewAssetRepository
-     * @param array                                    $data
+     * @param Context    $context
+     * @param Repository $viewAssetRepository
+     * @param array      $data
      */
     public function __construct(
         Context $context,
@@ -46,7 +47,7 @@ class CustomisableField extends Field
     /**
      * Render element value
      *
-     * @param \Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form\Element\ImageRadioButtons $element
+     * @param  ImageRadioButtons $element
      * @return string
      */
     protected function _renderValue(AbstractElement $element): string
@@ -73,7 +74,7 @@ class CustomisableField extends Field
     /**
      * Disable checkbox if needed.
      *
-     * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
+     * @param  AbstractElement $element
      * @return bool
      */
     protected function _isInheritCheckboxRequired(AbstractElement $element): bool
@@ -89,7 +90,7 @@ class CustomisableField extends Field
     /**
      * Disable scope label if needed.
      *
-     * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
+     * @param  AbstractElement $element
      * @return string
      */
     protected function _renderScopeLabel(AbstractElement $element): string
@@ -103,8 +104,8 @@ class CustomisableField extends Field
     /**
      * Replace media directives by urls.
      *
-     * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
-     * @param string                                               $comment
+     * @param  AbstractElement $element
+     * @param  string          $comment
      * @return string
      */
     private function filterTooltipMediaVariables(AbstractElement $element, string $comment): string

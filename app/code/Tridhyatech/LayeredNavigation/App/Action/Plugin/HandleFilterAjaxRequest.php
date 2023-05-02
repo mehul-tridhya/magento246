@@ -25,17 +25,17 @@ class HandleFilterAjaxRequest
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @var \Magento\Framework\Controller\ResultFactory
+     * @var ResultFactory
      */
     private $resultFactory;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\AjaxResponse
+     * @var AjaxResponse
      */
     private $ajaxResponse;
 
@@ -45,16 +45,16 @@ class HandleFilterAjaxRequest
     private $httpContext;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\AjaxRequestLocator
+     * @var AjaxRequestLocator
      */
     private $ajaxRequestLocator;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config            $config
-     * @param \Magento\Framework\Controller\ResultFactory                $resultFactory
-     * @param \Tridhyatech\LayeredNavigation\Model\AjaxResponse       $ajaxResponse
-     * @param \Magento\Framework\App\Http\Context                        $httpContext
-     * @param \Tridhyatech\LayeredNavigation\Model\AjaxRequestLocator $ajaxRequestLocator
+     * @param Config             $config
+     * @param ResultFactory      $resultFactory
+     * @param AjaxResponse       $ajaxResponse
+     * @param HttpContext        $httpContext
+     * @param AjaxRequestLocator $ajaxRequestLocator
      */
     public function __construct(
         Config $config,
@@ -73,8 +73,8 @@ class HandleFilterAjaxRequest
     /**
      * Handle filter ajax request.
      *
-     * @param \Magento\Framework\App\Action\AbstractAction $subject
-     * @param \Magento\Framework\App\RequestInterface      $request
+     * @param AbstractAction $subject
+     * @param RequestInterface      $request
      */
     public function beforeDispatch(AbstractAction $subject, RequestInterface $request): void
     {
@@ -86,9 +86,9 @@ class HandleFilterAjaxRequest
     /**
      * Handle filter ajax request.
      *
-     * @param \Magento\Framework\App\Action\AbstractAction                    $subject
+     * @param AbstractAction                    $subject
      * @param ResponseInterface|\Magento\Framework\Controller\ResultInterface $result
-     * @param \Magento\Framework\App\RequestInterface                         $request
+     * @param RequestInterface                         $request
      * @return ResponseInterface: \Magento\Framework\Controller\ResultInterface
      */
     public function afterDispatch(AbstractAction $subject, $result, RequestInterface $request)
@@ -104,7 +104,7 @@ class HandleFilterAjaxRequest
     /**
      * Check if this is product filter ajax request.
      *
-     * @param \Magento\Framework\App\RequestInterface $request
+     * @param RequestInterface $request
      * @return bool
      */
     private function canProcessResponse(RequestInterface $request): bool

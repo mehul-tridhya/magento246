@@ -1,17 +1,19 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Block\LayeredNavigation;
 
 use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
+use Magento\Framework\Json\Helper\Data;
+use Magento\Framework\Registry;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
+use Magento\Catalog\Model\ResourceModel\Product\Collection;
 
-/**
- * @since 1.0.0
- */
 class RenderPrice extends Template
 {
 
@@ -30,27 +32,27 @@ class RenderPrice extends Template
     protected $registry;
 
     /**
-     * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
+     * @var CollectionFactory
      */
     protected $productCollectionFactory;
 
     /**
-     * @var \Magento\Catalog\Model\ResourceModel\Product\Collection $originalCollection
+     * @var Collection $originalCollection
      */
     protected $originalCollection = null;
 
     /**
-     * @param \Magento\Framework\View\Element\Template\Context               $context
-     * @param \Magento\Framework\Json\Helper\Data                            $jsonHelper
-     * @param \Magento\Framework\Registry                                    $registry
-     * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
-     * @param array                                                          $data
+     * @param Context           $context
+     * @param Data              $jsonHelper
+     * @param Registry          $registry
+     * @param CollectionFactory $productCollectionFactory
+     * @param array             $data
      */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Framework\Json\Helper\Data $jsonHelper,
-        \Magento\Framework\Registry $registry,
-        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
+        Context $context,
+        Data $jsonHelper,
+        Registry $registry,
+        CollectionFactory $productCollectionFactory,
         array $data = []
     ) {
         $this->_jsonHelper = $jsonHelper;
@@ -127,8 +129,8 @@ class RenderPrice extends Template
         }
 
         return $this->getFilter()->getLayer()
-                ->getProductCollection()
-                ->getMinPrice();
+            ->getProductCollection()
+            ->getMinPrice();
     }
 
     /**
@@ -138,7 +140,9 @@ class RenderPrice extends Template
      */
     private function getOriginalMinValue()
     {
-        /** @var \Magento\Catalog\Model\ResourceModel\Product\Collection $collection */
+        /**
+         * @var Collection $collection 
+        */
         $collection = $this->getOriginalCollection();
 
         return $collection->getMinPrice();
@@ -158,8 +162,8 @@ class RenderPrice extends Template
         }
 
         return $this->getFilter()->getLayer()
-                ->getProductCollection()
-                ->getMaxPrice();
+            ->getProductCollection()
+            ->getMaxPrice();
     }
 
     /**
@@ -169,7 +173,9 @@ class RenderPrice extends Template
      */
     private function getOriginalMaxValue()
     {
-        /** @var \Magento\Catalog\Model\ResourceModel\Product\Collection $collection */
+        /**
+         * @var Collection $collection 
+        */
         $collection = $this->getOriginalCollection();
 
         return $collection->getMaxPrice();
@@ -178,7 +184,7 @@ class RenderPrice extends Template
     /**
      * Retrieve not filtered collection with price data
      *
-     * @return \Magento\Catalog\Model\ResourceModel\Product\Collection\
+     * @return Collection\
      */
     private function getOriginalCollection()
     {

@@ -13,12 +13,6 @@ use Magento\Framework\Data\Form\Element\Radios;
 
 /**
  * Frontend model for select field
- *
- * See README.md for instruction
- *
- * @method bool|null getDisabled()
- *
- * @since 1.0.4
  */
 class ImageRadioButtons extends Radios
 {

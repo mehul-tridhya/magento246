@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Block\Html;
@@ -14,33 +14,31 @@ use Tridhyatech\LayeredNavigation\Model\Variable\Renderer;
 
 /**
  * Extended pager for category and search results pages.
- *
- * @since 1.0.0
  */
 class Pager extends \Magento\Theme\Block\Html\Pager
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Renderer
+     * @var Renderer
      */
     private $variableRenderer;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Registry
+     * @var Registry
      */
     private $variableRegistry;
 
     /**
-     * @param \Magento\Framework\View\Element\Template\Context          $context
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config           $config
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Renderer $variableRenderer
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Registry $variableRegistry
-     * @param array                                                     $data
+     * @param Context  $context
+     * @param Config   $config
+     * @param Renderer $variableRenderer
+     * @param Registry $variableRegistry
+     * @param array    $data
      */
     public function __construct(
         Context $context,

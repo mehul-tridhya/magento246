@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -12,6 +12,8 @@ namespace Tridhyatech\LayeredNavigation\Model\FacetedData;
 use Magento\Catalog\Model\Layer;
 use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Api\Filter;
+use Magento\Framework\Api\Search\SearchCriteriaBuilder;
 
 /**
  * @since 1.0.0
@@ -21,19 +23,23 @@ class GetLayerFilters
     /**
      * Get Search Criteria Builder from product collection.
      *
-     * @param \Magento\Catalog\Model\Layer $layer
-     * @return \Magento\Framework\Api\Filter[]
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param  Layer $layer
+     * @return Filter[]
+     * @throws LocalizedException
      */
     public function execute(Layer $layer): array
     {
         try {
-            /** @var Collection $productCollection */
+            /**
+             * @var Collection $productCollection 
+            */
             $productCollection = $layer->getProductCollection();
             $reflectionSubject = new \ReflectionObject($productCollection);
             $reflectionProperty = $reflectionSubject->getParentClass()->getProperty('searchCriteriaBuilder');
             $reflectionProperty->setAccessible(true);
-            /** @var \Magento\Framework\Api\Search\SearchCriteriaBuilder $searchCriteriaBuilder */
+            /**
+             * @var SearchCriteriaBuilder $searchCriteriaBuilder 
+            */
             $searchCriteriaBuilder = clone $reflectionProperty->getValue($productCollection);
             $reflectionProperty->setAccessible(false);
 

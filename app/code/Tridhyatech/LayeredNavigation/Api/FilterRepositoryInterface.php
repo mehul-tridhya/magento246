@@ -19,7 +19,7 @@ interface FilterRepositoryInterface
      * Get filter by request variable or attribute code
      *
      * @param string $requestVar
-     * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterInterface
+     * @return FilterInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function get(string $requestVar): FilterInterface;
@@ -27,7 +27,7 @@ interface FilterRepositoryInterface
     /**
      * Get about all active filters.
      *
-     * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterInterface[]
+     * @return FilterInterface[]
      */
     public function getList(): array;
 }

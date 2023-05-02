@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Block\LayeredNavigation\Navigation;
@@ -11,26 +11,27 @@ use Magento\Catalog\Model\Layer\Resolver;
 use Magento\Framework\View\Element\Template\Context;
 use Tridhyatech\LayeredNavigation\Helper\Config;
 use Tridhyatech\LayeredNavigation\Model\CatalogSearch\IsSearchResultsPage;
+use Magento\LayeredNavigation\Block\Navigation\State as mainState ;
 
-class State extends \Magento\LayeredNavigation\Block\Navigation\State
+class State extends mainState
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\CatalogSearch\IsSearchResultsPage
+     * @var IsSearchResultsPage
      */
     private $isSearchResultsPage;
 
     /**
-     * @param \Magento\Framework\View\Element\Template\Context                          $context
-     * @param \Magento\Catalog\Model\Layer\Resolver                                     $layerResolver
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config                           $config
-     * @param \Tridhyatech\LayeredNavigation\Model\CatalogSearch\IsSearchResultsPage $isSearchResultsPage
-     * @param array                                                                     $data
+     * @param Context             $context
+     * @param Resolver            $layerResolver
+     * @param Config              $config
+     * @param IsSearchResultsPage $isSearchResultsPage
+     * @param array               $data
      */
     public function __construct(
         Context $context,
@@ -78,7 +79,6 @@ class State extends \Magento\LayeredNavigation\Block\Navigation\State
             }
 
             if (false !== strpos($clearUrl, 'amfinder')) {
-                /** Integration with Amasty Product Parts Finder */
                 $clearUrl = preg_replace(
                     '/(amfinder)\/.*?\/(.*?\/\?)/',
                     "$1{$additionalParam}{$this->config->getCategoryUrlSuffix()}?",

@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -18,6 +18,7 @@ use Magento\Framework\Exception\StateException;
 use Magento\Framework\Search\Request\EmptyRequestDataException;
 use Magento\Framework\Search\Request\NonExistingRequestNameException;
 use Magento\Search\Api\SearchInterface;
+use Magento\Framework\Api\Filter;
 
 /**
  * @since 1.0.0
@@ -26,24 +27,24 @@ class Search
 {
 
     /**
-     * @var \Magento\Framework\Api\Search\SearchCriteriaBuilderFactory
+     * @var SearchCriteriaBuilderFactory
      */
     private $searchCriteriaBuilderFactory;
 
     /**
-     * @var \Magento\Search\Api\SearchInterface
+     * @var SearchInterface
      */
     private $search;
 
     /**
-     * @var \Magento\Framework\Api\Search\SearchResultFactory
+     * @var SearchResultFactory
      */
     private $searchResultFactory;
 
     /**
-     * @param \Magento\Framework\Api\Search\SearchCriteriaBuilderFactory $searchCriteriaBuilder
-     * @param \Magento\Search\Api\SearchInterface                        $search
-     * @param \Magento\Framework\Api\Search\SearchResultFactory          $searchResultFactory
+     * @param SearchCriteriaBuilderFactory $searchCriteriaBuilder
+     * @param SearchInterface              $search
+     * @param SearchResultFactory          $searchResultFactory
      */
     public function __construct(
         SearchCriteriaBuilderFactory $searchCriteriaBuilder,
@@ -58,11 +59,11 @@ class Search
     /**
      * Search faced data by filters.
      *
-     * @param string                          $field
-     * @param \Magento\Framework\Api\Filter[] $filters
+     * @param  string   $field
+     * @param  Filter[] $filters
      * @return array
-     * @throws \Magento\Framework\Exception\LocalizedException
-     * @throws \Magento\Framework\Exception\StateException
+     * @throws LocalizedException
+     * @throws StateException
      */
     public function search(string $field, array $filters): array
     {
@@ -73,10 +74,10 @@ class Search
     /**
      * Extract faced data from search results.
      *
-     * @param string                                              $field
-     * @param \Magento\Framework\Api\Search\SearchResultInterface $searchResult
+     * @param  string                $field
+     * @param  SearchResultInterface $searchResult
      * @return array
-     * @throws \Magento\Framework\Exception\StateException
+     * @throws StateException
      */
     private function extractFacedData(string $field, SearchResultInterface $searchResult): array
     {
@@ -101,9 +102,9 @@ class Search
     /**
      * Search by filters.
      *
-     * @param \Magento\Framework\Api\Filter[] $filters
-     * @return \Magento\Framework\Api\Search\SearchResultInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param  Filter[] $filters
+     * @return SearchResultInterface
+     * @throws LocalizedException
      */
     public function searchProducts(array $filters): SearchResultInterface
     {

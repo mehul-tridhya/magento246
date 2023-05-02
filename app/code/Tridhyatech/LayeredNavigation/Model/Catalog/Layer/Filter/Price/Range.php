@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Price;
@@ -14,27 +14,24 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Registry;
 use Tridhyatech\LayeredNavigation\Helper\Config;
 
-/**
- * @since 1.0.0
- */
 class Range extends \Magento\Catalog\Model\Layer\Filter\Price\Range
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @var \Magento\Framework\Registry
+     * @var Registry
      */
     private $registry;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config    $config
-     * @param \Magento\Framework\Registry                        $registry
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @param \Magento\Catalog\Model\Layer\Resolver              $layerResolver
+     * @param Config               $config
+     * @param Registry             $registry
+     * @param ScopeConfigInterface $scopeConfig
+     * @param Resolver             $layerResolver
      */
     public function __construct(
         Config $config,

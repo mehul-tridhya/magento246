@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter;
@@ -11,6 +11,7 @@ use Magento\Framework\UrlInterface;
 use Magento\Theme\Block\Html\Pager;
 use Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface;
 use Tridhyatech\LayeredNavigation\Helper\Config;
+use Magento\Framework\Exception\LocalizedException;
 
 /**
  * @since 1.0.0
@@ -19,21 +20,21 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface
+     * @var ItemUrlBuilderInterface
      */
     private $itemUrl;
 
     /**
-     * @param \Magento\Framework\UrlInterface                                     $url
-     * @param \Magento\Theme\Block\Html\Pager                                     $htmlPagerBlock
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config                     $config
-     * @param \Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface $itemUrl
-     * @param array                                                               $data
+     * @param UrlInterface            $url
+     * @param Pager                   $htmlPagerBlock
+     * @param Config                  $config
+     * @param ItemUrlBuilderInterface $itemUrl
+     * @param array                   $data
      */
     public function __construct(
         UrlInterface $url,
@@ -49,7 +50,7 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
 
     /**
      * @inheritDoc
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws     LocalizedException
      */
     public function getUrl()
     {
@@ -72,7 +73,7 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
      * Rewrite default remove url.
      *
      * @return string
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function getRemoveUrl()
     {
@@ -88,7 +89,7 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
      * Price value should be imploded by underscore (_) instead of comma ','.
      *
      * @return string
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function getValueString()
     {

@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Controller;
@@ -27,7 +27,7 @@ class Router implements RouterInterface
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
@@ -37,44 +37,44 @@ class Router implements RouterInterface
     private $getUrlVariables;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Value
+     * @var Value
      */
     private $variableValue;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Path\Processor
+     * @var PathProcessor
      */
     private $pathProcessor;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Registry
+     * @var Registry
      */
     private $variableRegistry;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Params\Processor
+     * @var ParamsProcessor
      */
     private $paramsProcessor;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\AjaxRequestLocator
+     * @var AjaxRequestLocator
      */
     private $ajaxRequestLocator;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config\Seo
+     * @var Seo
      */
     private $seoConfig;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config                   $config
-     * @param \Tridhyatech\LayeredNavigation\Api\GetUrlVariablesInterface    $getUrlVariables
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Value            $variableValue
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Path\Processor   $pathProcessor
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Registry         $variableRegistry
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Params\Processor $paramsProcessor
-     * @param \Tridhyatech\LayeredNavigation\Model\AjaxRequestLocator        $ajaxRequestLocator
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config\Seo               $seoConfig
+     * @param Config                   $config
+     * @param GetUrlVariablesInterface $getUrlVariables
+     * @param Value                    $variableValue
+     * @param Processor                $pathProcessor
+     * @param Registry                 $variableRegistry
+     * @param Processor                $paramsProcessor
+     * @param AjaxRequestLocator       $ajaxRequestLocator
+     * @param Seo                      $seoConfig
      */
     public function __construct(
         Config $config,
@@ -99,7 +99,7 @@ class Router implements RouterInterface
     /**
      * Parse, convert and move filters variables.
      *
-     * @param \Magento\Framework\App\RequestInterface $request
+     * @param  RequestInterface $request
      * @return void
      */
     public function match(RequestInterface $request): void
@@ -122,7 +122,7 @@ class Router implements RouterInterface
     /**
      * Process product filter ajax request.
      *
-     * @param \Magento\Framework\HTTP\PhpEnvironment\Request $request
+     * @param Request $request
      */
     private function handleAjaxRequest(Request $request): void
     {
@@ -136,7 +136,7 @@ class Router implements RouterInterface
     /**
      * Process product filter regular request.
      *
-     * @param \Magento\Framework\HTTP\PhpEnvironment\Request $request
+     * @param Request $request
      */
     private function handlePageRequest(Request $request): void
     {

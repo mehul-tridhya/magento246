@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form;
@@ -22,17 +23,17 @@ class Attribute extends AbstractAttribute
     private $attributeConfig;
 
     /**
-     * @var \Magento\Framework\Serialize\SerializerInterface
+     * @var SerializerInterface
      */
     private $serializer;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Model\FilterList $filterableAttributes
-     * @param \Magento\Framework\App\ResourceConnection          $resourceConnection
-     * @param \Magento\Backend\Block\Template\Context            $context
-     * @param AttributeConfig                                    $attributeConfig
-     * @param \Magento\Framework\Serialize\SerializerInterface   $serializer
-     * @param array                                              $data
+     * @param FilterList          $filterableAttributes
+     * @param ResourceConnection  $resourceConnection
+     * @param Context             $context
+     * @param AttributeConfig     $attributeConfig
+     * @param SerializerInterface $serializer
+     * @param array               $data
      */
     public function __construct(
         FilterList $filterableAttributes,
@@ -55,7 +56,7 @@ class Attribute extends AbstractAttribute
     protected function _prepareValue()
     {
         $selectedAttrs = $this->attributeConfig->getRelatedConfig(AttributeConfig::XML_PATH_ATTRS);
-        if (! $selectedAttrs) {
+        if (!$selectedAttrs) {
             return [];
         }
         return $this->serializer->unserialize($selectedAttrs);

@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -26,12 +26,12 @@ class Attribute extends AbstractHelper
     public const XML_PATH_SHOW_EMPTY = 'ttlayerednavigation/settings/empty_option';
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Utils\Config
+     * @var Config
      */
     private $configUtils;
 
     /**
-     * @var \Magento\Framework\Serialize\SerializerInterface
+     * @var SerializerInterface
      */
     private $serializer;
 
@@ -41,10 +41,10 @@ class Attribute extends AbstractHelper
     private $registry;
 
     /**
-     * @param \Magento\Framework\App\Helper\Context            $context
-     * @param \Tridhyatech\LayeredNavigation\Model\Utils\Config              $configUtils
-     * @param \Magento\Framework\Serialize\SerializerInterface $serializer
-     * @param \Magento\Framework\Registry                      $registry
+     * @param Context                     $context
+     * @param Config                      $configUtils
+     * @param SerializerInterface         $serializer
+     * @param \Magento\Framework\Registry $registry
      */
     public function __construct(
         Context $context,
@@ -61,7 +61,7 @@ class Attribute extends AbstractHelper
     /**
      * Get attributes configuration.
      *
-     * @param int|null $storeId
+     * @param  int|null $storeId
      * @return array
      */
     public function getSelectedAttributesConfig(int $storeId = null): array
@@ -136,7 +136,7 @@ class Attribute extends AbstractHelper
     /**
      * Fix category code.
      *
-     * @param array $codes
+     * @param  array $codes
      * @return string[]
      */
     protected function fixCodes(array $codes): array

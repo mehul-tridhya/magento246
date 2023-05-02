@@ -1,14 +1,17 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form;
 
 use Magento\Config\Block\System\Config\Form\Field;
 use Tridhyatech\LayeredNavigation\Model\FilterList;
+use Magento\Framework\App\ResourceConnection;
+use Magento\Backend\Block\Template\Context;
+use Magento\Framework\Data\Form\Element\AbstractElement;
 
 class AbstractAttribute extends Field
 {
@@ -40,7 +43,7 @@ class AbstractAttribute extends Field
     protected $_notActive = [];
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\FilterList
+     * @var FilterList
      */
     protected $_filterableAttributes;
 
@@ -65,15 +68,15 @@ class AbstractAttribute extends Field
     protected $_element;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Model\FilterList $filterableAttributes
-     * @param \Magento\Framework\App\ResourceConnection          $resourceConnection
-     * @param \Magento\Backend\Block\Template\Context            $context
-     * @param array                                              $data
+     * @param FilterList         $filterableAttributes
+     * @param ResourceConnection $resourceConnection
+     * @param Context            $context
+     * @param array              $data
      */
     public function __construct(
         FilterList $filterableAttributes,
-        \Magento\Framework\App\ResourceConnection $resourceConnection,
-        \Magento\Backend\Block\Template\Context $context,
+        ResourceConnection $resourceConnection,
+        Context $context,
         array $data = []
     ) {
         $this->_filterableAttributes = $filterableAttributes;
@@ -84,10 +87,10 @@ class AbstractAttribute extends Field
     /**
      * Render fieldset html
      *
-     * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
+     * @param  AbstractElement $element
      * @return string
      */
-    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
+    public function render(AbstractElement $element)
     {
         $this->_values = $this->_prepareValue();
         $this->_prepareAttributes();
@@ -130,7 +133,7 @@ class AbstractAttribute extends Field
     /**
      * Retrieve element
      *
-     * @return \Magento\Framework\Data\Form\Element\AbstractElement
+     * @return AbstractElement
      */
     public function getElement()
     {
