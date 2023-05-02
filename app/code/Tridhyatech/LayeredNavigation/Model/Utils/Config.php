@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model\Utils;
 
-use Tridhyatech\LayeredNavigation\Api\ConfigUtilsInterface;
+use Tridhyatech\LayeredNavigation\Api\ConfigInterface;
 use Tridhyatech\LayeredNavigation\Model\ConfigUtils;
 
 /**
@@ -17,6 +17,6 @@ use Tridhyatech\LayeredNavigation\Model\ConfigUtils;
  * @deprecated since 2.10.0
  * @see \Tridhyatech\LayeredNavigation\Model\ConfigUtils
  */
-class Config extends ConfigUtils implements ConfigUtilsInterface
+class Config extends ConfigUtils implements ConfigInterface
 {
 }

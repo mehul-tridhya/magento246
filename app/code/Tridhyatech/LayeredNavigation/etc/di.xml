@@ -10,7 +10,7 @@
     <preference for="Tridhyatech\LayeredNavigation\Api\GetUrlVariablesInterface" type="Tridhyatech\LayeredNavigation\Model\Variable\GetList"/>
     <preference for="Tridhyatech\LayeredNavigation\Api\Data\FilterInterface" type="Tridhyatech\LayeredNavigation\Model\FilterMeta"/>
     <preference for="Tridhyatech\LayeredNavigation\Api\FilterMetaRepositoryInterface" type="Tridhyatech\LayeredNavigation\Model\FilterMeta\Repository"/>
-    <preference for="Tridhyatech\LayeredNavigation\Api\FilterItemUrlBuilderInterface" type="Tridhyatech\LayeredNavigation\Model\FilterItem\Url"/>
+    <preference for="Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface" type="Tridhyatech\LayeredNavigation\Model\FilterItem\Url"/>
     <preference for="Tridhyatech\LayeredNavigation\Api\FiltersOptionsInterface" type="Tridhyatech\LayeredNavigation\Model\FiltersOptions"/>
     <preference for="Tridhyatech\LayeredNavigation\Model\Variable\Value\UrlInterface" type="Tridhyatech\LayeredNavigation\Model\Variable\Value\Url"/>
 

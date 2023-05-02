@@ -14,7 +14,7 @@ namespace Tridhyatech\LayeredNavigation\Api;
  * To avoid helpdesk tickets it's better to use model instead of interface.
  * @see \Tridhyatech\LayeredNavigation\Model\ConfigUtils
  */
-interface ConfigUtilsInterface
+interface ConfigInterface
 {
 
     /**

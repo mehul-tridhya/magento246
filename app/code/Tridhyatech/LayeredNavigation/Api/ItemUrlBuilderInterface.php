@@ -10,7 +10,7 @@ namespace Tridhyatech\LayeredNavigation\Api;
 /**
  * @since 1.0.0
  */
-interface FilterItemUrlBuilderInterface
+interface ItemUrlBuilderInterface
 {
 
     /**

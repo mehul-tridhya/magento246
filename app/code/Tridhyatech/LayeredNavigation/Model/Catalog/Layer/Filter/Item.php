@@ -9,7 +9,7 @@ namespace Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter;
 
 use Magento\Framework\UrlInterface;
 use Magento\Theme\Block\Html\Pager;
-use Tridhyatech\LayeredNavigation\Api\FilterItemUrlBuilderInterface;
+use Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface;
 use Tridhyatech\LayeredNavigation\Helper\Config;
 
 /**
@@ -24,7 +24,7 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
     private $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterItemUrlBuilderInterface
+     * @var \Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface
      */
     private $itemUrl;
 
@@ -32,14 +32,14 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
      * @param \Magento\Framework\UrlInterface                                     $url
      * @param \Magento\Theme\Block\Html\Pager                                     $htmlPagerBlock
      * @param \Tridhyatech\LayeredNavigation\Helper\Config                     $config
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterItemUrlBuilderInterface $itemUrl
+     * @param \Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface $itemUrl
      * @param array                                                               $data
      */
     public function __construct(
         UrlInterface $url,
         Pager $htmlPagerBlock,
         Config $config,
-        FilterItemUrlBuilderInterface $itemUrl,
+        ItemUrlBuilderInterface $itemUrl,
         array $data = []
     ) {
         $this->config = $config;

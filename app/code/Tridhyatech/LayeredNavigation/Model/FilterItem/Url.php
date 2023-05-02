@@ -9,14 +9,14 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model\FilterItem;
 
-use Tridhyatech\LayeredNavigation\Api\FilterItemUrlBuilderInterface;
+use Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface;
 use Tridhyatech\LayeredNavigation\Model\Variable\Registry;
 use Tridhyatech\LayeredNavigation\Model\Variable\Renderer;
 
 /**
  * @since 1.0.0
  */
-class Url implements FilterItemUrlBuilderInterface
+class Url implements ItemUrlBuilderInterface
 {
 
     /**
