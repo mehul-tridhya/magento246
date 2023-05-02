@@ -12,7 +12,7 @@
             <class>separator-top</class>
             <label>Coupons List</label>
             <tab>tridhyatech</tab>
-            <resource>Tridhyatech_CouponsList::couponslist</resource>
+            <resource>Tridhyatech_CouponsList::configurations</resource>
             <group id="coupon_list" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1">
                 <label>Configuration</label>
                 <field id="is_active" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" canRestore="1">

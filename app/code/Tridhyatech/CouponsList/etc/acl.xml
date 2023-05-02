@@ -10,13 +10,15 @@
    <acl>
       <resources>
          <resource id="Magento_Backend::admin">
-            <resource id="Tridhyatech_Core::tridhyatech_menu" title="Tridhyatech Extensions" translate="title" sortOrder="79">
-               <resource id="Tridhyatech_CouponsList::tridhyatech_couponslist" title="Coupon" sortOrder="50" />
+            <resource id="Tridhyatech_Core::core">
+               <resource id="Tridhyatech_CouponsList::couponslist" title="Coupons List" sortOrder="50" />
             </resource>
             <resource id="Magento_Backend::stores">
                <resource id="Magento_Backend::stores_settings">
                   <resource id="Magento_Config::config">
-                     <resource id="Tridhyatech_CouponsList::couponslist" title="Coupon" sortOrder="50" />
+                     <resource id="Tridhyatech_Core::config">
+                        <resource id="Tridhyatech_CouponsList::config" title="Coupons List" sortOrder="50" />
+                     </resource>
                   </resource>
                </resource>
             </resource>

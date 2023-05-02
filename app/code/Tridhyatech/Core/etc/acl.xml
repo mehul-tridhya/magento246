@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <!--
 /**
- * @author Tridhya Tech Team
+ * @author Tridhya Tech
  * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
  * @package Tridhyatech_Core
  */-->
@@ -9,13 +9,13 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Tridhyatech_Core::tridhyatech_menu" title="Tridhyatech Extensions" translate="title" sortOrder="79">
+                <resource id="Tridhyatech_Core::core" title="Tridhyatech Menu" translate="title" sortOrder="51">
                     <resource id="Tridhyatech_Core::marketplace" title="Tridhyatech Marketplace" translate="title" sortOrder="1"/>
                 </resource>
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Tridhyatech_Core::config" title="Tridhyatech Core Configuration" sortOrder="10"/>
+                            <resource id="Tridhyatech_Core::config" title="Tridhyatech Configuration" sortOrder="10"/>
                         </resource>
                     </resource>
                 </resource>

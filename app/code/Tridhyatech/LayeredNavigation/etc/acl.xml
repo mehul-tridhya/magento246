@@ -10,7 +10,7 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Plumrocket_Base::elements">
+                <resource id="Tridhyatech_Core::view" title="Tridhyatech Extensions" translate="title" sortOrder="79">
                     <resource id="Tridhyatech_LayeredNavigation::ttproductfilter" title="Layered Navigation" sortOrder="6780161" />
                 </resource>
                 <resource id="Magento_Backend::stores">

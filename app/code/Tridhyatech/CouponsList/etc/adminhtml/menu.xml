@@ -8,6 +8,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Tridhyatech_CouponsList::tridhyatech_couponslist" title="Coupons List Configuration" module="Tridhyatech_CouponsList" sortOrder="99" parent="Tridhyatech_Core::tridhyatech_menu" action="adminhtml/system_config/edit/section/coupon_code_config" resource="Tridhyatech_CouponsList::couponslist"/>
+        <add id="Tridhyatech_CouponsList::couponslist" title="Coupons List" module="Tridhyatech_CouponsList" sortOrder="99" parent="Tridhyatech_Core::view" resource="Tridhyatech_CouponsList::couponslist"/>
+        <add id="Tridhyatech_CouponsList::config" title="Configuration" module="Tridhyatech_CouponsList" sortOrder="99" parent="Tridhyatech_CouponsList::couponslist" action="adminhtml/system_config/edit/section/coupon_code_config" resource="Tridhyatech_CouponsList::config"/>
     </menu>
 </config>

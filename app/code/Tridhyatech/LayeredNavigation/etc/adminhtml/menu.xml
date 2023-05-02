@@ -12,7 +12,7 @@
              title="Layered Navigation Configuration"
              translate="title"
              module="Tridhyatech_LayeredNavigation"
-             parent="Tridhyatech_Core::tridhyatech_menu"
+             parent="Tridhyatech_Core::view"
              sortOrder="20"
              action="adminhtml/system_config/edit/section/prproductfilter"
              resource="Tridhyatech_LayeredNavigation::config_ttproductfilter"/>

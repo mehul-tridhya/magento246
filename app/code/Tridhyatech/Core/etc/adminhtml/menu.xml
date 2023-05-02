@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <!--
 /**
- * @author Tridhya Tech Team
+ * @author Tridhya Tech
  * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
  * @package Tridhyatech_Core
  */-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Tridhyatech_Core::tridhyatech_menu" title="TRIDHYATECH" module="Tridhyatech_Core" sortOrder="75" resource="Tridhyatech_Core::tridhyatech_menu"/>
-        <add id="Tridhyatech_Core::marketplace" title="Tridhyatech Marketplace" module="Tridhyatech_Core" sortOrder="9999" action="tridhyatech/marketplace/index" target="_blank" parent="Tridhyatech_Core::tridhyatech_menu" resource="Tridhyatech_Core::marketplace"/>
+        <add id="Tridhyatech_Core::view" title="Tridhyatech" module="Tridhyatech_Core" sortOrder="75" resource="Tridhyatech_Core::core"/>
+        <add id="Tridhyatech_Core::marketplace" title="Tridhyatech Marketplace" module="Tridhyatech_Core" sortOrder="9999" action="tridhyatech/marketplace/index" target="_blank" parent="Tridhyatech_Core::view" resource="Tridhyatech_Core::marketplace"/>
     </menu>
 </config>
