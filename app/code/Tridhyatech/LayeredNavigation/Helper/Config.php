@@ -23,7 +23,7 @@ class Config extends AbstractHelper
     public const FILTER_PARAM_SEPARATOR = '-';
 
     public const XML_PATH_IS_MODULE_ENABLED = 'ttlayerednavigation/general/enabled';
-    public const XML_PATH_SCROLL_UP = 'ttlayerednavigation/main/scroll_up';
+    public const XML_PATH_SCROLL_UP = 'ttlayerednavigation/general/scroll_up';
 
     /**
      * Toolbar variables

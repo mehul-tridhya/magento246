@@ -19,13 +19,12 @@
                     <label>Enable Extension</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-            </group>
-
-            <group id="main" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Main Settings</label>
-                <field id="scroll_up" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="scroll_up" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Scroll Up After Filtering</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="*/*/enabled">1</field>
+                    </depends>
                 </field>
             </group>
 
@@ -37,11 +36,14 @@
                     <comment><![CDATA[- Drag & drop attributes that should be used in layered navigation.<br/>- Sort them to change their order in the frontend.]]></comment>
                     <hint>Attributes</hint>
                 </field>
-                <field id="empty_option" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="empty_option" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Show Empty Filter Options</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>If set to "No", product filter options with "0" results will be hidden from the list of available options.</comment>
                 </field>
+                <depends>
+                    <field id="*/general/enabled">1</field>
+                </depends>
             </group>
 
             <group id="seo" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -59,6 +61,9 @@
                         <source_model>Tridhyatech\LayeredNavigation\Model\OptionSource\InsertFiltersIn</source_model>
                     </field>
                 </group>
+                <depends>
+                    <field id="*/general/enabled">1</field>
+                </depends>
             </group>
         </section>
     </system>
