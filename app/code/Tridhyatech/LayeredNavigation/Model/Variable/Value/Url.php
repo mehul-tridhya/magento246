@@ -1,17 +1,15 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model\Variable\Value;
 
-/**
- * @since 1.0.0
- */
 class Url implements UrlInterface
 {
 

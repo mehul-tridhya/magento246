@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -13,9 +14,11 @@ use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection;
 use Tridhyatech\LayeredNavigation\Helper\Config;
 use Tridhyatech\LayeredNavigation\Helper\SearchEngine;
 use Tridhyatech\LayeredNavigation\Model\CatalogSearch\Model\ResourceModel\Fulltext\Collection\CurrentLoading;
+use Magento\Catalog\Model\ResourceModel\Product\Collection as productCollection;
 
 /**
  * Temporary fix for
+ *
  * @link https://github.com/magento/magento2/issues/28919
  * TODO: remove after left support magento version with bug
  *
@@ -24,24 +27,24 @@ use Tridhyatech\LayeredNavigation\Model\CatalogSearch\Model\ResourceModel\Fullte
 class FixMaxAndMinPrices
 {
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\CatalogSearch\Model\ResourceModel\Fulltext\Collection\CurrentLoading
+     * @var CurrentLoading
      */
     private $currentLoadingCollection;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\SearchEngine
+     * @var SearchEngine
      */
     private $searchEngine;
 
     /**
-     * @param CurrentLoading                                        $currentLoadingCollection
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config       $config
-     * @param \Tridhyatech\LayeredNavigation\Helper\SearchEngine $searchEngine
+     * @param CurrentLoading $currentLoadingCollection
+     * @param Config         $config
+     * @param SearchEngine   $searchEngine
      */
     public function __construct(
         CurrentLoading $currentLoadingCollection,
@@ -56,16 +59,16 @@ class FixMaxAndMinPrices
     /**
      * Fix min and max prices.
      *
-     * @param \Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection $subject
-     * @param bool                                                           $printQuery
-     * @param bool                                                           $logQuery
+     * @param Collection $subject
+     * @param bool       $printQuery
+     * @param bool       $logQuery
      */
     public function beforeLoad(
         Collection $subject,
         $printQuery = false,
         $logQuery = false
     ) {
-        if (! $this->needFix()) {
+        if (!$this->needFix()) {
             return;
         }
 
@@ -75,10 +78,10 @@ class FixMaxAndMinPrices
     /**
      * Fix min and max prices.
      *
-     * @param \Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection $subject
-     * @param \Magento\Catalog\Model\ResourceModel\Product\Collection        $result
-     * @param bool                                                           $printQuery
-     * @param bool                                                           $logQuery
+     * @param  Collection        $subject
+     * @param  productCollection $result
+     * @param  bool              $printQuery
+     * @param  bool              $logQuery
      * @return mixed
      */
     public function afterLoad(
@@ -88,8 +91,8 @@ class FixMaxAndMinPrices
         $logQuery = false
     ) {
         if ($priceData = $this->currentLoadingCollection->getPriceData()) {
-            $this->setPropertyValue($subject, '_maxPrice', (double) ($priceData['max'] ?? 0));
-            $this->setPropertyValue($subject, '_minPrice', (double) ($priceData['min'] ?? 0));
+            $this->setPropertyValue($subject, '_maxPrice', (float) ($priceData['max'] ?? 0));
+            $this->setPropertyValue($subject, '_minPrice', (float) ($priceData['min'] ?? 0));
         }
 
         $this->currentLoadingCollection->reset();
@@ -109,9 +112,9 @@ class FixMaxAndMinPrices
     /**
      * Set private property.
      *
-     * @param \Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection $subject
-     * @param string                                                         $propertyName
-     * @param float                                                          $value
+     * @param Collection $subject
+     * @param string     $propertyName
+     * @param float      $value
      */
     private function setPropertyValue(Collection $subject, string $propertyName, float $value)
     {

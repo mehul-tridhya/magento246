@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Model\Filter;
@@ -26,30 +26,30 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\FacetedData\AttributeResolver
+     * @var AttributeResolver
      */
     private $facetedDataResolver;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface
+     * @var FilterRepositoryInterface
      */
     private $filterMetaRepository;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\CollectionFilterApplier
+     * @var CollectionFilterApplier
      */
     private $filterApplier;
 
     /**
-     * @param \Magento\Catalog\Model\Layer\Filter\ItemFactory                       $filterItemFactory
-     * @param \Magento\Store\Model\StoreManagerInterface                            $storeManager
-     * @param \Magento\Catalog\Model\Layer                                          $layer
-     * @param \Magento\Catalog\Model\Layer\Filter\Item\DataBuilder                  $itemDataBuilder
-     * @param \Magento\Framework\Filter\StripTags                                   $tagFilter
-     * @param \Tridhyatech\LayeredNavigation\Model\FacetedData\AttributeResolver $facetedDataResolver
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface   $filterMetaRepository
-     * @param \Tridhyatech\LayeredNavigation\Model\CollectionFilterApplier       $filterApplier
-     * @param array                                                                 $data
+     * @param ItemFactory               $filterItemFactory
+     * @param StoreManagerInterface     $storeManager
+     * @param Layer                     $layer
+     * @param DataBuilder               $itemDataBuilder
+     * @param StripTags                 $tagFilter
+     * @param AttributeResolver         $facetedDataResolver
+     * @param FilterRepositoryInterface $filterMetaRepository
+     * @param CollectionFilterApplier   $filterApplier
+     * @param array                     $data
      */
     public function __construct(
         ItemFactory $filterItemFactory,
@@ -107,8 +107,8 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
     /**
      * Convert attribute value according to its backend type.
      *
-     * @param ProductAttributeInterface $attribute
-     * @param mixed $value
+     * @param  ProductAttributeInterface $attribute
+     * @param  mixed                     $value
      * @return int|string
      */
     private function convertAttributeValue(ProductAttributeInterface $attribute, $value)

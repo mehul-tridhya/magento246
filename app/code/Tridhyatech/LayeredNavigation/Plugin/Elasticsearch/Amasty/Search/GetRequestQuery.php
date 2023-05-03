@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Plugin\Elasticsearch\Amasty\Search;
@@ -13,12 +14,12 @@ class GetRequestQuery
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     protected $config;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config $config
+     * @param Config $config
      */
     public function __construct(Config $config)
     {
@@ -28,11 +29,10 @@ class GetRequestQuery
     /**
      * Fix get request query
      *
-     * @param \Amasty\ElasticSearch\Model\Search\GetRequestQuery $subject
-     * @param                                                    $query
+     * @param  $query
      * @return array
      */
-    public function afterExecute(\Amasty\ElasticSearch\Model\Search\GetRequestQuery $subject, $query)
+    public function afterExecute($query)
     {
         if (isset($query['body']['query']['bool']['must']) && $this->config->isModuleEnabled()) {
             foreach ($query['body']['query']['bool']['must'] as $filterKey => $filterValue) {

@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -13,13 +14,10 @@ use Magento\Framework\HTTP\PhpEnvironment\Request;
 use PHPUnit\Framework\TestCase;
 use Tridhyatech\LayeredNavigation\Model\Variable\Params\Processor;
 
-/**
- * @since 1.0.0
- */
 class ProcessorTest extends TestCase
 {
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Params\Processor
+     * @var Processor
      */
     private $model;
 
@@ -30,10 +28,10 @@ class ProcessorTest extends TestCase
 
     /**
      * @dataProvider getRequests()
-     * @param string $requestUri
-     * @param array  $variables
-     * @param string $expectedRequestUri
-     * @param array  $expectedParams
+     * @param        string $requestUri
+     * @param        array  $variables
+     * @param        string $expectedRequestUri
+     * @param        array  $expectedParams
      */
     public function testMoveToParams(
         string $requestUri,
@@ -42,9 +40,9 @@ class ProcessorTest extends TestCase
         array $expectedParams
     ): void {
         $requestMock = $this->getMockBuilder(Request::class)
-                            ->disableOriginalConstructor()
-                            ->onlyMethods([])
-                            ->getMock();
+            ->disableOriginalConstructor()
+            ->onlyMethods([])
+            ->getMock();
         $requestMock->setRequestUri($requestUri);
 
         $this->model->moveToParams($requestMock, $variables);
@@ -58,8 +56,8 @@ class ProcessorTest extends TestCase
     {
         yield [
             'requestUri' => '/women/tops-women/jackets-women.html' .
-                '?' . urlencode('prfilter_variables[color]') . '='. urlencode('52,57') .
-                '&' . urlencode('prfilter_variables[eco_collection]') . '='. urlencode('0') .
+                '?' . urlencode('prfilter_variables[color]') . '=' . urlencode('52,57') .
+                '&' . urlencode('prfilter_variables[eco_collection]') . '=' . urlencode('0') .
                 '&prfilter_ajax=1',
             'variables' => ['color' => ['52', '57'], 'eco_collection' => ['0']],
             'expectedRequestUri' => '/women/tops-women/jackets-women.html',
@@ -68,8 +66,8 @@ class ProcessorTest extends TestCase
         yield [
             'requestUri' => '/women/tops-women/jackets-women.html' .
                 '?a=1' .
-                '&' . urlencode('prfilter_variables[color]') . '='. urlencode('52,57') .
-                '&' . urlencode('prfilter_variables[eco_collection]') . '='. urlencode('0') .
+                '&' . urlencode('prfilter_variables[color]') . '=' . urlencode('52,57') .
+                '&' . urlencode('prfilter_variables[eco_collection]') . '=' . urlencode('0') .
                 '&prfilter_ajax=1',
             'variables' => ['color' => ['52', '57'], 'eco_collection' => ['0']],
             'expectedRequestUri' => '/women/tops-women/jackets-women.html?a=1',
@@ -78,8 +76,8 @@ class ProcessorTest extends TestCase
         yield [
             'requestUri' => '/women/tops-women/jackets-women.html' .
                 '?a=1' .
-                '&' . urlencode('prfilter_variables[color]') . '='. urlencode('52,57') .
-                '&' . urlencode('prfilter_variables[eco_collection]') . '='. urlencode('0') .
+                '&' . urlencode('prfilter_variables[color]') . '=' . urlencode('52,57') .
+                '&' . urlencode('prfilter_variables[eco_collection]') . '=' . urlencode('0') .
                 '&prfilter_ajax=1',
             'variables' => ['color' => ['52', '57']],
             'expectedRequestUri' => '/women/tops-women/jackets-women.html?a=1',

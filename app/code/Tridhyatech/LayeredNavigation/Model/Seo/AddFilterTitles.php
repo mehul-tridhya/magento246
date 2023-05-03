@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -15,31 +16,28 @@ use Tridhyatech\LayeredNavigation\Api\FiltersOptionsInterface;
 use Tridhyatech\LayeredNavigation\Model\OptionSource\AbstractTitlePosition;
 use Tridhyatech\LayeredNavigation\Model\Variable\Registry;
 
-/**
- * @since 1.0.0
- */
 class AddFilterTitles
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Registry
+     * @var Registry
      */
     private $variableRegistry;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FiltersOptionsInterface
+     * @var FiltersOptionsInterface
      */
     private $filtersOptions;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface
+     * @var FilterRepositoryInterface
      */
     private $filterMetaRepository;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Registry           $variableRegistry
-     * @param \Tridhyatech\LayeredNavigation\Api\FiltersOptionsInterface       $filtersOptions
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface $filterMetaRepository
+     * @param Registry                  $variableRegistry
+     * @param FiltersOptionsInterface   $filtersOptions
+     * @param FilterRepositoryInterface $filterMetaRepository
      */
     public function __construct(
         Registry $variableRegistry,
@@ -54,10 +52,10 @@ class AddFilterTitles
     /**
      * Add active filter titles to title.
      *
-     * @param string $title
-     * @param string $position
-     * @param array  $allowList
-     * @param string $separator
+     * @param  string $title
+     * @param  string $position
+     * @param  array  $allowList
+     * @param  string $separator
      * @return string
      */
     public function execute(
@@ -71,7 +69,7 @@ class AddFilterTitles
         }
 
         $titles = $this->toTitles($this->variableRegistry->get(), $allowList);
-        if (! $titles) {
+        if (!$titles) {
             return $title;
         }
 
@@ -87,22 +85,23 @@ class AddFilterTitles
     /**
      * Make titles from active filters.
      *
-     * @param array $variables
-     * @param array $allowList
+     * @param  array $variables
+     * @param  array $allowList
      * @return string[]
      */
     private function toTitles(array $variables, array $allowList): array
     {
         $allowAll = in_array('all', $allowList, true);
-        if (! $allowAll && in_array('category', $allowList, true)) {
+        if (!$allowAll && in_array('category', $allowList, true)) {
             $allowList[] = 'cat';
         }
 
         $titles = [];
         foreach ($variables as $variable => $values) {
             try {
-                if (! $this->filterMetaRepository->get($variable)->isAttribute()
-                    && ! $this->filterMetaRepository->get($variable)->isCategory()
+                if (
+                    !$this->filterMetaRepository->get($variable)->isAttribute()
+                    && !$this->filterMetaRepository->get($variable)->isCategory()
                 ) {
                     continue;
                 }
@@ -110,7 +109,7 @@ class AddFilterTitles
                 continue;
             }
 
-            if (! $allowAll && ! in_array($variable, $allowList, true)) {
+            if (!$allowAll && !in_array($variable, $allowList, true)) {
                 continue;
             }
             foreach ($values as $value) {

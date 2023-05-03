@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -22,30 +23,30 @@ use Magento\Framework\Setup\Patch\DataPatchInterface;
 class EnableDefaultFilters implements DataPatchInterface
 {
     /**
-     * @var \Magento\Framework\Setup\ModuleDataSetupInterface
+     * @var ModuleDataSetupInterface
      */
     private $moduleDataSetup;
 
     /**
-     * @var \Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory
+     * @var CollectionFactory
      */
     private $filterableAttributes;
 
     /**
-     * @var \Magento\Config\Model\ResourceModel\Config
+     * @var Config
      */
     private $resourceConfig;
 
     /**
-     * @var \Magento\Framework\Serialize\SerializerInterface
+     * @var SerializerInterface
      */
     private $serializer;
 
     /**
-     * @param \Magento\Framework\Setup\ModuleDataSetupInterface                        $moduleDataSetup
-     * @param \Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory $filterableAttributes
-     * @param \Magento\Config\Model\ResourceModel\Config                               $resourceConfig
-     * @param \Magento\Framework\Serialize\SerializerInterface                         $serializer
+     * @param ModuleDataSetupInterface $moduleDataSetup
+     * @param CollectionFactory        $filterableAttributes
+     * @param Config                   $resourceConfig
+     * @param SerializerInterface      $serializer
      */
     public function __construct(
         ModuleDataSetupInterface $moduleDataSetup,
@@ -70,11 +71,11 @@ class EnableDefaultFilters implements DataPatchInterface
 
         $collection = $this->filterableAttributes->create();
         $collection->setItemObjectClass(Attribute::class)
-                   ->setOrder('position', 'ASC');
+            ->setOrder('position', 'ASC');
 
         $collection->addIsFilterableFilter();
 
-        $attributeCodes =[];
+        $attributeCodes = [];
         foreach ($collection as $attribute) {
             if ($attribute->getFrontendLabel()) {
                 $attributeCodes[$attribute->getAttributeCode()] = $attribute->getFrontendLabel();

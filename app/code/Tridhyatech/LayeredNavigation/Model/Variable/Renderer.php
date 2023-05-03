@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -15,6 +16,8 @@ use Tridhyatech\LayeredNavigation\Helper\Config\Seo;
 use Tridhyatech\LayeredNavigation\Model\CatalogSearch\IsSearchResultsPage;
 use Tridhyatech\LayeredNavigation\Model\OptionSource\InsertFiltersIn;
 use Tridhyatech\LayeredNavigation\Model\Variable\Path\Processor;
+use Tridhyatech\LayeredNavigation\Model\Variable\Value\UrlInterface as modelUrlInterface;
+use Tridhyatech\LayeredNavigation\Model\Variable\Registry;
 
 /**
  * @since 1.0.0
@@ -23,55 +26,55 @@ class Renderer
 {
 
     /**
-     * @var \Magento\Framework\UrlInterface
+     * @var UrlInterface
      */
     private $urlBuilder;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Path\Processor
+     * @var Processor
      */
     private $pathProcessor;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Registry
+     * @var Registry
      */
     private $variableRegistry;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Value\UrlInterface
+     * @var modelUrlInterface
      */
     private $valueUrlEncoder;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config\Seo
+     * @var Seo
      */
     private $seoConfig;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\CatalogSearch\IsSearchResultsPage
+     * @var IsSearchResultsPage
      */
     private $isSearchResultsPage;
 
     /**
-     * @param \Magento\Framework\UrlInterface                                           $urlBuilder
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Path\Processor           $pathProcessor
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Registry                 $variableRegistry
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config                           $config
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Value\UrlInterface       $valueUrlEncoder
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config\Seo                       $seoConfig
-     * @param \Tridhyatech\LayeredNavigation\Model\CatalogSearch\IsSearchResultsPage $isSearchResultsPage
+     * @param UrlInterface        $urlBuilder
+     * @param Processor           $pathProcessor
+     * @param Registry            $variableRegistry
+     * @param Config              $config
+     * @param modelUrlInterface   $valueUrlEncoder
+     * @param Seo                 $seoConfig
+     * @param IsSearchResultsPage $isSearchResultsPage
      */
     public function __construct(
         UrlInterface $urlBuilder,
         Processor $pathProcessor,
         Registry $variableRegistry,
         Config $config,
-        Value\UrlInterface $valueUrlEncoder,
+        modelUrlInterface $valueUrlEncoder,
         Seo $seoConfig,
         IsSearchResultsPage $isSearchResultsPage
     ) {
@@ -87,8 +90,8 @@ class Renderer
     /**
      * Render variables in current url.
      *
-     * @param array $variables
-     * @param array $additionalGetParams
+     * @param  array $variables
+     * @param  array $additionalGetParams
      * @return string
      */
     public function render(array $variables, array $additionalGetParams = []): string
@@ -109,9 +112,12 @@ class Renderer
         }
 
         $getParams = array_merge($getParams, $additionalGetParams);
-        $getParams = array_filter($getParams, static function ($paramValue) {
-            return null !== $paramValue;
-        });
+        $getParams = array_filter(
+            $getParams,
+            static function ($paramValue) {
+                return null !== $paramValue;
+            }
+        );
 
         $nextPath = $this->pathProcessor->getPathWithoutVariables($path, $this->variableRegistry->get());
         if (InsertFiltersIn::GET_PARAMS === $this->seoConfig->getInsertFiltersIn()) {
@@ -133,8 +139,8 @@ class Renderer
     /**
      * Add variables to the url.
      *
-     * @param string $url
-     * @param array $variables
+     * @param  string $url
+     * @param  array  $variables
      * @return string
      */
     public function addVariablesToUrl(string $url, array $variables): string
@@ -153,7 +159,7 @@ class Renderer
      *
      * Format "color-red/size-m-l"
      *
-     * @param array $variables
+     * @param  array $variables
      * @return string
      */
     public function inlineVariables(array $variables): string
@@ -176,10 +182,10 @@ class Renderer
     /**
      * Add variables to get params.
      *
-     * @param string[] $getParams
-     * @param array[]  $variables
+     * @param  string[] $getParams
+     * @param  array[]  $variables
      * @return string[]
-     * @since 1.3.0
+     * @since  1.3.0
      */
     public function addVariablesToParams(array $getParams, array $variables): array
     {

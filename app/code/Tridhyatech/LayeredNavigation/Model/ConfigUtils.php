@@ -1,6 +1,7 @@
 <?php
+
 /**
- * @author    Tridhya Tech Team
+ * @author    Tridhya Tech
  * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
  * @package   Tridhyatech_LayeredNavigation
  */
@@ -13,7 +14,6 @@ use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
 
 /**
- * @since 2.10.0
  * Using interface can cause "Cannot instantiate interface"
  * because <preference> applies only after cache cleaning.
  * To avoid helpdesk tickets it's better to use model instead of interface.
@@ -22,12 +22,12 @@ class ConfigUtils
 {
 
     /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     * @var ScopeConfigInterface
      */
     private $scopeConfig;
 
     /**
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+     * @param ScopeConfigInterface $scopeConfig
      */
     public function __construct(ScopeConfigInterface $scopeConfig)
     {
@@ -37,8 +37,8 @@ class ConfigUtils
     /**
      * Receive magento config value by store
      *
-     * @param string     $path  full path, eg: "pr_base/general/enabled"
-     * @param string|int $store store view code or website code
+     * @param  string     $path  full path, eg: "pr_base/general/enabled"
+     * @param  string|int $store store view code or website code
      * @return mixed
      */
     public function getStoreConfig(string $path, $store = null)
@@ -49,9 +49,9 @@ class ConfigUtils
     /**
      * Receive magento config value by store or by other scope type
      *
-     * @param string      $path      full path, eg: "pr_base/general/enabled"
-     * @param string|int  $scopeCode store view code or website code
-     * @param string|null $scopeType
+     * @param  string      $path      full path, eg: "pr_base/general/enabled"
+     * @param  string|int  $scopeCode store view code or website code
+     * @param  string|null $scopeType
      * @return mixed
      */
     public function getConfig(string $path, $scopeCode = null, $scopeType = null)
@@ -65,7 +65,7 @@ class ConfigUtils
     /**
      * Convert multiline text into array.
      *
-     * @param string $fieldValue
+     * @param  string $fieldValue
      * @return array
      */
     public function splitTextareaValueByLine(string $fieldValue): array
@@ -82,8 +82,8 @@ class ConfigUtils
     /**
      * Convert multiselect value into array.
      *
-     * @param string $value
-     * @param bool   $clearEmpty
+     * @param  string $value
+     * @param  bool   $clearEmpty
      * @return array
      */
     public function prepareMultiselectValue(string $value, bool $clearEmpty = true): array
@@ -95,9 +95,9 @@ class ConfigUtils
     /**
      * Is flag set.
      *
-     * @param string $path
-     * @param null   $scopeCode
-     * @param null   $scopeType
+     * @param  string $path
+     * @param  null   $scopeCode
+     * @param  null   $scopeType
      * @return bool
      */
     public function isSetFlag(string $path, $scopeCode = null, $scopeType = null): bool

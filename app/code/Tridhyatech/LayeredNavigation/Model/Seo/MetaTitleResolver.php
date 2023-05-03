@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -11,6 +11,7 @@ namespace Tridhyatech\LayeredNavigation\Model\Seo;
 
 use Magento\Framework\View\Page\Config as PageConfig;
 use Tridhyatech\LayeredNavigation\Helper\Config\Seo;
+use Tridhyatech\LayeredNavigation\Model\Seo\AddFilterTitles;
 
 /**
  * @since 1.0.0
@@ -19,18 +20,18 @@ class MetaTitleResolver
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config\Seo
+     * @var Seo
      */
     private $seoConfig;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Seo\AddFilterTitles
+     * @var AddFilterTitles
      */
     private $addFilterTitles;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config\Seo         $seoConfig
-     * @param \Tridhyatech\LayeredNavigation\Model\Seo\AddFilterTitles $addFilterTitles
+     * @param Seo             $seoConfig
+     * @param AddFilterTitles $addFilterTitles
      */
     public function __construct(
         Seo $seoConfig,
@@ -43,7 +44,7 @@ class MetaTitleResolver
     /**
      * Get pae titles with active filter titles.
      *
-     * @param \Magento\Framework\View\Page\Config $pageConfig
+     * @param  PageConfig $pageConfig
      * @return string
      */
     public function resolve(PageConfig $pageConfig): string

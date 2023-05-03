@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -28,42 +29,42 @@ class ChangeMeta implements ObserverInterface
 {
 
     /**
-     * @var \Magento\Framework\View\Page\Config
+     * @var PageConfig
      */
     private $_pageConfig;
 
     /**
-     * @var \Magento\Catalog\Model\Layer\Resolver
+     * @var Resolver
      */
     private $_catalogLayer;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @var \Magento\Framework\App\Request\Http
+     * @var Http
      */
     private $request;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Seo\PageTitleResolver
+     * @var PageTitleResolver
      */
     private $pageTitleResolver;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Seo\MetaTitleResolver
+     * @var MetaTitleResolver
      */
     private $metaTitleResolver;
 
     /**
-     * @param \Magento\Framework\View\Page\Config                           $pageConfig
-     * @param \Magento\Catalog\Model\Layer\Resolver                         $layerResolver
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config               $config
-     * @param \Magento\Framework\App\Request\Http                           $request
-     * @param \Tridhyatech\LayeredNavigation\Model\Seo\PageTitleResolver $pageTitleResolver
-     * @param \Tridhyatech\LayeredNavigation\Model\Seo\MetaTitleResolver $metaTitleResolver
+     * @param PageConfig        $pageConfig
+     * @param Resolver          $layerResolver
+     * @param Config            $config
+     * @param Http              $request
+     * @param PageTitleResolver $pageTitleResolver
+     * @param MetaTitleResolver $metaTitleResolver
      */
     public function __construct(
         PageConfig $pageConfig,
@@ -84,7 +85,7 @@ class ChangeMeta implements ObserverInterface
     /**
      * Changing attribute values
      *
-     * @param \Magento\Framework\Event\Observer $observer
+     * @param  \Magento\Framework\Event\Observer $observer
      * @return void
      */
     public function execute(Observer $observer)
@@ -92,7 +93,9 @@ class ChangeMeta implements ObserverInterface
         if ($this->config->isModuleEnabled()
             && AjaxResponse::CATEGORY_VIEW_ACTION_NAME === $observer->getFullActionName()
         ) {
-            /** @var \Magento\Framework\View\LayoutInterface $layout */
+            /**
+             * @var LayoutInterface $layout 
+             */
             $layout = $observer->getLayout();
 
             $this->setCategoryPageH1($layout);
@@ -109,7 +112,7 @@ class ChangeMeta implements ObserverInterface
      */
     public function setRobots(): void
     {
-        if (! $this->_catalogLayer->getState()->getFilters()) {
+        if (!$this->_catalogLayer->getState()->getFilters()) {
             return;
         }
         $this->_pageConfig->setRobots('NOINDEX,FOLLOW');
@@ -118,7 +121,7 @@ class ChangeMeta implements ObserverInterface
     /**
      * Set H1 for category pages.
      *
-     * @param \Magento\Framework\View\LayoutInterface $layout
+     * @param  LayoutInterface $layout
      * @return void
      */
     private function setCategoryPageH1(LayoutInterface $layout): void
@@ -133,7 +136,7 @@ class ChangeMeta implements ObserverInterface
     /**
      * Set meta title with active filters.
      *
-     * @param \Magento\Framework\View\Page\Config $pageConfig
+     * @param  PageConfig $pageConfig
      * @return void
      */
     private function setPageMetaTitle(PageConfig $pageConfig): void
@@ -156,8 +159,8 @@ class ChangeMeta implements ObserverInterface
         ) {
             //Remove current canonical url and add new
             $canonicals = $this->_pageConfig->getAssetCollection()
-                                            ->getGroupByContentType('canonical')
-                                            ->getAll();
+                ->getGroupByContentType('canonical')
+                ->getAll();
             $canonical = array_shift($canonicals);
             $this->_pageConfig->getAssetCollection()->remove($canonical->getUrl());
 

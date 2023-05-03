@@ -1,11 +1,16 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Plugin\Model\CatalogSearch\Layer\Category;
+
+use Tridhyatech\LayeredNavigation\Helper\Config;
+use Tridhyatech\LayeredNavigation\Model\ResourceModel\Product\CollectionFactory;
+use Magento\CatalogSearch\Model\Layer\Category\ItemCollectionProvider as modelCollectionProvider;
 
 /**
  * @since 1.0.0
@@ -14,22 +19,22 @@ class ItemCollectionProvider
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     protected $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\ResourceModel\Product\CollectionFactory
+     * @var CollectionFactory
      */
     protected $collectionFactory;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Model\ResourceModel\Product\CollectionFactory $collectionFactory
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config                                 $config
+     * @param CollectionFactory $collectionFactory
+     * @param Config            $config
      */
     public function __construct(
-        \Tridhyatech\LayeredNavigation\Model\ResourceModel\Product\CollectionFactory $collectionFactory,
-        \Tridhyatech\LayeredNavigation\Helper\Config $config
+        CollectionFactory $collectionFactory,
+        Config $config
     ) {
         $this->collectionFactory = $collectionFactory;
         $this->config = $config;
@@ -38,13 +43,13 @@ class ItemCollectionProvider
     /**
      * Around get collection
      *
-     * @param \Magento\CatalogSearch\Model\Layer\Category\ItemCollectionProvider $provider
-     * @param \Closure                                                           $result
-     * @param \Magento\Catalog\Model\Category                                    $category
+     * @param  modelCollectionProvider         $provider
+     * @param  \Closure                        $result
+     * @param  \Magento\Catalog\Model\Category $category
      * @return array
      */
     public function aroundGetCollection(
-        \Magento\CatalogSearch\Model\Layer\Category\ItemCollectionProvider $provider,
+        modelCollectionProvider $provider,
         $result,
         \Magento\Catalog\Model\Category $category
     ) {

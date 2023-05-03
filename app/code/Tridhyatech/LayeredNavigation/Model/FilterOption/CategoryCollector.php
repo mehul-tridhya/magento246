@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -18,12 +19,12 @@ class CategoryCollector implements CollectorInterface
 {
 
     /**
-     * @var \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory
+     * @var CollectionFactory
      */
     private $categoryCollectionFactory;
 
     /**
-     * @param \Magento\Catalog\Model\ResourceModel\Category\CollectionFactory $categoryCollectionFactory
+     * @param CollectionFactory $categoryCollectionFactory
      */
     public function __construct(CollectionFactory $categoryCollectionFactory)
     {
@@ -33,7 +34,7 @@ class CategoryCollector implements CollectorInterface
     /**
      * Collect options codes and labels.
      *
-     * @param array $options
+     * @param  array $options
      * @return array
      */
     public function collect(array $options): array

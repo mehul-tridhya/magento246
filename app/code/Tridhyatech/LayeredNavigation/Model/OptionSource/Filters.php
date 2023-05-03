@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -21,18 +21,18 @@ class Filters extends AbstractSource
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\FilterList
+     * @var FilterList
      */
     private $filterList;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface
+     * @var FilterRepositoryInterface
      */
     private $filterMetaRepository;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Model\FilterList                  $filterList
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface $filterMetaRepository
+     * @param FilterList                $filterList
+     * @param FilterRepositoryInterface $filterMetaRepository
      */
     public function __construct(
         FilterList $filterList,

@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -21,24 +22,24 @@ class Value
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface
+     * @var FilterRepositoryInterface
      */
     private $filterMetaRepository;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Value\UrlInterface
+     * @var UrlInterface
      */
     private $urlValue;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Value\Slugify
+     * @var Slugify
      */
     private $slugify;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface $filterMetaRepository
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Value\UrlInterface $urlValue
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Value\Slugify      $slugify
+     * @param FilterRepositoryInterface $filterMetaRepository
+     * @param UrlInterface              $urlValue
+     * @param Slugify                   $slugify
      */
     public function __construct(
         FilterRepositoryInterface $filterMetaRepository,
@@ -53,7 +54,7 @@ class Value
     /**
      * Prepare all values for array of variables.
      *
-     * @param array $variables
+     * @param  array $variables
      * @return array
      */
     public function prepareVariableValues(array $variables): array
@@ -68,8 +69,8 @@ class Value
     /**
      * Prepare all values for one variable.
      *
-     * @param string $code
-     * @param array  $values
+     * @param  string $code
+     * @param  array  $values
      * @return array
      */
     private function prepareValues(string $code, array $values): array
@@ -90,8 +91,8 @@ class Value
      *  3. Convert category key to its id
      *  4. Some specific fixes for custom filters
      *
-     * @param string $code
-     * @param string $value
+     * @param  string $code
+     * @param  string $value
      * @return string|null
      */
     private function prepareValue(string $code, string $value): ?string
@@ -113,15 +114,18 @@ class Value
     /**
      * Prepare price values.
      *
-     * @param array $variables
+     * @param  array $variables
      * @return array
      */
     public function preparePriceValues(array $variables): array
     {
         if (isset($variables['price'])) {
-            $variables['price'] = array_map(static function ($value) {
-                return str_replace('_', '-', $value);
-            }, $variables['price']);
+            $variables['price'] = array_map(
+                static function ($value) {
+                    return str_replace('_', '-', $value);
+                },
+                $variables['price']
+            );
         }
 
         return $variables;

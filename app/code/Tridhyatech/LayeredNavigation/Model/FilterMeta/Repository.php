@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -14,6 +15,7 @@ use Magento\Framework\Exception\NoSuchEntityException;
 use Tridhyatech\LayeredNavigation\Api\Data\FilterInterface;
 use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Helper\Config\Attribute;
+use Tridhyatech\LayeredNavigation\Model\FilterMeta\Factory;
 
 /**
  * @since 1.0.0
@@ -23,6 +25,7 @@ class Repository implements FilterRepositoryInterface
 
     /**
      * Toolbar variables
+     *
      * @var array
      */
     private $toolbarVars = [
@@ -38,19 +41,19 @@ class Repository implements FilterRepositoryInterface
     protected $variables;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\FilterMeta\Factory
+     * @var Factory
      */
     protected $filterMetaFactory;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config\Attribute
+     * @var Attribute
      */
     protected $attributeConfig;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Model\FilterMeta\Factory $filterMetaFactory
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config\Attribute  $attributeConfig
-     * @param array                                                      $toolbarVars
+     * @param Factory   $filterMetaFactory
+     * @param Attribute $attributeConfig
+     * @param array     $toolbarVars
      */
     public function __construct(
         Factory $filterMetaFactory,
@@ -65,13 +68,13 @@ class Repository implements FilterRepositoryInterface
     /**
      * Get filter meta.
      *
-     * @param string $requestVar
-     * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterInterface
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @param  string $requestVar
+     * @return FilterInterface
+     * @throws NoSuchEntityException
      */
     public function get(string $requestVar): FilterInterface
     {
-        if (! isset($this->getList()[$requestVar])) {
+        if (!isset($this->getList()[$requestVar])) {
             throw NoSuchEntityException::singleField('requestVar', $requestVar);
         }
         return $this->getList()[$requestVar];

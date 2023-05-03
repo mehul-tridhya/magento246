@@ -1,20 +1,29 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Plugin\Block\LayeredNavigation\Navigation;
 
-/**
- * @since 1.0.0
- */
+use Magento\Framework\View\LayoutInterface;
+use Magento\Framework\Module\Manager;
+use Magento\Framework\ObjectManagerInterface;
+use Tridhyatech\LayeredNavigation\Helper\Config;
+use Tridhyatech\LayeredNavigation\Model\FilterItem\Status;
+use Magento\LayeredNavigation\Block\Navigation\FilterRenderer as blockFilterRenderer;
+use Closure;
+use Magento\Catalog\Model\Layer\Filter\FilterInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item;
+
 class FilterRenderer
 {
 
     /**
-     * @var \Magento\Framework\View\LayoutInterface
+     * @var LayoutInterface
      */
     protected $layout;
 
@@ -24,22 +33,22 @@ class FilterRenderer
     protected $optionValues = [];
 
     /**
-     * @var \Magento\Framework\ObjectManagerInterface
+     * @var ObjectManagerInterface
      */
     private $objectManager;
 
     /**
-     * @var \Magento\Framework\Module\Manager
+     * @var Manager
      */
     private $moduleManager;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\FilterItem\Status
+     * @var Status
      */
     private $itemStatus;
 
@@ -49,19 +58,19 @@ class FilterRenderer
     private $filterRenderers;
 
     /**
-     * @param \Magento\Framework\View\LayoutInterface $layout
-     * @param \Magento\Framework\Module\Manager $moduleManager
-     * @param \Magento\Framework\ObjectManagerInterface $objectManager
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config $config
-     * @param \Tridhyatech\LayeredNavigation\Model\FilterItem\Status $itemStatus
-     * @param array $filterRenderers
+     * @param LayoutInterface        $layout
+     * @param Manager                $moduleManager
+     * @param ObjectManagerInterface $objectManager
+     * @param Config                 $config
+     * @param Status                 $itemStatus
+     * @param array                  $filterRenderers
      */
     public function __construct(
-        \Magento\Framework\View\LayoutInterface $layout,
-        \Magento\Framework\Module\Manager $moduleManager,
-        \Magento\Framework\ObjectManagerInterface $objectManager,
-        \Tridhyatech\LayeredNavigation\Helper\Config $config,
-        \Tridhyatech\LayeredNavigation\Model\FilterItem\Status $itemStatus,
+        LayoutInterface $layout,
+        Manager $moduleManager,
+        ObjectManagerInterface $objectManager,
+        Config $config,
+        Status $itemStatus,
         array $filterRenderers = []
     ) {
         $this->layout = $layout;
@@ -74,18 +83,18 @@ class FilterRenderer
 
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-     * @param \Magento\LayeredNavigation\Block\Navigation\FilterRenderer $subject
-     * @param \Closure $proceed
-     * @param \Magento\Catalog\Model\Layer\Filter\FilterInterface $filter
-     * @return mixed
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @param                                         blockFilterRenderer $subject
+     * @param                                         Closure             $proceed
+     * @param                                         FilterInterface     $filter
+     * @return                                        mixed
+     * @throws                                        LocalizedException
      */
     public function aroundRender(
-        \Magento\LayeredNavigation\Block\Navigation\FilterRenderer $subject,
-        \Closure $proceed,
-        \Magento\Catalog\Model\Layer\Filter\FilterInterface $filter
+        blockFilterRenderer $subject,
+        Closure $proceed,
+        FilterInterface $filter
     ) {
-        if (! $this->config->isModuleEnabled()) {
+        if (!$this->config->isModuleEnabled()) {
             return $proceed($filter);
         }
 
@@ -111,7 +120,7 @@ class FilterRenderer
     /**
      * Set rewritten value.
      *
-     * @param \Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item $option
+     * @param Item $option
      */
     private function refactorRewritedValue($option): void
     {

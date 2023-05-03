@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\ViewModel;
@@ -16,49 +17,46 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Tridhyatech\LayeredNavigation\Helper\Config;
 use Tridhyatech\LayeredNavigation\Model\Variable\Registry;
 
-/**
- * @since 1.0.0
- */
 class JsConfig implements ArgumentInterface
 {
 
     /**
-     * @var \Magento\Framework\Serialize\SerializerInterface
+     * @var SerializerInterface
      */
     private $serializer;
 
     /**
-     * @var \Magento\Framework\UrlInterface
+     * @var UrlInterface
      */
     private $urlBuilder;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Registry
+     * @var Registry
      */
     private $variableRegistry;
 
     /**
-     * @var \Magento\Framework\View\Asset\Repository
+     * @var Repository
      */
     private $assetRepo;
 
     /**
-     * @var \Magento\Framework\App\RequestInterface
+     * @var RequestInterface
      */
     private $request;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @param \Magento\Framework\Serialize\SerializerInterface          $serializer
-     * @param \Magento\Framework\UrlInterface                           $urlBuilder
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Registry $variableRegistry
-     * @param \Magento\Framework\View\Asset\Repository                  $assetRepo
-     * @param \Magento\Framework\App\RequestInterface                   $request
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config           $config
+     * @param SerializerInterface $serializer
+     * @param UrlInterface        $urlBuilder
+     * @param Registry            $variableRegistry
+     * @param Repository          $assetRepo
+     * @param RequestInterface    $request
+     * @param Config              $config
      */
     public function __construct(
         SerializerInterface $serializer,
@@ -109,7 +107,7 @@ class JsConfig implements ArgumentInterface
     /**
      * Retrieve formatted current url
      *
-     * @param array $variables
+     * @param  array $variables
      * @return string
      */
     public function getCurrentUrl(array $variables = []): string
@@ -123,19 +121,25 @@ class JsConfig implements ArgumentInterface
     /**
      * Convert all values to string to simplify comparison in js.
      *
-     * @param array $variables
+     * @param  array $variables
      * @return array
      */
     private function convertValuesToStrings(array $variables): array
     {
-        $variables = array_map(static function ($values) {
-            return array_map('strval', $values);
-        }, $variables);
+        $variables = array_map(
+            static function ($values) {
+                return array_map('strval', $values);
+            },
+            $variables
+        );
 
         if (isset($variables['price'])) {
-            $variables['price'] = array_map(static function ($value) {
-                return str_replace('-', '_', $value);
-            }, $variables['price']);
+            $variables['price'] = array_map(
+                static function ($value) {
+                    return str_replace('-', '_', $value);
+                },
+                $variables['price']
+            );
         }
 
         return $variables;
@@ -144,7 +148,7 @@ class JsConfig implements ArgumentInterface
     /**
      * Get static file url.
      *
-     * @param string $fileId
+     * @param  string $fileId
      * @return string
      */
     private function getViewFileUrl(string $fileId): string

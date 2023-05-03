@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -22,18 +23,18 @@ class CollectionFilterApplier
 {
 
     /**
-     * @var \Magento\Framework\App\ObjectManager
+     * @var ObjectManagerInterface
      */
     private $objectManager;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\SearchEngine
+     * @var SearchEngine
      */
     private $searchEngine;
 
     /**
-     * @param \Magento\Framework\ObjectManagerInterface             $objectManager
-     * @param \Tridhyatech\LayeredNavigation\Helper\SearchEngine $searchEngine
+     * @param ObjectManagerInterface $objectManager
+     * @param SearchEngine           $searchEngine
      */
     public function __construct(
         ObjectManagerInterface $objectManager,
@@ -46,14 +47,14 @@ class CollectionFilterApplier
     /**
      * Apply filter to collection.
      *
-     * @param \Magento\Catalog\Model\ResourceModel\Product\Collection $collection
-     * @param string                                                  $code
-     * @param array                                                   $values
+     * @param  Collection $collection
+     * @param  string     $code
+     * @param  array      $values
      * @return void
      */
     public function applyInCondition(Collection $collection, string $code, array $values): void
     {
-        if (! $values) {
+        if (!$values) {
             return;
         }
 
@@ -71,8 +72,8 @@ class CollectionFilterApplier
      * Live Search cannot parse default collection 'in' condition,
      * so we add it to the search criteria with proper format.
      *
-     * @param string $code
-     * @param array  $values
+     * @param  string $code
+     * @param  array  $values
      * @return void
      */
     private function fixForLiveSearch(string $code, array $values): void

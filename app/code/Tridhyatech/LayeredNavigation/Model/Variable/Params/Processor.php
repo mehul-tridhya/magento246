@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -20,8 +21,8 @@ class Processor
     /**
      * Move variables from path to params.
      *
-     * @param \Magento\Framework\HTTP\PhpEnvironment\Request $request
-     * @param array                                          $variables
+     * @param Request $request
+     * @param array   $variables
      */
     public function moveToParams(Request $request, array $variables): void
     {
@@ -50,15 +51,11 @@ class Processor
 
     /**
      * Parse only get params.
-     *
-     * @param \Magento\Framework\HTTP\PhpEnvironment\Request $request
-     * @return array
-     * @since 1.3.1
      */
     public function parseGetParams(Request $request): array
     {
         $query = parse_url($request->getRequestUri(), PHP_URL_QUERY);
-        if (! $query) {
+        if (!$query) {
             return [];
         }
         parse_str($query, $getParams);

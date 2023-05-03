@@ -23,7 +23,7 @@ use Tridhyatech\LayeredNavigation\Model\CatalogSearch\Model\ResourceModel\Fullte
 class SaveRealMaxAndMinPrices
 {
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\CatalogSearch\Model\ResourceModel\Fulltext\Collection\CurrentLoading
+     * @var CurrentLoading
      */
     private $currentLoadingCollection;
 
@@ -36,15 +36,13 @@ class SaveRealMaxAndMinPrices
     }
 
     /**
-     * @param \Magento\Elasticsearch\SearchAdapter\Aggregation\Builder\Dynamic $subject
      * @param BucketInterface                                                  $bucket
      * @param Dimension[]                                                      $dimensions
      * @param array                                                            $queryResult
      * @param DataProviderInterface                                            $dataProvider
      */
     public function beforeBuild(
-        \Magento\Elasticsearch\SearchAdapter\Aggregation\Builder\Dynamic $subject,
-        \Magento\Framework\Search\Request\BucketInterface $bucket,
+        BucketInterface $bucket,
         array $dimensions,
         array $queryResult,
         DataProviderInterface $dataProvider

@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -14,25 +15,22 @@ use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Api\GetUrlVariablesInterface;
 use Tridhyatech\LayeredNavigation\Helper\Config;
 
-/**
- * @since 1.0.0
- */
 class GetList implements GetUrlVariablesInterface
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface
+     * @var FilterRepositoryInterface
      */
     private $filterMetaRepository;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config                     $config
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface $filterMetaRepository
+     * @param Config                    $config
+     * @param FilterRepositoryInterface $filterMetaRepository
      */
     public function __construct(
         Config $config,
@@ -85,7 +83,7 @@ class GetList implements GetUrlVariablesInterface
     /**
      * Clean path.
      *
-     * @param string $urlPath
+     * @param  string $urlPath
      * @return string
      */
     private function cleanUrlPath(string $urlPath): string
@@ -97,7 +95,7 @@ class GetList implements GetUrlVariablesInterface
     /**
      * Parse variables and they value.
      *
-     * @param array $urlPathParts
+     * @param  array $urlPathParts
      * @return array
      */
     private function parseVariables(array $urlPathParts): array
@@ -124,7 +122,7 @@ class GetList implements GetUrlVariablesInterface
     /**
      * Remove variables witch we don't know.
      *
-     * @param array $variables
+     * @param  array $variables
      * @return array
      */
     private function filterVariables(array $variables): array

@@ -1,11 +1,14 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Model\Filter;
+
+use Magento\Catalog\Model\Layer\Filter\Item;
 
 class Price extends \Magento\CatalogSearch\Model\Layer\Filter\Price
 {
@@ -24,10 +27,10 @@ class Price extends \Magento\CatalogSearch\Model\Layer\Filter\Price
      *
      * Change price format from '50-59.011' to '50_59'
      *
-     * @param string $label
-     * @param mixed  $value
-     * @param int    $count
-     * @return \Magento\Catalog\Model\Layer\Filter\Item
+     * @param  string $label
+     * @param  mixed  $value
+     * @param  int    $count
+     * @return Item
      */
     protected function _createItem($label, $value, $count = 0)
     {

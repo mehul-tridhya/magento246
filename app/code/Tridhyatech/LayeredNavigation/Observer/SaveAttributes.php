@@ -1,14 +1,17 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Observer;
 
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory;
+use Tridhyatech\LayeredNavigation\Helper\Config\Attribute as tridhyaAttribute;
 
 /**
  * @since 1.0.0
@@ -17,22 +20,22 @@ class SaveAttributes implements ObserverInterface
 {
 
     /**
-     * @var \Magento\Catalog\Model\Layer\Category\FilterableAttributeList
+     * @var FilterableAttributeList
      */
     private $_filterableAttributes;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config\Attribute
+     * @var tridhyaAttribute
      */
     private $attributeConfig;
 
     /**
-     * @param \Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory $filterableAttributes
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config\Attribute                $attributeConfig
+     * @param CollectionFactory $filterableAttributes
+     * @param tridhyaAttribute  $attributeConfig
      */
     public function __construct(
         \Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory $filterableAttributes,
-        \Tridhyatech\LayeredNavigation\Helper\Config\Attribute $attributeConfig
+        tridhyaAttribute $attributeConfig
     ) {
         $this->_filterableAttributes = $filterableAttributes;
         $this->attributeConfig = $attributeConfig;
@@ -41,7 +44,7 @@ class SaveAttributes implements ObserverInterface
     /**
      * Changing attribute values
      *
-     * @param \Magento\Framework\Event\Observer $observer
+     * @param  \Magento\Framework\Event\Observer $observer
      * @return void
      */
     public function execute(\Magento\Framework\Event\Observer $observer)

@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Model;
@@ -13,23 +14,24 @@ use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory;
 use Magento\Framework\DataObject;
 use Psr\Log\LoggerInterface;
+use Magento\Catalog\Model\ResourceModel\Product\Attribute\Collection;
 
 class FilterList
 {
 
     /**
-     * @var \Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory
+     * @var CollectionFactory
      */
     protected $_filterableAttributes;
 
     /**
-     * @var \Psr\Log\LoggerInterface
+     * @var LoggerInterface
      */
     private $logger;
 
     /**
-     * @param \Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory $filterableAttributes
-     * @param \Psr\Log\LoggerInterface                                                 $logger
+     * @param CollectionFactory $filterableAttributes
+     * @param LoggerInterface   $logger
      */
     public function __construct(
         CollectionFactory $filterableAttributes,
@@ -46,7 +48,9 @@ class FilterList
      */
     public function getFilters(): array
     {
-        /** @var \Magento\Catalog\Model\ResourceModel\Product\Attribute\Collection $collection */
+        /**
+         * @var Collection $collection 
+         */
         $collection = $this->_filterableAttributes->create();
         $collection->setItemObjectClass(Attribute::class)
             ->setOrder('position', 'ASC');
@@ -62,9 +66,11 @@ class FilterList
         $collection->addFieldToFilter('attribute_code', ['neq' => 'visibility']);
 
         $attributes = [];
-        /** @var \Magento\Catalog\Api\Data\ProductAttributeInterface $attr */
+        /**
+         * @var ProductAttributeInterface $attr 
+         */
         foreach ($collection->getItems() as $attr) {
-            if (! $this->canUseAttribute($attr)) {
+            if (!$this->canUseAttribute($attr)) {
                 continue;
             }
             $attributes[$attr->getAttributeCode()] = $attr;
@@ -83,7 +89,9 @@ class FilterList
         $attributeList = [];
         $attributes = $this->getFilters();
         foreach ($attributes as $code => $attribute) {
-            /** @var \Magento\Catalog\Model\ResourceModel\Eav\Attribute $attribute */
+            /**
+             * @var Attribute $attribute 
+             */
             $attributeList[$code] = (string) $attribute->getFrontendLabel();
         }
 
@@ -112,14 +120,14 @@ class FilterList
     /**
      * Check if attribute is suitable for filtering.
      *
-     * @param \Magento\Catalog\Api\Data\ProductAttributeInterface $productAttribute
+     * @param  ProductAttributeInterface $productAttribute
      * @return bool
      */
     private function canUseAttribute(ProductAttributeInterface $productAttribute): bool
     {
         try {
             $options = $productAttribute->getOptions();
-            if (! is_array($options)) {
+            if (!is_array($options)) {
                 return false;
             }
             if ($this->hasArrayValue($options)) {
@@ -129,7 +137,7 @@ class FilterList
         } catch (\Exception $exception) {
             $this->logger->debug(
                 "Attribute {$productAttribute->getAttributeCode()} is not included to filer list " .
-                "because of error: {$exception->getMessage()}"
+                    "because of error: {$exception->getMessage()}"
             );
         }
         return false;
@@ -140,7 +148,7 @@ class FilterList
      *
      * We cannot work with that type of attributes.
      *
-     * @param array $options
+     * @param  array $options
      * @return bool
      */
     private function hasArrayValue(array $options): bool

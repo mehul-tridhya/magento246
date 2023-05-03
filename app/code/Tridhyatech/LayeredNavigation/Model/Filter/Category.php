@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Model\Filter;
@@ -15,6 +15,12 @@ use Tridhyatech\LayeredNavigation\Helper\Elasticsearch;
 use Tridhyatech\LayeredNavigation\Helper\SearchEngine;
 use Tridhyatech\LayeredNavigation\Model\CollectionFilterApplier;
 use Tridhyatech\LayeredNavigation\Model\FacetedData\CategoryResolver;
+use Magento\Catalog\Model\Layer\Filter\ItemFactory;
+use Magento\Store\Model\StoreManagerInterface;
+use Magento\Catalog\Model\Layer;
+use Magento\Catalog\Model\Layer\Filter\Item\DataBuilder;
+use Magento\Framework\Escaper;
+use Magento\Catalog\Model\Layer\Filter\DataProvider\CategoryFactory;
 
 /**
  * @since 1.0.0
@@ -23,51 +29,51 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
 {
 
     /**
-     * @var \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
+     * @var Category
      */
     private $dataProvider;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\FacetedData\CategoryResolver
+     * @var CategoryResolver
      */
     private $facetedDataResolver;
 
     /**
-     * @var mixed|\Tridhyatech\LayeredNavigation\Model\CollectionFilterApplier
+     * @var mixed|CollectionFilterApplier
      */
     private $collectionFilterApplier;
 
     /**
-     * @var mixed|\Tridhyatech\LayeredNavigation\Helper\SearchEngine
+     * @var mixed|SearchEngine
      */
     private $searchEngine;
 
     /**
-     * @param \Magento\Catalog\Model\Layer\Filter\ItemFactory                      $filterItemFactory
-     * @param \Magento\Store\Model\StoreManagerInterface                           $storeManager
-     * @param \Magento\Catalog\Model\Layer                                         $layer
-     * @param \Magento\Catalog\Model\Layer\Filter\Item\DataBuilder                 $itemDataBuilder
-     * @param \Magento\Framework\Escaper                                           $escaper
-     * @param \Magento\Catalog\Model\Layer\Filter\DataProvider\CategoryFactory     $categoryDataProviderFactory
-     * @param \Tridhyatech\LayeredNavigation\Helper\Elasticsearch               $elasticsearchHelper
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config                      $config
-     * @param \Tridhyatech\LayeredNavigation\Model\FacetedData\CategoryResolver $facetedDataResolver
-     * @param array                                                                $data
-     * @param \Tridhyatech\LayeredNavigation\Model\CollectionFilterApplier|null $collectionFilterApplier
-     * @param \Tridhyatech\LayeredNavigation\Helper\SearchEngine|null           $searchEngine
+     * @param ItemFactory                  $filterItemFactory
+     * @param StoreManagerInterface        $storeManager
+     * @param Layer                        $layer
+     * @param DataBuilder                  $itemDataBuilder
+     * @param Escaper                      $escaper
+     * @param CategoryFactory              $categoryDataProviderFactory
+     * @param Elasticsearch                $elasticsearchHelper
+     * @param Config                       $config
+     * @param CategoryResolver             $facetedDataResolver
+     * @param array                        $data
+     * @param CollectionFilterApplier|null $collectionFilterApplier
+     * @param SearchEngine|null            $searchEngine
      */
     public function __construct(
-        \Magento\Catalog\Model\Layer\Filter\ItemFactory $filterItemFactory,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Catalog\Model\Layer $layer,
-        \Magento\Catalog\Model\Layer\Filter\Item\DataBuilder $itemDataBuilder,
-        \Magento\Framework\Escaper $escaper,
-        \Magento\Catalog\Model\Layer\Filter\DataProvider\CategoryFactory $categoryDataProviderFactory,
+        ItemFactory $filterItemFactory,
+        StoreManagerInterface $storeManager,
+        Layer $layer,
+        DataBuilder $itemDataBuilder,
+        Escaper $escaper,
+        CategoryFactory $categoryDataProviderFactory,
         Elasticsearch $elasticsearchHelper,
         Config $config,
         CategoryResolver $facetedDataResolver,
@@ -160,8 +166,8 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
     /**
      * Filter products by categories
      *
-     * @param \Magento\Catalog\Model\ResourceModel\Product\Collection $collection
-     * @param array                                                   $categoryIds
+     * @param  Collection $collection
+     * @param  array      $categoryIds
      * @return $this
      */
     protected function addCategoriesFilter(Collection $collection, array $categoryIds): Category

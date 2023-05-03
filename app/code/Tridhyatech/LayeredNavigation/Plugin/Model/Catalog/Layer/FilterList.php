@@ -1,32 +1,37 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Plugin\Model\Catalog\Layer;
+
+use Tridhyatech\LayeredNavigation\Helper\Config;
+use Tridhyatech\LayeredNavigation\Helper\Config\Attribute;
+use Magento\Catalog\Model\Layer\FilterList as modelFilterList;
 
 class FilterList
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config\Attribute
+     * @var Attribute
      */
     private $attributeConfig;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config           $config
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config\Attribute $attributeConfig
+     * @param Config    $config
+     * @param Attribute $attributeConfig
      */
     public function __construct(
-        \Tridhyatech\LayeredNavigation\Helper\Config $config,
-        \Tridhyatech\LayeredNavigation\Helper\Config\Attribute $attributeConfig
+        Config $config,
+        Attribute $attributeConfig
     ) {
         $this->config = $config;
         $this->attributeConfig = $attributeConfig;
@@ -35,24 +40,24 @@ class FilterList
     /**
      * Around get filter
      *
-     * @param  \Magento\Catalog\Model\Layer\FilterList $filterList
-     * @param  \Closure $result
+     * @param  modelFilterList              $filterList
+     * @param  \Closure                     $result
      * @param  \Magento\Catalog\Model\Layer $layer
      * @return array
      */
     public function aroundGetFilters(
-        \Magento\Catalog\Model\Layer\FilterList $filterList,
+        modelFilterList $filterList,
         $result,
         \Magento\Catalog\Model\Layer $layer
     ) {
-        if (! $this->config->isModuleEnabled()) {
+        if (!$this->config->isModuleEnabled()) {
             return $result($layer);
         }
 
         $filters = $result($layer);
 
         //Remove first element from array, because category filter is first
-        if (! $this->attributeConfig->isCategoryFilterEnabled()) {
+        if (!$this->attributeConfig->isCategoryFilterEnabled()) {
             unset($filters[0]);
         }
 
@@ -62,7 +67,7 @@ class FilterList
     /**
      * Sort filters
      *
-     * @param array $filters
+     * @param  array $filters
      * @return array
      */
     protected function _sortFilters(array $filters): array
@@ -71,7 +76,8 @@ class FilterList
 
         $sortedFilters = [];
         foreach ($filters as $filter) {
-            if ($filter instanceof \Magento\Catalog\Model\Layer\Filter\Category
+            if (
+                $filter instanceof \Magento\Catalog\Model\Layer\Filter\Category
                 || $filter instanceof \Magento\CatalogSearch\Model\Layer\Filter\Category
             ) {
                 $_code = 'category';

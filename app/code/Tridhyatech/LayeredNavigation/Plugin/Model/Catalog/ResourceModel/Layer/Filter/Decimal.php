@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Plugin\Model\Catalog\ResourceModel\Layer\Filter;
@@ -20,8 +21,8 @@ class Decimal
     /**
      * Convert null to integer.
      *
-     * @param DecimalFilter $subject
-     * @param array         $result
+     * @param  DecimalFilter $subject
+     * @param  array         $result
      * @return array
      */
     public function afterGetMinMax(DecimalFilter $subject, array $result): array

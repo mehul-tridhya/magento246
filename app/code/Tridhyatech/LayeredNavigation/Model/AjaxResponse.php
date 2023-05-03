@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -31,12 +32,12 @@ class AjaxResponse
     public const PRODUCT_FILTER_REMOVE_HANDLE = 'product_filter_ajax_request';
 
     /**
-     * @var \Magento\Framework\App\Request\Http
+     * @var Http
      */
     private $request;
 
     /**
-     * @var \Magento\Framework\View\Layout
+     * @var Layout
      */
     private $layout;
 
@@ -48,22 +49,22 @@ class AjaxResponse
     private $vars;
 
     /**
-     * @var \Magento\Framework\Module\Manager
+     * @var Manager
      */
     private $moduleManager;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Registry
+     * @var Registry
      */
     private $variableRegistry;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Renderer
+     * @var Renderer
      */
     private $variableRenderer;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Seo\PageTitleResolver
+     * @var PageTitleResolver
      */
     private $pageTitleResolver;
 
@@ -73,13 +74,13 @@ class AjaxResponse
     private $navigationBlock = false;
 
     /**
-     * @param \Magento\Framework\App\Request\Http                           $request
-     * @param \Magento\Framework\View\Layout                                $layout
-     * @param \Magento\Framework\Config\View                                $configView
-     * @param \Magento\Framework\Module\Manager                             $moduleManager
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Registry     $variableRegistry
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Renderer     $variableRenderer
-     * @param \Tridhyatech\LayeredNavigation\Model\Seo\PageTitleResolver $pageTitleResolver
+     * @param Http              $request
+     * @param Layout            $layout
+     * @param View              $configView
+     * @param Manager           $moduleManager
+     * @param Registry          $variableRegistry
+     * @param Renderer          $variableRenderer
+     * @param PageTitleResolver $pageTitleResolver
      */
     public function __construct(
         Http $request,
@@ -180,7 +181,7 @@ class AjaxResponse
      */
     private function getNavigationBlock()
     {
-        if (! $this->navigationBlock) {
+        if (!$this->navigationBlock) {
             if ($this->request->getFullActionName() === self::CATEGORY_VIEW_ACTION_NAME) {
                 $this->navigationBlock = $this->layout->getBlock($this->vars['catalog_left_navigation_block']);
             }

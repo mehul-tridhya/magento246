@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -13,25 +13,22 @@ use Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface;
 use Tridhyatech\LayeredNavigation\Model\Variable\Registry;
 use Tridhyatech\LayeredNavigation\Model\Variable\Renderer;
 
-/**
- * @since 1.0.0
- */
 class Url implements ItemUrlBuilderInterface
 {
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Registry
+     * @var Registry
      */
     private $variableRegistry;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Variable\Renderer
+     * @var Renderer
      */
     private $variablesRenderer;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Registry $variableRegistry
-     * @param \Tridhyatech\LayeredNavigation\Model\Variable\Renderer $variablesRenderer
+     * @param Registry $variableRegistry
+     * @param Renderer $variablesRenderer
      */
     public function __construct(
         Registry $variableRegistry,
@@ -44,9 +41,9 @@ class Url implements ItemUrlBuilderInterface
     /**
      * Create url to add filter option.
      *
-     * @param string $requestVar
-     * @param string $itemValue
-     * @param bool   $removeCurrentValue
+     * @param  string $requestVar
+     * @param  string $itemValue
+     * @param  bool   $removeCurrentValue
      * @return string
      */
     public function getAddFilterUrl(string $requestVar, string $itemValue, bool $removeCurrentValue = false): string
@@ -66,8 +63,8 @@ class Url implements ItemUrlBuilderInterface
     /**
      * Create url to remove filter option.
      *
-     * @param string $requestVar
-     * @param string $itemValue
+     * @param  string $requestVar
+     * @param  string $itemValue
      * @return string
      */
     public function getRemoveFilterUrl(string $requestVar, string $itemValue): string

@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -16,6 +16,7 @@ use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Api\FiltersOptionsInterface;
+use Tridhyatech\LayeredNavigation\Model\FilterOption\CollectorInterface;
 
 /**
  * @since 1.0.0
@@ -26,7 +27,7 @@ class FiltersOptions implements FiltersOptionsInterface
     public const ATTRIBUTES_CACHE_IDENTIFIER = 'product_filter_attribute_cache';
 
     /**
-     * @var \Magento\Framework\App\CacheInterface
+     * @var CacheInterface
      */
     private $cache;
 
@@ -36,31 +37,31 @@ class FiltersOptions implements FiltersOptionsInterface
     private $options;
 
     /**
-     * @var \Magento\Framework\Serialize\SerializerInterface
+     * @var SerializerInterface
      */
     private $serializer;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface
+     * @var FilterRepositoryInterface
      */
     private $filterRepository;
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\FilterOption\CollectorInterface[]
+     * @var CollectorInterface[]
      */
     private $filterOptionCollectors;
 
     /**
-     * @var \Magento\Store\Model\StoreManagerInterface
+     * @var StoreManagerInterface
      */
     private $storeManager;
 
     /**
-     * @param \Magento\Framework\App\CacheInterface                               $cache
-     * @param \Magento\Framework\Serialize\SerializerInterface                    $serializer
-     * @param \Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface $filterRepository
-     * @param \Magento\Store\Model\StoreManagerInterface                          $storeManager
-     * @param array                                                               $filterOptionCollectors
+     * @param CacheInterface            $cache
+     * @param SerializerInterface       $serializer
+     * @param FilterRepositoryInterface $filterRepository
+     * @param StoreManagerInterface     $storeManager
+     * @param array                     $filterOptionCollectors
      */
     public function __construct(
         CacheInterface $cache,
@@ -79,7 +80,7 @@ class FiltersOptions implements FiltersOptionsInterface
     /**
      * Get attribute options.
      *
-     * @param string $requestVar
+     * @param  string $requestVar
      * @return array
      * [
      *     'option_id' => [
@@ -96,8 +97,8 @@ class FiltersOptions implements FiltersOptionsInterface
     /**
      * Get attribute option id by its escaped label.
      *
-     * @param string $requestVar
-     * @param string $optionCode
+     * @param  string $requestVar
+     * @param  string $optionCode
      * @return int|string
      */
     public function toOptionValue(string $requestVar, string $optionCode)
@@ -114,8 +115,8 @@ class FiltersOptions implements FiltersOptionsInterface
     /**
      * Get attribute option code by its id.
      *
-     * @param string     $requestVar
-     * @param int|string $optionValue
+     * @param  string     $requestVar
+     * @param  int|string $optionValue
      * @return string
      */
     public function toOptionCode(string $requestVar, $optionValue): string
@@ -141,8 +142,8 @@ class FiltersOptions implements FiltersOptionsInterface
     /**
      * Get attribute option label by its id.
      *
-     * @param string     $requestVar
-     * @param int|string $optionValue
+     * @param  string     $requestVar
+     * @param  int|string $optionValue
      * @return string
      */
     public function toOptionLabel(string $requestVar, $optionValue): string
@@ -168,7 +169,7 @@ class FiltersOptions implements FiltersOptionsInterface
     /**
      * Get category id by url key.
      *
-     * @param string $urlKey
+     * @param  string $urlKey
      * @return int
      */
     public function getCategoryId(string $urlKey): int

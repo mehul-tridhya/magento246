@@ -1,8 +1,9 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -13,19 +14,16 @@ use Magento\Framework\ObjectManagerInterface;
 use Tridhyatech\LayeredNavigation\Api\Data\FilterInterface;
 use Tridhyatech\LayeredNavigation\Model\FilterMeta;
 
-/**
- * @since 1.0.0
- */
 class Factory
 {
 
     /**
-     * @var \Magento\Framework\ObjectManagerInterface
+     * @var ObjectManagerInterface
      */
     private $objectManager;
 
     /**
-     * @param \Magento\Framework\ObjectManagerInterface $objectManager
+     * @param ObjectManagerInterface $objectManager
      */
     public function __construct(ObjectManagerInterface $objectManager)
     {
@@ -35,9 +33,9 @@ class Factory
     /**
      * Custom filter meta factory.
      *
-     * @param string $requestVar
-     * @param string $type
-     * @return \Tridhyatech\LayeredNavigation\Api\Data\FilterInterface
+     * @param  string $requestVar
+     * @param  string $type
+     * @return FilterInterface
      */
     public function create(string $requestVar, string $type): FilterInterface
     {

@@ -1,23 +1,25 @@
 <?php
+
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Plugin\Model\Catalog\Layer\Filter\DataProvider;
 
 use Tridhyatech\LayeredNavigation\Helper\Config;
+use Magento\Catalog\Model\Layer\Filter\DataProvider\Price as modelPrice;
 
 class Price
 {
     /**
-     * @var \Tridhyatech\LayeredNavigation\Helper\Config
+     * @var Config
      */
     private $config;
 
     /**
-     * @param \Tridhyatech\LayeredNavigation\Helper\Config $config
+     * @param Config $config
      */
     public function __construct(Config $config)
     {
@@ -27,13 +29,13 @@ class Price
     /**
      * Skip max price modification
      *
-     * @param \Magento\Catalog\Model\Layer\Filter\DataProvider\Price $subject
-     * @param mixed                                                  $result
+     * @param  modelPrice $subject
+     * @param  mixed      $result
      * @return mixed
      */
-    public function afterValidateFilter(\Magento\Catalog\Model\Layer\Filter\DataProvider\Price $subject, $result)
+    public function afterValidateFilter(modelPrice $subject, $result)
     {
-        if (false === $result || ! $this->config->isModuleEnabled()) {
+        if (false === $result || !$this->config->isModuleEnabled()) {
             return $result;
         }
 
@@ -43,11 +45,11 @@ class Price
             return $result;
         }
 
-        if (! defined('Magento\CatalogSearch\Model\Layer\Filter\Price::PRICE_DELTA')) {
+        if (!defined('Magento\CatalogSearch\Model\Layer\Filter\Price::PRICE_DELTA')) {
             return $result;
         }
 
-        if (! empty($result[1])) {
+        if (!empty($result[1])) {
             $result[1] += \Magento\CatalogSearch\Model\Layer\Filter\Price::PRICE_DELTA + .01;
         }
 
