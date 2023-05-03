@@ -9,7 +9,6 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <update handle="pr_system_config_chosen"/>
     <head>
-        <css src="Tridhyatech_LayeredNavigation::js/chosen-init.js"/>
         <script src="Tridhyatech_LayeredNavigation::js/seo-url-preview.js"/>
     </head>
 </page>

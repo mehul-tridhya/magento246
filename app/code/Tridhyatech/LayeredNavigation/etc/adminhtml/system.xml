@@ -59,37 +59,6 @@
                         <source_model>Tridhyatech\LayeredNavigation\Model\OptionSource\InsertFiltersIn</source_model>
                     </field>
                 </group>
-                <group id="page_heading" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Category Page Heading</label>
-                    <field id="position" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                        <label>Add Filter Titles</label>
-                        <source_model>Tridhyatech\LayeredNavigation\Model\OptionSource\CategoryFilterTitlePosition</source_model>
-                        <comment>Create dynamic Category Page Heading that changes based on filter selections.</comment>
-                    </field>
-                    <field id="filters" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                        <label>Enable for</label>
-                        <source_model>Tridhyatech\LayeredNavigation\Model\OptionSource\Filters</source_model>
-                        <frontend_class>pr-chosen</frontend_class>
-                    </field>
-                    <field id="separator" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                        <label>Separate Filter Titles By</label>
-                    </field>
-                </group>
-                <group id="meta_title" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Category Page Meta Title</label>
-                    <field id="position" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                        <label>Add Filter Titles</label>
-                        <source_model>Tridhyatech\LayeredNavigation\Model\OptionSource\CategoryFilterMetaTitlePosition</source_model>
-                    </field>
-                    <field id="filters" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                        <label>Enable for</label>
-                        <source_model>Tridhyatech\LayeredNavigation\Model\OptionSource\Filters</source_model>
-                        <frontend_class>pr-chosen</frontend_class>
-                    </field>
-                    <field id="separator" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                        <label>Separate Filter Titles By</label>
-                    </field>
-                </group>
             </group>
         </section>
     </system>

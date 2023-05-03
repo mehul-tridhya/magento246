@@ -15,7 +15,6 @@ use Magento\Framework\Config\View;
 use Magento\Framework\Module\Manager;
 use Magento\Framework\View\Element\AbstractBlock;
 use Magento\Framework\View\Layout;
-use Tridhyatech\LayeredNavigation\Model\Seo\PageTitleResolver;
 use Tridhyatech\LayeredNavigation\Model\Variable\Registry;
 use Tridhyatech\LayeredNavigation\Model\Variable\Renderer;
 
@@ -64,11 +63,6 @@ class AjaxResponse
     private $variableRenderer;
 
     /**
-     * @var PageTitleResolver
-     */
-    private $pageTitleResolver;
-
-    /**
      * @var bool
      */
     private $navigationBlock = false;
@@ -80,7 +74,6 @@ class AjaxResponse
      * @param Manager           $moduleManager
      * @param Registry          $variableRegistry
      * @param Renderer          $variableRenderer
-     * @param PageTitleResolver $pageTitleResolver
      */
     public function __construct(
         Http $request,
@@ -89,7 +82,6 @@ class AjaxResponse
         Manager $moduleManager,
         Registry $variableRegistry,
         Renderer $variableRenderer,
-        PageTitleResolver $pageTitleResolver
     ) {
         $this->layout = $layout;
         $this->vars = $configView->getVars('Tridhyatech_ProductFilter');
@@ -97,7 +89,6 @@ class AjaxResponse
         $this->moduleManager = $moduleManager;
         $this->variableRegistry = $variableRegistry;
         $this->variableRenderer = $variableRenderer;
-        $this->pageTitleResolver = $pageTitleResolver;
     }
 
     /**
@@ -117,8 +108,7 @@ class AjaxResponse
             'productlist' => $productListHtml,
             'leftnav' => $leftNavHtml,
             'googleTagManager' => $googleTagManagerData,
-            'nextUrl' => $this->variableRenderer->render($this->variableRegistry->get()),
-            'h1' => $this->pageTitleResolver->resolve($this->request),
+            'nextUrl' => $this->variableRenderer->render($this->variableRegistry->get())
         ];
     }
 
