@@ -1,9 +1,8 @@
 <?php
-
 /**
- * @author    Tridhya Tech
- * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
- * @package   Tridhyatech_LayeredNavigation
+* @author Tridhya Tech
+* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+* @package Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Plugin\Elasticsearch\Amasty\Search;
@@ -29,10 +28,11 @@ class GetRequestQuery
     /**
      * Fix get request query
      *
-     * @param  $query
+     * @param \Amasty\ElasticSearch\Model\Search\GetRequestQuery $subject
+     * @param                                                    $query
      * @return array
      */
-    public function afterExecute($query)
+    public function afterExecute(\Amasty\ElasticSearch\Model\Search\GetRequestQuery $subject, $query)
     {
         if (isset($query['body']['query']['bool']['must']) && $this->config->isModuleEnabled()) {
             foreach ($query['body']['query']['bool']['must'] as $filterKey => $filterValue) {

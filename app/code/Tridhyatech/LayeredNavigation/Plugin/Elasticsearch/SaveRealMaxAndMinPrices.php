@@ -36,13 +36,15 @@ class SaveRealMaxAndMinPrices
     }
 
     /**
+     * @param \Magento\Elasticsearch\SearchAdapter\Aggregation\Builder\Dynamic $subject
      * @param BucketInterface                                                  $bucket
      * @param Dimension[]                                                      $dimensions
      * @param array                                                            $queryResult
      * @param DataProviderInterface                                            $dataProvider
      */
     public function beforeBuild(
-        BucketInterface $bucket,
+        \Magento\Elasticsearch\SearchAdapter\Aggregation\Builder\Dynamic $subject,
+        \Magento\Framework\Search\Request\BucketInterface $bucket,
         array $dimensions,
         array $queryResult,
         DataProviderInterface $dataProvider
