@@ -58,10 +58,6 @@ class Pager extends \Magento\Theme\Block\Html\Pager
      */
     public function getPageUrl($page)
     {
-        if ($this->config->isModuleEnabled()) {
-            return $this->variableRenderer->render($this->variableRegistry->get(), ['p' => $page > 1 ? $page : null]);
-        }
-
-        return parent::getPageUrl($page);
+        return $this->variableRenderer->render($this->variableRegistry->get(), ['p' => $page > 1 ? $page : null]);
     }
 }

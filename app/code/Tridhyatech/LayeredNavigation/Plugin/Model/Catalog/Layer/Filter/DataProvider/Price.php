@@ -35,7 +35,7 @@ class Price
      */
     public function afterValidateFilter(modelPrice $subject, $result)
     {
-        if (false === $result || !$this->config->isModuleEnabled()) {
+        if (false === $result) {
             return $result;
         }
 

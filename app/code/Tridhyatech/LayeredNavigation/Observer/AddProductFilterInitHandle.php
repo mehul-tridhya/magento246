@@ -39,14 +39,12 @@ class AddProductFilterInitHandle implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        if ($this->config->isModuleEnabled()) {
-            /**
-             * @var Layout $layout 
-             */
-            $layout = $observer->getLayout();
-            if (array_intersect($layout->getUpdate()->getHandles(), $this->config->getAllowedHandles())) {
-                $layout->getUpdate()->addHandle('product_filter_init');
-            }
+        /**
+         * @var Layout $layout 
+         */
+        $layout = $observer->getLayout();
+        if (array_intersect($layout->getUpdate()->getHandles(), $this->config->getAllowedHandles())) {
+            $layout->getUpdate()->addHandle('product_filter_init');
         }
     }
 }

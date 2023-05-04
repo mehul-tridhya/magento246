@@ -104,9 +104,6 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
      */
     public function apply(\Magento\Framework\App\RequestInterface $request)
     {
-        if (! $this->config->isModuleEnabled() || ! $request->getParam($this->_requestVar)) {
-            return parent::apply($request);
-        }
 
         $categoryId = $request->getParam($this->_requestVar) ?: $request->getParam('id');
         if (empty($categoryId)) {
@@ -143,9 +140,6 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
      */
     protected function _getItemsData()
     {
-        if (! $this->config->isModuleEnabled()) {
-            return parent::_getItemsData();
-        }
 
         $currentCategory = $this->getLayer()->getCurrentCategory();
         if (! $currentCategory->getIsActive()) {

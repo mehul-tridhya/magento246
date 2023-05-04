@@ -10,9 +10,8 @@
     <default>
         <ttlayerednavigation>
             <general>
-                <enabled>0</enabled>
+                <enabled>1</enabled>
                 <scroll_up>1</scroll_up>
-                <empty_option>0</empty_option>
             </general>
         </ttlayerednavigation>
     </default>

@@ -111,7 +111,6 @@ class HandleFilterAjaxRequest
     {
         $allowedActions = [AjaxResponse::CATEGORY_VIEW_ACTION_NAME, AjaxResponse::CATALOG_SEARCH_ACTION_NAME];
         return $this->ajaxRequestLocator->isActive()
-            && in_array($request->getFullActionName(), $allowedActions, true)
-            && $this->config->isModuleEnabled();
+            && in_array($request->getFullActionName(), $allowedActions, true);
     }
 }

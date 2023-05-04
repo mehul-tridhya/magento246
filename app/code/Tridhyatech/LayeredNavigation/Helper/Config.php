@@ -22,7 +22,6 @@ class Config extends AbstractHelper
 
     public const FILTER_PARAM_SEPARATOR = '-';
 
-    public const XML_PATH_IS_MODULE_ENABLED = 'ttlayerednavigation/general/enabled';
     public const XML_PATH_SCROLL_UP = 'ttlayerednavigation/general/scroll_up';
 
     /**
@@ -64,18 +63,6 @@ class Config extends AbstractHelper
     ) {
         parent::__construct($context);
         $this->configUtils = $configUtils;
-    }
-
-    /**
-     * Check if module is enabled in configs.
-     *
-     * @param  int|string|null $store
-     * @param  string|null     $scope
-     * @return bool
-     */
-    public function isModuleEnabled($store = null, $scope = null): bool
-    {
-        return $this->configUtils->isSetFlag(self::XML_PATH_IS_MODULE_ENABLED, $store, $scope);
     }
 
     /**

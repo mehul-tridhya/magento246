@@ -106,7 +106,7 @@ class FixMaxAndMinPrices
      */
     public function needFix(): bool
     {
-        return $this->config->isModuleEnabled() && $this->searchEngine->isElasticSearch();
+        return $this->searchEngine->isElasticSearch();
     }
 
     /**

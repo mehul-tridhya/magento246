@@ -15,24 +15,9 @@
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
                 <attribute type="expanded">1</attribute>
-                <field id="enabled" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enable Extension</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
                 <field id="scroll_up" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Scroll Up After Filtering</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <depends>
-                        <field id="*/*/enabled">1</field>
-                    </depends>
-                </field>
-                <field id="empty_option" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Show Empty Filter Options</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment>If set to "No", product filter options with "0" results will be hidden from the list of available options.</comment>
-                    <depends>
-                        <field id="*/*/enabled">1</field>
-                    </depends>
                 </field>
             </group>
 
@@ -47,9 +32,6 @@
                     <label>Insert Filters In</label>
                     <source_model>Tridhyatech\LayeredNavigation\Model\OptionSource\InsertFiltersIn</source_model>
                 </field>
-                <depends>
-                    <field id="*/general/enabled">1</field>
-                </depends>
             </group>
         </section>
     </system>

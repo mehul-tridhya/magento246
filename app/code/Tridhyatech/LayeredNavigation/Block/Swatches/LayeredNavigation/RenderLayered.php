@@ -79,9 +79,6 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
     public function getSwatchData()
     {
         $data = parent::getSwatchData();
-        if (! $this->config->isModuleEnabled()) {
-            return $data;
-        }
 
         $attributeOptions = $data['options'];
         $swatches = $data['swatches'];
@@ -115,10 +112,7 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
      */
     public function buildUrl($attributeCode, $optionId)
     {
-        if ($this->config->isModuleEnabled()) {
-            return $this->filterItemUrlBuilder->toggleFilterUrl($attributeCode, (string) $optionId);
-        }
-        return parent::buildUrl($attributeCode, $optionId);
+        return $this->filterItemUrlBuilder->toggleFilterUrl($attributeCode, (string) $optionId);
     }
 
     /**
@@ -126,9 +120,6 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
      */
     protected function getOptionViewData(FilterItem $filterItem, Option $swatchOption)
     {
-        if (! $this->config->isModuleEnabled()) {
-            return parent::getOptionViewData($filterItem, $swatchOption);
-        }
 
         if ($this->isOptionDisabled($filterItem)) {
             $link = 'javascript:void();';

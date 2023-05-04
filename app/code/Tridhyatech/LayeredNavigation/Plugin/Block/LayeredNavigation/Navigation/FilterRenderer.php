@@ -94,9 +94,6 @@ class FilterRenderer
         Closure $proceed,
         FilterInterface $filter
     ) {
-        if (!$this->config->isModuleEnabled()) {
-            return $proceed($filter);
-        }
 
         foreach ($filter->getItems() as $item) {
             $this->refactorRewritedValue($item);

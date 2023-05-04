@@ -50,9 +50,6 @@ class FilterList
         $result,
         \Magento\Catalog\Model\Layer $layer
     ) {
-        if (!$this->config->isModuleEnabled()) {
-            return $result($layer);
-        }
 
         $filters = $result($layer);
 

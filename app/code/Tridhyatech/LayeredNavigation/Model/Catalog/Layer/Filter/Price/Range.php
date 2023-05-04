@@ -49,9 +49,6 @@ class Range extends \Magento\Catalog\Model\Layer\Filter\Price\Range
      */
     public function getPriceRange()
     {
-        if (! $this->config->isModuleEnabled()) {
-            return parent::getPriceRange();
-        }
 
         $categories = $this->registry->registry('current_category_filter');
         if ($categories instanceof CategoryCollection || $categories instanceof FlatCategoryCollection) {

@@ -20,7 +20,7 @@ interface ConfigInterface
     /**
      * Receive magento config value by store
      *
-     * @param string     $path  full path, eg: "pr_base/general/enabled"
+     * @param string     $path  full path, eg: "tt_base/general/enabled"
      * @param string|int $store store view code or id
      * @return mixed
      */
@@ -39,7 +39,7 @@ interface ConfigInterface
     /**
      * Receive magento config value by store or by other scope type
      *
-     * @param string      $path      full path, eg: "pr_base/general/enabled"
+     * @param string      $path      full path, eg: "tt_base/general/enabled"
      * @param string|int  $scopeCode store view code or website code
      * @param string|null $scopeType
      * @return mixed

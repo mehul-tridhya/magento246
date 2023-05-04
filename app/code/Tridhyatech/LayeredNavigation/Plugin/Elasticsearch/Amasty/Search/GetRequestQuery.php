@@ -34,7 +34,7 @@ class GetRequestQuery
      */
     public function afterExecute(\Amasty\ElasticSearch\Model\Search\GetRequestQuery $subject, $query)
     {
-        if (isset($query['body']['query']['bool']['must']) && $this->config->isModuleEnabled()) {
+        if (isset($query['body']['query']['bool']['must'])) {
             foreach ($query['body']['query']['bool']['must'] as $filterKey => $filterValue) {
                 foreach ($filterValue as $beforeTermKey => $beforeTermValue) {
                     foreach ($beforeTermValue as $termKey => $termValue) {

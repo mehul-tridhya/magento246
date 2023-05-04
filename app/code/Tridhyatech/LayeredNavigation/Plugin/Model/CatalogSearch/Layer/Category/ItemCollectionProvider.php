@@ -54,12 +54,8 @@ class ItemCollectionProvider
         \Magento\Catalog\Model\Category $category
     ) {
 
-        if ($this->config->isModuleEnabled()) {
-            $collection = $this->collectionFactory->create();
-            $collection->addCategoryFilter($category);
-            return $collection;
-        }
-
-        return $result($category);
+        $collection = $this->collectionFactory->create();
+        $collection->addCategoryFilter($category);
+        return $collection;
     }
 }

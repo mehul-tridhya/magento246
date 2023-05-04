@@ -72,8 +72,7 @@ class ChangeMeta implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        if ($this->config->isModuleEnabled()
-            && AjaxResponse::CATEGORY_VIEW_ACTION_NAME === $observer->getFullActionName()
+        if (AjaxResponse::CATEGORY_VIEW_ACTION_NAME === $observer->getFullActionName()
         ) {
             /**
              * @var LayoutInterface $layout 

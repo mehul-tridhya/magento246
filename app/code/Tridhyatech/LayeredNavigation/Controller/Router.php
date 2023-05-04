@@ -105,7 +105,6 @@ class Router implements RouterInterface
     public function match(RequestInterface $request): void
     {
         if (! $request instanceof Request
-            || ! $this->config->isModuleEnabled()
             || $this->ajaxRequestLocator->isActive()
         ) {
             return;

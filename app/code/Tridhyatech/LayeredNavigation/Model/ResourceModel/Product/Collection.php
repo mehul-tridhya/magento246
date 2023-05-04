@@ -136,9 +136,6 @@ class Collection extends \Magento\CatalogSearch\Model\ResourceModel\Fulltext\Col
      */
     public function getSize()
     {
-        if (!$this->config->isModuleEnabled()) {
-            return parent::getSize();
-        }
 
         $sql = $this->getSelectCountSql();
         $this->_totalRecords = $this->getConnection()->fetchOne($sql, $this->_bindParams);

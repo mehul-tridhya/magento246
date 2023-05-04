@@ -54,9 +54,6 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
      */
     public function getUrl()
     {
-        if (! $this->config->isModuleEnabled()) {
-            return parent::getUrl();
-        }
 
         if ($this->getIsActive()) {
             return $this->getRemoveUrl();
@@ -77,9 +74,6 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
      */
     public function getRemoveUrl()
     {
-        if (! $this->config->isModuleEnabled()) {
-            return parent::getUrl();
-        }
         return $this->itemUrl->getRemoveFilterUrl($this->getFilter()->getRequestVar(), $this->getValueString());
     }
 
