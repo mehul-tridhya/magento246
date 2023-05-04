@@ -12,10 +12,8 @@
             <general>
                 <enabled>0</enabled>
                 <scroll_up>1</scroll_up>
-            </general>
-            <settings>
                 <empty_option>0</empty_option>
-            </settings>
+            </general>
         </ttlayerednavigation>
     </default>
 </config>

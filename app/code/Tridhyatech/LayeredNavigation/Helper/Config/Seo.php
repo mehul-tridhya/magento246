@@ -19,7 +19,7 @@ use Tridhyatech\LayeredNavigation\Model\Utils\Config;
 class Seo extends AbstractHelper
 {
 
-    public const XML_PATH_INSERT_FILTERS_IN = 'ttlayerednavigation/seo/url/insert_in';
+    public const XML_PATH_INSERT_FILTERS_IN = 'ttlayerednavigation/seo/insert_in';
 
     /**
      * @var Config

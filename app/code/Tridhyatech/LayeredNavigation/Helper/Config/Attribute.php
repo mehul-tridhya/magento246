@@ -22,8 +22,7 @@ use Tridhyatech\LayeredNavigation\Model\Utils\Config;
 class Attribute extends AbstractHelper
 {
 
-    public const XML_PATH_ATTRS = 'ttlayerednavigation/settings/attributes';
-    public const XML_PATH_SHOW_EMPTY = 'ttlayerednavigation/settings/empty_option';
+    public const XML_PATH_SHOW_EMPTY = 'ttlayerednavigation/general/empty_option';
 
     /**
      * @var Config
@@ -59,25 +58,6 @@ class Attribute extends AbstractHelper
     }
 
     /**
-     * Get attributes configuration.
-     *
-     * @param  int|null $storeId
-     * @return array
-     */
-    public function getSelectedAttributesConfig(int $storeId = null): array
-    {
-        if (null !== $storeId) {
-            $selectedAttrs = (string) $this->configUtils->getStoreConfig(self::XML_PATH_ATTRS, $storeId);
-        } else {
-            $selectedAttrs = $this->getRelatedConfig(self::XML_PATH_ATTRS);
-        }
-        if (! $selectedAttrs) {
-            return [];
-        }
-        return $this->serializer->unserialize($selectedAttrs);
-    }
-
-    /**
      * Show filters with empty results.
      *
      * @return bool
@@ -110,27 +90,6 @@ class Attribute extends AbstractHelper
             $scopeCode = $category->getStoreId();
         }
         return (string) $this->configUtils->getConfig($path, $scopeCode, $scopeType);
-    }
-
-    /**
-     * Get selected attribute codes.
-     *
-     * @return string[]
-     */
-    public function getSelectedAttributeCodes(): array
-    {
-        $selectedAttrs = $this->getSelectedAttributesConfig();
-        return $this->fixCodes(array_keys($selectedAttrs));
-    }
-
-    /**
-     * Checking is category filter enabled.
-     *
-     * @return bool
-     */
-    public function isCategoryFilterEnabled(): bool
-    {
-        return in_array(FilterList::CATEGORY_FILTER, $this->getSelectedAttributeCodes(), true);
     }
 
     /**

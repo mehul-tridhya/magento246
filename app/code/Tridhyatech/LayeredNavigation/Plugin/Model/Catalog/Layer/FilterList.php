@@ -56,11 +56,6 @@ class FilterList
 
         $filters = $result($layer);
 
-        //Remove first element from array, because category filter is first
-        if (!$this->attributeConfig->isCategoryFilterEnabled()) {
-            unset($filters[0]);
-        }
-
         return $this->_sortFilters($filters);
     }
 
@@ -72,7 +67,6 @@ class FilterList
      */
     protected function _sortFilters(array $filters): array
     {
-        $selectedAttributeCodes = $this->attributeConfig->getSelectedAttributeCodes();
 
         $sortedFilters = [];
         foreach ($filters as $filter) {
@@ -89,10 +83,7 @@ class FilterList
                 $_code = $filter->getRequestVar();
             }
 
-            if (in_array($_code, $selectedAttributeCodes, true)) {
-                $position =  array_search($_code, $selectedAttributeCodes, true);
-                $sortedFilters[$position] = $filter->setPfAttributeCode($_code);
-            }
+            $sortedFilters[] = $filter->setPfAttributeCode($_code);
         }
 
         ksort($sortedFilters);

@@ -26,41 +26,27 @@
                         <field id="*/*/enabled">1</field>
                     </depends>
                 </field>
-            </group>
-
-            <group id="settings" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Attribute Filters</label>
-                <field id="attributes" translate="label comment" type="hidden" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <frontend_model>Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form\Attribute</frontend_model>
-                    <label>Filter List</label>
-                    <comment><![CDATA[- Drag & drop attributes that should be used in layered navigation.<br/>- Sort them to change their order in the frontend.]]></comment>
-                    <hint>Attributes</hint>
-                </field>
                 <field id="empty_option" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Show Empty Filter Options</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>If set to "No", product filter options with "0" results will be hidden from the list of available options.</comment>
+                    <depends>
+                        <field id="*/*/enabled">1</field>
+                    </depends>
                 </field>
-                <depends>
-                    <field id="*/general/enabled">1</field>
-                </depends>
             </group>
 
             <group id="seo" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>SEO Settings</label>
-                <attribute type="expanded">0</attribute>
-                <group id="url" translate="label comment" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>SEO-Friendly URLs</label>
-                    <field id="url_preview" translate="label" type="Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form\SeoUrlPreview" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                        <label>URL Preview</label>
-                        <frontend_model>Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form\CustomisableField</frontend_model>
-                        <attribute type="pr_disable_inherit_checkbox">true</attribute>
-                    </field>
-                    <field id="insert_in" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                        <label>Insert Filters In</label>
-                        <source_model>Tridhyatech\LayeredNavigation\Model\OptionSource\InsertFiltersIn</source_model>
-                    </field>
-                </group>
+                <label>SEO-Friendly URLs</label>
+                <field id="url_preview" translate="label" type="Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form\SeoUrlPreview" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>URL Preview</label>
+                    <frontend_model>Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form\CustomisableField</frontend_model>
+                    <attribute type="pr_disable_inherit_checkbox">true</attribute>
+                </field>
+                <field id="insert_in" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Insert Filters In</label>
+                    <source_model>Tridhyatech\LayeredNavigation\Model\OptionSource\InsertFiltersIn</source_model>
+                </field>
                 <depends>
                     <field id="*/general/enabled">1</field>
                 </depends>

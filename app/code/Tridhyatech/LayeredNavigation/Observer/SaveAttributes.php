@@ -52,8 +52,8 @@ class SaveAttributes implements ObserverInterface
         $collection = $this->_filterableAttributes->create();
         $collection->setItemObjectClass(Attribute::class)
             ->setOrder('position', 'ASC');
-        $activeAttrs = $this->attributeConfig->getSelectedAttributeCodes();
-        $collection->addFieldToFilter('attribute_code', ['in' => $activeAttrs]);
+        // $activeAttrs = $this->attributeConfig->getSelectedAttributeCodes();
+        // $collection->addFieldToFilter('attribute_code', ['in' => $activeAttrs]);
         $showEmpty = $this->attributeConfig->shouldShowEmpty();
 
         foreach ($collection as $attribute) {

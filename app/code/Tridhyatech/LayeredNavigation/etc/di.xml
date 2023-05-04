@@ -16,7 +16,6 @@
 
     <preference for="Magento\LayeredNavigation\Block\Navigation\State" type="Tridhyatech\LayeredNavigation\Block\LayeredNavigation\Navigation\State"/>
     <preference for="Magento\Catalog\Model\Layer\Filter\Item" type="Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item"/>
-    <preference for="Magento\Catalog\Model\Layer\Category\FilterableAttributeList" type="Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Category\FilterableAttributeList"/>
     <preference for="Magento\Catalog\Model\Layer\Filter\Price\Range" type="Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Price\Range"/>
 
     <type name="Magento\Framework\App\Http\Context">

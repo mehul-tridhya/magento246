@@ -14,8 +14,9 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Tridhyatech\LayeredNavigation\Api\Data\FilterInterface;
 use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
-use Tridhyatech\LayeredNavigation\Helper\Config\Attribute;
+use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Tridhyatech\LayeredNavigation\Model\FilterMeta\Factory;
+use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory;
 
 /**
  * @since 1.0.0
@@ -41,6 +42,11 @@ class Repository implements FilterRepositoryInterface
     protected $variables;
 
     /**
+     * @var CollectionFactory
+     */
+    protected $productAttributeCollectionFactory;
+
+    /**
      * @var Factory
      */
     protected $filterMetaFactory;
@@ -58,11 +64,13 @@ class Repository implements FilterRepositoryInterface
     public function __construct(
         Factory $filterMetaFactory,
         Attribute $attributeConfig,
+        CollectionFactory $productAttributeCollectionFactory,
         array $toolbarVars = []
     ) {
         $this->toolbarVars = array_merge($this->toolbarVars, $toolbarVars);
         $this->filterMetaFactory = $filterMetaFactory;
         $this->attributeConfig = $attributeConfig;
+        $this->productAttributeCollectionFactory = $productAttributeCollectionFactory;
     }
 
     /**
@@ -95,9 +103,10 @@ class Repository implements FilterRepositoryInterface
                 );
             }
 
-            foreach ($this->attributeConfig->getSelectedAttributeCodes() as $attributeCode) {
-                $this->variables[$attributeCode] = $this->filterMetaFactory->create(
-                    $attributeCode,
+            $getAttributes = $this->getFilterableAttributes();
+            foreach ($getAttributes as $attribute) {
+                $this->variables[$attribute->getAttributeCode()] = $this->filterMetaFactory->create(
+                    $attribute->getAttributeCode(),
                     FilterInterface::TYPE_ATTRIBUTE
                 );
             }
@@ -109,5 +118,14 @@ class Repository implements FilterRepositoryInterface
         }
 
         return $this->variables;
+    }
+
+    public function getFilterableAttributes()
+    {
+        $productAttributes = $this->productAttributeCollectionFactory->create();
+        $productAttributes->setItemObjectClass($this->attributeConfig::class)
+            ->setOrder('position', 'ASC');
+        $productAttributes->addIsFilterableFilter();
+        return $productAttributes;
     }
 }
