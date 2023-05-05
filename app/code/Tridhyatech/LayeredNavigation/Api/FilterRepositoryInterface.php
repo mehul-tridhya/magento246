@@ -16,6 +16,13 @@ interface FilterRepositoryInterface
 {
 
     /**
+     * Get about all active filters.
+     *
+     * @return FilterInterface[]
+     */
+    public function getList(): array;
+
+    /**
      * Get filter by request variable or attribute code
      *
      * @param string $requestVar
@@ -23,11 +30,4 @@ interface FilterRepositoryInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function get(string $requestVar): FilterInterface;
-
-    /**
-     * Get about all active filters.
-     *
-     * @return FilterInterface[]
-     */
-    public function getList(): array;
 }

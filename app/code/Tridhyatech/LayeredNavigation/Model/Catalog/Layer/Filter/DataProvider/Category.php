@@ -7,19 +7,14 @@
 
 namespace Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\DataProvider;
 
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Registry;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Catalog\Model\CategoryFactory;
-use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\ResourceModel\Category\Collection;
+use Magento\Catalog\Model\Layer;
 
 class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
 {
-
-    /**
-     * @var Collection|null
-     */
-    protected $categories;
 
     /**
      * @var array
@@ -27,19 +22,29 @@ class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
     protected $categoryIds;
 
     /**
+     * @var Collection|null
+     */
+    protected $categories;
+
+    /**
      * @var CategoryFactory
      */
     protected $categoryFactory;
 
     /**
-     * @var Layer
-     */
-    protected $layer;
-
-    /**
      * @var Registry
      */
     protected $coreRegistry;
+
+    /**
+     * @var Layer
+     */
+    protected $layer;
+    
+    /**
+     * @var int
+     */
+    protected $categoryId;
 
     /**
      * Can procced filter logic
@@ -48,10 +53,6 @@ class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
      */
     protected $canProceed;
 
-    /**
-     * @var int
-     */
-    protected $categoryId;
 
     /**
      * @param Registry            $coreRegistry
@@ -67,18 +68,6 @@ class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
         $this->coreRegistry = $coreRegistry;
         $this->layer = $layer;
         $this->categoryFactory = $categoryFactory;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getCategory()
-    {
-        if ($this->canProceed) {
-            return $this->getCategories();
-        }
-
-        return parent::getCategory();
     }
 
     /**
@@ -121,6 +110,28 @@ class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
     }
 
     /**
+     * @inheritdoc
+     */
+    public function getCategory()
+    {
+        if ($this->canProceed) {
+            return $this->getCategories();
+        }
+
+        return parent::getCategory();
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setCategoryId($categoryId)
+    {
+        parent::setCategoryId($categoryId);
+        $this->categoryId = $categoryId;
+        return $this;
+    }
+
+    /**
      * Can proceed
      *
      * @param bool $val
@@ -132,13 +143,13 @@ class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
     }
 
     /**
-     * @inheritDoc
+     * Get layer
+     *
+     * @return \Magento\Catalog\Model\Layer
      */
-    public function setCategoryId($categoryId)
+    protected function getLayer()
     {
-        parent::setCategoryId($categoryId);
-        $this->categoryId = $categoryId;
-        return $this;
+        return $this->layer;
     }
 
     /**
@@ -156,13 +167,4 @@ class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
         return $this;
     }
 
-    /**
-     * Get layer
-     *
-     * @return \Magento\Catalog\Model\Layer
-     */
-    protected function getLayer()
-    {
-        return $this->layer;
-    }
 }

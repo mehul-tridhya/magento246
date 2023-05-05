@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author    Tridhya Tech
  * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
@@ -9,15 +10,15 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model\FacetedData;
 
-use Magento\Catalog\Model\Layer;
 use Magento\Catalog\Model\Layer\Filter\Item\DataBuilder;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Magento\Framework\Api\Filter;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Catalog\Model\Layer;
 use Magento\Framework\Filter\StripTags;
-use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\StateException;
 use Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 /**
  * @since 1.0.0
@@ -26,24 +27,24 @@ class AttributeResolver
 {
 
     /**
-     * @var DataBuilder
-     */
-    private $itemDataBuilder;
-
-    /**
      * @var StripTags
      */
     private $tagFilter;
 
     /**
-     * @var GetLayerFilters
+     * @var DataBuilder
      */
-    private $getLayerFilters;
+    private $itemDataBuilder;
 
     /**
      * @var Search
      */
     private $search;
+
+    /**
+     * @var GetLayerFilters
+     */
+    private $getLayerFilters;
 
     /**
      * @param DataBuilder     $itemDataBuilder
@@ -57,10 +58,10 @@ class AttributeResolver
         GetLayerFilters $getLayerFilters,
         Search $search
     ) {
-        $this->itemDataBuilder = $itemDataBuilder;
         $this->tagFilter = $tagFilter;
-        $this->getLayerFilters = $getLayerFilters;
         $this->search = $search;
+        $this->getLayerFilters = $getLayerFilters;
+        $this->itemDataBuilder = $itemDataBuilder;
     }
 
     /**
@@ -102,6 +103,28 @@ class AttributeResolver
     }
 
     /**
+     * Return field faceted data from faceted search result
+     *
+     * @param  string $field
+     * @param  Layer  $layer
+     * @return array
+     * @throws StateException
+     * @throws LocalizedException
+     */
+    public function getFacetedData(string $field, Layer $layer): array
+    {
+        $filters = $this->getLayerFilters->execute($layer);
+        $otherFilters = array_filter(
+            $filters,
+            static function (Filter $filter) use ($field) {
+                return $field !== $filter->getField();
+            }
+        );
+
+        return $this->search->search($field, $otherFilters);
+    }
+
+    /**
      * Get data array for building attribute filter items
      *
      * @param  Attribute $attribute
@@ -119,7 +142,7 @@ class AttributeResolver
         array $attrFilterItems
     ): array {
         $optionsFacetedData = $this->getFacetedData($attribute->getAttributeCode(), $layer);
-        if (! $isAttributeFilterable && count($optionsFacetedData) === 0) {
+        if (!$isAttributeFilterable && count($optionsFacetedData) === 0) {
             return $this->itemDataBuilder->build();
         }
 
@@ -130,24 +153,17 @@ class AttributeResolver
     }
 
     /**
-     * Return field faceted data from faceted search result
+     * Retrieve option value if it exists
      *
-     * @param  string $field
-     * @param  Layer  $layer
-     * @return array
-     * @throws StateException
-     * @throws LocalizedException
+     * @param  array $option
+     * @return bool|string
      */
-    public function getFacetedData(string $field, Layer $layer): array
+    private function getOptionValue(array $option)
     {
-        $filters = $this->getLayerFilters->execute($layer);
-        $otherFilters = array_filter(
-            $filters, static function (Filter $filter) use ($field) {
-                return $field !== $filter->getField();
-            }
-        );
-
-        return $this->search->search($field, $otherFilters);
+        if (empty($option['value']) && !is_numeric($option['value'])) {
+            return false;
+        }
+        return $option['value'];
     }
 
     /**
@@ -184,34 +200,6 @@ class AttributeResolver
     }
 
     /**
-     * Retrieve option value if it exists
-     *
-     * @param  array $option
-     * @return bool|string
-     */
-    private function getOptionValue(array $option)
-    {
-        if (empty($option['value']) && !is_numeric($option['value'])) {
-            return false;
-        }
-        return $option['value'];
-    }
-
-    /**
-     * Retrieve count of the options
-     *
-     * @param  int|string $value
-     * @param  array      $optionsFacetedData
-     * @return int
-     */
-    private function getOptionCount($value, array $optionsFacetedData): int
-    {
-        return isset($optionsFacetedData[$value]['count'])
-            ? (int) $optionsFacetedData[$value]['count']
-            : 0;
-    }
-
-    /**
      * Check if option is selected.
      *
      * @param  int|string $value
@@ -228,4 +216,19 @@ class AttributeResolver
         }
         return false;
     }
+
+    /**
+     * Retrieve count of the options
+     *
+     * @param  int|string $value
+     * @param  array      $optionsFacetedData
+     * @return int
+     */
+    private function getOptionCount($value, array $optionsFacetedData): int
+    {
+        return isset($optionsFacetedData[$value]['count'])
+            ? (int) $optionsFacetedData[$value]['count']
+            : 0;
+    }
+
 }

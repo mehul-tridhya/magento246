@@ -17,16 +17,16 @@ use Magento\LayeredNavigation\Block\Navigation\State as mainState;
 class State extends mainState
 {
 
-    /**
-     * @var Config
-     */
-    private $config;
-
+    
     /**
      * @var IsSearchResultsPage
      */
     private $isSearchResultsPage;
-
+    
+    /**
+     * @var Config
+     */
+    private $config;
     /**
      * @param Context             $context
      * @param Resolver            $layerResolver
@@ -44,17 +44,6 @@ class State extends mainState
         parent::__construct($context, $layerResolver, $data);
         $this->config = $config;
         $this->isSearchResultsPage = $isSearchResultsPage;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function getTemplate()
-    {
-        if ($this->getPlumTemplate()) {
-            return $this->getPlumTemplate();
-        }
-        return parent::getTemplate();
     }
 
     /**
@@ -92,5 +81,16 @@ class State extends mainState
         }
 
         return $clearUrl;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTemplate()
+    {
+        if ($this->getPlumTemplate()) {
+            return $this->getPlumTemplate();
+        }
+        return parent::getTemplate();
     }
 }

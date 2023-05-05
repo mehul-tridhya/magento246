@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Helper;
 
-use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Search\Model\EngineResolver;
+use Magento\Framework\App\Helper\AbstractHelper;
 
 class Elasticsearch extends AbstractHelper
 {

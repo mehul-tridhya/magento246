@@ -10,9 +10,6 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model\Variable\Value;
 
-/**
- * @since 1.0.0
- */
 class Slugify
 {
 

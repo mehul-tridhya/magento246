@@ -12,15 +12,6 @@ use Magento\Catalog\Model\Layer\Filter\Item;
 
 class Price extends \Magento\CatalogSearch\Model\Layer\Filter\Price
 {
-    /**
-     * Retrieve is radio type
-     *
-     * @return boolean
-     */
-    public function getIsRadio()
-    {
-        return true;
-    }
 
     /**
      * Fix price value for frontend.
@@ -40,5 +31,15 @@ class Price extends \Magento\CatalogSearch\Model\Layer\Filter\Price
             $value = str_replace(['.011', '-'], ['', '_'], $value);
         }
         return parent::_createItem($label, $value, $count);
+    }
+
+    /**
+     * Retrieve is radio type
+     *
+     * @return boolean
+     */
+    public function getIsRadio()
+    {
+        return true;
     }
 }

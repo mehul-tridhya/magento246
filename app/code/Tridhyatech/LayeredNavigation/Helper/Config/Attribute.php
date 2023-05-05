@@ -9,10 +9,8 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Helper\Config;
 
-use Magento\Catalog\Model\Layer\FilterList;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
-use Magento\Framework\Serialize\SerializerInterface;
 use Magento\Store\Model\ScopeInterface;
 use Tridhyatech\LayeredNavigation\Model\Utils\Config;
 
@@ -22,17 +20,10 @@ use Tridhyatech\LayeredNavigation\Model\Utils\Config;
 class Attribute extends AbstractHelper
 {
 
-    public const XML_PATH_SHOW_EMPTY = 'ttlayerednavigation/general/empty_option';
-
     /**
      * @var Config
      */
     private $configUtils;
-
-    /**
-     * @var SerializerInterface
-     */
-    private $serializer;
 
     /**
      * @var \Magento\Framework\Registry
@@ -42,29 +33,33 @@ class Attribute extends AbstractHelper
     /**
      * @param Context                     $context
      * @param Config                      $configUtils
-     * @param SerializerInterface         $serializer
      * @param \Magento\Framework\Registry $registry
      */
     public function __construct(
         Context $context,
         Config $configUtils,
-        SerializerInterface $serializer,
         \Magento\Framework\Registry $registry
     ) {
         parent::__construct($context);
         $this->configUtils = $configUtils;
-        $this->serializer = $serializer;
         $this->registry = $registry;
     }
 
     /**
-     * Show filters with empty results.
+     * Fix category code.
      *
-     * @return bool
+     * @param  array $codes
+     * @return string[]
      */
-    public function shouldShowEmpty(): bool
+    protected function fixCodes(array $codes): array
     {
-        return $this->configUtils->isSetFlag(self::XML_PATH_SHOW_EMPTY);
+        return array_replace(
+            $codes,
+            array_fill_keys(
+                array_keys($codes, 'categorie'),
+                'category'
+            )
+        );
     }
 
     /**
@@ -92,20 +87,4 @@ class Attribute extends AbstractHelper
         return (string) $this->configUtils->getConfig($path, $scopeCode, $scopeType);
     }
 
-    /**
-     * Fix category code.
-     *
-     * @param  array $codes
-     * @return string[]
-     */
-    protected function fixCodes(array $codes): array
-    {
-        return array_replace(
-            $codes,
-            array_fill_keys(
-                array_keys($codes, 'categorie'),
-                'category'
-            )
-        );
-    }
 }

@@ -18,16 +18,6 @@ class ImageRadioButtons extends Radios
 {
 
     /**
-     * Get custom CSS class.
-     *
-     * @return string
-     */
-    public function getPrValueCustomCssClass(): string
-    {
-        return 'plum_admin__field-wrapper';
-    }
-
-    /**
      * @inheritDoc
      */
     protected function _optionToHtml($option, $selected): string
@@ -40,6 +30,16 @@ class ImageRadioButtons extends Radios
         $html .= $this->createOptionLabel($option, $inputId);
 
         return $html . '</div>';
+    }
+
+    /**
+     * Get custom CSS class.
+     *
+     * @return string
+     */
+    public function getPrValueCustomCssClass(): string
+    {
+        return 'plum_admin__field-wrapper';
     }
 
     /**
@@ -67,6 +67,22 @@ class ImageRadioButtons extends Radios
         }
 
         return $html . ' />';
+    }
+
+    /**
+     * Create source set for retina.
+     *
+     * @param array  $option
+     * @param string $type
+     * @return string
+     */
+    private function createSourceSet(array $option, string $type): string
+    {
+        $retinaUrl = $type . '2x';
+        if (! isset($option[$retinaUrl]) || ! $option[$retinaUrl]) {
+            return '';
+        }
+        return "srcset=\"{$option['image']}, {$option['image2x']} 2x\" ";
     }
 
     /**
@@ -102,21 +118,5 @@ class ImageRadioButtons extends Radios
         $optionHtml .= '</div></label>';
 
         return $optionHtml;
-    }
-
-    /**
-     * Create source set for retina.
-     *
-     * @param array  $option
-     * @param string $type
-     * @return string
-     */
-    private function createSourceSet(array $option, string $type): string
-    {
-        $retinaUrl = $type . '2x';
-        if (! isset($option[$retinaUrl]) || ! $option[$retinaUrl]) {
-            return '';
-        }
-        return "srcset=\"{$option['image']}, {$option['image2x']} 2x\" ";
     }
 }

@@ -22,22 +22,14 @@ use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection;
 class CurrentLoading
 {
     /**
-     * @var Collection|null
-     */
-    private $collection;
-
-    /**
      * @var array
      */
     private $priceData = [];
 
     /**
-     * @return Collection|null
+     * @var Collection|null
      */
-    public function get()
-    {
-        return $this->collection;
-    }
+    private $collection;
 
     /**
      * @param  Collection $collection
@@ -50,14 +42,13 @@ class CurrentLoading
     }
 
     /**
-     * @return $this
+     * @return Collection|null
      */
-    public function reset(): CurrentLoading
+    public function get()
     {
-        $this->collection = null;
-        $this->priceData = [];
-        return $this;
+        return $this->collection;
     }
+
 
     /**
      * @return array
@@ -76,4 +67,15 @@ class CurrentLoading
         $this->priceData = $priceData;
         return $this;
     }
+
+    /**
+     * @return $this
+     */
+    public function reset(): CurrentLoading
+    {
+        $this->collection = null;
+        $this->priceData = [];
+        return $this;
+    }
+
 }

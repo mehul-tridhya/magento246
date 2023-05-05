@@ -20,14 +20,15 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
 {
 
     /**
+     * @var ItemUrlBuilderInterface
+     */
+    private $itemUrl;
+
+    /**
      * @var Config
      */
     private $config;
 
-    /**
-     * @var ItemUrlBuilderInterface
-     */
-    private $itemUrl;
 
     /**
      * @param UrlInterface            $url
@@ -46,6 +47,23 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
         $this->config = $config;
         $this->itemUrl = $itemUrl;
         parent::__construct($url, $htmlPagerBlock, $data);
+    }
+
+    /**
+     * Get item value as string.
+     *
+     * Price value should be imploded by underscore (_) instead of comma ','.
+     *
+     * @return string
+     * @throws LocalizedException
+     */
+    public function getValueString()
+    {
+        $value = $this->getValue();
+        if ('price' === $this->getFilter()->getRequestVar() && is_array($value)) {
+            return implode('_', $value);
+        }
+        return parent::getValueString();
     }
 
     /**
@@ -77,20 +95,4 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
         return $this->itemUrl->getRemoveFilterUrl($this->getFilter()->getRequestVar(), $this->getValueString());
     }
 
-    /**
-     * Get item value as string.
-     *
-     * Price value should be imploded by underscore (_) instead of comma ','.
-     *
-     * @return string
-     * @throws LocalizedException
-     */
-    public function getValueString()
-    {
-        $value = $this->getValue();
-        if ('price' === $this->getFilter()->getRequestVar() && is_array($value)) {
-            return implode('_', $value);
-        }
-        return parent::getValueString();
-    }
 }

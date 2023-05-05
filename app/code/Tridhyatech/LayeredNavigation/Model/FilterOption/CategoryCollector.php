@@ -12,9 +12,6 @@ namespace Tridhyatech\LayeredNavigation\Model\FilterOption;
 
 use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
 
-/**
- * @since 1.0.0
- */
 class CategoryCollector implements CollectorInterface
 {
 

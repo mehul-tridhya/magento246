@@ -11,9 +11,6 @@ namespace Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form;
 
 use Magento\Framework\Data\Form\Element\AbstractElement;
 
-/**
- * @since 1.3.0
- */
 class SeoUrlPreview extends AbstractElement
 {
 

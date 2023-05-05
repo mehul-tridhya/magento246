@@ -7,24 +7,18 @@
 
 namespace Tridhyatech\LayeredNavigation\Block\LayeredNavigation;
 
-use Magento\Framework\View\Element\Template;
-use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\Json\Helper\Data;
-use Magento\Framework\Registry;
+use Magento\Framework\View\Element\Template\Context;
+use Magento\Framework\View\Element\Template;
 use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 use Magento\Catalog\Model\ResourceModel\Product\Collection;
+use Magento\Framework\Registry;
 
 class RenderPrice extends Template
 {
 
-    public const FILTER_PRICE_SLIDER_TEMPLATE = 'Tridhyatech_LayeredNavigation::layer/renderer/price/slider.phtml';
-
     public const FILTER_PRICE_REQUEST_VAR = 'price';
-
-    /**
-     * @var \Magento\Framework\Json\Helper\Data
-     */
-    protected $_jsonHelper;
+    public const FILTER_PRICE_SLIDER_TEMPLATE = 'Tridhyatech_LayeredNavigation::layer/renderer/price/slider.phtml';
 
     /**
      * @var \Magento\Framework\Registry
@@ -32,14 +26,19 @@ class RenderPrice extends Template
     protected $registry;
 
     /**
-     * @var CollectionFactory
-     */
-    protected $productCollectionFactory;
-
-    /**
      * @var Collection $originalCollection
      */
     protected $originalCollection = null;
+
+    /**
+     * @var \Magento\Framework\Json\Helper\Data
+     */
+    protected $_jsonHelper;
+
+    /**
+     * @var CollectionFactory
+     */
+    protected $productCollectionFactory;
 
     /**
      * @param Context           $context
@@ -62,13 +61,14 @@ class RenderPrice extends Template
     }
 
     /**
-     * Get Items
+     * Render price template.
      *
-     * @return array
+     * @return string
      */
-    public function getItems()
+    protected function renderPriceTemplate(): string
     {
-        return $this->getFilter()->getItems();
+        $this->setTemplate(self::FILTER_PRICE_SLIDER_TEMPLATE);
+        return parent::_toHtml();
     }
 
     /**
@@ -83,14 +83,24 @@ class RenderPrice extends Template
     }
 
     /**
-     * Render price template.
+     * Get Items
+     *
+     * @return array
+     */
+    public function getItems()
+    {
+        return $this->getFilter()->getItems();
+    }
+
+    /**
+     * Retrieve "to'" value
      *
      * @return string
      */
-    protected function renderPriceTemplate(): string
+    public function getToValue()
     {
-        $this->setTemplate(self::FILTER_PRICE_SLIDER_TEMPLATE);
-        return parent::_toHtml();
+        $fromRequest = $this->_getRequestedPrice();
+        return $fromRequest['max'] ?? $this->getMaxValue();
     }
 
     /**
@@ -105,14 +115,18 @@ class RenderPrice extends Template
     }
 
     /**
-     * Retrieve "to'" value
+     * Get original collection min price value
      *
-     * @return string
+     * @return float
      */
-    public function getToValue()
+    private function getOriginalMinValue()
     {
-        $fromRequest = $this->_getRequestedPrice();
-        return $fromRequest['max'] ?? $this->getMaxValue();
+        /**
+         * @var Collection $collection 
+        */
+        $collection = $this->getOriginalCollection();
+
+        return $collection->getMinPrice();
     }
 
     /**
@@ -134,21 +148,6 @@ class RenderPrice extends Template
     }
 
     /**
-     * Get original collection min price value
-     *
-     * @return float
-     */
-    private function getOriginalMinValue()
-    {
-        /**
-         * @var Collection $collection 
-        */
-        $collection = $this->getOriginalCollection();
-
-        return $collection->getMinPrice();
-    }
-
-    /**
      * Get max value
      *
      * @return string
@@ -164,21 +163,6 @@ class RenderPrice extends Template
         return $this->getFilter()->getLayer()
             ->getProductCollection()
             ->getMaxPrice();
-    }
-
-    /**
-     * Get original collection max price value
-     *
-     * @return float
-     */
-    private function getOriginalMaxValue()
-    {
-        /**
-         * @var Collection $collection 
-        */
-        $collection = $this->getOriginalCollection();
-
-        return $collection->getMaxPrice();
     }
 
     /**
@@ -213,6 +197,42 @@ class RenderPrice extends Template
     }
 
     /**
+     * Get original collection max price value
+     *
+     * @return float
+     */
+    private function getOriginalMaxValue()
+    {
+        /**
+         * @var Collection $collection 
+        */
+        $collection = $this->getOriginalCollection();
+
+        return $collection->getMaxPrice();
+    }
+
+    /**
+     * Retrieve currency symbol
+     *
+     * @return string
+     */
+    public function getCurrencySymbol()
+    {
+        return $this->_storeManager->getStore()->getCurrentCurrency()->getCurrencySymbol();
+    }
+
+    /**
+     * Get current currency rate
+     *
+     * @return float
+     */
+    public function getCurrentCurrencyRate()
+    {
+        $currencyRate = (float)$this->_storeManager->getStore()->getCurrentCurrencyRate();
+        return $currencyRate ?: 1;
+    }
+
+    /**
      * Retrieve requested price
      *
      * @return array
@@ -238,24 +258,4 @@ class RenderPrice extends Template
         return $result;
     }
 
-    /**
-     * Retrieve currency symbol
-     *
-     * @return string
-     */
-    public function getCurrencySymbol()
-    {
-        return $this->_storeManager->getStore()->getCurrentCurrency()->getCurrencySymbol();
-    }
-
-    /**
-     * Get current currency rate
-     *
-     * @return float
-     */
-    public function getCurrentCurrencyRate()
-    {
-        $currencyRate = (float)$this->_storeManager->getStore()->getCurrentCurrencyRate();
-        return $currencyRate ?: 1;
-    }
 }

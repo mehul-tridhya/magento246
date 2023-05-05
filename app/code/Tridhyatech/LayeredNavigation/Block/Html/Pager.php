@@ -18,16 +18,17 @@ use Tridhyatech\LayeredNavigation\Model\Variable\Renderer;
 class Pager extends \Magento\Theme\Block\Html\Pager
 {
 
-    /**
-     * @var Config
-     */
-    private $config;
-
+    
     /**
      * @var Renderer
      */
     private $variableRenderer;
-
+    
+    /**
+     * @var Config
+     */
+    private $config;
+    
     /**
      * @var Registry
      */
@@ -48,9 +49,9 @@ class Pager extends \Magento\Theme\Block\Html\Pager
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->config = $config;
         $this->variableRenderer = $variableRenderer;
         $this->variableRegistry = $variableRegistry;
+        $this->config = $config;
     }
 
     /**

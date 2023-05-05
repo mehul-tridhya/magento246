@@ -7,32 +7,32 @@
 
 namespace Tridhyatech\LayeredNavigation\Model\ResourceModel\Product;
 
-use Magento\Framework\Data\Collection\EntityFactory;
-use Psr\Log\LoggerInterface;
-use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
-use Magento\Framework\Event\ManagerInterface;
-use Magento\Eav\Model\Config as EavConfig;
-use Magento\Framework\App\ResourceConnection;
 use Magento\Eav\Model\EntityFactory as EavEntityFactory;
+use Psr\Log\LoggerInterface;
+use Magento\Framework\Data\Collection\EntityFactory;
+use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
+use Magento\Eav\Model\Config as EavConfig;
+use Magento\Framework\Event\ManagerInterface;
+use Magento\Framework\App\ResourceConnection;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\Catalog\Model\ResourceModel\Helper;
 use Magento\Framework\Validator\UniversalFactory;
-use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\Module\Manager;
 use Magento\Catalog\Model\Indexer\Product\Flat\State;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Catalog\Model\Product\OptionFactory;
 use Magento\Catalog\Model\ResourceModel\Url;
+use Magento\Catalog\Model\Product\OptionFactory;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Magento\Customer\Model\Session;
-use Magento\Framework\Stdlib\DateTime;
 use Magento\Customer\Api\GroupManagementInterface;
-use Magento\Search\Model\QueryFactory;
+use Magento\Framework\Stdlib\DateTime;
 use Magento\Framework\Search\Request\Builder;
+use Magento\Search\Model\QueryFactory;
 use Magento\Search\Model\SearchEngine;
-use Magento\Framework\Search\Adapter\Mysql\TemporaryStorageFactory;
 use Tridhyatech\LayeredNavigation\Helper\Config;
-use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\Search\Adapter\Mysql\TemporaryStorageFactory;
 use Magento\Framework\Api\Search\SearchResultFactory;
+use Magento\Framework\DB\Adapter\AdapterInterface;
 
 class Collection extends \Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection
 {

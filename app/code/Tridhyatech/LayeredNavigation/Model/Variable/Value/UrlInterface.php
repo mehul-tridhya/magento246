@@ -12,15 +12,6 @@ interface UrlInterface
 {
 
     /**
-     * Encode value to use it url.
-     *
-     * @param  string     $variable
-     * @param  string|int $value
-     * @return string
-     */
-    public function encode(string $variable, $value): string;
-
-    /**
      * Decode url value.
      *
      * @param  string       $variable
@@ -28,4 +19,13 @@ interface UrlInterface
      * @return string
      */
     public function decode(string $variable, string $value): string;
+
+    /**
+     * Encode value to use it url.
+     *
+     * @param  string     $variable
+     * @param  string|int $value
+     * @return string
+     */
+    public function encode(string $variable, $value): string;
 }

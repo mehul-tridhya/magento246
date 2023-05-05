@@ -12,18 +12,17 @@ namespace Tridhyatech\LayeredNavigation\Api;
  */
 interface GetUrlVariablesInterface
 {
-
     /**
-     * Get variables from url path as array of variable values.
+     * Get variables from special GET param as array of variable values.
      *
-     * @param string $urlPath
+     * @param array $params
      * @return array
      * [
      *     'requestVar' => ['value', 'value', ...],
      *     ...
      * ]
      */
-    public function get(string $urlPath): array;
+    public function getFromAjaxParams(array $params): array;
 
     /**
      * Get variables from GET params as array of variable values.
@@ -39,14 +38,14 @@ interface GetUrlVariablesInterface
     public function getFromParams(array $params): array;
 
     /**
-     * Get variables from special GET param as array of variable values.
+     * Get variables from url path as array of variable values.
      *
-     * @param array $params
+     * @param string $urlPath
      * @return array
      * [
      *     'requestVar' => ['value', 'value', ...],
      *     ...
      * ]
      */
-    public function getFromAjaxParams(array $params): array;
+    public function get(string $urlPath): array;
 }

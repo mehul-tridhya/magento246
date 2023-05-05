@@ -9,18 +9,14 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form;
 
-use Magento\Backend\Block\Template\Context;
-use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Framework\Data\Form\Element\AbstractElement;
-use Magento\Framework\View\Asset\Repository;
 use Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form\Element\ImageRadioButtons;
+use Magento\Config\Block\System\Config\Form\Field;
+use Magento\Backend\Block\Template\Context;
+use Magento\Framework\View\Asset\Repository;
 
 /**
  * Frontend model for render customizations.
- *
- * See README.md for instruction
- *
- * @since 1.0.4
  */
 class CustomisableField extends Field
 {
@@ -42,6 +38,60 @@ class CustomisableField extends Field
     ) {
         parent::__construct($context, $data);
         $this->viewAssetRepository = $viewAssetRepository;
+    }
+
+    /**
+     * Disable scope label if needed.
+     *
+     * @param  AbstractElement $element
+     * @return string
+     */
+    protected function _renderScopeLabel(AbstractElement $element): string
+    {
+        if ($element->getData('field_config/pr_disable_scope_label')) {
+            return '';
+        }
+        return parent::_renderScopeLabel($element);
+    }
+
+    /**
+     * Disable checkbox if needed.
+     *
+     * @param  AbstractElement $element
+     * @return bool
+     */
+    protected function _isInheritCheckboxRequired(AbstractElement $element): bool
+    {
+        if ($element->getData('field_config/pr_disable_inherit_checkbox')
+            || $element->getPrDisableInheritCheckbox()
+        ) {
+            return false;
+        }
+        return parent::_isInheritCheckboxRequired($element);
+    }
+
+    /**
+     * Replace media directives by urls.
+     *
+     * @param  AbstractElement $element
+     * @param  string          $comment
+     * @return string
+     */
+    private function filterTooltipMediaVariables(AbstractElement $element, string $comment): string
+    {
+        if (! $element->getData('field_config/pr_allow_variables')) {
+            return $comment;
+        }
+
+        if (preg_match_all('/{{media url="(.*?)".*?}}/', $comment, $media)) {
+            $urls = [];
+            foreach ($media[1] as $fieldId) {
+                $urls[] = $this->viewAssetRepository->getUrl($fieldId);
+            }
+            $comment = str_replace($media[0], $urls, $comment);
+        }
+
+        return $comment;
     }
 
     /**
@@ -69,59 +119,5 @@ class CustomisableField extends Field
         }
         $html .= '</td>';
         return $html;
-    }
-
-    /**
-     * Disable checkbox if needed.
-     *
-     * @param  AbstractElement $element
-     * @return bool
-     */
-    protected function _isInheritCheckboxRequired(AbstractElement $element): bool
-    {
-        if ($element->getData('field_config/pr_disable_inherit_checkbox')
-            || $element->getPrDisableInheritCheckbox()
-        ) {
-            return false;
-        }
-        return parent::_isInheritCheckboxRequired($element);
-    }
-
-    /**
-     * Disable scope label if needed.
-     *
-     * @param  AbstractElement $element
-     * @return string
-     */
-    protected function _renderScopeLabel(AbstractElement $element): string
-    {
-        if ($element->getData('field_config/pr_disable_scope_label')) {
-            return '';
-        }
-        return parent::_renderScopeLabel($element);
-    }
-
-    /**
-     * Replace media directives by urls.
-     *
-     * @param  AbstractElement $element
-     * @param  string          $comment
-     * @return string
-     */
-    private function filterTooltipMediaVariables(AbstractElement $element, string $comment): string
-    {
-        if (! $element->getData('field_config/pr_allow_variables')) {
-            return $comment;
-        }
-
-        if (preg_match_all('/{{media url="(.*?)".*?}}/', $comment, $media)) {
-            $urls = [];
-            foreach ($media[1] as $fieldId) {
-                $urls[] = $this->viewAssetRepository->getUrl($fieldId);
-            }
-            $comment = str_replace($media[0], $urls, $comment);
-        }
-
-        return $comment;
     }
 }

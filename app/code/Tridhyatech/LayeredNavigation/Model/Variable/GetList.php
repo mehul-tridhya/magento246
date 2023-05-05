@@ -19,14 +19,14 @@ class GetList implements GetUrlVariablesInterface
 {
 
     /**
-     * @var Config
-     */
-    private $config;
-
-    /**
      * @var FilterRepositoryInterface
      */
     private $filterMetaRepository;
+
+    /**
+     * @var Config
+     */
+    private $config;
 
     /**
      * @param Config                    $config
@@ -38,6 +38,21 @@ class GetList implements GetUrlVariablesInterface
     ) {
         $this->config = $config;
         $this->filterMetaRepository = $filterMetaRepository;
+    }
+
+    
+    /**
+     * @inheritDoc
+     */
+    public function getFromParams(array $params): array
+    {
+        $variables = array_map(
+            static function ($value) {
+                return is_string($value) ? explode('-', $value) : [];
+            },
+            $params
+        );
+        return $this->filterVariables($variables);
     }
 
     /**
@@ -52,17 +67,15 @@ class GetList implements GetUrlVariablesInterface
     }
 
     /**
-     * @inheritDoc
+     * Clean path.
+     *
+     * @param  string $urlPath
+     * @return string
      */
-    public function getFromParams(array $params): array
+    private function cleanUrlPath(string $urlPath): string
     {
-        $variables = array_map(
-            static function ($value) {
-                return is_string($value) ? explode('-', $value) : [];
-            },
-            $params
-        );
-        return $this->filterVariables($variables);
+        $urlPath = trim($urlPath, '/');
+        return urldecode(str_replace($this->config->getCategoryUrlSuffix(), '', $urlPath));
     }
 
     /**
@@ -81,15 +94,23 @@ class GetList implements GetUrlVariablesInterface
     }
 
     /**
-     * Clean path.
+     * Remove variables witch we don't know.
      *
-     * @param  string $urlPath
-     * @return string
+     * @param  array $variables
+     * @return array
      */
-    private function cleanUrlPath(string $urlPath): string
+    private function filterVariables(array $variables): array
     {
-        $urlPath = trim($urlPath, '/');
-        return urldecode(str_replace($this->config->getCategoryUrlSuffix(), '', $urlPath));
+        $result = [];
+        foreach ($variables as $requestVar => $values) {
+            try {
+                $this->filterMetaRepository->get((string) $requestVar);
+                $result[$requestVar] = $values;
+            } catch (NoSuchEntityException $e) {
+                continue;
+            }
+        }
+        return $result;
     }
 
     /**
@@ -119,23 +140,4 @@ class GetList implements GetUrlVariablesInterface
         return $variables;
     }
 
-    /**
-     * Remove variables witch we don't know.
-     *
-     * @param  array $variables
-     * @return array
-     */
-    private function filterVariables(array $variables): array
-    {
-        $result = [];
-        foreach ($variables as $requestVar => $values) {
-            try {
-                $this->filterMetaRepository->get((string) $requestVar);
-                $result[$requestVar] = $values;
-            } catch (NoSuchEntityException $e) {
-                continue;
-            }
-        }
-        return $result;
-    }
 }

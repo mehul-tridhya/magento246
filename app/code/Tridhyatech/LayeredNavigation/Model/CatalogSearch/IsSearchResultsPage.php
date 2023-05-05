@@ -9,9 +9,6 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model\CatalogSearch;
 
-/**
- * @since 1.3.3
- */
 class IsSearchResultsPage
 {
 

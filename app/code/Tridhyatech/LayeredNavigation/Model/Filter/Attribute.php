@@ -7,38 +7,35 @@
 
 namespace Tridhyatech\LayeredNavigation\Model\Filter;
 
-use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Model\Layer;
-use Magento\Catalog\Model\Layer\Filter\Item\DataBuilder;
+use Magento\Catalog\Api\Data\ProductAttributeInterface;
 use Magento\Catalog\Model\Layer\Filter\ItemFactory;
+use Magento\Catalog\Model\Layer\Filter\Item\DataBuilder;
+use Magento\Framework\Filter\StripTags;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Filter\StripTags;
-use Magento\Store\Model\StoreManagerInterface;
 use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Model\CollectionFilterApplier;
 use Tridhyatech\LayeredNavigation\Model\FacetedData\AttributeResolver;
+use Magento\Store\Model\StoreManagerInterface;
 
-/**
- * @since 1.0.0
- */
 class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
 {
-
-    /**
-     * @var AttributeResolver
-     */
-    private $facetedDataResolver;
-
-    /**
-     * @var FilterRepositoryInterface
-     */
-    private $filterMetaRepository;
 
     /**
      * @var CollectionFilterApplier
      */
     private $filterApplier;
+    
+    /**
+     * @var FilterRepositoryInterface
+     */
+    private $filterMetaRepository;
+    
+    /**
+     * @var AttributeResolver
+     */
+    private $facetedDataResolver;
 
     /**
      * @param ItemFactory               $filterItemFactory
@@ -63,9 +60,9 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
         array $data = []
     ) {
         parent::__construct($filterItemFactory, $storeManager, $layer, $itemDataBuilder, $tagFilter, $data);
-        $this->facetedDataResolver = $facetedDataResolver;
         $this->filterMetaRepository = $filterMetaRepository;
         $this->filterApplier = $filterApplier;
+        $this->facetedDataResolver = $facetedDataResolver;
     }
 
     /**
@@ -105,22 +102,6 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
     }
 
     /**
-     * Convert attribute value according to its backend type.
-     *
-     * @param  ProductAttributeInterface $attribute
-     * @param  mixed                     $value
-     * @return int|string
-     */
-    private function convertAttributeValue(ProductAttributeInterface $attribute, $value)
-    {
-        if ($attribute->getBackendType() === 'int') {
-            return (int) $value;
-        }
-
-        return $value;
-    }
-
-    /**
      * @inheritdoc
      */
     protected function isOptionReducesResults($optionCount, $totalSize)
@@ -156,5 +137,21 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
         } catch (LocalizedException $exception) {
             return parent::_getItemsData();
         }
+    }
+
+    /**
+     * Convert attribute value according to its backend type.
+     *
+     * @param  ProductAttributeInterface $attribute
+     * @param  mixed                     $value
+     * @return int|string
+     */
+    private function convertAttributeValue(ProductAttributeInterface $attribute, $value)
+    {
+        if ($attribute->getBackendType() === 'int') {
+            return (int) $value;
+        }
+
+        return $value;
     }
 }

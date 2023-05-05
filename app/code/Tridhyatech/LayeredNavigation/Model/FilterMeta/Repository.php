@@ -10,13 +10,13 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model\FilterMeta;
 
-use Magento\Catalog\Model\Product\ProductList\Toolbar;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Tridhyatech\LayeredNavigation\Api\Data\FilterInterface;
-use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
+use Magento\Catalog\Model\Product\ProductList\Toolbar;
 use Magento\Catalog\Model\ResourceModel\Eav\Attribute;
 use Tridhyatech\LayeredNavigation\Model\FilterMeta\Factory;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory;
+use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 
 /**
  * @since 1.0.0
@@ -37,24 +37,25 @@ class Repository implements FilterRepositoryInterface
     ];
 
     /**
-     * @var array|null
-     */
-    protected $variables;
-
-    /**
      * @var CollectionFactory
      */
     protected $productAttributeCollectionFactory;
 
     /**
-     * @var Factory
+     * @var array|null
      */
-    protected $filterMetaFactory;
+    protected $variables;
+
 
     /**
      * @var Attribute
      */
     protected $attributeConfig;
+
+    /**
+     * @var Factory
+     */
+    protected $filterMetaFactory;
 
     /**
      * @param Factory   $filterMetaFactory
@@ -71,21 +72,6 @@ class Repository implements FilterRepositoryInterface
         $this->filterMetaFactory = $filterMetaFactory;
         $this->attributeConfig = $attributeConfig;
         $this->productAttributeCollectionFactory = $productAttributeCollectionFactory;
-    }
-
-    /**
-     * Get filter meta.
-     *
-     * @param  string $requestVar
-     * @return FilterInterface
-     * @throws NoSuchEntityException
-     */
-    public function get(string $requestVar): FilterInterface
-    {
-        if (!isset($this->getList()[$requestVar])) {
-            throw NoSuchEntityException::singleField('requestVar', $requestVar);
-        }
-        return $this->getList()[$requestVar];
     }
 
     /**
@@ -118,6 +104,21 @@ class Repository implements FilterRepositoryInterface
         }
 
         return $this->variables;
+    }
+
+    /**
+     * Get filter meta.
+     *
+     * @param  string $requestVar
+     * @return FilterInterface
+     * @throws NoSuchEntityException
+     */
+    public function get(string $requestVar): FilterInterface
+    {
+        if (!isset($this->getList()[$requestVar])) {
+            throw NoSuchEntityException::singleField('requestVar', $requestVar);
+        }
+        return $this->getList()[$requestVar];
     }
 
     public function getFilterableAttributes()

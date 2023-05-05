@@ -72,6 +72,26 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
     }
 
     /**
+     * @inheritDoc
+     */
+    protected function getOptionViewData(FilterItem $filterItem, Option $swatchOption)
+    {
+
+        if ($this->isOptionDisabled($filterItem)) {
+            $link = 'javascript:void();';
+            $style = 'disabled';
+        } else {
+            $style = '';
+            $link = $this->buildUrl($this->eavAttribute->getAttributeCode(), $filterItem->getValueString());
+        }
+        return [
+            'link' => $link,
+            'custom_style' => $style,
+            'label' => $swatchOption->getLabel()
+        ];
+    }
+
+    /**
      * Get attribute swatch data
      *
      * @return array
@@ -115,23 +135,4 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
         return $this->filterItemUrlBuilder->toggleFilterUrl($attributeCode, (string) $optionId);
     }
 
-    /**
-     * @inheritDoc
-     */
-    protected function getOptionViewData(FilterItem $filterItem, Option $swatchOption)
-    {
-
-        if ($this->isOptionDisabled($filterItem)) {
-            $link = 'javascript:void();';
-            $style = 'disabled';
-        } else {
-            $style = '';
-            $link = $this->buildUrl($this->eavAttribute->getAttributeCode(), $filterItem->getValueString());
-        }
-        return [
-            'link' => $link,
-            'custom_style' => $style,
-            'label' => $swatchOption->getLabel()
-        ];
-    }
 }

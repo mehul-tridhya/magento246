@@ -10,9 +10,9 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model\FilterMeta;
 
-use Magento\Framework\ObjectManagerInterface;
 use Tridhyatech\LayeredNavigation\Api\Data\FilterInterface;
 use Tridhyatech\LayeredNavigation\Model\FilterMeta;
+use Magento\Framework\ObjectManagerInterface;
 
 class Factory
 {

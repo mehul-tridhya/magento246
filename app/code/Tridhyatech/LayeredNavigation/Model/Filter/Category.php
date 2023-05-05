@@ -135,29 +135,7 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
         return $this;
     }
 
-    /**
-     * @inheritDoc
-     */
-    protected function _getItemsData()
-    {
-
-        $currentCategory = $this->getLayer()->getCurrentCategory();
-        if (! $currentCategory->getIsActive()) {
-            return $this->itemDataBuilder->build();
-        }
-
-        try {
-            return $this->facetedDataResolver->resolve(
-                'cat',
-                $currentCategory,
-                $this->getLayer()
-            );
-        } catch (LocalizedException $exception) {
-            return parent::_getItemsData();
-        }
-    }
-
-    /**
+        /**
      * Filter products by categories
      *
      * @param  Collection $collection
@@ -187,4 +165,27 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
         );
         return $this;
     }
+
+    /**
+     * @inheritDoc
+     */
+    protected function _getItemsData()
+    {
+
+        $currentCategory = $this->getLayer()->getCurrentCategory();
+        if (! $currentCategory->getIsActive()) {
+            return $this->itemDataBuilder->build();
+        }
+
+        try {
+            return $this->facetedDataResolver->resolve(
+                'cat',
+                $currentCategory,
+                $this->getLayer()
+            );
+        } catch (LocalizedException $exception) {
+            return parent::_getItemsData();
+        }
+    }
+
 }

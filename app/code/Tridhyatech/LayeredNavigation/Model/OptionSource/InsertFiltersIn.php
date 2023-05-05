@@ -17,8 +17,8 @@ use Tridhyatech\LayeredNavigation\Model\OptionSource\AbstractSource;
  */
 class InsertFiltersIn extends AbstractSource
 {
-    public const URL_PATH = 0;
     public const GET_PARAMS = 1;
+    public const URL_PATH = 0;
 
     /**
      * Get filter mode.

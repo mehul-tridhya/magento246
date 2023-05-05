@@ -20,14 +20,14 @@ class AddFilterTitles
 {
 
     /**
-     * @var Registry
-     */
-    private $variableRegistry;
-
-    /**
      * @var FiltersOptionsInterface
      */
     private $filtersOptions;
+
+    /**
+     * @var Registry
+     */
+    private $variableRegistry;
 
     /**
      * @var FilterRepositoryInterface
@@ -47,39 +47,6 @@ class AddFilterTitles
         $this->variableRegistry = $variableRegistry;
         $this->filtersOptions = $filtersOptions;
         $this->filterMetaRepository = $filterMetaRepository;
-    }
-
-    /**
-     * Add active filter titles to title.
-     *
-     * @param  string $title
-     * @param  string $position
-     * @param  array  $allowList
-     * @param  string $separator
-     * @return string
-     */
-    public function execute(
-        string $title,
-        string $position,
-        array $allowList,
-        string $separator
-    ): string {
-        if (AbstractTitlePosition::POSITION_NONE === $position) {
-            return $title;
-        }
-
-        $titles = $this->toTitles($this->variableRegistry->get(), $allowList);
-        if (!$titles) {
-            return $title;
-        }
-
-        if (AbstractTitlePosition::POSITION_BEFORE === $position) {
-            $titles[] = $title;
-        } else {
-            array_unshift($titles, $title);
-        }
-
-        return implode($separator, $titles);
     }
 
     /**
@@ -117,5 +84,38 @@ class AddFilterTitles
             }
         }
         return array_filter($titles);
+    }
+
+    /**
+     * Add active filter titles to title.
+     *
+     * @param  string $title
+     * @param  string $position
+     * @param  array  $allowList
+     * @param  string $separator
+     * @return string
+     */
+    public function execute(
+        string $title,
+        string $position,
+        array $allowList,
+        string $separator
+    ): string {
+        if (AbstractTitlePosition::POSITION_NONE === $position) {
+            return $title;
+        }
+
+        $titles = $this->toTitles($this->variableRegistry->get(), $allowList);
+        if (!$titles) {
+            return $title;
+        }
+
+        if (AbstractTitlePosition::POSITION_BEFORE === $position) {
+            $titles[] = $title;
+        } else {
+            array_unshift($titles, $title);
+        }
+
+        return implode($separator, $titles);
     }
 }

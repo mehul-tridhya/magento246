@@ -20,9 +20,8 @@ use Magento\Framework\App\Helper\Context;
 class Config extends AbstractHelper
 {
 
-    public const FILTER_PARAM_SEPARATOR = '-';
-
     public const XML_PATH_SCROLL_UP = 'ttlayerednavigation/general/scroll_up';
+    public const FILTER_PARAM_SEPARATOR = '-';
 
     /**
      * Toolbar variables
@@ -66,16 +65,6 @@ class Config extends AbstractHelper
     }
 
     /**
-     * Retrieve category suffix.
-     *
-     * @return string
-     */
-    public function getCategoryUrlSuffix(): string
-    {
-        return (string) $this->configUtils->getConfig(CategoryUrlPathGenerator::XML_PATH_CATEGORY_URL_SUFFIX);
-    }
-
-    /**
      * Check if we should scroll to top after filtering or other actions.
      *
      * @param  int|string|null $store
@@ -84,6 +73,16 @@ class Config extends AbstractHelper
     public function shouldScrollUpAfterUpdate($store = null): bool
     {
         return $this->configUtils->isSetFlag(self::XML_PATH_SCROLL_UP, $store);
+    }
+
+    /**
+     * Retrieve category suffix.
+     *
+     * @return string
+     */
+    public function getCategoryUrlSuffix(): string
+    {
+        return (string) $this->configUtils->getConfig(CategoryUrlPathGenerator::XML_PATH_CATEGORY_URL_SUFFIX);
     }
 
     /**
@@ -97,16 +96,6 @@ class Config extends AbstractHelper
     }
 
     /**
-     * Retrieve toolbar vars
-     *
-     * @return array
-     */
-    public function getToolbarVars(): array
-    {
-        return $this->toolbarVars;
-    }
-
-    /**
      * Retrieve canonical url
      *
      * @return string
@@ -116,6 +105,16 @@ class Config extends AbstractHelper
         $currentUrl = $this->_urlBuilder->getCurrentUrl();
         $parts = explode('?', $currentUrl);
         return $parts[0];
+    }
+
+    /**
+     * Retrieve toolbar vars
+     *
+     * @return array
+     */
+    public function getToolbarVars(): array
+    {
+        return $this->toolbarVars;
     }
 
     /**

@@ -12,17 +12,6 @@ namespace Tridhyatech\LayeredNavigation\Api;
  */
 interface ItemUrlBuilderInterface
 {
-
-    /**
-     * Create url to add filter option.
-     *
-     * @param string $requestVar
-     * @param string $itemValue
-     * @param bool   $removeCurrentValue
-     * @return string
-     */
-    public function getAddFilterUrl(string $requestVar, string $itemValue, bool $removeCurrentValue = false): string;
-
     /**
      * Create url to remove filter option.
      *
@@ -41,4 +30,14 @@ interface ItemUrlBuilderInterface
      * @return string
      */
     public function toggleFilterUrl(string $requestVar, string $itemValue, bool $removeCurrentValue = false): string;
+
+    /**
+     * Create url to add filter option.
+     *
+     * @param string $requestVar
+     * @param string $itemValue
+     * @param bool   $removeCurrentValue
+     * @return string
+     */
+    public function getAddFilterUrl(string $requestVar, string $itemValue, bool $removeCurrentValue = false): string;
 }

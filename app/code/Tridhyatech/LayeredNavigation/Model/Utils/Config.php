@@ -10,8 +10,8 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model\Utils;
 
-use Tridhyatech\LayeredNavigation\Api\ConfigInterface;
 use Tridhyatech\LayeredNavigation\Model\ConfigUtils;
+use Tridhyatech\LayeredNavigation\Api\ConfigInterface;
 
 class Config extends ConfigUtils implements ConfigInterface
 {

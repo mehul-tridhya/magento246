@@ -9,9 +9,9 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Helper;
 
-use Magento\Framework\App\Helper\AbstractHelper;
-use Magento\Framework\App\Helper\Context;
 use Magento\Search\Model\EngineResolver;
+use Magento\Framework\App\Helper\Context;
+use Magento\Framework\App\Helper\AbstractHelper;
 
 class SearchEngine extends AbstractHelper
 {
@@ -33,6 +33,16 @@ class SearchEngine extends AbstractHelper
     }
 
     /**
+     * Check if live search is enabled.
+     *
+     * @return bool
+     */
+    public function isLiveSearch(): bool
+    {
+        return 'livesearch' === $this->engineResolver->getCurrentSearchEngine();
+    }
+
+    /**
      * Check if elastic search is enabled.
      *
      * @return bool
@@ -41,15 +51,5 @@ class SearchEngine extends AbstractHelper
     {
         $searchEngine = $this->engineResolver->getCurrentSearchEngine();
         return false !== \mb_strpos($searchEngine, 'elasticsearch');
-    }
-
-    /**
-     * Check if live search is enabled.
-     *
-     * @return bool
-     */
-    public function isLiveSearch(): bool
-    {
-        return 'livesearch' === $this->engineResolver->getCurrentSearchEngine();
     }
 }

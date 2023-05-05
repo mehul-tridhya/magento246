@@ -9,18 +9,18 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model\FacetedData;
 
-use Magento\Catalog\Model\Category;
-use Magento\Catalog\Model\Layer;
-use Magento\Catalog\Model\Layer\Filter\Item\DataBuilder;
 use Magento\Framework\Api\Filter;
-use Magento\Framework\Filter\StripTags;
-use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
+use Magento\Catalog\Model\Category;
+use Magento\Catalog\Model\Layer\Filter\Item\DataBuilder;
+use Magento\Catalog\Model\Layer;
 use Magento\Framework\Escaper;
-use Tridhyatech\LayeredNavigation\Model\FacetedData\GetLayerFilters;
+use Magento\Framework\Filter\StripTags;
 use Tridhyatech\LayeredNavigation\Model\FacetedData\Search;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
 use Magento\Framework\Exception\StateException;
 use Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item;
+use Tridhyatech\LayeredNavigation\Model\FacetedData\GetLayerFilters;
+use Magento\Framework\Exception\LocalizedException;
 
 /**
  * @since 1.0.0
@@ -28,6 +28,12 @@ use Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item;
 class CategoryResolver
 {
 
+    
+    /**
+     * @var CollectionFactory
+     */
+    private $categoryCollectionFactory;
+    
     /**
      * @var DataBuilder
      */
@@ -39,16 +45,6 @@ class CategoryResolver
     private $tagFilter;
 
     /**
-     * @var CollectionFactory
-     */
-    private $categoryCollectionFactory;
-
-    /**
-     * @var Escaper
-     */
-    private $escaper;
-
-    /**
      * @var GetLayerFilters
      */
     private $getLayerFilters;
@@ -57,6 +53,11 @@ class CategoryResolver
      * @var Search
      */
     private $search;
+
+    /**
+     * @var Escaper
+     */
+    private $escaper;
 
     /**
      * @param DataBuilder       $itemDataBuilder
@@ -80,6 +81,26 @@ class CategoryResolver
         $this->escaper = $escaper;
         $this->getLayerFilters = $getLayerFilters;
         $this->search = $search;
+    }
+
+    /**
+     * Return field faceted data from faceted search result
+     *
+     * @param  string $field
+     * @param  Layer  $layer
+     * @return array
+     * @throws LocalizedException
+     * @throws StateException
+     */
+    public function getFacetedData(string $field, Layer $layer): array
+    {
+        $filters = $this->getLayerFilters->execute($layer);
+        $otherFilters = array_filter(
+            $filters, static function (Filter $filter) {
+                return ! ($filter->getField() === 'category_ids' && is_array($filter->getValue()));
+            }
+        );
+        return $this->search->search($field, $otherFilters);
     }
 
     /**
@@ -133,25 +154,6 @@ class CategoryResolver
         return $this->itemDataBuilder->build();
     }
 
-    /**
-     * Return field faceted data from faceted search result
-     *
-     * @param  string $field
-     * @param  Layer  $layer
-     * @return array
-     * @throws LocalizedException
-     * @throws StateException
-     */
-    public function getFacetedData(string $field, Layer $layer): array
-    {
-        $filters = $this->getLayerFilters->execute($layer);
-        $otherFilters = array_filter(
-            $filters, static function (Filter $filter) {
-                return ! ($filter->getField() === 'category_ids' && is_array($filter->getValue()));
-            }
-        );
-        return $this->search->search($field, $otherFilters);
-    }
 
     /**
      * Build option data
@@ -199,37 +201,6 @@ class CategoryResolver
     }
 
     /**
-     * Retrieve count of the options
-     *
-     * @param  int|string $value
-     * @param  array      $optionsFacetedData
-     * @return int
-     */
-    private function getOptionCount($value, array $optionsFacetedData): int
-    {
-        return isset($optionsFacetedData[$value]['count'])
-            ? (int) $optionsFacetedData[$value]['count']
-            : 0;
-    }
-
-    /**
-     * Check if option is selected.
-     *
-     * @param  int|string $value
-     * @param  Item[]     $attrFilterItems
-     * @return bool
-     */
-    private function isActiveFilter($value, array $attrFilterItems): bool
-    {
-        foreach ($attrFilterItems as $filterItem) {
-            if ((string) $value === (string) $filterItem->getValueString()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * Return child categories
      *
      * @param  Category $category
@@ -269,4 +240,36 @@ class CategoryResolver
 
         return $options;
     }
+
+    /**
+     * Retrieve count of the options
+     *
+     * @param  int|string $value
+     * @param  array      $optionsFacetedData
+     * @return int
+     */
+    private function getOptionCount($value, array $optionsFacetedData): int
+    {
+        return isset($optionsFacetedData[$value]['count'])
+            ? (int) $optionsFacetedData[$value]['count']
+            : 0;
+    }
+
+    /**
+     * Check if option is selected.
+     *
+     * @param  int|string $value
+     * @param  Item[]     $attrFilterItems
+     * @return bool
+     */
+    private function isActiveFilter($value, array $attrFilterItems): bool
+    {
+        foreach ($attrFilterItems as $filterItem) {
+            if ((string) $value === (string) $filterItem->getValueString()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

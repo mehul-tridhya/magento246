@@ -18,25 +18,6 @@ interface ConfigInterface
 {
 
     /**
-     * Receive magento config value by store
-     *
-     * @param string     $path  full path, eg: "tt_base/general/enabled"
-     * @param string|int $store store view code or id
-     * @return mixed
-     */
-    public function getStoreConfig(string $path, $store = null);
-
-    /**
-     * Is flag set.
-     *
-     * @param string $path
-     * @param null   $scopeCode
-     * @param null   $scopeType
-     * @return bool
-     */
-    public function isSetFlag(string $path, $scopeCode = null, $scopeType = null): bool;
-
-    /**
      * Receive magento config value by store or by other scope type
      *
      * @param string      $path      full path, eg: "tt_base/general/enabled"
@@ -45,6 +26,15 @@ interface ConfigInterface
      * @return mixed
      */
     public function getConfig(string $path, $scopeCode = null, $scopeType = null);
+
+    /**
+     * Receive magento config value by store
+     *
+     * @param string     $path  full path, eg: "tt_base/general/enabled"
+     * @param string|int $store store view code or id
+     * @return mixed
+     */
+    public function getStoreConfig(string $path, $store = null);
 
     /**
      * Convert multiline text into array.
@@ -62,4 +52,14 @@ interface ConfigInterface
      * @return array
      */
     public function prepareMultiselectValue(string $value, bool $clearEmpty = true): array;
+
+    /**
+     * Is flag set.
+     *
+     * @param string $path
+     * @param null   $scopeCode
+     * @param null   $scopeType
+     * @return bool
+     */
+    public function isSetFlag(string $path, $scopeCode = null, $scopeType = null): bool;
 }

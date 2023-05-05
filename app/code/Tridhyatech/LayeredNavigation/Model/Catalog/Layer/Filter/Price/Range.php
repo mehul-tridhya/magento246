@@ -7,25 +7,26 @@
 
 namespace Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Price;
 
-use Magento\Catalog\Model\Layer\Resolver;
 use Magento\Catalog\Model\ResourceModel\Category\Collection as CategoryCollection;
-use Magento\Catalog\Model\ResourceModel\Category\Flat\Collection as FlatCategoryCollection;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\Registry;
+use Magento\Catalog\Model\ResourceModel\Category\Flat\Collection as FlatCategoryCollection;
+use Magento\Catalog\Model\Layer\Resolver;
 use Tridhyatech\LayeredNavigation\Helper\Config;
+use Magento\Framework\Registry;
 
 class Range extends \Magento\Catalog\Model\Layer\Filter\Price\Range
 {
+
+    /**
+     * @var Registry
+     */
+    private $registry;
 
     /**
      * @var Config
      */
     private $config;
 
-    /**
-     * @var Registry
-     */
-    private $registry;
 
     /**
      * @param Config               $config

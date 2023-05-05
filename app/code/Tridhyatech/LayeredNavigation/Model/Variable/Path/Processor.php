@@ -38,25 +38,6 @@ class Processor
     }
 
     /**
-     * Move variables from path to params.
-     *
-     * @param Request $request
-     * @param array   $variables
-     */
-    public function moveToParams(Request $request, array $variables): void
-    {
-        if (!$variables) {
-            return;
-        }
-
-        foreach ($variables as $variable => $values) {
-            $request->setParam($variable, implode(',', $values));
-        }
-
-        $request->setPathInfo($this->getPathWithoutVariables($request->getPathInfo(), $variables));
-    }
-
-    /**
      * Get path without variables.
      *
      * @param  string $path
@@ -85,5 +66,24 @@ class Processor
             return implode('/', $newParts);
         }
         return implode('/', $newParts) . $this->config->getCategoryUrlSuffix();
+    }
+
+    /**
+     * Move variables from path to params.
+     *
+     * @param Request $request
+     * @param array   $variables
+     */
+    public function moveToParams(Request $request, array $variables): void
+    {
+        if (!$variables) {
+            return;
+        }
+
+        foreach ($variables as $variable => $values) {
+            $request->setParam($variable, implode(',', $values));
+        }
+
+        $request->setPathInfo($this->getPathWithoutVariables($request->getPathInfo(), $variables));
     }
 }

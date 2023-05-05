@@ -22,22 +22,6 @@ class Status
     private $activeFilters;
 
     /**
-     * Mark active filter items.
-     *
-     * @param  array $items
-     * @return void
-     */
-    public function markActiveItems(array $items): void
-    {
-        foreach ($items as $item) {
-            $item->setData(
-                'is_active',
-                $this->isActive($item)
-            );
-        }
-    }
-
-    /**
      * Is filter active.
      *
      * @param  Item $item
@@ -60,6 +44,22 @@ class Status
                 && (in_array($value, $activeFilters[$attributeCode])
                     || in_array($additionalValue, $activeFilters[$attributeCode]))
             );
+    }
+
+    /**
+     * Mark active filter items.
+     *
+     * @param  array $items
+     * @return void
+     */
+    public function markActiveItems(array $items): void
+    {
+        foreach ($items as $item) {
+            $item->setData(
+                'is_active',
+                $this->isActive($item)
+            );
+        }
     }
 
     /**

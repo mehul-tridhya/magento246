@@ -16,22 +16,22 @@ class Url implements UrlInterface
     /**
      * @inheritDoc
      */
-    public function encode(string $variable, $value): string
-    {
-        if ('price' === $variable) {
-            return str_replace('-', '_', $value);
-        }
-        return (string) $value;
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function decode(string $variable, string $value): string
     {
         if ('price' === $variable) {
             return str_replace('_', '-', $value);
         }
         return $value;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function encode(string $variable, $value): string
+    {
+        if ('price' === $variable) {
+            return str_replace('-', '_', $value);
+        }
+        return (string) $value;
     }
 }

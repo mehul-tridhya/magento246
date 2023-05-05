@@ -119,20 +119,6 @@ class Router implements RouterInterface
     }
 
     /**
-     * Process product filter ajax request.
-     *
-     * @param Request $request
-     */
-    private function handleAjaxRequest(Request $request): void
-    {
-        $this->ajaxRequestLocator->setActive(true);
-        $variables = $this->getUrlVariables->getFromAjaxParams($request->getParam('prfilter_variables', []));
-        $variables = $this->variableValue->preparePriceValues($variables);
-        $this->variableRegistry->set($variables);
-        $this->paramsProcessor->moveToParams($request, $variables);
-    }
-
-    /**
      * Process product filter regular request.
      *
      * @param Request $request
@@ -152,4 +138,19 @@ class Router implements RouterInterface
         $this->variableRegistry->set($variables);
         $this->pathProcessor->moveToParams($request, $variables);
     }
+
+    /**
+     * Process product filter ajax request.
+     *
+     * @param Request $request
+     */
+    private function handleAjaxRequest(Request $request): void
+    {
+        $this->ajaxRequestLocator->setActive(true);
+        $variables = $this->getUrlVariables->getFromAjaxParams($request->getParam('prfilter_variables', []));
+        $variables = $this->variableValue->preparePriceValues($variables);
+        $this->variableRegistry->set($variables);
+        $this->paramsProcessor->moveToParams($request, $variables);
+    }
+
 }

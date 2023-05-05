@@ -14,8 +14,6 @@ use Magento\Framework\Data\OptionSourceInterface;
 
 /**
  * Allow creating short system config sources
- *
- * @since 2.4.1
  */
 abstract class AbstractSource implements OptionSourceInterface
 {

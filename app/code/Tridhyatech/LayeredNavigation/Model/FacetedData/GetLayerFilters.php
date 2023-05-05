@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model\FacetedData;
 
-use Magento\Catalog\Model\Layer;
-use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Api\Filter;
+use Magento\Catalog\Model\Layer;
 use Magento\Framework\Api\Search\SearchCriteriaBuilder;
+use Magento\Framework\Api\Filter;
+use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection;
 
 /**
  * @since 1.0.0

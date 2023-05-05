@@ -14,7 +14,7 @@ use Tridhyatech\LayeredNavigation\Model\OptionSource\AbstractSource;
 
 abstract class AbstractTitlePosition extends AbstractSource
 {
-    public const POSITION_BEFORE = 'before';
     public const POSITION_AFTER = 'after';
     public const POSITION_NONE = 'none';
+    public const POSITION_BEFORE = 'before';
 }
