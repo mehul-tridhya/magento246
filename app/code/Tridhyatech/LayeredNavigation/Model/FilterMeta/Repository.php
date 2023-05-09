@@ -18,9 +18,6 @@ use Tridhyatech\LayeredNavigation\Model\FilterMeta\Factory;
 use Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory;
 use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 
-/**
- * @since 1.0.0
- */
 class Repository implements FilterRepositoryInterface
 {
 

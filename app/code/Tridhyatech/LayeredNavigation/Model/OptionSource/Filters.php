@@ -14,9 +14,6 @@ use Tridhyatech\LayeredNavigation\Model\OptionSource\AbstractSource;
 use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Model\FilterList;
 
-/**
- * @since 1.0.0
- */
 class Filters extends AbstractSource
 {
 

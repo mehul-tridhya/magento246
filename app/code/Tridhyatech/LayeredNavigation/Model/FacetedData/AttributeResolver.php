@@ -20,9 +20,6 @@ use Magento\Framework\Exception\StateException;
 use Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item;
 use Magento\Framework\Exception\NoSuchEntityException;
 
-/**
- * @since 1.0.0
- */
 class AttributeResolver
 {
 

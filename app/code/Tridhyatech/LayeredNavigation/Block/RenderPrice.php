@@ -5,7 +5,7 @@
  * @package   Tridhyatech_LayeredNavigation
  */
 
-namespace Tridhyatech\LayeredNavigation\Block\LayeredNavigation;
+namespace Tridhyatech\LayeredNavigation\Block;
 
 use Magento\Framework\Json\Helper\Data;
 use Magento\Framework\View\Element\Template\Context;
@@ -65,7 +65,7 @@ class RenderPrice extends Template
      *
      * @return string
      */
-    protected function renderPriceTemplate(): string
+    protected function renderPriceSlider(): string
     {
         $this->setTemplate(self::FILTER_PRICE_SLIDER_TEMPLATE);
         return parent::_toHtml();
@@ -77,7 +77,7 @@ class RenderPrice extends Template
     protected function _toHtml()
     {
         $this->assign('filterItems', $this->getItems());
-        $html = $this->renderPriceTemplate();
+        $html = $this->renderPriceSlider();
         $this->assign('filterItems', []);
         return $html;
     }

@@ -18,9 +18,6 @@ use Magento\Framework\View\Layout;
 use Tridhyatech\LayeredNavigation\Model\Variable\Registry;
 use Tridhyatech\LayeredNavigation\Model\Variable\Renderer;
 
-/**
- * @since 1.0.0
- */
 class AjaxResponse
 {
 

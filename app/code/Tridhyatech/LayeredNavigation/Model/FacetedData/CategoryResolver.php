@@ -22,9 +22,6 @@ use Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item;
 use Tridhyatech\LayeredNavigation\Model\FacetedData\GetLayerFilters;
 use Magento\Framework\Exception\LocalizedException;
 
-/**
- * @since 1.0.0
- */
 class CategoryResolver
 {
 

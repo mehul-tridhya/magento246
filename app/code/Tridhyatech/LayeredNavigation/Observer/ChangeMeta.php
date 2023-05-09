@@ -20,9 +20,6 @@ use Magento\Theme\Block\Html\Title;
 use Tridhyatech\LayeredNavigation\Helper\Config;
 use Tridhyatech\LayeredNavigation\Model\AjaxResponse;
 
-/**
- * @since 1.0.0
- */
 class ChangeMeta implements ObserverInterface
 {
 

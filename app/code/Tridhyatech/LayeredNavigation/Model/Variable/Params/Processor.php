@@ -12,9 +12,6 @@ namespace Tridhyatech\LayeredNavigation\Model\Variable\Params;
 
 use Magento\Framework\HTTP\PhpEnvironment\Request;
 
-/**
- * @since 1.0.0
- */
 class Processor
 {
 

@@ -18,7 +18,6 @@ use Tridhyatech\LayeredNavigation\Model\CatalogSearch\Model\ResourceModel\Fullte
  * @link https://github.com/magento/magento2/issues/28919
  * TODO: remove after left support magento version with bug
  *
- * @since 1.0.0
  */
 class SaveRealMaxAndMinPrices
 {

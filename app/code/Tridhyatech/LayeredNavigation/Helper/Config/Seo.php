@@ -13,9 +13,6 @@ use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Tridhyatech\LayeredNavigation\Model\Utils\Config;
 
-/**
- * @since 1.0.0
- */
 class Seo extends AbstractHelper
 {
 
@@ -43,7 +40,6 @@ class Seo extends AbstractHelper
      *
      * @param  int|null $storeId
      * @return int
-     * @since  1.3.0
      */
     public function getInsertFiltersIn(int $storeId = null): int
     {

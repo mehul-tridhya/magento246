@@ -7,9 +7,6 @@
 
 namespace Tridhyatech\LayeredNavigation\Api;
 
-/**
- * @since 1.0.0
- */
 interface GetUrlVariablesInterface
 {
     /**
@@ -33,7 +30,6 @@ interface GetUrlVariablesInterface
      *     'requestVar' => ['value', 'value', ...],
      *     ...
      * ]
-     * @since 1.3.0
      */
     public function getFromParams(array $params): array;
 

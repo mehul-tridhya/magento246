@@ -12,9 +12,6 @@ use Tridhyatech\LayeredNavigation\Helper\Config;
 use Tridhyatech\LayeredNavigation\Model\ResourceModel\Product\CollectionFactory;
 use Magento\CatalogSearch\Model\Layer\Category\ItemCollectionProvider as modelCollectionProvider;
 
-/**
- * @since 1.0.0
- */
 class ItemCollectionProvider
 {
 

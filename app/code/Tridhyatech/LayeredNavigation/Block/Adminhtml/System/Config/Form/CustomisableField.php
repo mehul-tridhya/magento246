@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form;
 
 use Magento\Framework\Data\Form\Element\AbstractElement;
-use Tridhyatech\LayeredNavigation\Block\Adminhtml\System\Config\Form\Element\ImageRadioButtons;
 use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\View\Asset\Repository;
@@ -77,7 +76,7 @@ class CustomisableField extends Field
      * @param  string          $comment
      * @return string
      */
-    private function filterTooltipMediaVariables(AbstractElement $element, string $comment): string
+    private function filterVariables(AbstractElement $element, string $comment): string
     {
         if (! $element->getData('field_config/pr_allow_variables')) {
             return $comment;
@@ -97,7 +96,7 @@ class CustomisableField extends Field
     /**
      * Render element value
      *
-     * @param  ImageRadioButtons $element
+     * @param  AbstractElement $element
      * @return string
      */
     protected function _renderValue(AbstractElement $element): string
@@ -115,7 +114,7 @@ class CustomisableField extends Field
         }
         $comment = (string) $element->getComment();
         if ($comment) {
-            $html .= '<p class="note"><span>' . $this->filterTooltipMediaVariables($element, $comment) . '</span></p>';
+            $html .= '<p class="note"><span>' . $this->filterVariables($element, $comment) . '</span></p>';
         }
         $html .= '</td>';
         return $html;

@@ -14,9 +14,6 @@ use Magento\Framework\App\Helper\Context;
 use Magento\Store\Model\ScopeInterface;
 use Tridhyatech\LayeredNavigation\Model\Utils\Config;
 
-/**
- * @since 1.0.0
- */
 class Attribute extends AbstractHelper
 {
 

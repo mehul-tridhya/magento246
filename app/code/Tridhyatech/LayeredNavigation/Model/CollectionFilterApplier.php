@@ -16,9 +16,6 @@ use Magento\Framework\Api\Search\SearchCriteriaBuilder;
 use Magento\Framework\ObjectManagerInterface;
 use Tridhyatech\LayeredNavigation\Helper\SearchEngine;
 
-/**
- * @since 1.3.0
- */
 class CollectionFilterApplier
 {
 

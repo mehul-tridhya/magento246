@@ -21,9 +21,6 @@ use Magento\Search\Api\SearchInterface;
 use Magento\Framework\Api\Filter;
 use Magento\Framework\Search\Request\NonExistingRequestNameException;
 
-/**
- * @since 1.0.0
- */
 class Search
 {
 
@@ -65,7 +62,7 @@ class Search
      * @return SearchResultInterface
      * @throws LocalizedException
      */
-    public function searchProducts(array $filters): SearchResultInterface
+    public function searchProductsByFilter(array $filters): SearchResultInterface
     {
         $searchCriteriaBuilder = $this->searchCriteriaBuilderFactory->create();
 
@@ -129,7 +126,7 @@ class Search
      */
     public function search(string $field, array $filters): array
     {
-        $searchResult = $this->searchProducts($filters);
+        $searchResult = $this->searchProductsByFilter($filters);
         return $this->extractFacedData($field, $searchResult);
     }
 }

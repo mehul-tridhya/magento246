@@ -12,9 +12,6 @@ namespace Tridhyatech\LayeredNavigation\Model\OptionSource;
 
 use Tridhyatech\LayeredNavigation\Model\OptionSource\AbstractSource;
 
-/**
- * @since 1.3.0
- */
 class InsertFiltersIn extends AbstractSource
 {
     public const GET_PARAMS = 1;

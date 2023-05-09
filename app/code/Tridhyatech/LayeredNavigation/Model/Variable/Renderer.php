@@ -19,9 +19,6 @@ use Tridhyatech\LayeredNavigation\Model\Variable\Path\Processor;
 use Tridhyatech\LayeredNavigation\Model\Variable\Value\UrlInterface as modelUrlInterface;
 use Tridhyatech\LayeredNavigation\Model\Variable\Registry;
 
-/**
- * @since 1.0.0
- */
 class Renderer
 {
 
@@ -185,7 +182,6 @@ class Renderer
      * @param  string[] $getParams
      * @param  array[]  $variables
      * @return string[]
-     * @since  1.3.0
      */
     public function addVariablesToParams(array $getParams, array $variables): array
     {

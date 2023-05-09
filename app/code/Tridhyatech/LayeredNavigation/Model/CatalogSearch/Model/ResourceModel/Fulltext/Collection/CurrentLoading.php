@@ -17,7 +17,6 @@ use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection;
  * @link https://github.com/magento/magento2/issues/28919
  * TODO: remove after left support magento version with bug
  *
- * @since 1.0.0
  */
 class CurrentLoading
 {

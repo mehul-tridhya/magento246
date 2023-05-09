@@ -6,7 +6,7 @@
  * @package   Tridhyatech_LayeredNavigation
  */
 
-namespace Tridhyatech\LayeredNavigation\Plugin\Block\LayeredNavigation\Navigation;
+namespace Tridhyatech\LayeredNavigation\Plugin\Block;
 
 use Magento\Framework\View\LayoutInterface;
 use Magento\Framework\Module\Manager;

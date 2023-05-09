@@ -85,7 +85,7 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
             ->getProductCollection();
 
         foreach ($attributeValue as $index => $value) {
-            $attributeValue[$index] = $this->convertAttributeValue($attribute, $value);
+            $attributeValue[$index] = $this->convertAttributeValueInInt($attribute, $value);
         }
 
         $this->filterApplier->applyInCondition($productCollection, $attribute->getAttributeCode(), $attributeValue);
@@ -146,7 +146,7 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
      * @param  mixed                     $value
      * @return int|string
      */
-    private function convertAttributeValue(ProductAttributeInterface $attribute, $value)
+    private function convertAttributeValueInInt(ProductAttributeInterface $attribute, $value)
     {
         if ($attribute->getBackendType() === 'int') {
             return (int) $value;

@@ -6,7 +6,7 @@
  * @package   Tridhyatech_LayeredNavigation
  */
 
-namespace Tridhyatech\LayeredNavigation\Block\LayeredNavigation\Navigation;
+namespace Tridhyatech\LayeredNavigation\Block\Navigation;
 
 use Magento\Catalog\Model\Layer\Resolver;
 use Magento\Framework\View\Element\Template\Context;

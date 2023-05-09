@@ -78,7 +78,7 @@ class HandleFilterAjaxRequest
      */
     public function afterDispatch(AbstractAction $subject, $result, RequestInterface $request)
     {
-        if (!$this->canProcessResponse($request)) {
+        if (!$this->isAllowedAction($request)) {
             return $result;
         }
         $this->httpContext->setValue('pr_filter_request', 1, 0);
@@ -94,7 +94,7 @@ class HandleFilterAjaxRequest
      */
     public function beforeDispatch(AbstractAction $subject, RequestInterface $request): void
     {
-        if ($this->canProcessResponse($request)) {
+        if ($this->isAllowedAction($request)) {
             $this->httpContext->setValue('pr_filter_request', 1, 0);
         }
     }
@@ -105,7 +105,7 @@ class HandleFilterAjaxRequest
      * @param RequestInterface $request
      * @return bool
      */
-    private function canProcessResponse(RequestInterface $request): bool
+    private function isAllowedAction(RequestInterface $request): bool
     {
         $allowedActions = [AjaxResponse::CATEGORY_VIEW_ACTION_NAME, AjaxResponse::CATALOG_SEARCH_ACTION_NAME];
         return $this->ajaxRequestLocator->isActive()

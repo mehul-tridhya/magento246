@@ -5,7 +5,7 @@
  * @package   Tridhyatech_LayeredNavigation
  */
 
-namespace Tridhyatech\LayeredNavigation\Block\Swatches\LayeredNavigation;
+namespace Tridhyatech\LayeredNavigation\Block\Swatches;
 
 use Magento\Catalog\Model\Layer\Filter\Item as FilterItem;
 use Magento\Catalog\Model\ResourceModel\Layer\Filter\AttributeFactory;

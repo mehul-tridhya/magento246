@@ -63,36 +63,6 @@ class ConfigUtils
     }
 
     /**
-     * Convert multiline text into array.
-     *
-     * @param  string $fieldValue
-     * @return array
-     */
-    public function splitTextareaValueByLine(string $fieldValue): array
-    {
-        $lines = explode(PHP_EOL, $fieldValue);
-
-        if (empty($lines)) {
-            return [];
-        }
-
-        return array_filter(array_map('trim', $lines));
-    }
-
-    /**
-     * Convert multiselect value into array.
-     *
-     * @param  string $value
-     * @param  bool   $clearEmpty
-     * @return array
-     */
-    public function prepareMultiselectValue(string $value, bool $clearEmpty = true): array
-    {
-        $values = explode(',', $value);
-        return $clearEmpty ? array_filter($values) : $values;
-    }
-
-    /**
      * Is flag set.
      *
      * @param  string $path

@@ -15,9 +15,6 @@ use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Model\Variable\Value\Slugify;
 use Tridhyatech\LayeredNavigation\Model\Variable\Value\UrlInterface;
 
-/**
- * @since 1.0.0
- */
 class Value
 {
 

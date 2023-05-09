@@ -14,9 +14,6 @@ use Magento\CatalogUrlRewrite\Model\CategoryUrlPathGenerator;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 
-/**
- * @since 1.0.0
- */
 class Config extends AbstractHelper
 {
 

@@ -20,9 +20,6 @@ use Tridhyatech\LayeredNavigation\Model\Variable\Path\Processor as PathProcessor
 use Tridhyatech\LayeredNavigation\Model\Variable\Registry;
 use Tridhyatech\LayeredNavigation\Model\Variable\Value;
 
-/**
- * @since 1.0.0
- */
 class Router implements RouterInterface
 {
 

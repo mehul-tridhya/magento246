@@ -13,9 +13,6 @@ use Tridhyatech\LayeredNavigation\Api\ItemUrlBuilderInterface;
 use Tridhyatech\LayeredNavigation\Helper\Config;
 use Magento\Framework\Exception\LocalizedException;
 
-/**
- * @since 1.0.0
- */
 class Item extends \Magento\Catalog\Model\Layer\Filter\Item
 {
 

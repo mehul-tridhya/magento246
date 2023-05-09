@@ -22,7 +22,6 @@ use Magento\Catalog\Model\ResourceModel\Product\Collection as productCollection;
  * @link https://github.com/magento/magento2/issues/28919
  * TODO: remove after left support magento version with bug
  *
- * @since 1.0.0
  */
 class FixMaxAndMinPrices
 {

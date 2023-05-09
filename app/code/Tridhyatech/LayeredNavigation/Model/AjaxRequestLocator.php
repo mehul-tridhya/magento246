@@ -10,9 +10,6 @@ declare(strict_types=1);
 
 namespace Tridhyatech\LayeredNavigation\Model;
 
-/**
- * @since 1.0.0
- */
 class AjaxRequestLocator
 {
 

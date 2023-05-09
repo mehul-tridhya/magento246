@@ -9,9 +9,6 @@ namespace Tridhyatech\LayeredNavigation\Api;
 
 use Tridhyatech\LayeredNavigation\Api\Data\FilterInterface;
 
-/**
- * @since 1.0.0
- */
 interface FilterRepositoryInterface
 {
 

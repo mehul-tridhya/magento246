@@ -18,9 +18,6 @@ use Tridhyatech\LayeredNavigation\Api\FilterRepositoryInterface;
 use Tridhyatech\LayeredNavigation\Api\FiltersOptionsInterface;
 use Tridhyatech\LayeredNavigation\Model\FilterOption\CollectorInterface;
 
-/**
- * @since 1.0.0
- */
 class FiltersOptions implements FiltersOptionsInterface
 {
 
@@ -110,33 +107,6 @@ class FiltersOptions implements FiltersOptionsInterface
             }
         }
         return 0;
-    }
-
-    /**
-     * Get attribute option code by its id.
-     *
-     * @param  string     $requestVar
-     * @param  int|string $optionValue
-     * @return string
-     */
-    public function toOptionCode(string $requestVar, $optionValue): string
-    {
-        try {
-            $filterMeta = $this->filterRepository->get($requestVar);
-            if ($filterMeta->isToolbarVariable()) {
-                return $optionValue;
-            }
-        } catch (NoSuchEntityException $e) {
-            return $optionValue;
-        }
-
-        $filterOptions = $this->getOptions($requestVar);
-        foreach ($filterOptions as $optionId => $filterOption) {
-            if ((string) $optionValue === (string) $optionId) {
-                return $filterOption['code'];
-            }
-        }
-        return '';
     }
 
     /**

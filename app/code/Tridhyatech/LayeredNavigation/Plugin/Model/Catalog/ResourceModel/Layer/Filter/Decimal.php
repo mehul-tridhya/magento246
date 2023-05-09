@@ -13,7 +13,6 @@ use Magento\Catalog\Model\ResourceModel\Layer\Filter\Decimal as DecimalFilter;
 /**
  * Fix magento bug with null max and min values for PHP 8.1.
  *
- * @since 1.2.2
  */
 class Decimal
 {

@@ -22,9 +22,6 @@ use Magento\Catalog\Model\Layer\Filter\Item\DataBuilder;
 use Magento\Framework\Escaper;
 use Magento\Catalog\Model\Layer\Filter\DataProvider\CategoryFactory;
 
-/**
- * @since 1.0.0
- */
 class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
 {
 
@@ -117,7 +114,7 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
 
         $categories = $this->dataProvider->getCategories();
 
-        $this->addCategoriesFilter($this->getLayer()->getProductCollection(), $categories->getAllIds());
+        $this->addCategoriesFilterInCollection($this->getLayer()->getProductCollection(), $categories->getAllIds());
 
         foreach ($categories as $category) {
             if (in_array($category->getId(), $categoryIds, false)) {
@@ -142,7 +139,7 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
      * @param  array      $categoryIds
      * @return $this
      */
-    protected function addCategoriesFilter(Collection $collection, array $categoryIds): Category
+    protected function addCategoriesFilterInCollection(Collection $collection, array $categoryIds): Category
     {
         if ($this->searchEngine->isElasticSearch() || $this->searchEngine->isLiveSearch()) {
             $this->collectionFilterApplier->applyInCondition(

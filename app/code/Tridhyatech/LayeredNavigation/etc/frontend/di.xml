@@ -9,7 +9,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="\Magento\Catalog\Model\ResourceModel\Layer\Filter\Attribute" type="Tridhyatech\LayeredNavigation\Model\Catalog\ResourceModel\Layer\Filter\Attribute"/>
     <preference for="\Magento\Catalog\Model\Layer\Filter\DataProvider\Category" type="Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\DataProvider\Category"/>
-    <preference for="\Magento\Swatches\Block\LayeredNavigation\RenderLayered" type="Tridhyatech\LayeredNavigation\Block\Swatches\LayeredNavigation\RenderLayered"/>
+    <preference for="\Magento\Swatches\Block\LayeredNavigation\RenderLayered" type="Tridhyatech\LayeredNavigation\Block\Swatches\RenderLayered"/>
     <preference for="Magento\CatalogSearch\Model\Layer\Filter\Category" type="Tridhyatech\LayeredNavigation\Model\Filter\Category"/>
     <type name="Magento\Framework\App\RouterList">
         <arguments>

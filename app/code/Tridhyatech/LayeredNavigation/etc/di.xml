@@ -16,7 +16,7 @@
 
     <preference for="Magento\Catalog\Model\Layer\Filter\Item" type="Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item"/>
     <preference for="Magento\Catalog\Model\Layer\Filter\Price\Range" type="Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Price\Range"/>
-    <preference for="Magento\LayeredNavigation\Block\Navigation\State" type="Tridhyatech\LayeredNavigation\Block\LayeredNavigation\Navigation\State"/>
+    <preference for="Magento\LayeredNavigation\Block\Navigation\State" type="Tridhyatech\LayeredNavigation\Block\Navigation\State"/>
 
     <type name="Magento\Framework\App\Http\Context">
         <arguments>
@@ -56,11 +56,11 @@
             </argument>
         </arguments>
     </type>
-    <type name="Tridhyatech\LayeredNavigation\Plugin\Block\LayeredNavigation\Navigation\FilterRenderer">
+    <type name="Tridhyatech\LayeredNavigation\Plugin\Block\FilterRenderer">
         <arguments>
             <argument name="filterRenderers" xsi:type="array">
-                <item name="\Magento\Catalog\Model\Layer\Filter\Price" xsi:type="string">Tridhyatech\LayeredNavigation\Block\LayeredNavigation\RenderPrice</item>
-                <item name="\Magento\CatalogSearch\Model\Layer\Filter\Price" xsi:type="string">Tridhyatech\LayeredNavigation\Block\LayeredNavigation\RenderPrice</item>
+                <item name="\Magento\Catalog\Model\Layer\Filter\Price" xsi:type="string">Tridhyatech\LayeredNavigation\Block\RenderPrice</item>
+                <item name="\Magento\CatalogSearch\Model\Layer\Filter\Price" xsi:type="string">Tridhyatech\LayeredNavigation\Block\RenderPrice</item>
             </argument>
         </arguments>
     </type>
@@ -70,7 +70,7 @@
     </type>
 
     <type name="Magento\LayeredNavigation\Block\Navigation\FilterRenderer">
-        <plugin name="pr_filter_layered_renderer" type="Tridhyatech\LayeredNavigation\Plugin\Block\LayeredNavigation\Navigation\FilterRenderer" sortOrder="1" />
+        <plugin name="pr_filter_layered_renderer" type="Tridhyatech\LayeredNavigation\Plugin\Block\FilterRenderer" sortOrder="1" />
     </type>
 
     <type name="Magento\Catalog\Model\Layer\FilterList">
