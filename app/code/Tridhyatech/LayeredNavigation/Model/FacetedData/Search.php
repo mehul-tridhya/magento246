@@ -37,20 +37,20 @@ class Search
     /**
      * @var SearchCriteriaBuilderFactory
      */
-    private $searchCriteriaBuilderFactory;
+    private $searchBuilderFactory;
 
 
     /**
-     * @param SearchCriteriaBuilderFactory $searchCriteriaBuilder
+     * @param SearchCriteriaBuilderFactory $searchBuilder
      * @param SearchInterface              $search
      * @param SearchResultFactory          $searchResultFactory
      */
     public function __construct(
-        SearchCriteriaBuilderFactory $searchCriteriaBuilder,
+        SearchCriteriaBuilderFactory $searchBuilder,
         SearchInterface $search,
         SearchResultFactory $searchResultFactory
     ) {
-        $this->searchCriteriaBuilderFactory = $searchCriteriaBuilder;
+        $this->searchBuilderFactory = $searchBuilder;
         $this->search = $search;
         $this->searchResultFactory = $searchResultFactory;
     }
@@ -64,17 +64,17 @@ class Search
      */
     public function searchProductsByFilter(array $filters): SearchResultInterface
     {
-        $searchCriteriaBuilder = $this->searchCriteriaBuilderFactory->create();
+        $searchBuilder = $this->searchBuilderFactory->create();
 
         $isSearch = false;
         foreach ($filters as $filter) {
             if ($filter->getField() === 'search_term') {
                 $isSearch = true;
             }
-            $searchCriteriaBuilder->addFilter($filter);
+            $searchBuilder->addFilter($filter);
         }
 
-        $searchCriteria = $searchCriteriaBuilder->create();
+        $searchCriteria = $searchBuilder->create();
         $searchCriteria->setRequestName($isSearch ? 'quick_search_container' : 'catalog_view_container');
         $searchCriteria->setSortOrders([]);
 

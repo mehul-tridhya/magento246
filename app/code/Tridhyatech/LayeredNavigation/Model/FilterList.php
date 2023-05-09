@@ -22,7 +22,7 @@ class FilterList
     /**
      * @var CollectionFactory
      */
-    protected $_filterableAttributes;
+    protected $_filterableAttri;
 
     /**
      * @var LoggerInterface
@@ -37,7 +37,7 @@ class FilterList
         CollectionFactory $filterableAttributes,
         LoggerInterface $logger
     ) {
-        $this->_filterableAttributes = $filterableAttributes;
+        $this->_filterableAttri = $filterableAttributes;
         $this->logger = $logger;
     }
 
@@ -51,7 +51,7 @@ class FilterList
         /**
          * @var Collection $collection 
          */
-        $collection = $this->_filterableAttributes->create();
+        $collection = $this->_filterableAttri->create();
         $collection->setItemObjectClass(Attribute::class)
             ->setOrder('position', 'ASC');
 

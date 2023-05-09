@@ -37,15 +37,15 @@ class GetLayerFilters
             $reflectionProperty = $reflectionSubject->getParentClass()->getProperty('searchCriteriaBuilder');
             $reflectionProperty->setAccessible(true);
             /**
-             * @var SearchCriteriaBuilder $searchCriteriaBuilder 
+             * @var SearchCriteriaBuilder $searchBuilder 
             */
-            $searchCriteriaBuilder = clone $reflectionProperty->getValue($productCollection);
+            $searchBuilder = clone $reflectionProperty->getValue($productCollection);
             $reflectionProperty->setAccessible(false);
 
-            $reflectionSubject = new ReflectionObject($searchCriteriaBuilder);
+            $reflectionSubject = new ReflectionObject($searchBuilder);
             $reflectionProperty = $reflectionSubject->getProperty('filters');
             $reflectionProperty->setAccessible(true);
-            $filters = $reflectionProperty->getValue($searchCriteriaBuilder);
+            $filters = $reflectionProperty->getValue($searchBuilder);
             $reflectionProperty->setAccessible(false);
         } catch (ReflectionException $e) {
             throw new LocalizedException(__('Cannot get existing filters'));

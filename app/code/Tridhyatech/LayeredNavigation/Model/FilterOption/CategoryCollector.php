@@ -18,14 +18,14 @@ class CategoryCollector implements CollectorInterface
     /**
      * @var CollectionFactory
      */
-    private $categoryCollectionFactory;
+    private $categoryFactory;
 
     /**
-     * @param CollectionFactory $categoryCollectionFactory
+     * @param CollectionFactory $categoryFactory
      */
-    public function __construct(CollectionFactory $categoryCollectionFactory)
+    public function __construct(CollectionFactory $categoryFactory)
     {
-        $this->categoryCollectionFactory = $categoryCollectionFactory;
+        $this->categoryFactory = $categoryFactory;
     }
 
     /**
@@ -36,7 +36,7 @@ class CategoryCollector implements CollectorInterface
      */
     public function collect(array $options): array
     {
-        $categories = $this->categoryCollectionFactory
+        $categories = $this->categoryFactory
             ->create()
             ->addAttributeToSelect('name')
             ->addAttributeToSelect('url_key')

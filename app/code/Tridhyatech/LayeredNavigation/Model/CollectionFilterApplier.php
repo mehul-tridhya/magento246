@@ -76,7 +76,7 @@ class CollectionFilterApplier
     private function fixForLiveSearch(string $code, array $values): void
     {
         // Use object manager because it doesn't work if we add them to the __construct.
-        $searchCriteriaBuilder = $this->objectManager->get(SearchCriteriaBuilder::class);
+        $searchBuilder = $this->objectManager->get(SearchCriteriaBuilder::class);
         $filterBuilder = $this->objectManager->get(FilterBuilder::class);
 
         $filterBuilder->setField($code);
@@ -86,6 +86,6 @@ class CollectionFilterApplier
         } else if(count($values) <= 1) {
             $filterBuilder->setValue(array_values($values)[0]);
         }
-        $searchCriteriaBuilder->addFilter($filterBuilder->create());
+        $searchBuilder->addFilter($filterBuilder->create());
     }
 }

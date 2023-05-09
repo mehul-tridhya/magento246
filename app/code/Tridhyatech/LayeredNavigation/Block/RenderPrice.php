@@ -38,26 +38,26 @@ class RenderPrice extends Template
     /**
      * @var CollectionFactory
      */
-    protected $productCollectionFactory;
+    protected $productFactory;
 
     /**
      * @param Context           $context
      * @param Data              $jsonHelper
      * @param Registry          $registry
-     * @param CollectionFactory $productCollectionFactory
+     * @param CollectionFactory $productFactory
      * @param array             $data
      */
     public function __construct(
         Context $context,
         Data $jsonHelper,
         Registry $registry,
-        CollectionFactory $productCollectionFactory,
+        CollectionFactory $productFactory,
         array $data = []
     ) {
         $this->_jsonHelper = $jsonHelper;
         parent::__construct($context, $data);
         $this->registry = $registry;
-        $this->productCollectionFactory = $productCollectionFactory;
+        $this->productFactory = $productFactory;
     }
 
     /**
@@ -174,7 +174,7 @@ class RenderPrice extends Template
     {
         if (null === $this->originalCollection) {
             $category = $this->registry->registry('current_category');
-            $this->originalCollection = $this->productCollectionFactory->create()
+            $this->originalCollection = $this->productFactory->create()
                 ->addPriceData();
 
             if ($category) {

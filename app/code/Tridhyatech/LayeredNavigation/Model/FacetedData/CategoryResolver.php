@@ -29,7 +29,7 @@ class CategoryResolver
     /**
      * @var CollectionFactory
      */
-    private $categoryCollectionFactory;
+    private $categoryFactory;
     
     /**
      * @var DataBuilder
@@ -59,7 +59,7 @@ class CategoryResolver
     /**
      * @param DataBuilder       $itemDataBuilder
      * @param StripTags         $tagFilter
-     * @param CollectionFactory $categoryCollectionFactory
+     * @param CollectionFactory $categoryFactory
      * @param Escaper           $escaper
      * @param GetLayerFilters   $getLayerFilters
      * @param Search            $search
@@ -67,14 +67,14 @@ class CategoryResolver
     public function __construct(
         DataBuilder $itemDataBuilder,
         StripTags $tagFilter,
-        CollectionFactory $categoryCollectionFactory,
+        CollectionFactory $categoryFactory,
         Escaper $escaper,
         GetLayerFilters $getLayerFilters,
         Search $search
     ) {
         $this->itemDataBuilder = $itemDataBuilder;
         $this->tagFilter = $tagFilter;
-        $this->categoryCollectionFactory = $categoryCollectionFactory;
+        $this->categoryFactory = $categoryFactory;
         $this->escaper = $escaper;
         $this->getLayerFilters = $getLayerFilters;
         $this->search = $search;
@@ -207,7 +207,7 @@ class CategoryResolver
     protected function getChildrenCategoriesOptions(Category $category): array
     {
         /* @var \Magento\Catalog\Model\ResourceModel\Category\Collection $collection */
-        $collection = $this->categoryCollectionFactory->create();
+        $collection = $this->categoryFactory->create();
 
         $collection->addAttributeToSelect('url_key')
             ->addAttributeToSelect('name')
