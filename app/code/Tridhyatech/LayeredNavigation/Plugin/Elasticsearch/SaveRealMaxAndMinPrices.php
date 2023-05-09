@@ -1,8 +1,8 @@
 <?php
 /**
- * @author Tridhya Tech
+ * @author    Tridhya Tech
  * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
- * @package Tridhyatech_LayeredNavigation
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -15,9 +15,9 @@ use Tridhyatech\LayeredNavigation\Model\CatalogSearch\Model\ResourceModel\Fullte
 
 /**
  * Temporary fix for
+ *
  * @link https://github.com/magento/magento2/issues/28919
  * TODO: remove after left support magento version with bug
- *
  */
 class SaveRealMaxAndMinPrices
 {
