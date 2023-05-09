@@ -60,7 +60,7 @@ class State extends mainState
             if (in_array($param, $toolbarVars, true)) {
                 if ($this->isSearchResultsPage->execute($clearUrl)) {
                     $additionalParam .= '/' . $param . Config::FILTER_PARAM_SEPARATOR . $value;
-                } else {
+                } else if(!$this->isSearchResultsPage->execute($clearUrl)) {
                     $clearUrl .= '/' . $param . Config::FILTER_PARAM_SEPARATOR . $value;
                 }
             }
@@ -72,7 +72,7 @@ class State extends mainState
                 "$1{$additionalParam}{$this->config->getCategoryUrlSuffix()}?",
                 $clearUrl
             );
-        } else {
+        } else if(false === strpos($clearUrl, 'amfinder')) {
             $clearUrl = preg_replace(
                 '/(catalogsearch\/result)\/.*?\/(.*?\/\?)/',
                 "$1{$additionalParam}{$this->config->getCategoryUrlSuffix()}?",

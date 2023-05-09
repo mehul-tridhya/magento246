@@ -15,6 +15,7 @@ use Tridhyatech\LayeredNavigation\Helper\Config;
 use Tridhyatech\LayeredNavigation\Helper\SearchEngine;
 use Tridhyatech\LayeredNavigation\Model\CatalogSearch\Model\ResourceModel\Fulltext\Collection\CurrentLoading;
 use Magento\Catalog\Model\ResourceModel\Product\Collection as productCollection;
+use ReflectionObject;
 
 /**
  * Temporary fix for
@@ -89,7 +90,8 @@ class FixMaxAndMinPrices
         $printQuery = false,
         $logQuery = false
     ) {
-        if ($priceData = $this->currentLoadingCollection->getPriceData()) {
+        if ($this->currentLoadingCollection->getPriceData()) {
+            $priceData = $this->currentLoadingCollection->getPriceData();
             $this->setPropertyValue($subject, '_maxPrice', (float) ($priceData['max'] ?? 0));
             $this->setPropertyValue($subject, '_minPrice', (float) ($priceData['min'] ?? 0));
         }
@@ -118,7 +120,7 @@ class FixMaxAndMinPrices
     private function setPropertyValue(Collection $subject, string $propertyName, float $value)
     {
         try {
-            $reflectionSubject = new \ReflectionObject($subject);
+            $reflectionSubject = new ReflectionObject($subject);
             $reflectionProperty = $reflectionSubject->getProperty($propertyName);
             $reflectionProperty->setAccessible(true);
             $reflectionProperty->setValue($subject, $value);

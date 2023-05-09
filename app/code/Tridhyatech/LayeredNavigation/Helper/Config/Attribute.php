@@ -67,18 +67,19 @@ class Attribute extends AbstractHelper
      */
     public function getRelatedConfig(string $path): string
     {
-        $scopeCode = null;
+        $scopeCode = 0;
         $scopeType = null;
 
         if ('ttlayerednavigation' === $this->_request->getParam('section')) {
-            if ($scopeCode = $this->_request->getParam('website')) {
+            if ($this->_request->getParam('website')) {
+                $scopeCode = $this->_request->getParam('website');
                 $scopeType = ScopeInterface::SCOPE_WEBSITE;
-            } elseif ($scopeCode = $this->_request->getParam('store')) {
+            } elseif ($this->_request->getParam('store')) {
+                $scopeCode = $this->_request->getParam('store');
                 $scopeType = ScopeInterface::SCOPE_STORE;
-            } else {
-                $scopeCode = 0;
             }
-        } elseif ($category = $this->registry->registry('current_category')) {
+        } elseif ($this->registry->registry('current_category')) {
+            $category = $this->registry->registry('current_category');
             $scopeCode = $category->getStoreId();
         }
         return (string) $this->configUtils->getConfig($path, $scopeCode, $scopeType);

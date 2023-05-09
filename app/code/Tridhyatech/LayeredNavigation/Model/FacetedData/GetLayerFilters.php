@@ -14,6 +14,8 @@ use Magento\Catalog\Model\Layer;
 use Magento\Framework\Api\Search\SearchCriteriaBuilder;
 use Magento\Framework\Api\Filter;
 use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection;
+use ReflectionObject;
+use ReflectionException;
 
 class GetLayerFilters
 {
@@ -31,7 +33,7 @@ class GetLayerFilters
              * @var Collection $productCollection 
             */
             $productCollection = $layer->getProductCollection();
-            $reflectionSubject = new \ReflectionObject($productCollection);
+            $reflectionSubject = new ReflectionObject($productCollection);
             $reflectionProperty = $reflectionSubject->getParentClass()->getProperty('searchCriteriaBuilder');
             $reflectionProperty->setAccessible(true);
             /**
@@ -40,12 +42,12 @@ class GetLayerFilters
             $searchCriteriaBuilder = clone $reflectionProperty->getValue($productCollection);
             $reflectionProperty->setAccessible(false);
 
-            $reflectionSubject = new \ReflectionObject($searchCriteriaBuilder);
+            $reflectionSubject = new ReflectionObject($searchCriteriaBuilder);
             $reflectionProperty = $reflectionSubject->getProperty('filters');
             $reflectionProperty->setAccessible(true);
             $filters = $reflectionProperty->getValue($searchCriteriaBuilder);
             $reflectionProperty->setAccessible(false);
-        } catch (\ReflectionException $e) {
+        } catch (ReflectionException $e) {
             throw new LocalizedException(__('Cannot get existing filters'));
         }
         return $filters;

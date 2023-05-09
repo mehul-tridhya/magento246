@@ -11,6 +11,8 @@ declare(strict_types=1);
 namespace Tridhyatech\LayeredNavigation\Model\Variable\Params;
 
 use Magento\Framework\HTTP\PhpEnvironment\Request;
+use Laminas\Stdlib\Parameters as Laminas;
+use Zend\Stdlib\Parameters as Zend;
 
 class Processor
 {
@@ -30,9 +32,9 @@ class Processor
 
         // Laminas package can be missing in magento 2.3
         if (class_exists('\Laminas\Stdlib\Parameters')) {
-            $request->setQuery(new \Laminas\Stdlib\Parameters($queryParams));
-        } else {
-            $request->setQuery(new \Zend\Stdlib\Parameters($queryParams));
+            $request->setQuery(new Laminas($queryParams));
+        } else if(!class_exists('\Laminas\Stdlib\Parameters')){
+            $request->setQuery(new Zend($queryParams));
         }
 
         $requestUri = parse_url($request->getRequestUri(), PHP_URL_PATH);

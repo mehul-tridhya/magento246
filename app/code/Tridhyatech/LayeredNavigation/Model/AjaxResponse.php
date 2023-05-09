@@ -116,8 +116,8 @@ class AjaxResponse
      */
     private function getLeftNavHtml(): string
     {
-        if ($block = $this->getNavigationBlock()) {
-            return $block->toHtml();
+        if ($this->getNavigationBlock()) {
+            return $this->getNavigationBlock()->toHtml();
         }
 
         return '';
@@ -188,8 +188,8 @@ class AjaxResponse
      */
     private function getProductsCount(): string
     {
-        if ($block = $this->getNavigationBlock()) {
-            $count = $block->getLayer()->getProductCollection()->getSize();
+        if ($this->getNavigationBlock()) {
+            $count = $this->getNavigationBlock()->getLayer()->getProductCollection()->getSize();
             $countPrefix = $count > 1 || $count === 0 ? __('Items') : __('Item');
 
             return "$count $countPrefix";

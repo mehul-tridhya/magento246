@@ -7,6 +7,8 @@
 
 namespace Tridhyatech\LayeredNavigation\Model\Catalog\ResourceModel\Layer\Filter;
 
+use Zend_Db_Expr;
+
 class Attribute extends \Magento\Catalog\Model\ResourceModel\Layer\Filter\Attribute
 {
     //Which attributes will use reseted category collection
@@ -46,7 +48,7 @@ class Attribute extends \Magento\Catalog\Model\ResourceModel\Layer\Filter\Attrib
         $select->join(
             [$tableAlias => $this->getMainTable()],
             implode(' AND ', $conditions),
-            ['value', 'count' => new \Zend_Db_Expr("COUNT($tableAlias.entity_id)")]
+            ['value', 'count' => new Zend_Db_Expr("COUNT($tableAlias.entity_id)")]
         )->group(
             "$tableAlias.value"
         );

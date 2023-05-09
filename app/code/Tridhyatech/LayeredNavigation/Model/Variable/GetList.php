@@ -133,7 +133,7 @@ class GetList implements GetUrlVariablesInterface
 
             if (isset($variables[$requestVar])) { // fix for old format
                 $variables[$requestVar] = array_merge($variables[$requestVar], $values);
-            } else {
+            } else if(!isset($variables[$requestVar])) {
                 $variables[$requestVar] = $values;
             }
         }

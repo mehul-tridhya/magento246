@@ -26,7 +26,7 @@ interface ItemUrlBuilderInterface
      * @param bool   $removeCurrentValue
      * @return string
      */
-    public function toggleFilterUrl(string $requestVar, string $itemValue, bool $removeCurrentValue = false): string;
+    public function toggleFilterUrl(string $requestVar, string $itemValue): string;
 
     /**
      * Create url to add filter option.
@@ -36,5 +36,5 @@ interface ItemUrlBuilderInterface
      * @param bool   $removeCurrentValue
      * @return string
      */
-    public function getAddFilterUrl(string $requestVar, string $itemValue, bool $removeCurrentValue = false): string;
+    public function getAddFilterUrl(string $requestVar, string $itemValue, bool $removeCurrentValue): string;
 }

@@ -108,7 +108,7 @@ class Search
                     $metrics = $value->getMetrics();
                     $result[$metrics['value']] = $metrics;
                 }
-            } else {
+            } else if(!$bucket) {
                 throw new StateException(__("The bucket doesn't exist."));
             }
         }

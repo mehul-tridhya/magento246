@@ -42,12 +42,13 @@ class Url implements ItemUrlBuilderInterface
     /**
      * @inheritDoc
      */
-    public function toggleFilterUrl(string $requestVar, string $itemValue, bool $removeCurrentValue = false): string
+    public function toggleFilterUrl(string $requestVar, string $itemValue): string
     {
         $variables = $this->variableRegistry->get();
         if (isset($variables[$requestVar]) && in_array($itemValue, $variables[$requestVar], false)) {
             return $this->getRemoveFilterUrl($requestVar, $itemValue);
         }
+        $removeCurrentValue = false;
         return $this->getAddFilterUrl($requestVar, $itemValue, $removeCurrentValue);
     }
 
@@ -82,7 +83,7 @@ class Url implements ItemUrlBuilderInterface
      * @param  bool   $removeCurrentValue
      * @return string
      */
-    public function getAddFilterUrl(string $requestVar, string $itemValue, bool $removeCurrentValue = false): string
+    public function getAddFilterUrl(string $requestVar, string $itemValue, bool $removeCurrentValue): string
     {
         $variables = $this->variableRegistry->get();
         if (isset($variables[$requestVar]) && !$removeCurrentValue) {

@@ -80,7 +80,7 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
         if ($this->isOptionDisabled($filterItem)) {
             $link = 'javascript:void();';
             $style = 'disabled';
-        } else {
+        } else if(!$this->isOptionDisabled($filterItem)) {
             $style = '';
             $link = $this->buildUrl($this->eavAttribute->getAttributeCode(), $filterItem->getValueString());
         }

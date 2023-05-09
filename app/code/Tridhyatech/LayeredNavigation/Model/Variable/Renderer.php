@@ -104,7 +104,7 @@ class Renderer
 
         if ($query) {
             parse_str($query, $getParams);
-        } else {
+        } else if(!$query) {
             $getParams = [];
         }
 
@@ -120,7 +120,7 @@ class Renderer
         if (InsertFiltersIn::GET_PARAMS === $this->seoConfig->getInsertFiltersIn()) {
             $resultUrl = "{$baseUrl}{$nextPath}";
             $getParams = $this->addVariablesToParams($getParams, $variables);
-        } else {
+        } else if(InsertFiltersIn::GET_PARAMS !== $this->seoConfig->getInsertFiltersIn()){
             $resultUrl = $this->addVariablesToUrl("{$baseUrl}{$nextPath}", $variables);
         }
 

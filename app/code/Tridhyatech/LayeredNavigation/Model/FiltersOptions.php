@@ -166,7 +166,8 @@ class FiltersOptions implements FiltersOptionsInterface
     private function collectOptionDetail(): void
     {
         if (null === $this->options) {
-            if ($options = $this->fromCache()) {
+            if ($this->fromCache()) {
+                $options = $this->fromCache();
                 $this->options = $options;
                 return;
             }
