@@ -122,7 +122,7 @@ class RenderPrice extends Template
     private function getOriginalMinValue()
     {
         /**
-         * @var Collection $collection 
+         * @var Collection $collection
         */
         $collection = $this->getOriginalCollection();
 
@@ -204,7 +204,7 @@ class RenderPrice extends Template
     private function getOriginalMaxValue()
     {
         /**
-         * @var Collection $collection 
+         * @var Collection $collection
         */
         $collection = $this->getOriginalCollection();
 
@@ -257,5 +257,4 @@ class RenderPrice extends Template
 
         return $result;
     }
-
 }

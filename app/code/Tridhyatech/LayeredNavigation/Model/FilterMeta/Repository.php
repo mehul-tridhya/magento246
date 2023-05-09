@@ -43,7 +43,6 @@ class Repository implements FilterRepositoryInterface
      */
     protected $variables;
 
-
     /**
      * @var Attribute
      */
@@ -55,9 +54,10 @@ class Repository implements FilterRepositoryInterface
     protected $filterMetaFactory;
 
     /**
-     * @param Factory   $filterMetaFactory
-     * @param Attribute $attributeConfig
-     * @param array     $toolbarVars
+     * @param Factory           $filterMetaFactory
+     * @param Attribute         $attributeConfig
+     * @param CollectionFactory $productAttributeCollectionFactory
+     * @param array             $toolbarVars
      */
     public function __construct(
         Factory $filterMetaFactory,
@@ -118,6 +118,11 @@ class Repository implements FilterRepositoryInterface
         return $this->getList()[$requestVar];
     }
 
+    /**
+     * Return Filterable Attribute
+     *
+     * @return CollectionFactory
+     */
     public function getFilterableAttributes()
     {
         $productAttributes = $this->productAttributeCollectionFactory->create();

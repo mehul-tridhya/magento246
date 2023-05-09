@@ -1,5 +1,7 @@
 <?php
+
 /**
+ *
  * @author    Tridhya Tech
  * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
  * @package   Tridhyatech_LayeredNavigation
@@ -8,13 +10,27 @@
 namespace Tridhyatech\LayeredNavigation\Model\Catalog\ResourceModel\Layer\Filter;
 
 use Zend_Db_Expr;
+use Magento\Catalog\Model\Layer\Filter\FilterInterface;
 
+/**
+ * Attribute Class To get Attribute Code and Count
+ */
 class Attribute extends \Magento\Catalog\Model\ResourceModel\Layer\Filter\Attribute
 {
-    //Which attributes will use reseted category collection
+    /**
+     * Which attributes will use reseted category collection
+     *
+     * @var array
+     */
     protected $skipFilterAttributes = ["color"];
 
-    public function getCount(\Magento\Catalog\Model\Layer\Filter\FilterInterface $filter)
+    /**
+     * Function to get count
+     *
+     * @param FilterInterface $filter
+     * @return array
+     */
+    public function getCount(FilterInterface $filter)
     {
         $attribute = $filter->getAttributeModel();
         $attributeCode = $attribute->getAttributeCode();

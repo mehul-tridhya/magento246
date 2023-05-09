@@ -84,5 +84,4 @@ class Attribute extends AbstractHelper
         }
         return (string) $this->configUtils->getConfig($path, $scopeCode, $scopeType);
     }
-
 }

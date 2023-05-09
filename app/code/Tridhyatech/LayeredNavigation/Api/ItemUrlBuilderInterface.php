@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Api;
@@ -23,7 +23,6 @@ interface ItemUrlBuilderInterface
      *
      * @param string $requestVar
      * @param string $itemValue
-     * @param bool   $removeCurrentValue
      * @return string
      */
     public function toggleFilterUrl(string $requestVar, string $itemValue): string;

@@ -80,7 +80,7 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
         if ($this->isOptionDisabled($filterItem)) {
             $link = 'javascript:void();';
             $style = 'disabled';
-        } else if(!$this->isOptionDisabled($filterItem)) {
+        } elseif (!$this->isOptionDisabled($filterItem)) {
             $style = '';
             $link = $this->buildUrl($this->eavAttribute->getAttributeCode(), $filterItem->getValueString());
         }
@@ -134,5 +134,4 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
     {
         return $this->filterItemUrlBuilder->toggleFilterUrl($attributeCode, (string) $optionId);
     }
-
 }

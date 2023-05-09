@@ -68,7 +68,7 @@ class Collection extends \Magento\CatalogSearch\Model\ResourceModel\Fulltext\Col
      * @param TemporaryStorageFactory  $temporaryStorageFactory
      * @param Config                   $config
      * @param AdapterInterface|null    $connection
-     * @param $searchRequestName
+     * @param string                   $searchRequestName
      * @param SearchResultFactory|null $searchResultFactory
      */
     public function __construct(

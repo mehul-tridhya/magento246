@@ -227,5 +227,4 @@ class AttributeResolver
             ? (int) $optionsFacetedData[$value]['count']
             : 0;
     }
-
 }

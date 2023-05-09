@@ -49,7 +49,7 @@ class FilterList
     public function getFilters(): array
     {
         /**
-         * @var Collection $collection 
+         * @var Collection $collection
          */
         $collection = $this->_filterableAttri->create();
         $collection->setItemObjectClass(Attribute::class)
@@ -67,7 +67,7 @@ class FilterList
 
         $attributes = [];
         /**
-         * @var ProductAttributeInterface $attr 
+         * @var ProductAttributeInterface $attr
          */
         foreach ($collection->getItems() as $attr) {
             if (!$this->canUseAttribute($attr)) {
@@ -90,7 +90,7 @@ class FilterList
         $attributes = $this->getFilters();
         foreach ($attributes as $code => $attribute) {
             /**
-             * @var Attribute $attribute 
+             * @var Attribute $attribute
              */
             $attributeList[$code] = (string) $attribute->getFrontendLabel();
         }

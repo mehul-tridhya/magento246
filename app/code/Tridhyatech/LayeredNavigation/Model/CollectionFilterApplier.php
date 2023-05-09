@@ -83,7 +83,7 @@ class CollectionFilterApplier
         if (count($values) > 1) {
             $filterBuilder->setValue(array_values($values));
             $filterBuilder->setConditionType('in');
-        } else if(count($values) <= 1) {
+        } elseif (count($values) <= 1) {
             $filterBuilder->setValue(array_values($values)[0]);
         }
         $searchBuilder->addFilter($filterBuilder->create());

@@ -18,7 +18,6 @@ use Tridhyatech\LayeredNavigation\Model\Variable\Renderer;
 class Pager extends \Magento\Theme\Block\Html\Pager
 {
 
-    
     /**
      * @var Renderer
      */

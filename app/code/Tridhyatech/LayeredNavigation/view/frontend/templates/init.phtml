@@ -1,13 +1,17 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 ?>
 <?php
-/** @var \Magento\Framework\View\Element\Template $block */
-/** @var Tridhyatech\ProductFilter\ViewModel\JsConfig $filterJsConfig */
+/**
+ * @var \Magento\Framework\View\Element\Template $block
+ */
+/**
+ * @var Tridhyatech\ProductFilter\ViewModel\JsConfig $filterJsConfig
+ */
 $filterJsConfig = $block->getData('viewModel');
 
 ?>
@@ -16,12 +20,16 @@ $filterJsConfig = $block->getData('viewModel');
 <script type="text/x-magento-init">
     {
         "#product-filter-init": {
-            "Tridhyatech_LayeredNavigation/js/init": <?= /** @noEscape */ $filterJsConfig->getJson() ?>
+            "Tridhyatech_LayeredNavigation/js/init": <?php echo /** * @noEscape */ $filterJsConfig->getJson() ?>
         }
     }
 </script>
 
-<?php /** Fix for browser history after ajax-queries */?>
+<?php 
+    /**
+     * Fix for browser history after ajax-queries 
+    */
+?>
 <script>
     require([
         "tridhyatech/product-filter/action",

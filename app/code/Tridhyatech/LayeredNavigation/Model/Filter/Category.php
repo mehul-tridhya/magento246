@@ -133,12 +133,12 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
     }
 
         /**
-     * Filter products by categories
-     *
-     * @param  Collection $collection
-     * @param  array      $categoryIds
-     * @return $this
-     */
+         * Filter products by categories
+         *
+         * @param  Collection $collection
+         * @param  array      $categoryIds
+         * @return $this
+         */
     protected function addCategoriesFilterInCollection(Collection $collection, array $categoryIds): Category
     {
         if ($this->searchEngine->isElasticSearch() || $this->searchEngine->isLiveSearch()) {
@@ -184,5 +184,4 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
             return parent::_getItemsData();
         }
     }
-
 }

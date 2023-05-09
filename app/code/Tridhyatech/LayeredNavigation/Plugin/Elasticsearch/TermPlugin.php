@@ -16,8 +16,8 @@ class TermPlugin
     /**
      * Fix request structure.
      *
-     * @param  Term $subject
-     * @param  $result
+     * @param  Term  $subject
+     * @param  array $result
      * @return mixed
      */
     public function afterBuildFilter(Term $subject, $result)

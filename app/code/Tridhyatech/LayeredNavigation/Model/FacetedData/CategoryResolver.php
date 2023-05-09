@@ -25,7 +25,6 @@ use Magento\Framework\Exception\LocalizedException;
 class CategoryResolver
 {
 
-    
     /**
      * @var CollectionFactory
      */
@@ -93,7 +92,8 @@ class CategoryResolver
     {
         $filters = $this->getLayerFilters->execute($layer);
         $otherFilters = array_filter(
-            $filters, static function (Filter $filter) {
+            $filters,
+            static function (Filter $filter) {
                 return ! ($filter->getField() === 'category_ids' && is_array($filter->getValue()));
             }
         );
@@ -150,7 +150,6 @@ class CategoryResolver
 
         return $this->itemDataBuilder->build();
     }
-
 
     /**
      * Build option data
@@ -222,7 +221,7 @@ class CategoryResolver
 
         $options = [];
         /**
-         * @var Category $childCategory 
+         * @var Category $childCategory
         */
         foreach ($collection->getItems() as $childCategory) {
             if (! $childCategory->getIsActive()) {
@@ -268,5 +267,4 @@ class CategoryResolver
         }
         return false;
     }
-
 }

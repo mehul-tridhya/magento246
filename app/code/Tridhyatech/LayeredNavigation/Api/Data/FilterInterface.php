@@ -14,8 +14,6 @@ interface FilterInterface
     public const TYPE_ATTRIBUTE = 'attribute';
     public const TYPE_TOOLBAR_VAR = 'toolbar_var';
     public const TYPE_CATEGORY = 'category';
-
-    
     
     /**
      * Check if filter based on custom option.
@@ -58,5 +56,4 @@ interface FilterInterface
      * @return bool
      */
     public function isAttribute(): bool;
-
 }

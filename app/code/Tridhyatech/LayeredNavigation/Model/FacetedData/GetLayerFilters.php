@@ -30,14 +30,14 @@ class GetLayerFilters
     {
         try {
             /**
-             * @var Collection $productCollection 
+             * @var Collection $productCollection
             */
             $productCollection = $layer->getProductCollection();
             $reflectionSubject = new ReflectionObject($productCollection);
             $reflectionProperty = $reflectionSubject->getParentClass()->getProperty('searchCriteriaBuilder');
             $reflectionProperty->setAccessible(true);
             /**
-             * @var SearchCriteriaBuilder $searchBuilder 
+             * @var SearchCriteriaBuilder $searchBuilder
             */
             $searchBuilder = clone $reflectionProperty->getValue($productCollection);
             $reflectionProperty->setAccessible(false);

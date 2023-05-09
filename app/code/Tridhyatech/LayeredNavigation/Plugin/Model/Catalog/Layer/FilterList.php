@@ -67,8 +67,7 @@ class FilterList
 
         $sortedFilters = [];
         foreach ($filters as $filter) {
-            if (
-                $filter instanceof \Magento\Catalog\Model\Layer\Filter\Category
+            if ($filter instanceof \Magento\Catalog\Model\Layer\Filter\Category
                 || $filter instanceof \Magento\CatalogSearch\Model\Layer\Filter\Category
             ) {
                 $_code = 'category';

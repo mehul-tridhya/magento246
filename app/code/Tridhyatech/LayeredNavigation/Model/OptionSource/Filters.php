@@ -27,7 +27,6 @@ class Filters extends AbstractSource
      */
     private $filterList;
 
-
     /**
      * @param FilterList                $filterList
      * @param FilterRepositoryInterface $filterMetaRepository

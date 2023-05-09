@@ -17,7 +17,6 @@ use Magento\LayeredNavigation\Block\Navigation\State as mainState;
 class State extends mainState
 {
 
-    
     /**
      * @var IsSearchResultsPage
      */
@@ -60,7 +59,7 @@ class State extends mainState
             if (in_array($param, $toolbarVars, true)) {
                 if ($this->isSearchResultsPage->execute($clearUrl)) {
                     $additionalParam .= '/' . $param . Config::FILTER_PARAM_SEPARATOR . $value;
-                } else if(!$this->isSearchResultsPage->execute($clearUrl)) {
+                } elseif (!$this->isSearchResultsPage->execute($clearUrl)) {
                     $clearUrl .= '/' . $param . Config::FILTER_PARAM_SEPARATOR . $value;
                 }
             }
@@ -72,7 +71,7 @@ class State extends mainState
                 "$1{$additionalParam}{$this->config->getCategoryUrlSuffix()}?",
                 $clearUrl
             );
-        } else if(false === strpos($clearUrl, 'amfinder')) {
+        } elseif (false === strpos($clearUrl, 'amfinder')) {
             $clearUrl = preg_replace(
                 '/(catalogsearch\/result)\/.*?\/(.*?\/\?)/',
                 "$1{$additionalParam}{$this->config->getCategoryUrlSuffix()}?",

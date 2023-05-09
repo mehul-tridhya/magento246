@@ -72,7 +72,7 @@ class ChangeMeta implements ObserverInterface
         if (AjaxResponse::CATEGORY_VIEW_ACTION_NAME === $observer->getFullActionName()
         ) {
             /**
-             * @var LayoutInterface $layout 
+             * @var LayoutInterface $layout
              */
             $this->setRobots();
             $this->setCanonical();

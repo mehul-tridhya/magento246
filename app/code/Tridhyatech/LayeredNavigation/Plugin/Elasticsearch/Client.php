@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Plugin\Elasticsearch;
@@ -13,10 +13,10 @@ class Client
     /**
      * Fix condition in
      *
-     * @param \Wyomind\Elasticsearch\Model\Client $subject
-     * @param                                     $indices
-     * @param                                     $types
-     * @param array                               $params
+     * @param  \Wyomind\Elasticsearch\Model\Client $subject
+     * @param  array                               $indices
+     * @param  array                               $types
+     * @param  array                               $params
      * @return array
      */
     public function beforeQuery(\Wyomind\Elasticsearch\Model\Client $subject, $indices, $types, array $params = [])

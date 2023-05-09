@@ -82,6 +82,8 @@ class FilterRenderer
     }
 
     /**
+     * Change Html to render filter
+     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      * @param                                         blockFilterRenderer $subject
      * @param                                         Closure             $proceed

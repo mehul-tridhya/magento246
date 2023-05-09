@@ -1,8 +1,8 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 namespace Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\DataProvider;
@@ -53,9 +53,8 @@ class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
      */
     protected $canProceed;
 
-
     /**
-     * @param Registry            $coreRegistry
+     * @param Registry        $coreRegistry
      * @param CategoryFactory $categoryFactory
      * @param Layer           $layer
      */
@@ -91,7 +90,9 @@ class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
                 throw new LocalizedException(__('Category Ids must be array'));
             }
 
-            /** @var Collection $categories */
+            /**
+             * @var Collection $categories
+            */
             $categories = $this->categoryFactory->create()
                 ->setStoreId(
                     $this->getLayer()
@@ -166,5 +167,4 @@ class Category extends \Magento\Catalog\Model\Layer\Filter\DataProvider\Category
         $this->categoryIds = $ids;
         return $this;
     }
-
 }

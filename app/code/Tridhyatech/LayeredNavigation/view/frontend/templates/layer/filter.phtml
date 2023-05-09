@@ -1,47 +1,54 @@
 <?php
 /**
-* @author Tridhya Tech
-* @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
-* @package Tridhyatech_LayeredNavigation
+ * @author    Tridhya Tech
+ * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
+ * @package   Tridhyatech_LayeredNavigation
  */
 ?>
 <?php
-/** @var \Tridhyatech\LayeredNavigation\Block\RenderPrice $block */
+/**
+ * @var \Tridhyatech\LayeredNavigation\Block\RenderPrice $block
+ */
 ?>
 
 <ol class="items">
-    <?php /** @var \Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item[] $filterItems */?>
+    <?php /**
+           * @var \Tridhyatech\LayeredNavigation\Model\Catalog\Layer\Filter\Item[] $filterItems
+           */?>
     <?php foreach ($filterItems as $filterItem): ?>
 
         <?php $isRadio = $filterItem->getFilter()->getIsRadio(); ?>
         <li class="item">
-            <?php if ($filterItem->getCount() > 0): ?>
-                <a href="<?= $block->escapeUrl($filterItem->getUrl()) ?>"
-                    <?php if ($filterItem->getIsActive()): ?>class="selected"<?php endif; ?>
+            <?php if ($filterItem->getCount() > 0) : ?>
+                <a href="<?php echo $block->escapeUrl($filterItem->getUrl()) ?>"
+                    <?php if ($filterItem->getIsActive()) : ?>class="selected"<?php 
+                    endif; ?>
                     data-pr-filter="item"
-                    data-variable="<?= $block->escapeHtml($filterItem->getFilter()->getRequestVar()) ?>"
-                    data-value="<?= $block->escapeHtml($filterItem->getValueString()) ?>"
-                    <?php if ($isRadio): ?>data-radio="true"<?php endif; ?>
+                    data-variable="<?php echo $block->escapeHtml($filterItem->getFilter()->getRequestVar()) ?>"
+                    data-value="<?php echo $block->escapeHtml($filterItem->getValueString()) ?>"
+                    <?php if ($isRadio) : ?>data-radio="true"<?php 
+                    endif; ?>
                     rel="nofollow">
-                    <span><?= /** @noEscape */ $filterItem->getLabel() ?>
-                    <?php if ($this->helper(\Magento\Catalog\Helper\Data::class)->shouldDisplayProductCountOnLayer()): ?>
+                    <span><?php echo /** * @noEscape */ $filterItem->getLabel() ?>
+                    <?php if ($this->helper(\Magento\Catalog\Helper\Data::class)->shouldDisplayProductCountOnLayer()) : ?>
                         <span class="count">
-                            <?= $block->escapeHtml($filterItem->getCount()) ?>
+                            <?php echo $block->escapeHtml($filterItem->getCount()) ?>
                             <span class="filter-count-label">
-                                <?= $block->escapeHtml(__($filterItem->getCount() == 1 ? 'item' : 'items')) ?>
+                                <?php echo $block->escapeHtml(__($filterItem->getCount() == 1 ? 'item' : 'items')) ?>
                             </span>
                         </span>
                     <?php endif; ?>
                     </span>
                 </a>
             <?php else: ?>
-                <span class="attr-dis<?php if ($filterItem->getIsActive()): ?> selected<?php endif; ?>">
-                <?= $block->escapeHtml($filterItem->getLabel()) ?>
-                <?php if ($this->helper(\Magento\Catalog\Helper\Data::class)->shouldDisplayProductCountOnLayer()): ?>
+                <span class="attr-dis<?php if ($filterItem->getIsActive()) : ?> selected<?php 
+               endif; ?>">
+                <?php echo $block->escapeHtml($filterItem->getLabel()) ?>
+                <?php if ($this->helper(\Magento\Catalog\Helper\Data::class)->shouldDisplayProductCountOnLayer()) : ?>
                     <span class="count">
-                        <?= $block->escapeHtml($filterItem->getCount()) ?>
+                        <?php echo $block->escapeHtml($filterItem->getCount()) ?>
                         <span class="filter-count-label">
-                            <?= $block->escapeHtml(__($filterItem->getCount() == 1 ? 'item' : 'items')) ?>
+                            <?php echo $block->escapeHtml(__($filterItem->getCount() == 1 ? 'item' : 'items')) ?>
                         </span>
                     </span>
                 <?php endif; ?>

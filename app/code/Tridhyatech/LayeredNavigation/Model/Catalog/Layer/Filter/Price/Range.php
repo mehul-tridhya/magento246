@@ -27,7 +27,6 @@ class Range extends \Magento\Catalog\Model\Layer\Filter\Price\Range
      */
     private $config;
 
-
     /**
      * @param Config               $config
      * @param Registry             $registry

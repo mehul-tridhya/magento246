@@ -16,7 +16,6 @@ use Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection;
  *
  * @link https://github.com/magento/magento2/issues/28919
  * TODO: remove after left support magento version with bug
- *
  */
 class CurrentLoading
 {
@@ -31,6 +30,8 @@ class CurrentLoading
     private $collection;
 
     /**
+     * Set Collection
+     *
      * @param  Collection $collection
      * @return $this
      */
@@ -41,6 +42,8 @@ class CurrentLoading
     }
 
     /**
+     * Get Collection
+     *
      * @return Collection|null
      */
     public function get()
@@ -48,8 +51,9 @@ class CurrentLoading
         return $this->collection;
     }
 
-
     /**
+     * Get Price Data
+     *
      * @return array
      */
     public function getPriceData(): array
@@ -58,6 +62,8 @@ class CurrentLoading
     }
 
     /**
+     * Set Price Data
+     *
      * @param  array $priceData
      * @return $this
      */
@@ -68,6 +74,8 @@ class CurrentLoading
     }
 
     /**
+     * Reset Collection and Price Data
+     *
      * @return $this
      */
     public function reset(): CurrentLoading
@@ -76,5 +84,4 @@ class CurrentLoading
         $this->priceData = [];
         return $this;
     }
-
 }

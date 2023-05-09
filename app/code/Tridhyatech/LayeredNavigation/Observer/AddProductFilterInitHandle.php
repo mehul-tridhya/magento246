@@ -40,7 +40,7 @@ class AddProductFilterInitHandle implements ObserverInterface
     public function execute(Observer $observer)
     {
         /**
-         * @var Layout $layout 
+         * @var Layout $layout
          */
         $layout = $observer->getLayout();
         if (array_intersect($layout->getUpdate()->getHandles(), $this->config->getAllowedHandles())) {

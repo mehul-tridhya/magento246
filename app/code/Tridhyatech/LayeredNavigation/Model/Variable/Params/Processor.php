@@ -31,9 +31,9 @@ class Processor
         unset($queryParams['prfilter_ajax'], $queryParams['prfilter_variables']);
 
         // Laminas package can be missing in magento 2.3
-        if (class_exists('\Laminas\Stdlib\Parameters')) {
+        if (Laminas::class) {
             $request->setQuery(new Laminas($queryParams));
-        } else if(!class_exists('\Laminas\Stdlib\Parameters')){
+        } elseif (!Laminas::class) {
             $request->setQuery(new Zend($queryParams));
         }
 
@@ -50,6 +50,8 @@ class Processor
 
     /**
      * Parse only get params.
+     *
+     * @param Request $request
      */
     public function parseGetParams(Request $request): array
     {

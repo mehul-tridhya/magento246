@@ -108,7 +108,7 @@ class CustomisableField extends Field
             $html .= $this->_getElementHtml($element);
             $html .= '<div class="tooltip"><span class="help"><span></span></span>';
             $html .= '<div class="tooltip-content">' . $element->getTooltip() . '</div></div>';
-        } else if(!$element->getTooltip()) {
+        } elseif (!$element->getTooltip()) {
             $html = '<td class="value ' . $valueCssClass . '">';
             $html .= $this->_getElementHtml($element);
         }

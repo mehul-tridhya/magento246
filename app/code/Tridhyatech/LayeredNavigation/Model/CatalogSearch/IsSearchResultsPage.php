@@ -21,7 +21,7 @@ class IsSearchResultsPage
     public function execute(string $url): bool
     {
         /**
-         * Integration with Amasty Product Parts Finder 
+         * Integration with Amasty Product Parts Finder
         */
         if (false !== strpos($url, 'amfinder')) {
             return true;

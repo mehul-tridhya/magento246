@@ -124,7 +124,7 @@ class Router implements RouterInterface
     {
         if (InsertFiltersIn::GET_PARAMS === $this->seoConfig->getInsertFiltersIn()) {
             $variables = $this->getUrlVariables->getFromParams($this->paramsProcessor->parseGetParams($request));
-        } else if(InsertFiltersIn::GET_PARAMS !== $this->seoConfig->getInsertFiltersIn()) {
+        } elseif (InsertFiltersIn::GET_PARAMS !== $this->seoConfig->getInsertFiltersIn()) {
             $variables = $this->getUrlVariables->get($request->getPathInfo());
         }
 
@@ -149,5 +149,4 @@ class Router implements RouterInterface
         $this->variableRegistry->set($variables);
         $this->paramsProcessor->moveToParams($request, $variables);
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @author    Tridhya Tech
  * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
@@ -25,7 +26,6 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
      * @var Config
      */
     private $config;
-
 
     /**
      * @param UrlInterface            $url
@@ -91,5 +91,4 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
     {
         return $this->itemUrl->getRemoveFilterUrl($this->getFilter()->getRequestVar(), $this->getValueString());
     }
-
 }

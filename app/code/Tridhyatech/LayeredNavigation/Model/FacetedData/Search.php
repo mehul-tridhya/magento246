@@ -39,7 +39,6 @@ class Search
      */
     private $searchBuilderFactory;
 
-
     /**
      * @param SearchCriteriaBuilderFactory $searchBuilder
      * @param SearchInterface              $search
@@ -108,7 +107,7 @@ class Search
                     $metrics = $value->getMetrics();
                     $result[$metrics['value']] = $metrics;
                 }
-            } else if(!$bucket) {
+            } elseif (!$bucket) {
                 throw new StateException(__("The bucket doesn't exist."));
             }
         }

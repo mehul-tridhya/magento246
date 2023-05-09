@@ -1,9 +1,9 @@
 <?php
 
 /**
- * @author Tridhya Tech
+ * @author    Tridhya Tech
  * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
- * @package Tridhyatech_LayeredNavigation
+ * @package   Tridhyatech_LayeredNavigation
  */
 
 declare(strict_types=1);
@@ -71,9 +71,9 @@ class HandleFilterAjaxRequest
     /**
      * Handle filter ajax request.
      *
-     * @param AbstractAction                    $subject
-     * @param ResponseInterface|\Magento\Framework\Controller\ResultInterface $result
-     * @param RequestInterface                         $request
+     * @param  AbstractAction                                                  $subject
+     * @param  ResponseInterface|\Magento\Framework\Controller\ResultInterface $result
+     * @param  RequestInterface                                                $request
      * @return ResponseInterface: \Magento\Framework\Controller\ResultInterface
      */
     public function afterDispatch(AbstractAction $subject, $result, RequestInterface $request)
@@ -89,8 +89,8 @@ class HandleFilterAjaxRequest
     /**
      * Handle filter ajax request.
      *
-     * @param AbstractAction $subject
-     * @param RequestInterface      $request
+     * @param AbstractAction   $subject
+     * @param RequestInterface $request
      */
     public function beforeDispatch(AbstractAction $subject, RequestInterface $request): void
     {
@@ -102,7 +102,7 @@ class HandleFilterAjaxRequest
     /**
      * Check if this is product filter ajax request.
      *
-     * @param RequestInterface $request
+     * @param  RequestInterface $request
      * @return bool
      */
     private function isAllowedAction(RequestInterface $request): bool
