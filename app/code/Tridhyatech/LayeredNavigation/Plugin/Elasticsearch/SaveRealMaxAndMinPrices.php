@@ -24,14 +24,14 @@ class SaveRealMaxAndMinPrices
     /**
      * @var CurrentLoading
      */
-    private $currentLoadingCollection;
+    private $currentCollection;
 
     /**
-     * @param CurrentLoading $currentLoadingCollection
+     * @param CurrentLoading $currentCollection
      */
-    public function __construct(CurrentLoading $currentLoadingCollection)
+    public function __construct(CurrentLoading $currentCollection)
     {
-        $this->currentLoadingCollection = $currentLoadingCollection;
+        $this->currentCollection = $currentCollection;
     }
 
     /**
@@ -51,7 +51,7 @@ class SaveRealMaxAndMinPrices
     ) {
         if (isset($queryResult['aggregations']['price_bucket']) && 'price_bucket' === $bucket->getName()) {
             $priceData = $queryResult['aggregations']['price_bucket'];
-            $this->currentLoadingCollection->setPriceData($priceData);
+            $this->currentCollection->setPriceData($priceData);
         }
     }
 }

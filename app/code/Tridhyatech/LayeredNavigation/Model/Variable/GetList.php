@@ -21,7 +21,7 @@ class GetList implements GetUrlVariablesInterface
     /**
      * @var FilterRepositoryInterface
      */
-    private $filterMetaRepository;
+    private $filterRepository;
 
     /**
      * @var Config
@@ -30,14 +30,14 @@ class GetList implements GetUrlVariablesInterface
 
     /**
      * @param Config                    $config
-     * @param FilterRepositoryInterface $filterMetaRepository
+     * @param FilterRepositoryInterface $filterRepository
      */
     public function __construct(
         Config $config,
-        FilterRepositoryInterface $filterMetaRepository
+        FilterRepositoryInterface $filterRepository
     ) {
         $this->config = $config;
-        $this->filterMetaRepository = $filterMetaRepository;
+        $this->filterRepository = $filterRepository;
     }
 
     /**
@@ -103,7 +103,7 @@ class GetList implements GetUrlVariablesInterface
         $result = [];
         foreach ($variables as $requestVar => $values) {
             try {
-                $this->filterMetaRepository->get((string) $requestVar);
+                $this->filterRepository->get((string) $requestVar);
                 $result[$requestVar] = $values;
             } catch (NoSuchEntityException $e) {
                 continue;

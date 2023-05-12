@@ -29,7 +29,7 @@ class FixMaxAndMinPrices
     /**
      * @var CurrentLoading
      */
-    private $currentLoadingCollection;
+    private $currentCollection;
 
     /**
      * @var Config
@@ -42,16 +42,16 @@ class FixMaxAndMinPrices
     private $searchEngine;
 
     /**
-     * @param CurrentLoading $currentLoadingCollection
+     * @param CurrentLoading $currentCollection
      * @param Config         $config
      * @param SearchEngine   $searchEngine
      */
     public function __construct(
-        CurrentLoading $currentLoadingCollection,
+        CurrentLoading $currentCollection,
         Config $config,
         SearchEngine $searchEngine
     ) {
-        $this->currentLoadingCollection = $currentLoadingCollection;
+        $this->currentCollection = $currentCollection;
         $this->config = $config;
         $this->searchEngine = $searchEngine;
     }
@@ -72,7 +72,7 @@ class FixMaxAndMinPrices
             return;
         }
 
-        $this->currentLoadingCollection->set($subject);
+        $this->currentCollection->set($subject);
     }
 
     /**
@@ -90,13 +90,13 @@ class FixMaxAndMinPrices
         $printQuery = false,
         $logQuery = false
     ) {
-        if ($this->currentLoadingCollection->getPriceData()) {
-            $priceData = $this->currentLoadingCollection->getPriceData();
+        if ($this->currentCollection->getPriceData()) {
+            $priceData = $this->currentCollection->getPriceData();
             $this->setPropertyValue($subject, '_maxPrice', (float) ($priceData['max'] ?? 0));
             $this->setPropertyValue($subject, '_minPrice', (float) ($priceData['min'] ?? 0));
         }
 
-        $this->currentLoadingCollection->reset();
+        $this->currentCollection->reset();
         return $result;
     }
 

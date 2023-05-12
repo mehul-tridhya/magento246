@@ -30,14 +30,14 @@ class FilterList
     private $logger;
 
     /**
-     * @param CollectionFactory $filterableAttributes
+     * @param CollectionFactory $filterableAttri
      * @param LoggerInterface   $logger
      */
     public function __construct(
-        CollectionFactory $filterableAttributes,
+        CollectionFactory $filterableAttri,
         LoggerInterface $logger
     ) {
-        $this->_filterableAttri = $filterableAttributes;
+        $this->_filterableAttri = $filterableAttri;
         $this->logger = $logger;
     }
 

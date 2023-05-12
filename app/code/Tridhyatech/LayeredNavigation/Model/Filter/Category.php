@@ -38,12 +38,12 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
     /**
      * @var CategoryResolver
      */
-    private $facetedDataResolver;
+    private $facetedResolver;
 
     /**
      * @var mixed|CollectionFilterApplier
      */
-    private $collectionFilterApplier;
+    private $collectionApplier;
 
     /**
      * @var mixed|SearchEngine
@@ -56,12 +56,12 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
      * @param Layer                        $layer
      * @param DataBuilder                  $itemDataBuilder
      * @param Escaper                      $escaper
-     * @param CategoryFactory              $categoryDataProviderFactory
+     * @param CategoryFactory              $categoryProviderFactory
      * @param Elasticsearch                $elasticsearchHelper
      * @param Config                       $config
-     * @param CategoryResolver             $facetedDataResolver
+     * @param CategoryResolver             $facetedResolver
      * @param array                        $data
-     * @param CollectionFilterApplier|null $collectionFilterApplier
+     * @param CollectionFilterApplier|null $collectionApplier
      * @param SearchEngine|null            $searchEngine
      */
     public function __construct(
@@ -70,12 +70,12 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
         Layer $layer,
         DataBuilder $itemDataBuilder,
         Escaper $escaper,
-        CategoryFactory $categoryDataProviderFactory,
+        CategoryFactory $categoryProviderFactory,
         Elasticsearch $elasticsearchHelper,
         Config $config,
-        CategoryResolver $facetedDataResolver,
+        CategoryResolver $facetedResolver,
         array $data = [],
-        CollectionFilterApplier $collectionFilterApplier = null,
+        CollectionFilterApplier $collectionApplier = null,
         SearchEngine $searchEngine = null
     ) {
         parent::__construct(
@@ -84,13 +84,13 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
             $layer,
             $itemDataBuilder,
             $escaper,
-            $categoryDataProviderFactory,
+            $categoryProviderFactory,
             $data
         );
-        $this->dataProvider = $categoryDataProviderFactory->create(['layer' => $this->getLayer()]);
+        $this->dataProvider = $categoryProviderFactory->create(['layer' => $this->getLayer()]);
         $this->config = $config;
-        $this->facetedDataResolver = $facetedDataResolver;
-        $this->collectionFilterApplier = $collectionFilterApplier
+        $this->facetedResolver = $facetedResolver;
+        $this->collectionApplier = $collectionApplier
             ?? ObjectManager::getInstance()->get(CollectionFilterApplier::class);
         $this->searchEngine = $searchEngine
             ?? ObjectManager::getInstance()->get(SearchEngine::class);
@@ -142,7 +142,7 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
     protected function addCategoriesFilterInCollection(Collection $collection, array $categoryIds): Category
     {
         if ($this->searchEngine->isElasticSearch() || $this->searchEngine->isLiveSearch()) {
-            $this->collectionFilterApplier->applyInCondition(
+            $this->collectionApplier->applyInCondition(
                 $collection,
                 'category_ids',
                 $categoryIds
@@ -175,7 +175,7 @@ class Category extends \Magento\CatalogSearch\Model\Layer\Filter\Category
         }
 
         try {
-            return $this->facetedDataResolver->resolve(
+            return $this->facetedResolver->resolve(
                 'cat',
                 $currentCategory,
                 $this->getLayer()

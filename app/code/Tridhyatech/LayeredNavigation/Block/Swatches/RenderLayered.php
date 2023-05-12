@@ -29,7 +29,7 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
     /**
      * @var ItemUrlBuilderInterface
      */
-    private $filterItemUrlBuilder;
+    private $filterItemUrl;
 
     /**
      * @var Slugify
@@ -43,7 +43,7 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
      * @param Data                    $swatchHelper
      * @param Media                   $mediaHelper
      * @param Config                  $config
-     * @param ItemUrlBuilderInterface $filterItemUrlBuilder
+     * @param ItemUrlBuilderInterface $filterItemUrl
      * @param Slugify                 $slugify
      * @param array                   $data
      */
@@ -54,12 +54,12 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
         Data $swatchHelper,
         Media $mediaHelper,
         Config $config,
-        ItemUrlBuilderInterface $filterItemUrlBuilder,
+        ItemUrlBuilderInterface $filterItemUrl,
         Slugify $slugify,
         array $data = []
     ) {
         $this->config = $config;
-        $this->filterItemUrlBuilder = $filterItemUrlBuilder;
+        $this->filterItemUrl = $filterItemUrl;
         parent::__construct(
             $context,
             $eavAttribute,
@@ -132,6 +132,6 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
      */
     public function buildUrl($attributeCode, $optionId)
     {
-        return $this->filterItemUrlBuilder->toggleUrl($attributeCode, (string) $optionId);
+        return $this->filterItemUrl->toggleUrl($attributeCode, (string) $optionId);
     }
 }

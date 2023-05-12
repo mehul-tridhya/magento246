@@ -20,7 +20,7 @@ class State extends mainState
     /**
      * @var IsSearchResultsPage
      */
-    private $isSearchResultsPage;
+    private $isSearchPage;
     
     /**
      * @var Config
@@ -30,19 +30,19 @@ class State extends mainState
      * @param Context             $context
      * @param Resolver            $layerResolver
      * @param Config              $config
-     * @param IsSearchResultsPage $isSearchResultsPage
+     * @param IsSearchResultsPage $isSearchPage
      * @param array               $data
      */
     public function __construct(
         Context $context,
         Resolver $layerResolver,
         Config $config,
-        IsSearchResultsPage $isSearchResultsPage,
+        IsSearchResultsPage $isSearchPage,
         array $data = []
     ) {
         parent::__construct($context, $layerResolver, $data);
         $this->config = $config;
-        $this->isSearchResultsPage = $isSearchResultsPage;
+        $this->isSearchPage = $isSearchPage;
     }
 
     /**
@@ -57,9 +57,9 @@ class State extends mainState
         $toolbarVars = $this->config->getToolbarVars();
         foreach ($this->_request->getParams() as $param => $value) {
             if (in_array($param, $toolbarVars, true)) {
-                if ($this->isSearchResultsPage->execute($clearUrl)) {
+                if ($this->isSearchPage->execute($clearUrl)) {
                     $additionalParam .= '/' . $param . Config::FILTER_PARAM_SEPARATOR . $value;
-                } elseif (!$this->isSearchResultsPage->execute($clearUrl)) {
+                } elseif (!$this->isSearchPage->execute($clearUrl)) {
                     $clearUrl .= '/' . $param . Config::FILTER_PARAM_SEPARATOR . $value;
                 }
             }

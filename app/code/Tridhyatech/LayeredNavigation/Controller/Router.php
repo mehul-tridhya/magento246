@@ -31,12 +31,12 @@ class Router implements RouterInterface
     /**
      * @var \Tridhyatech\LayeredNavigation\Model\Variable\GetList
      */
-    private $getUrlVariables;
+    private $getUrlAttribute;
 
     /**
      * @var Value
      */
-    private $variableValue;
+    private $attributeValue;
 
     /**
      * @var PathProcessor
@@ -46,17 +46,17 @@ class Router implements RouterInterface
     /**
      * @var Registry
      */
-    private $variableRegistry;
+    private $attributeRegistry;
 
     /**
      * @var ParamsProcessor
      */
-    private $paramsProcessor;
+    private $variableProcessor;
 
     /**
      * @var AjaxRequestLocator
      */
-    private $ajaxRequestLocator;
+    private $ajaxLocator;
 
     /**
      * @var Seo
@@ -65,31 +65,31 @@ class Router implements RouterInterface
 
     /**
      * @param Config                   $config
-     * @param GetUrlVariablesInterface $getUrlVariables
-     * @param Value                    $variableValue
+     * @param GetUrlVariablesInterface $getUrlAttribute
+     * @param Value                    $attributeValue
      * @param Processor                $pathProcessor
-     * @param Registry                 $variableRegistry
-     * @param Processor                $paramsProcessor
-     * @param AjaxRequestLocator       $ajaxRequestLocator
+     * @param Registry                 $attributeRegistry
+     * @param Processor                $variableProcessor
+     * @param AjaxRequestLocator       $ajaxLocator
      * @param Seo                      $seoConfig
      */
     public function __construct(
         Config $config,
-        GetUrlVariablesInterface $getUrlVariables,
-        Value $variableValue,
+        GetUrlVariablesInterface $getUrlAttribute,
+        Value $attributeValue,
         PathProcessor $pathProcessor,
-        Registry $variableRegistry,
-        ParamsProcessor $paramsProcessor,
-        AjaxRequestLocator $ajaxRequestLocator,
+        Registry $attributeRegistry,
+        ParamsProcessor $variableProcessor,
+        AjaxRequestLocator $ajaxLocator,
         Seo $seoConfig
     ) {
         $this->config = $config;
-        $this->getUrlVariables = $getUrlVariables;
-        $this->variableValue = $variableValue;
+        $this->getUrlAttribute = $getUrlAttribute;
+        $this->attributeValue = $attributeValue;
         $this->pathProcessor = $pathProcessor;
-        $this->variableRegistry = $variableRegistry;
-        $this->paramsProcessor = $paramsProcessor;
-        $this->ajaxRequestLocator = $ajaxRequestLocator;
+        $this->attributeRegistry = $attributeRegistry;
+        $this->variableProcessor = $variableProcessor;
+        $this->ajaxLocator = $ajaxLocator;
         $this->seoConfig = $seoConfig;
     }
 
@@ -102,7 +102,7 @@ class Router implements RouterInterface
     public function match(RequestInterface $request): void
     {
         if (! $request instanceof Request
-            || $this->ajaxRequestLocator->isActive()
+            || $this->ajaxLocator->isActive()
         ) {
             return;
         }
@@ -123,16 +123,16 @@ class Router implements RouterInterface
     private function managePageRequest(Request $request): void
     {
         if (InsertFiltersIn::GET_PARAMS === $this->seoConfig->getInsertFiltersIn()) {
-            $variables = $this->getUrlVariables->getFromParams($this->paramsProcessor->parseGetParams($request));
+            $variables = $this->getUrlAttribute->getFromParams($this->variableProcessor->parseGetParams($request));
         } elseif (InsertFiltersIn::GET_PARAMS !== $this->seoConfig->getInsertFiltersIn()) {
-            $variables = $this->getUrlVariables->get($request->getPathInfo());
+            $variables = $this->getUrlAttribute->get($request->getPathInfo());
         }
 
         if (! $variables) {
             return;
         }
-        $variables = $this->variableValue->prepareVariableValues($variables);
-        $this->variableRegistry->set($variables);
+        $variables = $this->attributeValue->prepareVariableValues($variables);
+        $this->attributeRegistry->set($variables);
         $this->pathProcessor->moveToParams($request, $variables);
     }
 
@@ -143,10 +143,10 @@ class Router implements RouterInterface
      */
     private function manageAjaxRequest(Request $request): void
     {
-        $this->ajaxRequestLocator->setActive(true);
-        $variables = $this->getUrlVariables->getFromAjaxParams($request->getParam('prfilter_variables', []));
-        $variables = $this->variableValue->preparePriceValues($variables);
-        $this->variableRegistry->set($variables);
-        $this->paramsProcessor->moveToParams($request, $variables);
+        $this->ajaxLocator->setActive(true);
+        $variables = $this->getUrlAttribute->getFromAjaxParams($request->getParam('prfilter_variables', []));
+        $variables = $this->attributeValue->preparePriceValues($variables);
+        $this->attributeRegistry->set($variables);
+        $this->variableProcessor->moveToParams($request, $variables);
     }
 }

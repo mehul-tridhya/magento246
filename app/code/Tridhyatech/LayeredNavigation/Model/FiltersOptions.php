@@ -46,7 +46,7 @@ class FiltersOptions implements FiltersOptionsInterface
     /**
      * @var CollectorInterface[]
      */
-    private $filterOptionCollectors;
+    private $filterCollectors;
 
     /**
      * @var StoreManagerInterface
@@ -58,20 +58,20 @@ class FiltersOptions implements FiltersOptionsInterface
      * @param SerializerInterface       $serializer
      * @param FilterRepositoryInterface $filterRepository
      * @param StoreManagerInterface     $storeManager
-     * @param array                     $filterOptionCollectors
+     * @param array                     $filterCollectors
      */
     public function __construct(
         CacheInterface $cache,
         SerializerInterface $serializer,
         FilterRepositoryInterface $filterRepository,
         StoreManagerInterface $storeManager,
-        array $filterOptionCollectors = []
+        array $filterCollectors = []
     ) {
         $this->cache = $cache;
         $this->serializer = $serializer;
         $this->filterRepository = $filterRepository;
         $this->storeManager = $storeManager;
-        $this->filterOptionCollectors = $filterOptionCollectors;
+        $this->filterCollectors = $filterCollectors;
     }
 
     /**
@@ -173,7 +173,7 @@ class FiltersOptions implements FiltersOptionsInterface
             }
 
             $options = [];
-            foreach ($this->filterOptionCollectors as $filterOptionCollector) {
+            foreach ($this->filterCollectors as $filterOptionCollector) {
                 $options = $filterOptionCollector->collect($options);
             }
 

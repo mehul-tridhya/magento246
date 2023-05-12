@@ -40,7 +40,7 @@ class HandleFilterAjaxRequest
     /**
      * @var AjaxRequestLocator
      */
-    private $ajaxRequestLocator;
+    private $ajaxRequest;
 
     /**
      * @var Config
@@ -52,16 +52,16 @@ class HandleFilterAjaxRequest
      * @param ResultFactory      $resultFactory
      * @param AjaxResponse       $ajaxResponse
      * @param HttpContext        $httpContext
-     * @param AjaxRequestLocator $ajaxRequestLocator
+     * @param AjaxRequestLocator $ajaxRequest
      */
     public function __construct(
         Config $config,
         ResultFactory $resultFactory,
         AjaxResponse $ajaxResponse,
         HttpContext $httpContext,
-        AjaxRequestLocator $ajaxRequestLocator
+        AjaxRequestLocator $ajaxRequest
     ) {
-        $this->ajaxRequestLocator = $ajaxRequestLocator;
+        $this->ajaxRequest = $ajaxRequest;
         $this->resultFactory = $resultFactory;
         $this->httpContext = $httpContext;
         $this->ajaxResponse = $ajaxResponse;
@@ -108,7 +108,7 @@ class HandleFilterAjaxRequest
     private function isAllowedAction(RequestInterface $request): bool
     {
         $allowedActions = [AjaxResponse::CATEGORY_VIEW_ACTION_NAME, AjaxResponse::CATALOG_SEARCH_ACTION_NAME];
-        return $this->ajaxRequestLocator->isActive()
+        return $this->ajaxRequest->isActive()
             && in_array($request->getFullActionName(), $allowedActions, true);
     }
 }

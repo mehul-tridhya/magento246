@@ -55,7 +55,7 @@ class Renderer
     /**
      * @var IsSearchResultsPage
      */
-    private $isSearchResultsPage;
+    private $isSearchPage;
 
     /**
      * @param UrlInterface        $urlBuilder
@@ -64,7 +64,7 @@ class Renderer
      * @param Config              $config
      * @param modelUrlInterface   $valueUrlEncoder
      * @param Seo                 $seoConfig
-     * @param IsSearchResultsPage $isSearchResultsPage
+     * @param IsSearchResultsPage $isSearchPage
      */
     public function __construct(
         UrlInterface $urlBuilder,
@@ -73,7 +73,7 @@ class Renderer
         Config $config,
         modelUrlInterface $valueUrlEncoder,
         Seo $seoConfig,
-        IsSearchResultsPage $isSearchResultsPage
+        IsSearchResultsPage $isSearchPage
     ) {
         $this->urlBuilder = $urlBuilder;
         $this->pathProcessor = $pathProcessor;
@@ -81,7 +81,7 @@ class Renderer
         $this->config = $config;
         $this->valueUrlEncoder = $valueUrlEncoder;
         $this->seoConfig = $seoConfig;
-        $this->isSearchResultsPage = $isSearchResultsPage;
+        $this->isSearchPage = $isSearchPage;
     }
 
     /**
@@ -146,7 +146,7 @@ class Renderer
             $url = str_replace($this->config->getCategoryUrlPathSuffix(), '', $url);
             $url = rtrim($url, '/');
             $url .= '/' . $this->inlineVariables($variables);
-            $url .= $this->isSearchResultsPage->execute($url) ? '' : $this->config->getCategoryUrlPathSuffix();
+            $url .= $this->isSearchPage->execute($url) ? '' : $this->config->getCategoryUrlPathSuffix();
         }
         return $url;
     }

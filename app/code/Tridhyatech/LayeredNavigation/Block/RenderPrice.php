@@ -26,9 +26,9 @@ class RenderPrice extends Template
     protected $registry;
 
     /**
-     * @var Collection $originalCollection
+     * @var Collection $productCollection
      */
-    protected $originalCollection = null;
+    protected $productCollection = null;
 
     /**
      * @var \Magento\Framework\Json\Helper\Data
@@ -172,17 +172,17 @@ class RenderPrice extends Template
      */
     private function getOriginalCollection()
     {
-        if (null === $this->originalCollection) {
+        if (null === $this->productCollection) {
             $category = $this->registry->registry('current_category');
-            $this->originalCollection = $this->productFactory->create()
+            $this->productCollection = $this->productFactory->create()
                 ->addPriceData();
 
             if ($category) {
-                $this->originalCollection->addCategoryFilter($category);
+                $this->productCollection->addCategoryFilter($category);
             }
         }
 
-        return $this->originalCollection;
+        return $this->productCollection;
     }
 
     /**

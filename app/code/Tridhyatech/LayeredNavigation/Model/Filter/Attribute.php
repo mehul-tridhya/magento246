@@ -30,12 +30,12 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
     /**
      * @var FilterRepositoryInterface
      */
-    private $filterMetaRepository;
+    private $filterRepository;
     
     /**
      * @var AttributeResolver
      */
-    private $facetedDataResolver;
+    private $facetedResolver;
 
     /**
      * @param ItemFactory               $filterItemFactory
@@ -43,8 +43,8 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
      * @param Layer                     $layer
      * @param DataBuilder               $itemDataBuilder
      * @param StripTags                 $tagFilter
-     * @param AttributeResolver         $facetedDataResolver
-     * @param FilterRepositoryInterface $filterMetaRepository
+     * @param AttributeResolver         $facetedResolver
+     * @param FilterRepositoryInterface $filterRepository
      * @param CollectionFilterApplier   $filterApplier
      * @param array                     $data
      */
@@ -54,15 +54,15 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
         Layer $layer,
         DataBuilder $itemDataBuilder,
         StripTags $tagFilter,
-        AttributeResolver $facetedDataResolver,
-        FilterRepositoryInterface $filterMetaRepository,
+        AttributeResolver $facetedResolver,
+        FilterRepositoryInterface $filterRepository,
         CollectionFilterApplier $filterApplier,
         array $data = []
     ) {
         parent::__construct($filterItemFactory, $storeManager, $layer, $itemDataBuilder, $tagFilter, $data);
-        $this->filterMetaRepository = $filterMetaRepository;
+        $this->filterRepository = $filterRepository;
         $this->filterApplier = $filterApplier;
-        $this->facetedDataResolver = $facetedDataResolver;
+        $this->facetedResolver = $facetedResolver;
     }
 
     /**
@@ -120,7 +120,7 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
     protected function _getItemsData(): array
     {
         try {
-            if (! $this->filterMetaRepository->get($this->getRequestVar())->isAttribute()) {
+            if (! $this->filterRepository->get($this->getRequestVar())->isAttribute()) {
                 return parent::_getItemsData();
             }
 
@@ -128,7 +128,7 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute
             $isAttributeFilterable =
                 $this->getAttributeIsFilterable($attribute) === static::ATTRIBUTE_OPTIONS_ONLY_WITH_RESULTS;
 
-            return $this->facetedDataResolver->resolve(
+            return $this->facetedResolver->resolve(
                 $this->getRequestVar(),
                 $attribute,
                 $this->getLayer(),

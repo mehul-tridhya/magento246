@@ -21,7 +21,7 @@ class Value
     /**
      * @var FilterRepositoryInterface
      */
-    private $filterMetaRepository;
+    private $filterRepository;
 
     /**
      * @var UrlInterface
@@ -34,16 +34,16 @@ class Value
     private $slugify;
 
     /**
-     * @param FilterRepositoryInterface $filterMetaRepository
+     * @param FilterRepositoryInterface $filterRepository
      * @param UrlInterface              $urlValue
      * @param Slugify                   $slugify
      */
     public function __construct(
-        FilterRepositoryInterface $filterMetaRepository,
+        FilterRepositoryInterface $filterRepository,
         UrlInterface $urlValue,
         Slugify $slugify
     ) {
-        $this->filterMetaRepository = $filterMetaRepository;
+        $this->filterRepository = $filterRepository;
         $this->urlValue = $urlValue;
         $this->slugify = $slugify;
     }
@@ -97,7 +97,7 @@ class Value
         $value = html_entity_decode($value);
 
         try {
-            $filterMeta = $this->filterMetaRepository->get($code);
+            $filterMeta = $this->filterRepository->get($code);
             if ($filterMeta->isAttribute() || $filterMeta->isCategory() || $filterMeta->isSpecial()) {
                 $value = $this->slugify->execute($value);
                 return $this->urlValue->decode($code, $value);

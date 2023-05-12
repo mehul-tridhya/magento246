@@ -36,7 +36,7 @@ class Repository implements FilterRepositoryInterface
     /**
      * @var CollectionFactory
      */
-    protected $productAttributeCollectionFactory;
+    protected $productCollectionFactory;
 
     /**
      * @var array|null
@@ -56,19 +56,19 @@ class Repository implements FilterRepositoryInterface
     /**
      * @param Factory           $filterMetaFactory
      * @param Attribute         $attributeConfig
-     * @param CollectionFactory $productAttributeCollectionFactory
+     * @param CollectionFactory $productCollectionFactory
      * @param array             $toolbarVars
      */
     public function __construct(
         Factory $filterMetaFactory,
         Attribute $attributeConfig,
-        CollectionFactory $productAttributeCollectionFactory,
+        CollectionFactory $productCollectionFactory,
         array $toolbarVars = []
     ) {
         $this->toolbarVars = array_merge($this->toolbarVars, $toolbarVars);
         $this->filterMetaFactory = $filterMetaFactory;
         $this->attributeConfig = $attributeConfig;
-        $this->productAttributeCollectionFactory = $productAttributeCollectionFactory;
+        $this->productCollectionFactory = $productCollectionFactory;
     }
 
     /**
@@ -125,7 +125,7 @@ class Repository implements FilterRepositoryInterface
      */
     public function getFilterableAttributes()
     {
-        $productAttributes = $this->productAttributeCollectionFactory->create();
+        $productAttributes = $this->productCollectionFactory->create();
         $productAttributes->setItemObjectClass($this->attributeConfig::class)
             ->setOrder('position', 'ASC');
         $productAttributes->addIsFilterableFilter();

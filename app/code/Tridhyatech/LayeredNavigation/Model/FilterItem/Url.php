@@ -20,7 +20,7 @@ class Url implements ItemUrlBuilderInterface
     /**
      * @var Renderer
      */
-    private $variablesRenderer;
+    private $attributesRenderer;
 
     /**
      * @var Registry
@@ -29,14 +29,14 @@ class Url implements ItemUrlBuilderInterface
 
     /**
      * @param Registry $variableRegistry
-     * @param Renderer $variablesRenderer
+     * @param Renderer $attributesRenderer
      */
     public function __construct(
         Registry $variableRegistry,
-        Renderer $variablesRenderer
+        Renderer $attributesRenderer
     ) {
         $this->variableRegistry = $variableRegistry;
-        $this->variablesRenderer = $variablesRenderer;
+        $this->attributesRenderer = $attributesRenderer;
     }
 
     /**
@@ -72,7 +72,7 @@ class Url implements ItemUrlBuilderInterface
             }
         }
 
-        return $this->variablesRenderer->render($variables);
+        return $this->attributesRenderer->render($variables);
     }
 
     /**
@@ -94,6 +94,6 @@ class Url implements ItemUrlBuilderInterface
         }
         $variables[$requestVar] = $values;
 
-        return $this->variablesRenderer->render($variables);
+        return $this->attributesRenderer->render($variables);
     }
 }

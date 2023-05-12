@@ -67,7 +67,7 @@ class AttributeResolver
      * @param  string    $requestVar
      * @param  Attribute $attribute
      * @param  Layer     $layer
-     * @param  bool      $isAttributeFilterable
+     * @param  bool      $isFilterableAttribute
      * @return array
      * @throws LocalizedException
      * @throws NoSuchEntityException
@@ -77,7 +77,7 @@ class AttributeResolver
         string $requestVar,
         Attribute $attribute,
         Layer $layer,
-        bool $isAttributeFilterable
+        bool $isFilterableAttribute
     ): array {
         $filters = $layer->getState()->getFilters();
         $attrFilterItems = [];
@@ -91,7 +91,7 @@ class AttributeResolver
             return $this->getItemsData(
                 $attribute,
                 $layer,
-                $isAttributeFilterable,
+                $isFilterableAttribute,
                 $attrFilterItems
             );
         }
@@ -126,7 +126,7 @@ class AttributeResolver
      *
      * @param  Attribute $attribute
      * @param  Layer     $layer
-     * @param  bool      $isAttributeFilterable
+     * @param  bool      $isFilterableAttribute
      * @param  Item[]    $attrFilterItems
      * @return array
      * @throws LocalizedException
@@ -135,16 +135,16 @@ class AttributeResolver
     protected function getItemsData(
         Attribute $attribute,
         Layer $layer,
-        bool $isAttributeFilterable,
+        bool $isFilterableAttribute,
         array $attrFilterItems
     ): array {
         $optionsFacetedData = $this->getFacetedData($attribute->getAttributeCode(), $layer);
-        if (!$isAttributeFilterable && count($optionsFacetedData) === 0) {
+        if (!$isFilterableAttribute && count($optionsFacetedData) === 0) {
             return $this->itemDataBuilder->build();
         }
 
         foreach ($attribute->getFrontend()->getSelectOptions() as $option) {
-            $this->buildOptionData($option, $isAttributeFilterable, $optionsFacetedData, $attrFilterItems);
+            $this->buildOptionData($option, $isFilterableAttribute, $optionsFacetedData, $attrFilterItems);
         }
         return $this->itemDataBuilder->build();
     }
@@ -167,7 +167,7 @@ class AttributeResolver
      * Build option data
      *
      * @param  array  $option
-     * @param  bool   $isAttributeFilterable
+     * @param  bool   $isFilterableAttribute
      * @param  array  $optionsFacetedData
      * @param  Item[] $attrFilterItems
      * @return void
@@ -175,7 +175,7 @@ class AttributeResolver
      */
     private function buildOptionData(
         array $option,
-        bool $isAttributeFilterable,
+        bool $isFilterableAttribute,
         array $optionsFacetedData,
         array $attrFilterItems
     ): void {
@@ -185,7 +185,7 @@ class AttributeResolver
         }
 
         $count = $this->getOptionCount($value, $optionsFacetedData);
-        if ($isAttributeFilterable && ($count === 0 && !$this->isActiveFilter($value, $attrFilterItems))) {
+        if ($isFilterableAttribute && ($count === 0 && !$this->isActiveFilter($value, $attrFilterItems))) {
             return;
         }
 

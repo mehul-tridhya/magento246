@@ -20,7 +20,7 @@ class Filters extends AbstractSource
     /**
      * @var FilterRepositoryInterface
      */
-    private $filterMetaRepository;
+    private $filterRepository;
 
     /**
      * @var FilterList
@@ -29,14 +29,14 @@ class Filters extends AbstractSource
 
     /**
      * @param FilterList                $filterList
-     * @param FilterRepositoryInterface $filterMetaRepository
+     * @param FilterRepositoryInterface $filterRepository
      */
     public function __construct(
         FilterList $filterList,
-        FilterRepositoryInterface $filterMetaRepository
+        FilterRepositoryInterface $filterRepository
     ) {
         $this->filterList = $filterList;
-        $this->filterMetaRepository = $filterMetaRepository;
+        $this->filterRepository = $filterRepository;
     }
 
     /**
@@ -49,8 +49,8 @@ class Filters extends AbstractSource
         $options = ['all' => 'All Attributes'];
         foreach ($this->filterList->getAttributeList() as $code => $label) {
             try {
-                if ($this->filterMetaRepository->get($code)->isAttribute()
-                    || $this->filterMetaRepository->get($code)->isCategory()
+                if ($this->filterRepository->get($code)->isAttribute()
+                    || $this->filterRepository->get($code)->isCategory()
                 ) {
                     $options[$code] = $label;
                 }

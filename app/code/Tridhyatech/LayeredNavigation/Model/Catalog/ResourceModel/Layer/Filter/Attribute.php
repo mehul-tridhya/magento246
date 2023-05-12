@@ -22,7 +22,7 @@ class Attribute extends \Magento\Catalog\Model\ResourceModel\Layer\Filter\Attrib
      *
      * @var array
      */
-    protected $skipFilterAttributes = ["color"];
+    protected $removeFilterAttributes = ["color"];
 
     /**
      * Function to get count
@@ -40,7 +40,7 @@ class Attribute extends \Magento\Catalog\Model\ResourceModel\Layer\Filter\Attrib
 
         $select = clone $filter->getLayer()->getProductCollection()->getSelect();
 
-        if (in_array($attributeCode, $this->skipFilterAttributes)) {
+        if (in_array($attributeCode, $this->removeFilterAttributes)) {
 
             $from = $select->getPart(\Magento\Framework\DB\Select::FROM);
 

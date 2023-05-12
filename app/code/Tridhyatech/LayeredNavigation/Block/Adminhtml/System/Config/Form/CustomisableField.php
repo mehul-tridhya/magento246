@@ -23,20 +23,20 @@ class CustomisableField extends Field
     /**
      * @var Repository
      */
-    private $viewAssetRepository;
+    private $assetRepository;
 
     /**
      * @param Context    $context
-     * @param Repository $viewAssetRepository
+     * @param Repository $assetRepository
      * @param array      $data
      */
     public function __construct(
         Context $context,
-        Repository $viewAssetRepository,
+        Repository $assetRepository,
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->viewAssetRepository = $viewAssetRepository;
+        $this->assetRepository = $assetRepository;
     }
 
     /**
@@ -85,7 +85,7 @@ class CustomisableField extends Field
         if (preg_match_all('/{{media url="(.*?)".*?}}/', $comment, $media)) {
             $urls = [];
             foreach ($media[1] as $fieldId) {
-                $urls[] = $this->viewAssetRepository->getUrl($fieldId);
+                $urls[] = $this->assetRepository->getUrl($fieldId);
             }
             $comment = str_replace($media[0], $urls, $comment);
         }
