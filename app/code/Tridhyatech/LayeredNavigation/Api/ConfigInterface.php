@@ -33,7 +33,7 @@ interface ConfigInterface
      * @param string|int $store store view code or id
      * @return mixed
      */
-    public function getStoreConfig(string $path, $store = null);
+    public function getConfigStore(string $path, $store = null);
 
     /**
      * Is flag set.

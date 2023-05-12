@@ -108,11 +108,11 @@ class Router implements RouterInterface
         }
 
         if ($request->getParam('prfilter_ajax')) {
-            $this->handleAjaxRequest($request);
+            $this->manageAjaxRequest($request);
             return;
         }
 
-        $this->handlePageRequest($request);
+        $this->managePageRequest($request);
     }
 
     /**
@@ -120,7 +120,7 @@ class Router implements RouterInterface
      *
      * @param Request $request
      */
-    private function handlePageRequest(Request $request): void
+    private function managePageRequest(Request $request): void
     {
         if (InsertFiltersIn::GET_PARAMS === $this->seoConfig->getInsertFiltersIn()) {
             $variables = $this->getUrlVariables->getFromParams($this->paramsProcessor->parseGetParams($request));
@@ -141,7 +141,7 @@ class Router implements RouterInterface
      *
      * @param Request $request
      */
-    private function handleAjaxRequest(Request $request): void
+    private function manageAjaxRequest(Request $request): void
     {
         $this->ajaxRequestLocator->setActive(true);
         $variables = $this->getUrlVariables->getFromAjaxParams($request->getParam('prfilter_variables', []));

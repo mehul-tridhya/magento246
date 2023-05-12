@@ -143,10 +143,10 @@ class Renderer
     public function addVariablesToUrl(string $url, array $variables): string
     {
         if ($variables) {
-            $url = str_replace($this->config->getCategoryUrlSuffix(), '', $url);
+            $url = str_replace($this->config->getCategoryUrlPathSuffix(), '', $url);
             $url = rtrim($url, '/');
             $url .= '/' . $this->inlineVariables($variables);
-            $url .= $this->isSearchResultsPage->execute($url) ? '' : $this->config->getCategoryUrlSuffix();
+            $url .= $this->isSearchResultsPage->execute($url) ? '' : $this->config->getCategoryUrlPathSuffix();
         }
         return $url;
     }

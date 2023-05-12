@@ -41,7 +41,7 @@ class ConfigUtils
      * @param  string|int $store store view code or website code
      * @return mixed
      */
-    public function getStoreConfig(string $path, $store = null)
+    public function getConfigStore(string $path, $store = null)
     {
         return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE, $store);
     }

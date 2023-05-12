@@ -74,7 +74,7 @@ class GetList implements GetUrlVariablesInterface
     private function cleanUrlPath(string $urlPath): string
     {
         $urlPath = trim($urlPath, '/');
-        return urldecode(str_replace($this->config->getCategoryUrlSuffix(), '', $urlPath));
+        return urldecode(str_replace($this->config->getCategoryUrlPathSuffix(), '', $urlPath));
     }
 
     /**

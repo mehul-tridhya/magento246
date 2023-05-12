@@ -132,6 +132,6 @@ class RenderLayered extends \Magento\Swatches\Block\LayeredNavigation\RenderLaye
      */
     public function buildUrl($attributeCode, $optionId)
     {
-        return $this->filterItemUrlBuilder->toggleFilterUrl($attributeCode, (string) $optionId);
+        return $this->filterItemUrlBuilder->toggleUrl($attributeCode, (string) $optionId);
     }
 }

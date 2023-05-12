@@ -99,8 +99,8 @@ class JsConfig implements ArgumentInterface
             'loader' => [
                 'icon' => $this->getViewFileUrl('images/loader-1.gif'),
             ],
-            'scrollUp' => $this->config->shouldScrollUpAfterUpdate(),
-            'scrollUpTo' => $this->config->getScrollUpSelector(),
+            'scrollUp' => $this->config->canScrollUpAfterUpdate(),
+            'scrollUpTo' => $this->config->getScrollUpClass(),
         ];
     }
 

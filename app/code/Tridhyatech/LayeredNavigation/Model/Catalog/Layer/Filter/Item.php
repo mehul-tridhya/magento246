@@ -74,7 +74,7 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
             return $this->getRemoveUrl();
         }
 
-        return $this->itemUrl->getAddFilterUrl(
+        return $this->itemUrl->getAddUrl(
             $this->getFilter()->getRequestVar(),
             $this->getValueString(),
             (bool) $this->getFilter()->getIsRadio()
@@ -89,6 +89,6 @@ class Item extends \Magento\Catalog\Model\Layer\Filter\Item
      */
     public function getRemoveUrl()
     {
-        return $this->itemUrl->getRemoveFilterUrl($this->getFilter()->getRequestVar(), $this->getValueString());
+        return $this->itemUrl->getRemoveUrl($this->getFilter()->getRequestVar(), $this->getValueString());
     }
 }

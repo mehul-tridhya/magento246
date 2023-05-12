@@ -42,14 +42,14 @@ class Url implements ItemUrlBuilderInterface
     /**
      * @inheritDoc
      */
-    public function toggleFilterUrl(string $requestVar, string $itemValue): string
+    public function toggleUrl(string $requestVar, string $itemValue): string
     {
         $variables = $this->variableRegistry->get();
         if (isset($variables[$requestVar]) && in_array($itemValue, $variables[$requestVar], false)) {
-            return $this->getRemoveFilterUrl($requestVar, $itemValue);
+            return $this->getRemoveUrl($requestVar, $itemValue);
         }
         $removeCurrentValue = false;
-        return $this->getAddFilterUrl($requestVar, $itemValue, $removeCurrentValue);
+        return $this->getAddUrl($requestVar, $itemValue, $removeCurrentValue);
     }
 
     /**
@@ -59,7 +59,7 @@ class Url implements ItemUrlBuilderInterface
      * @param  string $itemValue
      * @return string
      */
-    public function getRemoveFilterUrl(string $requestVar, string $itemValue): string
+    public function getRemoveUrl(string $requestVar, string $itemValue): string
     {
         $variables = $this->variableRegistry->get();
         if (isset($variables[$requestVar])) {
@@ -83,7 +83,7 @@ class Url implements ItemUrlBuilderInterface
      * @param  bool   $removeCurrentValue
      * @return string
      */
-    public function getAddFilterUrl(string $requestVar, string $itemValue, bool $removeCurrentValue): string
+    public function getAddUrl(string $requestVar, string $itemValue, bool $removeCurrentValue): string
     {
         $variables = $this->variableRegistry->get();
         if (isset($variables[$requestVar]) && !$removeCurrentValue) {

@@ -13,6 +13,7 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
 use Magento\CatalogUrlRewrite\Model\CategoryUrlPathGenerator;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
+use Tridhyatech\LayeredNavigation\Model\Utils\Config as modelConfig;
 
 class Config extends AbstractHelper
 {
@@ -45,17 +46,17 @@ class Config extends AbstractHelper
     ];
 
     /**
-     * @var \Tridhyatech\LayeredNavigation\Model\Utils\Config
+     * @var modelConfig
      */
     private $configUtils;
 
     /**
      * @param \Magento\Framework\App\Helper\Context             $context
-     * @param \Tridhyatech\LayeredNavigation\Model\Utils\Config $configUtils
+     * @param modelConfig $configUtils
      */
     public function __construct(
         Context $context,
-        \Tridhyatech\LayeredNavigation\Model\Utils\Config $configUtils
+        modelConfig $configUtils
     ) {
         parent::__construct($context);
         $this->configUtils = $configUtils;
@@ -67,7 +68,7 @@ class Config extends AbstractHelper
      * @param  int|string|null $store
      * @return bool
      */
-    public function shouldScrollUpAfterUpdate($store = null): bool
+    public function canScrollUpAfterUpdate($store = null): bool
     {
         return $this->configUtils->isSetFlag(self::XML_PATH_SCROLL_UP, $store);
     }
@@ -77,7 +78,7 @@ class Config extends AbstractHelper
      *
      * @return string
      */
-    public function getCategoryUrlSuffix(): string
+    public function getCategoryUrlPathSuffix(): string
     {
         return (string) $this->configUtils->getConfig(CategoryUrlPathGenerator::XML_PATH_CATEGORY_URL_SUFFIX);
     }
@@ -87,7 +88,7 @@ class Config extends AbstractHelper
      *
      * @return string
      */
-    public function getScrollUpSelector(): string
+    public function getScrollUpClass(): string
     {
         return '.toolbar-products';
     }
@@ -97,7 +98,7 @@ class Config extends AbstractHelper
      *
      * @return string
      */
-    public function getCanonicalUrl(): string
+    public function getCanonicalUrlFromUrl(): string
     {
         $currentUrl = $this->_urlBuilder->getCurrentUrl();
         $parts = explode('?', $currentUrl);

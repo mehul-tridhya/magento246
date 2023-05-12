@@ -43,6 +43,6 @@ class Seo extends AbstractHelper
      */
     public function getInsertFiltersIn(int $storeId = null): int
     {
-        return (int) $this->configUtils->getStoreConfig(self::XML_PATH_INSERT_FILTERS_IN, $storeId);
+        return (int) $this->configUtils->getConfigStore(self::XML_PATH_INSERT_FILTERS_IN, $storeId);
     }
 }

@@ -46,7 +46,7 @@ class Processor
      */
     public function getPathWithoutVariables(string $path, array $variables): string
     {
-        $path = str_replace($this->config->getCategoryUrlSuffix(), '', $path);
+        $path = str_replace($this->config->getCategoryUrlPathSuffix(), '', $path);
 
         $parts = explode('/', $path);
         $newParts = [];
@@ -65,7 +65,7 @@ class Processor
         if ($this->isSearchResultsPage->execute($path)) {
             return implode('/', $newParts);
         }
-        return implode('/', $newParts) . $this->config->getCategoryUrlSuffix();
+        return implode('/', $newParts) . $this->config->getCategoryUrlPathSuffix();
     }
 
     /**

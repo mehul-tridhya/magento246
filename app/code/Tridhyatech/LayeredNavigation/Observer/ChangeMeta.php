@@ -110,7 +110,7 @@ class ChangeMeta implements ObserverInterface
             $this->_pageConfig->getAssetCollection()->remove($canonical->getUrl());
 
             $this->_pageConfig->addRemotePageAsset(
-                $this->config->getCanonicalUrl(),
+                $this->config->getCanonicalUrlFromUrl(),
                 'canonical',
                 ['attributes' => ['rel' => 'canonical']]
             );

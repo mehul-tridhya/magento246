@@ -65,7 +65,7 @@ class RenderPrice extends Template
      *
      * @return string
      */
-    protected function renderPriceSlider(): string
+    protected function renderPriceAttribute(): string
     {
         $this->setTemplate(self::FILTER_PRICE_SLIDER_TEMPLATE);
         return parent::_toHtml();
@@ -77,7 +77,7 @@ class RenderPrice extends Template
     protected function _toHtml()
     {
         $this->assign('filterItems', $this->getItems());
-        $html = $this->renderPriceSlider();
+        $html = $this->renderPriceAttribute();
         $this->assign('filterItems', []);
         return $html;
     }

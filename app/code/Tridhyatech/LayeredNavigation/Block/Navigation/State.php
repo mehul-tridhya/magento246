@@ -68,13 +68,13 @@ class State extends mainState
         if (false !== strpos($clearUrl, 'amfinder')) {
             $clearUrl = preg_replace(
                 '/(amfinder)\/.*?\/(.*?\/\?)/',
-                "$1{$additionalParam}{$this->config->getCategoryUrlSuffix()}?",
+                "$1{$additionalParam}{$this->config->getCategoryUrlPathSuffix()}?",
                 $clearUrl
             );
         } elseif (false === strpos($clearUrl, 'amfinder')) {
             $clearUrl = preg_replace(
                 '/(catalogsearch\/result)\/.*?\/(.*?\/\?)/',
-                "$1{$additionalParam}{$this->config->getCategoryUrlSuffix()}?",
+                "$1{$additionalParam}{$this->config->getCategoryUrlPathSuffix()}?",
                 $clearUrl
             );
         }
