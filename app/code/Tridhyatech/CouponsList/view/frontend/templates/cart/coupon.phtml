@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author    Tridhya Tech Team
+ * @author    Tridhya Tech
  * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
  * @package   Tridhyatech_CouponsList
  */
@@ -18,11 +18,11 @@ $hasCouponCode = $block->getCouponCode() !== null && strlen($block->getCouponCod
 <?php $availableCouponTitle = $childBlock->getAvailableCouponTitle(); ?>
 <?php $unAvailableCouponTitle = $childBlock->getUnavailableCouponTitle(); ?>
 <?php $buttonTitle = $childBlock->getButtonTitle(); ?>
-    <div class="block discount" id="block-discount" data-mage-init='{"collapsible":{"active": <?php echo $hasCouponCode ? 'true' : 'false' ?>, "openedState": "active", "saveState": false}}'>
-        <div class="title" data-role="title">
-            <strong id="block-discount-heading" role="heading" aria-level="2"><?php echo $block->escapeHtml(__('Apply Discount Code')) ?></strong>
-        </div>
-        <div class="content" data-role="content" aria-labelledby="block-discount-heading">
+<div class="block discount" id="block-discount" data-mage-init='{"collapsible":{"active": <?php echo $hasCouponCode ? 'true' : 'false' ?>, "openedState": "active", "saveState": false}}'>
+    <div class="title" data-role="title">
+        <strong id="block-discount-heading" role="heading" aria-level="2"><?php echo $block->escapeHtml(__('Apply Discount Code')) ?></strong>
+    </div>
+    <div class="content" data-role="content" aria-labelledby="block-discount-heading">
         <form id="discount-coupon-form" action="<?php echo $block->escapeUrl($block->getUrl('checkout/cart/couponPost')) ?>" method="post" data-mage-init='{"discountCode":{"couponCodeSelector": "#coupon_code",
                                                "removeCouponSelector": "#remove-coupon",
                                                "applyButton": "button.action.apply",
@@ -34,8 +34,8 @@ $hasCouponCode = $block->getCouponCode() !== null && strlen($block->getCouponCod
                         <span><?php echo $block->escapeHtml(__('Enter discount code')) ?></span>
                     </label>
                     <div class="control">
-                        <input type="text" class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $block->escapeHtmlAttr($block->getCouponCode()) ?>" placeholder="<?php echo $block->escapeHtmlAttr(__('Enter discount code')) ?>" <?php if ($hasCouponCode) : ?> disabled="disabled" <?php 
-                       endif; ?> />
+                        <input type="text" class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $block->escapeHtmlAttr($block->getCouponCode()) ?>" placeholder="<?php echo $block->escapeHtmlAttr(__('Enter discount code')) ?>" <?php if ($hasCouponCode) : ?> disabled="disabled" <?php
+                                                                                                                                                                                                                                                                                                        endif; ?> />
                     </div>
                 </div>
                 <div class="actions-toolbar">
@@ -62,7 +62,7 @@ $hasCouponCode = $block->getCouponCode() !== null && strlen($block->getCouponCod
             <div id="coupon-list-content" class="coupon-list-modal-content">
                 <div class="coupon-code-content-main">
                     <div>
-                        <?php if ($couponListType == '1') : ?>
+                        <?php if ($couponListType == '1' && count($validCoupons) != 0) : ?>
                             <div class="coupon-code-types-div">
                                 <span class="coupon-code-types"><?php echo $block->escapeHtml(__($availableCouponTitle)) ?></span>
                             </div>
@@ -70,7 +70,9 @@ $hasCouponCode = $block->getCouponCode() !== null && strlen($block->getCouponCod
                         <?php foreach ($validCoupons as $coupon) : ?>
                             <div class="coupon-code-main">
                                 <div class="coupon-code"><span><?php echo $block->escapeHtml(__($coupon['coupon_code'])) ?></span></div>
-                                <span class="coupon-name"><h4><?php echo $block->escapeHtml(__($coupon['name'])) ?></h4></span>
+                                <span class="coupon-name">
+                                    <h4><?php echo $block->escapeHtml(__($coupon['name'])) ?></h4>
+                                </span>
                                 <p class="coupon-description"><?php echo $block->escapeHtml(__($coupon['description'])) ?></p>
                                 <button type="button" class="action secondory coupon-code-apply-btn" tabindex="0" onclick="coupon.applyCouponCode('<?php echo $coupon['coupon_code'] ?>')">
                                     <span><?php echo $block->escapeHtml(__('Apply Coupon')) ?></span>
@@ -78,7 +80,7 @@ $hasCouponCode = $block->getCouponCode() !== null && strlen($block->getCouponCod
                             </div>
                         <?php endforeach; ?>
                     </div>
-                    <?php if ($couponListType == 1) : ?>
+                    <?php if ($couponListType == 1 && count($invalidCoupons) != 0) : ?>
                         <div>
                             <div class="coupon-code-types-div">
                                 <span class="coupon-code-types"><?php echo $block->escapeHtml(__($unAvailableCouponTitle)) ?></span>
@@ -86,7 +88,9 @@ $hasCouponCode = $block->getCouponCode() !== null && strlen($block->getCouponCod
                             <?php foreach ($invalidCoupons as $coupon) : ?>
                                 <div class="coupon-code-main">
                                     <div class="coupon-code"><span><?php echo $block->escapeHtml(__($coupon['coupon_code'])) ?></span></div>
-                                    <span class="coupon-name"><h4><?php echo $block->escapeHtml(__($coupon['name'])) ?></h4></span>
+                                    <span class="coupon-name">
+                                        <h4><?php echo $block->escapeHtml(__($coupon['name'])) ?></h4>
+                                    </span>
                                     <p class="coupon-description"><?php echo $block->escapeHtml(__($coupon['description'])) ?></p>
                                     <button type="button" class="action secondory disabled coupon-code-apply-btn" tabindex="0" onclick="coupon.applyCouponCode('<?php echo $coupon['coupon_code'] ?>')">
                                         <span><?php echo $block->escapeHtml(__('Apply Coupon')) ?></span>
@@ -102,8 +106,8 @@ $hasCouponCode = $block->getCouponCode() !== null && strlen($block->getCouponCod
                 <a href="#" id="view_coupon_list" onclick="coupon.openCouponModal('<?php echo $childBlock->getTitle(); ?>','#coupon-list-content')"><?php echo $block->escapeHtml(__($buttonTitle)) ?></a>
             </div>
         <?php endif; ?>
-        </div>
     </div>
+</div>
 <script>
     var coupon;
     require(['jquery', 'couponCode'], function($, couponCode) {

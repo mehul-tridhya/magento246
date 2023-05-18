@@ -1,5 +1,5 @@
 /**
-* @author Tridhya Tech Team
+* @author Tridhya Tech
 * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
 * @package Tridhyatech_CouponsList
 */
@@ -22,13 +22,17 @@ define([
         title = ko.observable(''),
         buttonTitle = ko.observable(''),
         availableCouponTitle = ko.observable(''),
-        unavailableCouponTitle = ko.observable('');
+        unavailableCouponTitle = ko.observable(''),
+        availableCouponLength = ko.observable(0),
+        unavailableCouponLength = ko.observable(0);
     return {
         couponCodes: couponCodes,
         title: title,
         buttonTitle: buttonTitle,
         availableCouponTitle: availableCouponTitle,
         unavailableCouponTitle: unavailableCouponTitle,
+        availableCouponLength: availableCouponLength,
+        unavailableCouponLength: unavailableCouponLength,
 
         /**
          * @return {*}
@@ -95,8 +99,13 @@ define([
                         self.unavailableCouponTitle(response.unavailable_coupon_title);
                     }
                     if (response.couponcodes) {
-                        self.setCouponCodes(codes);
                         var codes = response.couponcodes;
+                        if(codes.invalid_coupons){
+                            self.unavailableCouponLength(codes.invalid_coupons.length);
+                        }
+                        if(codes.valid_coupons){
+                            self.availableCouponLength(codes.valid_coupons.length);
+                        }
                         self.setCouponCodes(codes);
                     }
                 }

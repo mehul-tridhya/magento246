@@ -1,50 +1,51 @@
 /**
-* @author Tridhya Tech Team
+* @author Tridhya Tech
 * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
 * @package Tridhyatech_CouponsList
 */
 @color_1: #fff;
-@color_2 :lightgray;
+@color_2: lightgray;
+@color_3: #6b6b6b;
 @background_color_1: #2678c3;
 
 .coupon-list-modal {
-	left: 70%;
+    left: 70%;
 }
 .coupon-list-modal-content {
-	display: none;
+    display: none;
 }
 .coupon-code-types {
-	font-size: large;
-	font-weight: 600;
+    font-size: large;
+    font-weight: 600;
 }
 .coupon-name {
-	font-weight: 700;
-	line-height: 1.1;
-	font-size: 1.4rem;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 .coupon-code-main {
-	padding: 20px;
-	margin-bottom: 20px;
-	box-shadow: 0 0 4px 0 @color_2;
-	position: relative;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 4px 0 @color_2;
+    position: relative;
 }
 .coupon-code {
-	padding: 8px 12px;
-	border: 1px solid @color_2;
-	background-color: @background_color_1;
-	color: @color_1;
-	font-weight: 700;
-	position: relative;
-	text-shadow: 1px 1px 1px #6b6b6b;
-	width: fit-content;
+    padding: 8px 12px;
+    border: 1px solid @color_2;
+    background-color: @background_color_1;
+    color: @color_1;
+    font-weight: 700;
+    position: relative;
+    text-shadow: 1px 1px 1px @color_3;
+    width: fit-content;
 }
 .coupon-code-types-div {
-	padding-bottom: 10px;
+    padding-bottom: 10px;
 }
 @media only screen and (max-width: 600px) {
-	.coupon-list-modal {
-		left: 10%;
-	}
+    .coupon-list-modal {
+        left: 10%;
+    }
 }

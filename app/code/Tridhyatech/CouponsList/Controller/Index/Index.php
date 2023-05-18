@@ -1,6 +1,6 @@
 <?php
 /**
- * @author    Tridhya Tech Team
+ * @author    Tridhya Tech
  * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
  * @package   Tridhyatech_CouponsList
  */
@@ -20,19 +20,19 @@ class Index extends \Magento\Framework\App\Action\Action
      *
      * @var ConfigProvider
      */
-    protected $_configProvider;
+    protected $configProvider;
 
     /**
      *
      * @var JsonFactory
      */
-    protected $_resultJsonFactory;
+    protected $resultJsonFactory;
 
     /**
      *
      * @var ScopeConfigInterface
      */
-    protected $_scopeConfig;
+    protected $scopeConfig;
 
     /**
      * Undocumented function
@@ -48,9 +48,9 @@ class Index extends \Magento\Framework\App\Action\Action
         JsonFactory $resultJsonFactory,
         ScopeConfigInterface $scopeConfig,
     ) {
-        $this->_configProvider = $configProvider;
-        $this->_resultJsonFactory = $resultJsonFactory;
-        $this->_scopeConfig = $scopeConfig;
+        $this->configProvider = $configProvider;
+        $this->resultJsonFactory = $resultJsonFactory;
+        $this->scopeConfig = $scopeConfig;
         return parent::__construct($context);
     }
 
@@ -61,20 +61,20 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function execute()
     {
-        $resultJson = $this->_resultJsonFactory->create();
+        $resultJson = $this->resultJsonFactory->create();
         $isModuleEnable = $this->isModuleEnable();
         $couponListType = $this->getCouponListType();
         $buttonTitle = $this->getButtonTitle();
         $availableCouponTitle = $this->getAvailableCouponTitle();
-        $unavailableCouponTitle = $this->getUnavailableCouponTitle();
+        $unCouponTitle = $this->getUnavailableCouponTitle();
         $title = $this->getTitle();
         $data = [
-            'couponcodes' => $this->_configProvider->getCouponCodesWithDetails(),
+            'couponcodes' => $this->configProvider->getCouponCodesWithDetails(),
             'is_module_enable' => $isModuleEnable,
             'coupon_list_type' => $couponListType,
             'button_title' => $buttonTitle,
             'available_coupon_title' => $availableCouponTitle,
-            'unavailable_coupon_title' => $unavailableCouponTitle,
+            'unavailable_coupon_title' => $unCouponTitle,
             'title' => $title
         ];
         return $resultJson->setData($data);
@@ -97,7 +97,7 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function isModuleEnable()
     {
-        return $this->_configProvider->isModuleEnable();
+        return $this->configProvider->isModuleEnable();
     }
 
     /**
@@ -107,7 +107,7 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function getCouponListType()
     {
-        return $this->_configProvider->getCouponListType();
+        return $this->configProvider->getCouponListType();
     }
     
     /**
@@ -117,7 +117,7 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function getButtonTitle()
     {
-        return $this->_configProvider->getButtonTitle();
+        return $this->configProvider->getButtonTitle();
     }
 
     /**
@@ -127,7 +127,7 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function getAvailableCouponTitle()
     {
-        return $this->_configProvider->getAvailableCouponTitle();
+        return $this->configProvider->getAvailableCouponTitle();
     }
 
     /**
@@ -137,7 +137,7 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function getUnavailableCouponTitle()
     {
-        return $this->_configProvider->getUnavailableCouponTitle();
+        return $this->configProvider->getUnavailableCouponTitle();
     }
 
     /**
@@ -147,7 +147,7 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function getAllCouponTitle()
     {
-        return $this->_configProvider->getAllCouponTitle();
+        return $this->configProvider->getAllCouponTitle();
     }
 
     /**
@@ -157,6 +157,6 @@ class Index extends \Magento\Framework\App\Action\Action
      */
     public function getCartWiseCouponTitle()
     {
-        return $this->_configProvider->getCartWiseCouponTitle();
+        return $this->configProvider->getCartWiseCouponTitle();
     }
 }

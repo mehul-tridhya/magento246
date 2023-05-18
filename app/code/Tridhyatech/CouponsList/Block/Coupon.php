@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @author    Tridhya Tech Team
+ * @author    Tridhya Tech
  * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
  * @package   Tridhyatech_CouponsList
  */
@@ -23,14 +23,14 @@ class Coupon extends \Magento\Framework\View\Element\Template
      *
      * @var ConfigProvider
      */
-    protected $_configProvider;
+    protected $configProvider;
 
     /**
      * Scope Config Provider
      *
      * @var ScopeConfigInterface
      */
-    protected $_scopeConfig;
+    protected $scopeConfig;
 
     /**
      *
@@ -46,8 +46,8 @@ class Coupon extends \Magento\Framework\View\Element\Template
         array $data = []
     ) {
         parent::__construct($context, $data);
-        $this->_configProvider = $configProvider;
-        $this->_scopeConfig = $scopeConfig;
+        $this->configProvider = $configProvider;
+        $this->scopeConfig = $scopeConfig;
     }
 
     /**
@@ -57,7 +57,7 @@ class Coupon extends \Magento\Framework\View\Element\Template
      */
     public function getCouponCodes()
     {
-        return $this->_configProvider->getCouponCodesWithDetails();
+        return $this->configProvider->getCouponCodesWithDetails();
     }
 
     /**
@@ -67,17 +67,17 @@ class Coupon extends \Magento\Framework\View\Element\Template
      */
     public function isModuleEnable()
     {
-        return $this->_configProvider->isModuleEnable();
+        return $this->configProvider->isModuleEnable();
     }
 
     /**
      * Get coupon list type
      *
-     * @return boolean
+     * @return string
      */
     public function getCouponListType()
     {
-        return $this->_configProvider->getCouponListType();
+        return $this->configProvider->getCouponListType();
     }
 
     /**
@@ -97,7 +97,7 @@ class Coupon extends \Magento\Framework\View\Element\Template
      */
     public function getButtonTitle()
     {
-        return $this->_configProvider->getButtonTitle();
+        return $this->configProvider->getButtonTitle();
     }
 
     /**
@@ -107,7 +107,7 @@ class Coupon extends \Magento\Framework\View\Element\Template
      */
     public function getAvailableCouponTitle()
     {
-        return $this->_configProvider->getAvailableCouponTitle();
+        return $this->configProvider->getAvailableCouponTitle();
     }
 
     /**
@@ -117,7 +117,7 @@ class Coupon extends \Magento\Framework\View\Element\Template
      */
     public function getUnavailableCouponTitle()
     {
-        return $this->_configProvider->getUnavailableCouponTitle();
+        return $this->configProvider->getUnavailableCouponTitle();
     }
 
     /**
@@ -127,7 +127,7 @@ class Coupon extends \Magento\Framework\View\Element\Template
      */
     public function getAllCouponTitle()
     {
-        return $this->_configProvider->getAllCouponTitle();
+        return $this->configProvider->getAllCouponTitle();
     }
 
     /**
@@ -137,6 +137,6 @@ class Coupon extends \Magento\Framework\View\Element\Template
      */
     public function getCartWiseCouponTitle()
     {
-        return $this->_configProvider->getCartWiseCouponTitle();
+        return $this->configProvider->getCartWiseCouponTitle();
     }
 }

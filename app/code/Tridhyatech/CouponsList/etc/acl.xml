@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- 
 /**
-* @author Tridhya Tech Team
+* @author Tridhya Tech
 * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
 * @package Tridhyatech_CouponsList
 */ 
@@ -17,7 +17,7 @@
                <resource id="Magento_Backend::stores_settings">
                   <resource id="Magento_Config::config">
                      <resource id="Tridhyatech_Core::config">
-                        <resource id="Tridhyatech_CouponsList::config" title="Coupons List" sortOrder="50" />
+                        <resource id="Tridhyatech_CouponsList::configurations" title="Coupons List" sortOrder="50" />
                      </resource>
                   </resource>
                </resource>

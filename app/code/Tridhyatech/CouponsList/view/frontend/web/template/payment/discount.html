@@ -1,5 +1,5 @@
 <!-- /**
-* @author Tridhya Tech Team
+* @author Tridhya Tech
 * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
 * @package Tridhyatech_CouponsList
 */ -->
@@ -96,7 +96,7 @@
         </form>
         <div id="coupon-list-content" data-bind="visible: false" class="coupon-list-modal-content">
             <div class="coupon-code-content-main">
-                <!-- ko if: (couponListType() == 1)-->
+                <!-- ko if: (couponListType() == 1 && availableCouponLength() != 0)-->
                 <div class="coupon-code-types-div">
                     <span class="coupon-code-types"><!-- ko i18n: availableCouponTitle--><!-- /ko --></span>
                 </div>
@@ -104,8 +104,7 @@
                 <div data-bind="foreach: { data: couponcodes, as: 'coupons', noChildContext: true }">
                     <div data-bind="foreach: { data: coupons.valid_coupons, as: 'coupon', noChildContext: true }">
                         <div class="coupon-code-main">
-                            <div class="coupon-code"><span><!-- ko i18n: coupon.coupon_code--><!-- /ko --></span>
-                            </div>
+                            <div class="coupon-code"><span><!-- ko i18n: coupon.coupon_code--><!-- /ko --></span></div>
                             <span class="coupon-name">
                                 <h4><!-- ko i18n: coupon.name--><!-- /ko --></h4>
                             </span>
@@ -118,7 +117,7 @@
                     </div>
                 </div>
 
-                <!-- ko if: (couponListType() == 1)-->
+                <!-- ko if: (couponListType() == 1 && unavailableCouponLength() != 0)-->
                 <div>
                     <div class="coupon-code-types-div">
                         <span class="coupon-code-types"><!-- ko i18n: unavailableCouponTitle--><!-- /ko --></span>
@@ -126,8 +125,7 @@
                     <div data-bind="foreach: { data: couponcodes, as: 'coupons' }">
                         <div data-bind="foreach: { data: coupons.invalid_coupons, as: 'coupon' }">
                             <div class="coupon-code-main">
-                                <div class="coupon-code">
-                                    <span><!-- ko i18n: coupon.coupon_code--><!-- /ko --></span>
+                                <div class="coupon-code"><span><!-- ko i18n: coupon.coupon_code--><!-- /ko --></span>
                                 </div>
                                 <span class="coupon-name">
                                     <h4><!-- ko i18n: coupon.name--><!-- /ko --></h4>

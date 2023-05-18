@@ -1,5 +1,5 @@
 /**
-* @author Tridhya Tech Team
+* @author Tridhya Tech
 * @copyright Copyright (c) 2023 Tridhya Tech Ltd (https://www.tridhyatech.com)
 * @package Tridhyatech_CouponsList
 */
@@ -26,6 +26,8 @@ define([
     var buttonTitle = couponcodesmodel.buttonTitle;
     var availableCouponTitle = couponcodesmodel.availableCouponTitle;
     var unavailableCouponTitle = couponcodesmodel.unavailableCouponTitle;
+    var availableCouponLength = couponcodesmodel.availableCouponLength;
+    var unavailableCouponLength = couponcodesmodel.unavailableCouponLength;
     isCouponChanged.subscribe(function (newValue) {
         if (newValue) {
             couponcodesmodel.getCouponCode();
@@ -44,6 +46,8 @@ define([
             buttonTitle: buttonTitle,
             availableCouponTitle: availableCouponTitle,
             unavailableCouponTitle: unavailableCouponTitle,
+            availableCouponLength: availableCouponLength,
+            unavailableCouponLength: unavailableCouponLength,
             initialize: function () {
                 var self = this;
                 this._super();
