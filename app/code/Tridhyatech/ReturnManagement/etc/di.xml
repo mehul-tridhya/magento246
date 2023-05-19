@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Tridhyatech Team
+ * @copyright Copyright (c) 2020 Tridhyatech (https://www.tridhya.com)
+ * @package Tridhyatech_ReturnManagement
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Tridhyatech\ReturnManagement\Api\Data\ReturnReasonInterface" type="Tridhyatech\ReturnManagement\Model\Reason" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ttrma_reason_data_source" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Reason\Grid\Collection</item>
+            </argument>    
+        </arguments>
+    </type>
+    <type name="Tridhyatech\ReturnManagement\Model\ResourceModel\Reason\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tt_rma_reason</argument>
+            <argument name="eventPrefix" xsi:type="string">tt_rma_reason_collection</argument>
+            <argument name="eventObject" xsi:type="string">ttrma_reason_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Reason</argument>
+        </arguments>
+    </type>
+    <preference for="Tridhyatech\ReturnManagement\Api\Data\ReturnConditionInterface" type="Tridhyatech\ReturnManagement\Model\Condition" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ttrma_condition_data_source" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Condition\Grid\Collection</item>
+            </argument>    
+        </arguments>
+    </type>
+    <type name="Tridhyatech\ReturnManagement\Model\ResourceModel\Condition\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tt_rma_condition</argument>
+            <argument name="eventPrefix" xsi:type="string">tt_rma_condition_collection</argument>
+            <argument name="eventObject" xsi:type="string">ttrma_condition_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Condition</argument>
+        </arguments>
+    </type>
+    <preference for="Tridhyatech\ReturnManagement\Api\Data\ReturnResolutionInterface" type="Tridhyatech\ReturnManagement\Model\Resolution" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ttrma_resolution_data_source" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Resolution\Grid\Collection</item>
+            </argument>    
+        </arguments>
+    </type>
+    <type name="Tridhyatech\ReturnManagement\Model\ResourceModel\Resolution\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tt_rma_resolution</argument>
+            <argument name="eventPrefix" xsi:type="string">tt_rma_resolution_collection</argument>
+            <argument name="eventObject" xsi:type="string">ttrma_resolution_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Resolution</argument>
+        </arguments>
+    </type>
+</config>

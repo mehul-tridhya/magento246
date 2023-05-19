@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="tt_rma_reason" resource="default" engine="innodb" comment="Tridhya RMA Reason Table">
+        <column xsi:type="int" name="entity_id" padding="6" unsigned="false" nullable="false" identity="true" comment="ID" />
+        <column xsi:type="text" name="title" nullable="false" comment="Title" />
+        <column xsi:type="smallint" name="position" nullable="true" comment="Position" />
+        <column xsi:type="smallint" name="shipping_payer" nullable="false" comment="Who Pays For Shipping" />
+        <column xsi:type="smallint" name="status" nullable="false" comment="Status" />
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id" />
+        </constraint>
+    </table>
+    <table name="tt_rma_condition" resource="default" engine="innodb" comment="Tridhya RMA Condition Table">
+        <column xsi:type="int" name="entity_id" padding="6" unsigned="false" nullable="false" identity="true" comment="ID" />
+        <column xsi:type="text" name="title" nullable="false" comment="Title" />
+        <column xsi:type="smallint" name="position" nullable="true" comment="Position" />
+        <column xsi:type="smallint" name="status" nullable="false" comment="Status" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id" />
+        </constraint>
+    </table>
+    <table name="tt_rma_resolution" resource="default" engine="innodb" comment="Tridhya RMA Resolution Table">
+        <column xsi:type="int" name="entity_id" padding="6" unsigned="false" nullable="false" identity="true" comment="ID" />
+        <column xsi:type="text" name="title" nullable="false" comment="Title" />
+        <column xsi:type="smallint" name="position" nullable="true" comment="Position" />
+        <column xsi:type="smallint" name="status" nullable="false" comment="Status" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id" />
+        </constraint>
+    </table>
+    <table name="tt_rma_return_rule" resource="default" engine="innodb" comment="Tridhya RMA Return Rule Table">
+        <column xsi:type="int" name="entity_id" padding="6" unsigned="false" nullable="false" identity="true" comment="ID" />
+        <column xsi:type="smallint" name="priority" nullable="true" comment="Priority" />
+        <column xsi:type="smallint" name="status" nullable="false" comment="Status" />
+        <column xsi:type="text" name="rule_name" nullable="false" comment="Rule Name" />
+        <column xsi:type="smallint" name="websites" nullable="true" comment="WebSites" />
+        <column xsi:type="smallint" name="customer_group" nullable="true" comment="Customer Group" />
+        <column xsi:type="smallint" name="default_resolution_period" nullable="true" comment="Default Resolution Period" />
+        <column xsi:type="smallint" name="exchange_period" nullable="true" comment="Exchange Period" />
+        <column xsi:type="smallint" name="return_period" nullable="true" comment="Reture Period" />
+        <column xsi:type="smallint" name="repair_period" nullable="true" comment="Repair Period" />
+        <column xsi:type="text" name="conditions_serialized" nullable="true" comment="Conditions Serialized" />
+        <column xsi:type="text" name="actions_serialized" nullable="true" comment="Actions Serialized" />
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="true" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id" />
+        </constraint>
+    </table>
+</schema>
