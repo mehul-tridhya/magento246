@@ -12,7 +12,7 @@
         <arguments>
             <argument name="collections" xsi:type="array">
                 <item name="ttrma_reason_data_source" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Reason\Grid\Collection</item>
-            </argument>    
+            </argument>
         </arguments>
     </type>
     <type name="Tridhyatech\ReturnManagement\Model\ResourceModel\Reason\Grid\Collection">
@@ -28,7 +28,7 @@
         <arguments>
             <argument name="collections" xsi:type="array">
                 <item name="ttrma_condition_data_source" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Condition\Grid\Collection</item>
-            </argument>    
+            </argument>
         </arguments>
     </type>
     <type name="Tridhyatech\ReturnManagement\Model\ResourceModel\Condition\Grid\Collection">
@@ -44,7 +44,7 @@
         <arguments>
             <argument name="collections" xsi:type="array">
                 <item name="ttrma_resolution_data_source" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Resolution\Grid\Collection</item>
-            </argument>    
+            </argument>
         </arguments>
     </type>
     <type name="Tridhyatech\ReturnManagement\Model\ResourceModel\Resolution\Grid\Collection">
@@ -53,6 +53,36 @@
             <argument name="eventPrefix" xsi:type="string">tt_rma_resolution_collection</argument>
             <argument name="eventObject" xsi:type="string">ttrma_resolution_collection</argument>
             <argument name="resourceModel" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Resolution</argument>
+        </arguments>
+    </type>
+
+    <virtualType name="DolphinAddConditionFiledFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="DolphinAddConditionFiledFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Tridhyatech\ReturnManagement\Model\ResourceModel\Rule\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">DolphinAddConditionFiledFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Tridhyatech\ReturnManagement\Model\ResourceModel\Rule\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tt_rma_return_rule</argument>
+            <argument name="eventPrefix" xsi:type="string">tt_rma_return_rule_collection</argument>
+            <argument name="eventObject" xsi:type="string">tt_rma_return_rule_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Rule</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="custom_condition_listing_data_source" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Rule\Grid\Collection</item>
+            </argument>
         </arguments>
     </type>
 </config>

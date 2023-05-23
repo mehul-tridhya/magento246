@@ -13,5 +13,6 @@
         <add id="Tridhyatech_ReturnManagement::return_reasons" title="Manage RMA Reasons" module="Tridhyatech_ReturnManagement" sortOrder="51" parent="Tridhyatech_ReturnManagement::returnmanagement" action="ttrma/reason/index" resource="Tridhyatech_ReturnManagement::return_reasons"/>
         <add id="Tridhyatech_ReturnManagement::return_condition" title="Manage RMA Item Condition" module="Tridhyatech_ReturnManagement" sortOrder="51" parent="Tridhyatech_ReturnManagement::returnmanagement" action="ttrma/condition/index" resource="Tridhyatech_ReturnManagement::return_condition"/>
         <add id="Tridhyatech_ReturnManagement::return_resolution" title="Manage RMA Return Resolution" module="Tridhyatech_ReturnManagement" sortOrder="51" parent="Tridhyatech_ReturnManagement::returnmanagement" action="ttrma/resolution/index" resource="Tridhyatech_ReturnManagement::return_resolution"/>
+        <add id="Tridhyatech_ReturnManagement::return_rule" title="Manage RMA Return Rule" module="Tridhyatech_ReturnManagement" sortOrder="52" parent="Tridhyatech_ReturnManagement::returnmanagement" action="ttrma/rule/index" resource="Tridhyatech_ReturnManagement::return_rule"/>
     </menu>
 </config>
