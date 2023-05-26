@@ -20,7 +20,9 @@
                         <resource id="Tridhyatech_ReturnManagement::config" title="Return Management" sortOrder="90" />
                         <resource id="Tridhyatech_ReturnManagement::return_reasons" title="Manage RMA Reasons" sortOrder="51" />
                         <resource id="Tridhyatech_ReturnManagement::return_condition" title="Manage RMA Item Condition" sortOrder="52" />
-                        <resource id="Tridhyatech_ReturnManagement::return_resolution" title="Manage RMA Item Condition" sortOrder="52" />
+                        <resource id="Tridhyatech_ReturnManagement::return_resolution" title="Manage RMA Item Resolution" sortOrder="52" />
+                        <resource id="Tridhyatech_ReturnManagement::return_status" title="Manage RMA Item Status" sortOrder="52" />
+                        <resource id="Tridhyatech_ReturnManagement::return_rule" title="Manage RMA Item Rule" sortOrder="52" />
                      </resource>
                   </resource>
                </resource>

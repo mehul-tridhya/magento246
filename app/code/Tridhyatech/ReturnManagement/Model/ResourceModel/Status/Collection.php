@@ -4,12 +4,12 @@
  * @copyright Copyright (c) 2020 Tridhyatech (https://www.tridhya.com)
  * @package Tridhyatech_ReturnManagement
  */
-namespace Tridhyatech\ReturnManagement\Model\ResourceModel\ReturnRule;
+namespace Tridhyatech\ReturnManagement\Model\ResourceModel\Status;
  
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     protected $_idFieldName = 'entity_id';
-    const YOUR_TABLE = 'tt_rma_return_rule';
+    const YOUR_TABLE = 'tt_rma_status';
     protected $storeManager;
 
     public function __construct(
@@ -22,8 +22,8 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource = null
     ) {
         $this->_init(
-            \Tridhyatech\ReturnManagement\Model\ReturnRule::class,
-            \Tridhyatech\ReturnManagement\Model\ResourceModel\ReturnRule::class
+            \Tridhyatech\ReturnManagement\Model\Status::class,
+            \Tridhyatech\ReturnManagement\Model\ResourceModel\Status::class
         );
         parent::__construct(
             $entityFactory,

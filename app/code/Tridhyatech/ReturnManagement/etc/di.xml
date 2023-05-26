@@ -56,6 +56,23 @@
         </arguments>
     </type>
 
+    <preference for="Tridhyatech\ReturnManagement\Api\Data\ReturnStatusInterface" type="Tridhyatech\ReturnManagement\Model\Status" />
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ttrma_status_data_source" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Status\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Tridhyatech\ReturnManagement\Model\ResourceModel\Status\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tt_rma_status</argument>
+            <argument name="eventPrefix" xsi:type="string">tt_rma_status_collection</argument>
+            <argument name="eventObject" xsi:type="string">tt_rma_status_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tridhyatech\ReturnManagement\Model\ResourceModel\Status</argument>
+        </arguments>
+    </type>
+
     <virtualType name="DolphinAddConditionFiledFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
         <arguments>
             <argument name="appliers" xsi:type="array">
