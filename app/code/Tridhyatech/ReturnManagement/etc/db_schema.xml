@@ -33,6 +33,11 @@
         <column xsi:type="int" name="rule_id" padding="6" unsigned="false" nullable="false" identity="true" comment="ID" />
         <column xsi:type="smallint" name="rule_status" nullable="false" comment="Status" />
         <column xsi:type="text" name="rule_name" nullable="false" comment="Rule Name" />
+        <column xsi:type="smallint" name="priority" nullable="true" comment="Priority" />
+        <column xsi:type="text" name="return_period" nullable="true" comment="Ruturn Period" />
+        <column xsi:type="text" name="repair_period" nullable="true" comment="Repair Period" />
+        <column xsi:type="text" name="exchange_period" nullable="true" comment="Exchange Period" />
+        <column xsi:type="text" name="default_resolution_period" nullable="true" comment="Default Resolution Period" />
         <column xsi:type="text" name="conditions_serialized" nullable="true" comment="Conditions Serialized" />
         <column xsi:type="text" name="actions_serialized" nullable="true" comment="Actions Serialized" />
         <column xsi:type="timestamp" name="created_date" on_update="false" nullable="true" default="CURRENT_TIMESTAMP" comment="Creation Time"/>

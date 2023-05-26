@@ -10,43 +10,29 @@ namespace Tridhyatech\ReturnManagement\Api\Data;
 
 interface ReturnRuleInterface
 {
-    const ENTITY_ID = 'entity_id';
-    const PRIORITY = 'priority';
-    const STATUS = 'status';
+    const RULE_ID = 'rule_id';
     const RULE_NAME = 'rule_name';
-    const WEBSITES = 'websites';
-    const CUSTOMER_GROUP = 'customer_group';
-    const DEFAULT_RESOLUTION_PERIOD = 'default_resolution_period';
-    const EXCHANGE_PERIOD = 'exchange_period';
+    const RULE_STATUS = 'rule_status';
+    const PRIORITY = 'priority';
     const RETURN_PERIOD = 'return_period';
     const REPAIR_PERIOD = 'repair_period';
+    const EXCHANGE_PERIOD = 'exchange_period';
+    const DEFAULT_RESOLUTION_PERIOD = 'default_resolution_period';
     const CONDITIONS_SERIALIZED = 'conditions_serialized';
-    const CREATED_AT = 'created_at';
     const ACTIONS_SERIALIZED = 'actions_serialized';
+    const CREATED_DATE = 'created_date';
 
-    public function getEntityId();
-    public function setEntityId($entityId);
-
-    public function getPriority();
-    public function setPriority($priority);
-
-    public function getStatus();
-    public function setStatus($status);
+    public function getRuleId();
+    public function setRuleId($ruleId);
 
     public function getRuleName();
     public function setRuleName($ruleName);
 
-    public function getWebsites();
-    public function setWebsites($websites);
+    public function getRuleStatus();
+    public function setRuleStatus($ruleStatus);
 
-    public function getCustomerGroup();
-    public function setCustomerGroup($customerGroup);
-
-    public function getDefaultResolutionPeriod();
-    public function setDefaultResolutionPeriod($defaultResolutionPeriod);
-
-    public function getExchangePeriod();
-    public function setExchangePeriod($exchangePeriod);
+    public function getPriority();
+    public function setPriority($priority);
 
     public function getReturnPeriod();
     public function setReturnPeriod($returnPeriod);
@@ -54,12 +40,18 @@ interface ReturnRuleInterface
     public function getRepairPeriod();
     public function setRepairPeriod($repairPeriod);
 
+    public function getExchangePeriod();
+    public function setExchangePeriod($exchangePeriod);
+
+    public function getDefaultResolutionPeriod();
+    public function setDefaultResolutionPeriod($defaultResolutionPeriod);
+
     public function getConditionsSerialized();
     public function setConditionsSerialized($conditionsSerialized);
 
-    public function getCreatedAt();
-    public function setCreatedAt($createdAt);
-
     public function getActionsSerialized();
     public function setActionsSerialized($actionsSerialized);
+
+    public function getCreatedDate();
+    public function setCreatedDate($createdDate);
 }

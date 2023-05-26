@@ -15,7 +15,7 @@ abstract class Rule extends \Magento\Backend\App\Action
         \Magento\Framework\Registry $coreRegistry,
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
         \Magento\Framework\Stdlib\DateTime\Filter\Date $dateFilter,
-        \Dolphin\AddConditionFiled\Model\CustomConditionFactory $ruleFactory,
+        \Tridhyatech\ReturnManagement\Model\RuleFactory $ruleFactory,
         \Psr\Log\LoggerInterface $logger
     ) {
         parent::__construct($context);

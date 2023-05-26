@@ -80,13 +80,82 @@
                 </item>
             </argument>
         </field>
+        <field name="priority">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">26</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Priority</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">priority</item>
+                    <item name="dataScope" xsi:type="string">priority</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="resolution_data">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Resolution Period</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+        <field name="default_resolution_period">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">29</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Default Resolution Period</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">default_resolution_period</item>
+                    <item name="dataScope" xsi:type="string">default_resolution_period</item>
+                </item>
+            </argument>
+        </field>
+        <field name="exchange_period">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Exchange Period</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">exchange_period</item>
+                    <item name="dataScope" xsi:type="string">exchange_period</item>
+                </item>
+            </argument>
+        </field>
+        <field name="return_period">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">31</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Return Period</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">return_period</item>
+                    <item name="dataScope" xsi:type="string">return_period</item>
+                </item>
+            </argument>
+        </field>
+        <field name="repair_period">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">32</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Repair Period</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">repair_period</item>
+                    <item name="dataScope" xsi:type="string">repair_period</item>
+                </item>
+            </argument>
+        </field>
     </fieldset>
     <fieldset name="condition_data">
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
                 <item name="collapsible" xsi:type="boolean">false</item>
                 <item name="label" xsi:type="string" translate="true">Condition</item>
-                <item name="sortOrder" xsi:type="number">20</item>
+                <item name="sortOrder" xsi:type="number">30</item>
             </item>
         </argument>
         <container name="conditions_serialized">

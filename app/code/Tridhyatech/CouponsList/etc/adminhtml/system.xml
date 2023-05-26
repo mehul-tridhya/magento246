@@ -28,6 +28,7 @@
                 </field>
                 <field id="all_coupon_title" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>All Coupon Title</label>
+                    <validate>required-entry</validate>
                     <depends>
                         <field id="*/*/is_active">1</field>
                         <field id="*/*/type">1</field>
@@ -35,6 +36,7 @@
                 </field>
                 <field id="cart_wise_coupon_title" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Cart Wise Coupon Title</label>
+                    <validate>required-entry</validate>
                     <depends>
                         <field id="*/*/is_active">1</field>
                         <field id="*/*/type">2</field>
@@ -42,18 +44,21 @@
                 </field>
                 <field id="button_title" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Button Title</label>
+                    <validate>required-entry</validate>
                     <depends>
                         <field id="*/*/is_active">1</field>
                     </depends>
                 </field>
                 <field id="availabe_coupon_title" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Available Coupon Title</label>
+                    <validate>required-entry</validate>
                     <depends>
                         <field id="*/*/is_active">1</field>
                     </depends>
                 </field>
                 <field id="unavailable_coupon_title" translate="label" type="text" sortOrder="25" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Unavailable Coupon Title</label>
+                    <validate>required-entry</validate>
                     <depends>
                         <field id="*/*/is_active">1</field>
                     </depends>

@@ -41,12 +41,12 @@ class Rule extends AbstractModel
 
     public function getConditionsInstance()
     {
-        return $this->condCombineFactory->create();
+        return $this->condProdCombineF->create();
     }
 
     public function getActionsInstance()
     {
-        return $this->condCombineFactory->create();
+        return $this->condProdCombineF->create();
     }
 
     public function hasIsValidForAddress($address)
